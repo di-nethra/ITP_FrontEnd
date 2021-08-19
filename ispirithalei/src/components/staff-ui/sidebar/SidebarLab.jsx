@@ -51,11 +51,11 @@ const Content = (props) => {
 }
 const List = (props) =>{
   console.log(props.icon)
-  const content = props.icon
+  
   return(
     <>
       <li className="sidebarListItem ">
-        <content />
+        {props.icon}
         {props.iconlabel}
       </li>
     </>
