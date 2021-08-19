@@ -1,20 +1,25 @@
 import React from "react";
-import {Box} from "@material-ui/core";
 import styles from "../patientUI.module.css";
 import logoDark from "../../../assets/images/logo_dark.png"
+import {Grid, Hidden} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
 
 
 
 function Logo() {
-    const customStyle = {
-        dark_variant: "#00204A",
-        primary : "#005792",
-        secondary   : "#00BBF0",
-        light_bg    : "#D9FAFF",
-    }
     return <div className={styles.logo_bg}>
-            <img className={styles.logo} src={logoDark}/>
-    </div>
+        <Grid container alignItems={"center"} justifyContent={"space-evenly"}>
+            <Hidden lgUp>
+                <Grid item>
+                    <MenuIcon />
+                </Grid>
+            </Hidden>
+            <Grid item>
+                <img className={styles.logo} src={logoDark} alt="Ispirithaalei Logo"/>
+            </Grid>
+        </Grid>
+
+        </div>
 }
 
 export default Logo;
