@@ -8,9 +8,9 @@ export default function Topbar() {
         <div className="topbar">
             <div className="topbarWrapper">
                 <div className="topLeft">
-                    <a className="logo" href="/">
-                        <img src={ISPIRITHALEI} alt="brandLogo" className="img-logo" />
-                    </a>
+                    <div className="topLeft">
+                        <span className="logo">Dashboard</span>
+                    </div>
                 </div>
                 <div className="topRight">
                     <div className="topbarIconContainer">
