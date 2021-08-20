@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from "./components/patient-ui/Header/Header";
-import Home from "./pages/patient-ui/PatientHome";
+import Home from "./pages/patient-ui/Home";
 import {createTheme, ThemeProvider} from "@material-ui/core";
 import {
     BrowserRouter as Router,
@@ -8,6 +8,8 @@ import {
     Route,
 } from "react-router-dom";
 import About from "./pages/patient-ui/About";
+import Labasisstant from "./layouts/Labasisstant";
+import Receptionist from "./layouts/Receptionist";
 
 const theme = createTheme({
     palette: {
@@ -33,18 +35,26 @@ const theme = createTheme({
 const App = () => (
     <ThemeProvider theme={theme}>
         <Router>
-            <div>
-                <Header />
-                <Switch>
-                    <Route path="/about">
-                        <About />
-                    </Route>
+            <Switch>
+                <Route path={["/labassistant", "/receptionist"]}>
 
-                    <Route path="/">
-                        <Home />
-                    </Route>
-                </Switch>
-            </div>
+                    <Switch>
+                        <Route path="/labassistant" component={Labasisstant} />
+                        <Route path="/receptionist" component={Receptionist} />
+                    </Switch>
+
+                </Route>
+                {/* Layout 1 is last because it is used for the root "/" and will be greedy */}
+                <Route path={["/about", "/"]}>
+                    <Header />
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/about" component={About} />
+
+                    </Switch>
+
+                </Route>
+            </Switch>
         </Router>
     </ThemeProvider>
 )
