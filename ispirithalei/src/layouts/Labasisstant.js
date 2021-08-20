@@ -8,6 +8,7 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
 import "./labass.css"
+import LabassHome from "../pages/staff-ui/lab asistant/LabassHome";
 const LabAssitant = () => {
   const labass = {
     name : 'Danushka Ranasinghe',
@@ -60,8 +61,8 @@ const LabAssitant = () => {
 
       <SidebarLab labass={labass}/>
       <div className="others">
-        <Topbar/>
-        
+          <Topbar/>
+          <LabassHome/>
       </div>
     </div>
   </div>
