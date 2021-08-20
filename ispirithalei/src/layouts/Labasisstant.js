@@ -1,4 +1,4 @@
-import SidebarLab from "../components/staff-ui/sidebar/SidebarLab";
+import Sidebar from "../components/staff-ui/sidebar/Sidebar";
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
 import TransformIcon from '@material-ui/icons/Transform';
@@ -7,10 +7,10 @@ import ClearAllIcon from '@material-ui/icons/ClearAll';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
-import "./labass.css"
+import "./layout.css"
 import LabassHome from "../pages/staff-ui/lab asistant/LabassHome";
 const LabAssitant = () => {
-  const labass = {
+  const user = {
     name : 'Danushka Ranasinghe',
     role : 'Lab Assistant',
     list : [
@@ -59,7 +59,7 @@ const LabAssitant = () => {
   <div >
     <div className="container">
 
-      <SidebarLab labass={labass}/>
+      <Sidebar user={user}/>
       <div className="others">
           <Topbar/>
           <LabassHome/>

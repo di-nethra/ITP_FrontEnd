@@ -1,15 +1,8 @@
 import "./sidebar.css";
-import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
-import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
-import TransformIcon from '@material-ui/icons/Transform';
-import DoneIcon from '@material-ui/icons/Done';
-import ClearAllIcon from '@material-ui/icons/ClearAll';
-import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import ISPIRITHALEI from "../../../assets/1.png";
 
 
-export default function SidebarLab(props) {
+export default function Sidebar(props) {
     return (
         <div className="sidebar">
           <div className="sidebarWrapper">
@@ -19,9 +12,9 @@ export default function SidebarLab(props) {
                     <img src={ISPIRITHALEI} alt="brandLogo" className="img-logo" />
                   </a>
               </div>
-              <Titles title={props.labass}/>
+              <Titles title={props.user}/>
               <ul className="sidebarList">
-                <Content parts={props.labass.list}/>
+                <Content parts={props.user.list}/>
               </ul>
             </div>
           </div>
