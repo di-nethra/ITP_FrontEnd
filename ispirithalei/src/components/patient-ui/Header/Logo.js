@@ -15,7 +15,7 @@ function Logo() {
                 </Grid>
             </Hidden>
             <Grid item>
-                <img className={styles.logo} src={logoDark} alt="Ispirithaalei Logo"/>
+                <img className={styles.logoPatient} src={logoDark} alt="Ispirithaalei Logo"/>
             </Grid>
         </Grid>
 

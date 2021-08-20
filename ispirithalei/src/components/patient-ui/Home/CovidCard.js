@@ -73,7 +73,7 @@ function CovidCard() {
         <Box className={style.box}>
             <div>
                 <div style={{position: "relative", top: '-10%'}}>
-                    <img src={Virus} className={style.virusImage} alt="Image of Virus" />
+                    <img src={Virus} className={style.virusImage} alt="Virus" />
                 </div>
                 <Typography className={style.heading} variant="h4">COVID-19 SRI LANKA</Typography>
                 <Grid container spacing={8} justifyContent={"space-evenly"}>
@@ -96,6 +96,6 @@ function CovidCard() {
             </div>
         </Box>
     )
-};
+}
 
 export default CovidCard;

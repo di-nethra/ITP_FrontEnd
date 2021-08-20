@@ -26,7 +26,7 @@ const Receptionist = () => {
       },
       {
         icon: <DoneIcon className="sidebarIcon"/>,
-        iconlabel: 'Checked-in Appointments',
+        iconlabel: 'Checked-in ',
         id: 3
       },
       {

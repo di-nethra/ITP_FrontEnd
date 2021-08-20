@@ -6,20 +6,20 @@ import {NavLink} from "react-router-dom";
 function Navigation() {
 
     return (
-        <nav style={styles}>
+        <nav>
 
-            <ul>
-                <li>
-                    <NavLink to="/lab" activeStyle={{color: '#D9FAFF'}}>LAB REPORTS</NavLink>
+            <ul className={styles.patientNavUl}>
+                <li className={styles.patientNavLi}>
+                    <NavLink className={styles.patientNavA} to="/labassistant" activeStyle={{color: '#D9FAFF'}}>LAB REPORTS</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/drugs" activeStyle={{color: '#D9FAFF'}}>DRUGS</NavLink>
+                    <NavLink className={styles.patientNavA} to="/receptionist" activeStyle={{color: '#D9FAFF'}}>DRUGS</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/about" activeStyle={{color: '#D9FAFF'}}>ABOUT US</NavLink>
+                    <NavLink className={styles.patientNavA} to="/about" activeStyle={{color: '#D9FAFF'}}>ABOUT US</NavLink>
                 </li>
                 <li>
-                    <NavLink exact to="/" activeStyle={{color: '#D9FAFF'}}>HOME</NavLink>
+                    <NavLink className={styles.patientNavA} exact to="/" activeStyle={{color: '#D9FAFF'}}>HOME</NavLink>
                 </li>
             </ul>
         </nav>
