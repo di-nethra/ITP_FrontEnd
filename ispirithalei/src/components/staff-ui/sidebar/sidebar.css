@@ -1,10 +1,9 @@
 .sidebar{
   flex: 1;
-  height: calc(100vh);
+  height: calc(100vh - 10px);
   background-color: #005792;
   position: sticky;
-  margin-top: 5px;
-  margin-left: 5px;
+  margin: 5px;
   border-radius: 20px;
   
 }
