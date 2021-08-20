@@ -1,12 +1,8 @@
 import React from 'react'
-import LabAssitant from './layouts/Labasisstant'
-
-function App() {
-    return (
-        <div>
-           <LabAssitant /> 
-        </div>
-    )
-}
+const App = () => (
+    <div>
+        
+    </div>
+)
 
 export default App
