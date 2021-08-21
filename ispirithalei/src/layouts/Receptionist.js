@@ -15,7 +15,7 @@ const Receptionist = () => {
     role : 'Receptionist',
     list : [
       {
-        path: "/dashboard",
+        path: "",
         exact: true,
         icon: <DashboardOutlinedIcon className="sidebarIcon"/>,
         iconlabel: 'Dashboard',
