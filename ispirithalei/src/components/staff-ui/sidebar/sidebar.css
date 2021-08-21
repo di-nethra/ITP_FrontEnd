@@ -43,6 +43,7 @@
 }
 .sidebarListItem.active,
 .sidebarListItem:hover {
+  transition-duration: 300ms;
   background-color: rgb(255, 255, 255);
   color: #005792;
 }

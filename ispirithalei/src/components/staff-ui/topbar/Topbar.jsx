@@ -13,7 +13,6 @@ export default function Topbar(props) {
             <div className="topbarWrapper">
                 <div className="topLeft">
                     <div className="topLeft">
-                        <span className="logo"></span>
                     </div>
                     <div>
                         <Switch>

@@ -8,7 +8,7 @@ import Virus from "../../../assets/images/virus_1.svg";
 
 const useStyles = makeStyles({
     box: {
-        backgroundColor: "white",
+        backgroundColor: '#D9FAFF',
         padding: "50px 10%",
         borderRadius: "60px",
         margin: "100px 0"
