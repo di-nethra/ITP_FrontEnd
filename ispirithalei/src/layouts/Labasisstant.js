@@ -1,3 +1,4 @@
+import React from "react";
 import Sidebar from "../components/staff-ui/sidebar/Sidebar";
 import LabassHome from "../pages/staff-ui/lab asistant/LabassHome"
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';

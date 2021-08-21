@@ -1,3 +1,4 @@
+import React from "react";
 import Sidebar from "../components/staff-ui/sidebar/Sidebar";
 import ReceptionistHome from "../pages/staff-ui/receptionist/ReceptionistHome";
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
