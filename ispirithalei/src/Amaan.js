@@ -36,11 +36,11 @@ const App = () => (
     <ThemeProvider theme={theme}>
         <Router>
             <Switch>
-                <Route path={["/staff/labassistant/", "/staff/receptionist/"]}>
+                <Route path={["/staff/labassistant", "/staff/receptionist"]}>
 
                     <Switch>
-                        <Route path="/staff/labassistant/" component={Labasisstant} />
-                        <Route path="/staff/receptionist/" component={Receptionist} />
+                        <Route path="/staff/labassistant" component={Labasisstant} />
+                        <Route path="/staff/receptionist" component={Receptionist} />
                     </Switch>
 
                 </Route>

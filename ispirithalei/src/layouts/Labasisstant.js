@@ -1,3 +1,4 @@
+import React from "react";
 import Sidebar from "../components/staff-ui/sidebar/Sidebar";
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
