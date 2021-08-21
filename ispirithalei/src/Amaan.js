@@ -36,15 +36,15 @@ const App = () => (
     <ThemeProvider theme={theme}>
         <Router>
             <Switch>
-                <Route path={["/labassistant", "/receptionist"]}>
+                <Route path={["/staff/labassistant/", "/staff/receptionist/"]}>
 
                     <Switch>
-                        <Route path="/labassistant" component={Labasisstant} />
-                        <Route path="/receptionist" component={Receptionist} />
+                        <Route path="/staff/labassistant/" component={Labasisstant} />
+                        <Route path="/staff/receptionist/" component={Receptionist} />
                     </Switch>
 
                 </Route>
-                {/* Layout 1 is last because it is used for the root "/" and will be greedy */}
+
                 <Route path={["/about", "/"]}>
                     <Header />
                     <Switch>

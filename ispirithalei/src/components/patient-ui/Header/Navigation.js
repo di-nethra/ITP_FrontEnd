@@ -10,10 +10,10 @@ function Navigation() {
 
             <ul className={styles.patientNavUl}>
                 <li className={styles.patientNavLi}>
-                    <NavLink className={styles.patientNavA} to="/labassistant" activeStyle={{color: '#D9FAFF'}}>LAB REPORTS</NavLink>
+                    <NavLink className={styles.patientNavA} to="/staff/labassistant/" activeStyle={{color: '#D9FAFF'}}>LAB REPORTS</NavLink>
                 </li>
                 <li>
-                    <NavLink className={styles.patientNavA} to="/receptionist" activeStyle={{color: '#D9FAFF'}}>DRUGS</NavLink>
+                    <NavLink className={styles.patientNavA} to="/staff/receptionist/" activeStyle={{color: '#D9FAFF'}}>DRUGS</NavLink>
                 </li>
                 <li>
                     <NavLink className={styles.patientNavA} to="/about" activeStyle={{color: '#D9FAFF'}}>ABOUT US</NavLink>
