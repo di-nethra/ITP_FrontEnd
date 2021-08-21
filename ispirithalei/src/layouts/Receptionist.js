@@ -15,31 +15,38 @@ const Receptionist = () => {
     role : 'Receptionist',
     list : [
       {
+        path: "/dashboard",
+        exact: true,
         icon: <DashboardOutlinedIcon className="sidebarIcon"/>,
         iconlabel: 'Dashboard',
         id: 1
       },
       {
+        path: "/pendingappointments",
         icon: <ScheduleIcon className="sidebarIcon"/>,
         iconlabel: 'Pending Check-in',
         id: 2
       },
       {
+        path: "/checkedinappointments",
         icon: <DoneIcon className="sidebarIcon"/>,
         iconlabel: 'Checked-in ',
         id: 3
       },
       {
+        path: "/allappointments",
         icon: <ClearAllIcon className="sidebarIcon"/>,
         iconlabel: 'All Appointments',
         id: 4
       },
       {
+        path: "/doctorsession",
         icon: <PersonOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'Doctor\'s Sessions',
         id: 5
       },
       {
+        path: "/support",
         icon: <HelpOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'Support',
         id: 6
@@ -56,7 +63,7 @@ const Receptionist = () => {
 
       <Sidebar user={user}/>
       <div className="others">
-          <Topbar/>
+          <Topbar page={user.list}/>
           <ReceptionistHome/>
       </div>
     </div>
