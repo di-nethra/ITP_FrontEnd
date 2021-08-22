@@ -8,7 +8,7 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
     box: {
-        backgroundColor: "white",
+        backgroundColor: "#D9FAFF",
         padding: "50px 10%",
         borderRadius: "60px",
         margin: "100px 0"

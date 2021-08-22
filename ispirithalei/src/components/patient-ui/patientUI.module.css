@@ -9,7 +9,6 @@
     width: 100%;
     box-sizing: border-box;
     background: url("../../assets/images/header_wave.svg") no-repeat center;
-    font-family: 'Poppins';
 
 }
 
@@ -23,12 +22,12 @@
     justify-content: center;
 }
 
-.logo {
+.logoPatient {
     height: 30px;
     width: 170px;
 }
 
-ul {
+.patientNavUl {
     display: flex;
     flex-direction: row-reverse;
     list-style-type: none;
@@ -36,11 +35,8 @@ ul {
     align-items: center;
 }
 
-li {
 
-}
-
-li a {
+.patientNavA {
     display: block;
     color: lightgray;
     font-size: large;
@@ -51,7 +47,7 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
+.patientNavA:hover {
     color: #D9FAFF;
 
 }
@@ -65,4 +61,18 @@ li a:hover {
 .stethoscope {
     display: flex;
     justify-content: center;
+}
+
+
+.footer {
+    color: white;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 250px;
+
+    margin-bottom: -30px;
+    height: 250px;
+    width: 100%;
+    background: url("../../assets/images/footer_wave.svg") no-repeat;
+    background-size: cover;
 }

@@ -13,6 +13,6 @@ function Home() {
             <CovidCard />
         </Container>
     );
-};
+}
 
 export default Home;
