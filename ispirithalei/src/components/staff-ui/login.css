@@ -1,0 +1,27 @@
+.rightside {
+    display: flex;
+    justify-content: center;
+    height: calc(100vh);
+    margin-bottom: -20px;
+    border-radius: 60px 0 0 60px;
+    box-sizing: content-box;
+    background: #005792;
+}
+
+.loginBgImage {
+    position: absolute;
+    bottom: 0;
+}
+.loginLogo {
+ position: absolute;
+    top: 5rem;
+    width: 20rem;
+}
+
+.formContainer {
+    height: calc(100vh);
+    padding: 0 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
