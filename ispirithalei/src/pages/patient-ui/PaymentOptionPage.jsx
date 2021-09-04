@@ -31,7 +31,7 @@ function PaymentOptionPage() {
               src={CreditCard}
               alt="60"
               className={classes.option}
-              onClick={() => history.push("/info")}
+              onClick={() => history.push("/payments/info")}
             />
           </a>
         </Grid>
@@ -45,8 +45,8 @@ function PaymentOptionPage() {
             <img src={StripePay} alt="60" className={classes.option} />
           </a>
         </Grid>
-      </Grid>
-    </div>
+      </Grid>      
+    </div>                                            
   );
 }
 

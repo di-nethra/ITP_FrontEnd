@@ -2,7 +2,7 @@ import React from "react";
 import { Breadcrumbs, Typography, Link, Grid } from "@material-ui/core";
 import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-
+import { BrowserRouter as Router } from "react-router-dom";
 import PaymentOptionPage from "../../../pages/patient-ui/PaymentOptionPage";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -45,20 +45,21 @@ const PaymentNavigation = (props) => {
   const history = useHistory();
   const classes = useStyles();
   return (
+      
     <div>
       <Grid container className={classes.navigation}>
         <Breadcrumbs>
           <Link
             className={classes.link}
             color="inherit"
-            onClick={() => history.push("/options")}
+            onClick={() => history.push("/payments/options")}
           >
             <CreditCardIcon className={classes.icon} /> Payment Options
           </Link>
           <Link
             color="inherit"
             className={classes.link}
-            onClick={() => history.push("/info")}
+            onClick={() => history.push("/payments/info")}
           >
             <ListIcon className={classes.icon} />
             Customer Details
@@ -66,7 +67,7 @@ const PaymentNavigation = (props) => {
           <Link
             className={classes.link}
             color="inherit"
-            onClick={() => history.push("/checkout")}
+            onClick={() => history.push("/payments/checkout")}
           >
             <ShoppingCartIcon className={classes.icon} />
             Checkout
@@ -74,28 +75,17 @@ const PaymentNavigation = (props) => {
           <Link
             className={classes.link}
             color="inherit"
-            onClick={() => history.push("/invoice")}
+            onClick={() => history.push("/payments/invoice")}
           >
             <DescriptionIcon className={classes.icon} /> Invoice
           </Link>
         </Breadcrumbs>
       </Grid>
 
-      <Switch>
-        <Route path="/options">
-          <PaymentOptionPage />
-        </Route>
-        <Route path="/info">
-          <UserForm />
-        </Route>
-        <Route path="/checkout">
-          <Checkout />
-        </Route>
-        <Route path="/invoice">
-          <PaymentInvoice />
-        </Route>
-      </Switch>
+   
+
     </div>
+    
   );
 };
 
