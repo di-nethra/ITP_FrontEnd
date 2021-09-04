@@ -2,6 +2,7 @@ import React from 'react'
 import "./topbar.css"
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {Route, Switch, useRouteMatch} from "react-router-dom";
+import {Typography} from "@material-ui/core";
 
 
 export default function Topbar(props) {
@@ -12,7 +13,6 @@ export default function Topbar(props) {
             <div className="topbarWrapper">
                 <div className="topLeft">
                     <div className="topLeft">
-                        <span className="logo"></span>
                     </div>
                     <div>
                         <Switch>
@@ -21,7 +21,7 @@ export default function Topbar(props) {
                                     key={index}
                                     path={url + route.path}
                                     exact={route.exact}
-                                    children={<h2>{route.iconlabel}</h2>}
+                                    children={<Typography variant="h4">{route.iconlabel}</Typography>}
                                 />
                             ))}
                         </Switch>

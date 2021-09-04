@@ -1,5 +1,6 @@
 .container{
     display: flex;
+    padding-right: 5rem;
 }
 .others{
     flex: 5;
