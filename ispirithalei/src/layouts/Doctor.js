@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "../components/staff-ui/sidebar/Sidebar";
-
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import DoneIcon from '@material-ui/icons/Done';
@@ -9,12 +8,13 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
 import "./layout.css"
-import ReceptionistPending from "../pages/staff-ui/receptionist/ReceptionistPending";
+import SessionCard from "../components/staff-ui/SessionCard";
 
-const Receptionist = () => {
+
+const Doctor = () => {
   const user = {
-    name : 'Amanulla Unais',
-    role : 'Receptionist',
+    name : 'Asel Jayasooriya',
+    role : 'Doctor',
     list : [
       {
         path: "",
@@ -66,11 +66,11 @@ const Receptionist = () => {
       <Sidebar user={user}/>
       <div className="others">
           <Topbar page={user.list}/>
-          <ReceptionistPending />
+          <SessionCard />
       </div>
     </div>
   </div>
   )
 }
 
-export default Receptionist;
+export default Doctor;
