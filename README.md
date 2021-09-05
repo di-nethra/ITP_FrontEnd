@@ -3,4 +3,4 @@ ISPIRITHALEI is a one stop medical center management system designed and develop
 
 Our team consist of 8 members and the porject is designed for a client that we have chosen. 
 
-## Git cheat sheet [github-git-cheat-sheet.pdf](https://github.com/di-nethra/ITP_FrontEnd/files/7006914/github-git-cheat-sheet.pdf)
+
