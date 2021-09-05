@@ -9,6 +9,7 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
 import "./layout.css"
+import EmpDashboard from "../pages/staff-ui/sysadmin/EmpDashboard";
 
 const SysAdmin = () => {
   const user = {
@@ -53,6 +54,7 @@ const SysAdmin = () => {
       <div className="others">
           <Topbar page={user.list}/>
           {/* <LabassHome/> */}
+          <EmpDashboard />
       </div>
     </div>
   </div>
