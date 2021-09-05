@@ -7,7 +7,6 @@ import {Typography} from "@material-ui/core";
 
 export default function Topbar(props) {
     let { url } = useRouteMatch();
-
     return (
         <div className="topbar">
             <div className="topbarWrapper">
@@ -19,11 +18,14 @@ export default function Topbar(props) {
                             {props.page.map((route, index) => (
                                 <Route
                                     key={index}
-                                    path={url + route.path}
+                                    path={url + "/" + route.path}
                                     exact={route.exact}
-                                    children={<Typography variant="h4">{route.iconlabel}</Typography>}
+                                    children={<Typography variant="h5">{route.iconlabel}</Typography>}
                                 />
-                            ))}
+
+                            )
+                            )
+                            }
                         </Switch>
                     </div>
                 </div>

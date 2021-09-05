@@ -1,9 +1,11 @@
 .container{
     display: flex;
     padding-right: 5rem;
+    margin-left: 320px;
+    margin-top: 120px;
 }
 .others{
-    flex: 5;
+    flex: 1;
     margin-left: 5px;
 }
 
