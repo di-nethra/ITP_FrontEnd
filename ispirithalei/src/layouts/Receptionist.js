@@ -24,25 +24,25 @@ const Receptionist = () => {
         id: 1
       },
       {
-        path: "/pendingappointments",
+        path: "pendingappointments",
         icon: <ScheduleIcon className="sidebarIcon"/>,
         iconlabel: 'Pending Check-in',
         id: 2
       },
       {
-        path: "/checkedinappointments",
+        path: "checkedinappointments",
         icon: <DoneIcon className="sidebarIcon"/>,
         iconlabel: 'Checked-in ',
         id: 3
       },
       {
-        path: "/allappointments",
+        path: "allappointments",
         icon: <ClearAllIcon className="sidebarIcon"/>,
         iconlabel: 'All Appointments',
         id: 4
       },
       {
-        path: "/newappointment",
+        path: "newappointment",
         icon: <PersonOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'New Appointment',
         id: 5
