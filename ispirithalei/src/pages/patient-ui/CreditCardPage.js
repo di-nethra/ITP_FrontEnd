@@ -8,6 +8,8 @@ import PayCredit from "../../assets/images/PayWithCreditCard.svg";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import DropDown from "../../components/patient-ui/Payments/DropDown";
+import paymentCreditService from "../../services/paymentCredit.service";
+
 const styles = (theme) => ({
   infoLogo: {
     width: "500px",
@@ -46,13 +48,39 @@ const styles = (theme) => ({
 export class CreditCardPage extends Component {
   continue = (e) => {
     e.preventDefault();
+
+    const data = {
+      name: this.props.values.nameOnTheCard,
+      email: this.props.values.email,
+    };
+    console.log(this.props.values);
+
+    console.log(data.email);
+    paymentCreditService
+      .create(data)
+
+      .then((response) => {
+        alert("success");
+        console.log("inside create" + response.data);
+
+        this.setState({
+          name: response.data.nameOnTheCard,
+          email: response.data.email,
+        });
+        console.log("inside then" + response.data);
+      })
+      .catch((e) => {
+        alert(e);
+        console.log("this is the error:" + e);
+      });
+
     this.props.nextStep();
   };
 
   render() {
     const { classes } = this.props;
     const { values, handleChange } = this.props;
-    console.log(values);
+
     console.log(values.email);
     let data = [{ email: values.email }, { id: 2 }];
     return (

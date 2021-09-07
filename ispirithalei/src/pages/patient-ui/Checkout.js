@@ -10,6 +10,7 @@ import Grid from "@material-ui/core/Grid";
 import SummaryBackground from "../../assets/images/SummaryBackground.svg";
 import PaymentSummaryText from "../../assets/images/PaymentSummary.svg";
 import { Link } from "react-router-dom";
+import paymentCreditService from "../../services/paymentCredit.service";
 
 const styles = (theme) => ({
   infoLogo: {
@@ -60,9 +61,10 @@ const styles = (theme) => ({
 
 export class Checkout extends Component {
   render() {
+    
     const { classes } = this.props;
 
-    console.log(this.props.values);
+    // console.log(this.props.values);
     return (
       <div>
         <Grid container direction="row">

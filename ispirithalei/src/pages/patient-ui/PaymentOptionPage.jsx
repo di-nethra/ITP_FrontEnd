@@ -37,16 +37,26 @@ function PaymentOptionPage() {
         </Grid>
         <Grid item xs={12} md={4}>
           <a href="#">
-            <img src={MobilePay} alt="60" className={classes.option} />
+            <img
+              src={MobilePay}
+              alt="60"
+              className={classes.option}
+              onClick={() => history.push("/payments/info")}
+            />
           </a>
         </Grid>
         <Grid item xs={12} md={4}>
           <a href="#">
-            <img src={StripePay} alt="60" className={classes.option} />
+            <img
+              src={StripePay}
+              alt="60"
+              className={classes.option}
+              onClick={() => history.push("/payments/refund")}
+            />
           </a>
         </Grid>
-      </Grid>      
-    </div>                                            
+      </Grid>
+    </div>
   );
 }
 
