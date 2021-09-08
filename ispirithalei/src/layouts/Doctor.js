@@ -8,7 +8,7 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
 import "./layout.css"
-import SessionCard from "../components/staff-ui/SessionCard";
+import DisplaySessions from "../components/staff-ui/DisplaySessions";
 
 
 const Doctor = () => {
@@ -66,7 +66,7 @@ const Doctor = () => {
       <Sidebar user={user}/>
       <div className="others">
           <Topbar page={user.list}/>
-          <SessionCard />
+          <DisplaySessions />
       </div>
     </div>
   </div>
