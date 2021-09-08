@@ -59,9 +59,30 @@ const styles = (theme) => ({
   },
 });
 
+// paymentCreditService.getAll().then((response) => {
+//   console.log(response.data[3].name);
+// });
+
 export class Checkout extends Component {
+  //  paymentCreditService
+  //     .create(data)
+
+  //     .then((response) => {
+  //       alert("success");
+  //       console.log("inside create" + response.data);
+
+  //       this.setState({
+  //         name: response.data.nameOnTheCard,
+  //         email: response.data.email,
+  //       });
+  //       console.log("inside then" + response.data);
+  //     })
+  //     .catch((e) => {
+  //       alert(e);
+  //       console.log("this is the error:" + e);
+  //     });
+
   render() {
-    
     const { classes } = this.props;
 
     // console.log(this.props.values);

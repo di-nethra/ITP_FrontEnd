@@ -48,10 +48,16 @@ const styles = (theme) => ({
 export class CreditCardPage extends Component {
   continue = (e) => {
     e.preventDefault();
+    const ranNum = "CPAY" + Math.floor(1000 + Math.random() * 9000);
+    const currentDate = new Date().toDateString();
 
+    const tempPrice = 5650.0;
     const data = {
+      paymentid: ranNum,
       name: this.props.values.nameOnTheCard,
       email: this.props.values.email,
+      date: currentDate,
+      amount: tempPrice,
     };
     console.log(this.props.values);
 

@@ -12,7 +12,7 @@ import UserForm from "./components/patient-ui/Payments/UserForm";
 import Checkout from "./pages/patient-ui/Checkout";
 import PaymentInvoice from "./pages/patient-ui/PaymentInvoice";
 import Refunds from "./pages/patient-ui/RefundsPage";
-
+import PaymentAdmin from "./layouts/PaymentAdmin";
 const theme = createTheme({
   palette: {
     primary: {
@@ -45,6 +45,7 @@ const App = () => (
             "/payments/checkout",
             "/payments/invoice",
             "/payments/refunds",
+            "/staff/PaymentAdmin",
           ]}
         >
           <Header />
@@ -59,11 +60,15 @@ const App = () => (
             <Route path="/payments/invoice">
               <PaymentInvoice />
             </Route>
-            <Route path="/payments">
-              <PaymentOptionPage />
-            </Route>
+
             <Route path="/payments/refunds">
               <Refunds />
+            </Route>
+            <Route path="/staff/PaymentAdmin">
+              <PaymentAdmin />
+            </Route>
+            <Route path="/payments">
+              <PaymentOptionPage />
             </Route>
           </Switch>
         </Route>
