@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {loadCSS} from 'fg-loadcss';
 import {Box, Typography} from "@material-ui/core";
 

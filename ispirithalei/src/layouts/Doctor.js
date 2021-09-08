@@ -24,25 +24,25 @@ const Doctor = () => {
         id: 1
       },
       {
-        path: "",
+        path: "s",
         icon: <PublishOutlinedIcon className="sidebarIcon"/>,
         iconlabel: 'Add Prescription',
         id: 2
       },
       {
-        path: "",
+        path: "s",
         icon: <TransformIcon className="sidebarIcon"/>,
         iconlabel: 'View Prescriptions',
         id: 3
       },
       {
-        path: "",
+        path: "a",
         icon: <DoneIcon className="sidebarIcon"/>,
         iconlabel: 'Doctor Schedule',
         id: 4
       },
       {
-        path: "",
+        path: "a",
         icon: <HelpOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'Support',
         id: 5
@@ -59,7 +59,7 @@ const Doctor = () => {
       <Sidebar user={user}/>
       <div className="others">
           <Topbar page={user.list}/>
-          
+          <DoctorHome />
       </div>
     </div>
   </div>
