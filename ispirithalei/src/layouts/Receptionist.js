@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../components/staff-ui/sidebar/Sidebar";
-import ReceptionistHome from "../pages/staff-ui/receptionist/ReceptionistHome";
+
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import DoneIcon from '@material-ui/icons/Done';
@@ -9,6 +9,7 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
 import "./layout.css"
+import ReceptionistPending from "../pages/staff-ui/receptionist/ReceptionistPending";
 
 const Receptionist = () => {
   const user = {
@@ -23,27 +24,27 @@ const Receptionist = () => {
         id: 1
       },
       {
-        path: "/pendingappointments",
+        path: "pendingappointments",
         icon: <ScheduleIcon className="sidebarIcon"/>,
         iconlabel: 'Pending Check-in',
         id: 2
       },
       {
-        path: "/checkedinappointments",
+        path: "checkedinappointments",
         icon: <DoneIcon className="sidebarIcon"/>,
         iconlabel: 'Checked-in ',
         id: 3
       },
       {
-        path: "/allappointments",
+        path: "allappointments",
         icon: <ClearAllIcon className="sidebarIcon"/>,
         iconlabel: 'All Appointments',
         id: 4
       },
       {
-        path: "/doctorsession",
+        path: "newappointment",
         icon: <PersonOutlineIcon className="sidebarIcon"/>,
-        iconlabel: 'Doctor\'s Sessions',
+        iconlabel: 'New Appointment',
         id: 5
       },
       {
@@ -65,7 +66,7 @@ const Receptionist = () => {
       <Sidebar user={user}/>
       <div className="others">
           <Topbar page={user.list}/>
-          <ReceptionistHome/>
+          <ReceptionistPending />
       </div>
     </div>
   </div>

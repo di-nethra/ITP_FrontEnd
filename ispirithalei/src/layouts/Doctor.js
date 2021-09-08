@@ -1,3 +1,4 @@
+import React from "react";
 import Sidebar from "../components/staff-ui/sidebar/Sidebar";
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
@@ -16,26 +17,32 @@ const Doctor = () => {
     role : 'Doctor',
     list : [
       {
+        path: "",
+        exact: true,
         icon: <DashboardOutlinedIcon className="sidebarIcon"/>,
         iconlabel: 'Dashboard',
         id: 1
       },
       {
+        path: "",
         icon: <PublishOutlinedIcon className="sidebarIcon"/>,
         iconlabel: 'Add Prescription',
         id: 2
       },
       {
+        path: "",
         icon: <TransformIcon className="sidebarIcon"/>,
         iconlabel: 'View Prescriptions',
         id: 3
       },
       {
+        path: "",
         icon: <DoneIcon className="sidebarIcon"/>,
         iconlabel: 'Doctor Schedule',
         id: 4
       },
       {
+        path: "",
         icon: <HelpOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'Support',
         id: 5
@@ -49,11 +56,10 @@ const Doctor = () => {
   return(
   <div >
     <div className="container">
-
       <Sidebar user={user}/>
       <div className="others">
-          <Topbar />
-          <DoctorHome />
+          <Topbar page={user.list}/>
+          
       </div>
     </div>
   </div>
