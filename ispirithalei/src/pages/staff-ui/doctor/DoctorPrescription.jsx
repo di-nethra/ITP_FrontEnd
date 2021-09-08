@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import DoctorHome from "./DoctorHome";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Checkbox from '@material-ui/core/Checkbox';
 
 function DoctorPrescription() {
+    const [isDisabled, setIsDisabled] = useState(true);
+
+    function changeCheck() {
+        setIsDisabled(!isDisabled);
+    }
+
     return (
         <div>
             <Card>
@@ -35,19 +42,32 @@ function DoctorPrescription() {
                             <TextField id="dMed2" label="MEDICINE 2" style={{ marginRight: 40 }} InputLabelProps={{ shrink: true, }}
                                 placeholder="Enter medicine 2 name" helperText="ex: Valparine" variant="outlined" />
 
-                            <TextField id="dDose2" label="DOSAGE" style={{ margin: 0}} InputLabelProps={{ shrink: true, }}
+                            <TextField id="dDose2" label="DOSAGE" style={{ margin: 0 }} InputLabelProps={{ shrink: true, }}
                                 placeholder="Enter medicine 2 dosage" helperText="ex: 2 tds" variant="outlined" />
 
                         </div>
                         <br />
 
+                        <p><Checkbox onChange={changeCheck} name="submitCheck" color="primary" inputProps={{ 'aria-label': 'secondary checkbox' }} />
+                            &ensp;Check to confirm the prescription submission.</p>
+
                         <div>
-                        <Button size="large" variant="contained" style={{ marginRight: 8 }} type="reset">Reset</Button>
-                        <Button size="large" variant="contained" color="primary" type="submit">Add Prescription</Button>
+                            <Button size="large" variant="contained" style={{ marginRight: 8 }} type="reset">Reset</Button>
+                            <Button size="large" variant="contained" color="primary" type="submit" disabled={isDisabled}>Add Prescription</Button>
                         </div>
-                        <br />
+
 
                     </form>
+                </CardContent>
+            </Card>
+
+            <Card style={{marginTop: 10}}>
+                <CardContent>
+                    <center>
+                        <p style={{ fontSize: 24, color: "#9D9D9D", fontWeight: "bold"}}>Click to send a medical note to the pharmacist&emsp;
+                            <Button size="medium" color="primary" variant="contained" style={{ marginRight: 8 }}>Send Note</Button>
+                        </p>
+                    </center>
                 </CardContent>
             </Card>
         </div>
