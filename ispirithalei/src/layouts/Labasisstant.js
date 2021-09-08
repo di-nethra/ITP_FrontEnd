@@ -14,7 +14,7 @@ import "./layout.css"
 const Receptionist = () => {
   const user = {
     name : 'Danushka Ranasinghe',
-    role : 'Lab Assistant',
+    role : 'LabAssistant',
     list : [
       {
         path: "",
@@ -24,37 +24,37 @@ const Receptionist = () => {
         id: 1
       },
       {
-        path: "/submittedtests",
+        path: "submittedtests",
         icon: <PublishOutlinedIcon className="sidebarIcon"/>,
         iconlabel: 'Submitted Tests',
         id: 2
       },
       {
-        path: "/intrasisttests",
+        path: "intrasisttests",
         icon: <TransformIcon className="sidebarIcon"/>,
         iconlabel: 'In Transist Tests',
         id: 3
       },
       {
-        path: "/completedtests",
+        path: "completedtests",
         icon: <DoneIcon className="sidebarIcon"/>,
         iconlabel: 'Completed Tests',
         id: 4
       },
       {
-        path: "/alltests",
+        path: "alltests",
         icon: <ClearAllIcon className="sidebarIcon"/>,
         iconlabel: 'All Tests',
         id: 5
       },
       {
-        path: "/patients",
+        path: "patients",
         icon: <PersonOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'Patients',
         id: 6
       },
       {
-        path: "/support",
+        path: "support",
         icon: <HelpOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'Support',
         id: 7
