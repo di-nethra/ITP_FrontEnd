@@ -62,7 +62,7 @@ const Doctor = () => {
       <Sidebar user={user}/>
       <div className="others">
           <Topbar page={user.list}/>
-          <DoctorEditPrescription />
+          <DoctorHome />
       </div>
     </div>
   </div>
