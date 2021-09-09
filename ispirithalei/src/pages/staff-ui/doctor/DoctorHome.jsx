@@ -54,7 +54,7 @@ export default function DoctorHome() {
             <br />
             
             <Card>
-                <CardContent>
+                <CardContent  style={{backgroundColor:"#D9FAFF"}}>
                     <h3>PATIENT APPOINTMENTS</h3>
                     <br />
                     <div style={{ height: 400, width: '100%' }}>
@@ -64,6 +64,7 @@ export default function DoctorHome() {
                             pageSize={5}
                             checkboxSelection
                             disableSelectionOnClick
+                            style={{backgroundColor:"white"}}
                         />
                     </div>
 

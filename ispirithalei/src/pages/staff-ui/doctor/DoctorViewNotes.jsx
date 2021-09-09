@@ -46,6 +46,7 @@ export default function DoctorViewNotes() {
                             pageSize={5}
                             checkboxSelection
                             disableSelectionOnClick
+                            style={{backgroundColor: "#D9FAFF"}}
                         />
                     </div>
 

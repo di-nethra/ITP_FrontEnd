@@ -61,7 +61,7 @@ function DoctorPrescription() {
                 </CardContent>
             </Card>
 
-            <Card style={{marginTop: 10}}>
+            <Card style={{marginTop: 10, backgroundColor: "#D9FAFF"}}>
                 <CardContent>
                     <center>
                         <p style={{ fontSize: 24, color: "#9D9D9D", fontWeight: "bold"}}>Click to send a medical note to the pharmacist&emsp;

@@ -72,7 +72,7 @@ export default function DoctorViewPrescription() {
                 </CardContent>
             </Card>
 
-            <Card style={{marginTop: 15}}>
+            <Card style={{marginTop: 15, backgroundColor: "#D9FAFF" }}>
                 <CardContent>
                 <p>
                 <strong>Disclaimer</strong> - You are able to produce prescription reports of you patients. Please use them
