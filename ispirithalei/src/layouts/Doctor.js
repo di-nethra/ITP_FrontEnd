@@ -11,6 +11,7 @@ import Topbar from "../components/staff-ui/topbar/Topbar";
 import "./layout.css"
 import DoctorHome from "../pages/staff-ui/doctor/DoctorHome";
 import DoctorPrescription from "../pages/staff-ui/doctor/DoctorPrescription";
+import DoctorViewPrecription from "../pages/staff-ui/doctor/DoctorViewPrescription";
 
 const Doctor = () => {
   const user = {
@@ -60,7 +61,7 @@ const Doctor = () => {
       <Sidebar user={user}/>
       <div className="others">
           <Topbar page={user.list}/>
-          <DoctorPrescription />
+          <DoctorViewPrecription />
       </div>
     </div>
   </div>
