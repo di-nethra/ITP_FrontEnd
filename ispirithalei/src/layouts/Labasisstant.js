@@ -7,6 +7,7 @@ import ClearAllIcon from '@material-ui/icons/ClearAll';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
+import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
 import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
 import TransformIcon from '@material-ui/icons/Transform';
 import "./layout.css"
@@ -24,40 +25,46 @@ const Receptionist = () => {
         id: 1
       },
       {
+        path: "newtests",
+        icon: <AddBoxOutlinedIcon className="sidebarIcon"/>,
+        iconlabel: 'New Test',
+        id: 2
+      },
+      {
         path: "submittedtests",
         icon: <PublishOutlinedIcon className="sidebarIcon"/>,
         iconlabel: 'Submitted Tests',
-        id: 2
+        id: 3
       },
       {
         path: "intrasisttests",
         icon: <TransformIcon className="sidebarIcon"/>,
         iconlabel: 'In Transist Tests',
-        id: 3
+        id: 4
       },
       {
         path: "completedtests",
         icon: <DoneIcon className="sidebarIcon"/>,
         iconlabel: 'Completed Tests',
-        id: 4
+        id: 5
       },
       {
         path: "alltests",
         icon: <ClearAllIcon className="sidebarIcon"/>,
         iconlabel: 'All Tests',
-        id: 5
+        id: 6
       },
       {
         path: "patients",
         icon: <PersonOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'Patients',
-        id: 6
+        id: 7
       },
       {
         path: "support",
         icon: <HelpOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'Support',
-        id: 7
+        id: 8
       },
 
       
