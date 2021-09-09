@@ -10,33 +10,40 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
 import "./layout.css"
 import EmpDashboard from "../pages/staff-ui/sysadmin/EmpDashboard";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import EmpForm from "../pages/staff-ui/sysadmin/EmpForm";
+import EmpList from "../pages/staff-ui/sysadmin/EmpList";
 
 const SysAdmin = () => {
   const user = {
     name : 'Chamod Gavindya',
-    role : 'Sys Admin',
+    role : 'SysAdmin',
     list : [
       {
-        path: "",
+        path: "EmpDashboard",
         exact: true,
         icon: <DashboardOutlinedIcon className="sidebarIcon"/>,
         iconlabel: 'Dashboard',
         id: 1
       },
       {
-        path: "/pendingappointments",
+        path: "EmpList",
         icon: <PublishOutlinedIcon className="sidebarIcon"/>,
         iconlabel: 'Employee List',
         id: 2
       },
       {
-        path: "/checkedinappointments",
+        path: "EmpForm",
         icon: <TransformIcon className="sidebarIcon"/>,
-        iconlabel: 'Login credentials',
+        iconlabel: 'Add Employee',
         id: 3
       },
       {
-        path: "/allappointments",
+        path: "Payroll",
         icon: <DoneIcon className="sidebarIcon"/>,
         iconlabel: 'Payroll',
         id: 4
@@ -54,7 +61,13 @@ const SysAdmin = () => {
       <div className="others">
           <Topbar page={user.list}/>
           {/* <LabassHome/> */}
-          <EmpDashboard />
+          <Switch>
+            <Route path="/staff/sysadmin/empdashboard" component={EmpDashboard} />
+            <Route path="/staff/sysadmin/emplist" component={EmpList} />
+            <Route path="/staff/sysadmin/empform" component={EmpForm} />
+            
+            
+          </Switch>
       </div>
     </div>
   </div>
