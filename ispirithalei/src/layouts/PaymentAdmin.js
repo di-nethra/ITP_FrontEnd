@@ -9,6 +9,7 @@ import Mobile from "@material-ui/icons/MobileFriendly";
 import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 import { Typography } from "@material-ui/core";
 import CreditCardPayments from "../pages/staff-ui/paymenentAdmin/creditCardPayments";
+
 const PaymentAdmin = () => {
   const user = {
     name: "Anjana Samarakoon",
