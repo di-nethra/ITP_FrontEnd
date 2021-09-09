@@ -54,6 +54,6 @@ function Service(props) {
         </div>
 </Fade>
     )
-};
+}
 
 export default Service;
