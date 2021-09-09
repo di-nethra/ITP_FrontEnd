@@ -10,6 +10,9 @@ import {
 import About from "./pages/patient-ui/About";
 import Labasisstant from "./layouts/Labasisstant";
 import Receptionist from "./layouts/Receptionist";
+import Footer from "./components/patient-ui/Footer/Footer";
+import Login from "./components/staff-ui/Login";
+import Doctor from "./layouts/Doctor"
 
 const theme = createTheme({
     palette: {
@@ -36,11 +39,14 @@ const App = () => (
     <ThemeProvider theme={theme}>
         <Router>
             <Switch>
-                <Route path={["/staff/labassistant", "/staff/receptionist"]}>
+                <Route path={["/staff/labassistant", "/staff/receptionist", "/login","/staff/doctor/sessions/find/:id"]}>
 
                     <Switch>
                         <Route path="/staff/labassistant" component={Labasisstant} />
                         <Route path="/staff/receptionist" component={Receptionist} />
+                        <Route path="/login" component={Login} />
+                        {/*<Route path="/staff/doctor/newsession" component={Doctor} />*/}
+                        <Route path="/staff/doctor/sessions/find/:id" component={Doctor} />
                     </Switch>
 
                 </Route>
@@ -51,8 +57,10 @@ const App = () => (
                         <Route exact path="/" component={Home} />
                         <Route path="/about" component={About} />
 
-                    </Switch>
 
+
+                    </Switch>
+                    <Footer />
                 </Route>
             </Switch>
         </Router>

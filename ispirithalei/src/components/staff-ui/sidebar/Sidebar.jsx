@@ -1,6 +1,6 @@
 import "./sidebar.css";
 import ISPIRITHALEI from "../../../assets/1.png";
-import {NavLink, useRouteMatch} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 
 export default function Sidebar(props) {
@@ -16,7 +16,7 @@ export default function Sidebar(props) {
               </div>
               <Titles title={props.user}/>
               <ul className="sidebarList">
-                <Content parts={props.user.list}/>
+                <Content parts={props.user.list} role={props.user.role}/>
               </ul>
             </div>
           </div>
@@ -37,7 +37,7 @@ const Content = (props) => {
   return(
   <>
     {props.parts.map(part =>
-          <List key={part.id} icon={part.icon} iconlabel={part.iconlabel} path={part.path} exact={part.exact} />
+          <List key={part.id} icon={part.icon} iconlabel={part.iconlabel} path={part.path} exact={part.exact} role={props.role}/>
     )}
   </>
   )
@@ -45,12 +45,11 @@ const Content = (props) => {
   
 }
 const List = (props) =>{
-  let { url } = useRouteMatch();
   console.log(props.icon)
   
   return(
     <>
-      <NavLink to={url+props.path} exact={props.exact} className="sidebarListItem ">
+      <NavLink to={"/staff/" + props.role.toLowerCase() + "/" + props.path} exact={props.exact} className="sidebarListItem" replace>
         {props.icon}
         {props.iconlabel}
       </NavLink>

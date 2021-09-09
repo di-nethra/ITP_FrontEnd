@@ -1,16 +1,20 @@
 .topbar {
-    width: 100%;
-    height: 55px;
-    background-color:#ffffff;
-    position: sticky;
+    width: 75%;
+    height: 95px;
+    background-color: #fff;
+    padding: 20px 0;
+    position: fixed;
     top: 0;
+    left: 320px;
     z-index: 999;
     margin-bottom: 4rem;
+    box-sizing: border-box;
+    elevation: higher;
   }
   
   .topbarWrapper {
     height: 100%;
-    padding: 20px 0 20px 20px;
+      overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,8 +38,8 @@
   }
   
   .topbarIconContainer {
-    position: relative;
-    cursor: pointer;
+    /*position: relative;*/
+    /*cursor: pointer;*/
     color: #00204A;
   }
   
