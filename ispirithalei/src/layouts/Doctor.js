@@ -12,6 +12,7 @@ import "./layout.css"
 import DoctorHome from "../pages/staff-ui/doctor/DoctorHome";
 import DoctorPrescription from "../pages/staff-ui/doctor/DoctorPrescription";
 import DoctorViewPrecription from "../pages/staff-ui/doctor/DoctorViewPrescription";
+import DoctorEditPrescription from "../pages/staff-ui/doctor/DoctorEditPrescription";
 
 const Doctor = () => {
   const user = {
@@ -61,7 +62,7 @@ const Doctor = () => {
       <Sidebar user={user}/>
       <div className="others">
           <Topbar page={user.list}/>
-          <DoctorViewPrecription />
+          <DoctorEditPrescription />
       </div>
     </div>
   </div>
