@@ -9,7 +9,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 
 const columns = [
