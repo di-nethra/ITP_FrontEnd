@@ -3,6 +3,7 @@ import Sidebar from "../components/staff-ui/sidebar/Sidebar";
 import LabassHome from "../pages/staff-ui/lab asistant/LabassHome";
 import SubmittedTests from "../pages/staff-ui/lab asistant/SubmittedTests";
 import StaffAssign from "../pages/staff-ui/lab asistant/StaffAssign"
+import NewTest from "../pages/staff-ui/lab asistant/NewTest"
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import DoneIcon from '@material-ui/icons/Done';
 import ClearAllIcon from '@material-ui/icons/ClearAll';
@@ -85,6 +86,9 @@ const Receptionist = () => {
         <Switch>
           <Route exact path="/staff/labassistant/">
             <LabassHome/>
+          </Route>
+          <Route exact path="/staff/labassistant/newtests">
+            <NewTest/>
           </Route>
           <Route path="/staff/labassistant/submittedtests">
             <SubmittedTests/>
