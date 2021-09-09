@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
+import Calendar from './Calendar';
 
 const columns = [
     { field: 'id', headerName: 'PATIENT ID', width: 150 },
@@ -45,6 +46,13 @@ const rows = [
 export default function DoctorHome() {
     return (
         <div>
+            <Card style={{width: 380}}>
+                <CardContent>
+                    <Calendar />
+                </CardContent>
+            </Card>
+            <br />
+            
             <Card>
                 <CardContent>
                     <h3>PATIENT APPOINTMENTS</h3>
