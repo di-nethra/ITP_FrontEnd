@@ -15,6 +15,8 @@ import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
 import TransformIcon from '@material-ui/icons/Transform';
 import "./layout.css"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import InTransist from "../pages/staff-ui/lab asistant/InTransist";
+import TestReslt from "../pages/staff-ui/lab asistant/TestResult";
 
 const Receptionist = () => {
   const user = {
@@ -95,6 +97,12 @@ const Receptionist = () => {
           </Route>
           <Route path="/staff/labassistant/submittedtest/:topicId">
             <StaffAssign/>
+          </Route>
+          <Route path="/staff/labassistant/intrasisttests">
+            <InTransist/>
+          </Route>
+          <Route path="/staff/labassistant/intransisttests/:testId">
+            <TestReslt/>
           </Route>
         </Switch>
       </div>

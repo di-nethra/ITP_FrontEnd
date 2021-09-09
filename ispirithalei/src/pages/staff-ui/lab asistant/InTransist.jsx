@@ -1,22 +1,19 @@
-import "./sbbmittedtests.css";
+import React from 'react'
 import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
-import { userRows } from "../../../dummyData";
+import { testRows } from "../../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import './intransist.css'
 
-export default function SubbmittedTests() {
-  const [data, setData] = useState(userRows);
+export default function InTransist() {
+  const [data, setData] = useState(testRows);
     console.log(data)
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
   
   const columns = [
     { field: 'id', headerName: 'Specimen ID', width: 140 },
     {
-        field: 'dateSubbmitted',
-        headerName: 'Date Subbmitted',
+        field: 'dateStarted',
+        headerName: 'Date Started',
         width: 200,
         type:'date',
         editable: true,
@@ -28,8 +25,8 @@ export default function SubbmittedTests() {
         editable: true,
     },
     {
-        field: 'specimenType',
-        headerName: 'Specimen Type',
+        field: 'labassistantname',
+        headerName: 'Lab Assistant Name',
         type: 'text',
         width: 160,
         editable: true,
@@ -48,13 +45,9 @@ export default function SubbmittedTests() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/staff/labassistant/submittedtest/" + params.row.id}>
-              <button className="userListEdit">Assign Staff</button>
+            <Link to={"/staff/labassistant/intransisttests/" + params.row.id}>
+              <button className="userListEdit1">Input Test Results</button>
             </Link>
-            <DeleteOutline
-              className="userListDelete"
-              onClick={() => handleDelete(params.row.id)}
-            />
           </>
         );
       },
@@ -73,4 +66,5 @@ export default function SubbmittedTests() {
     </div>
   );
 }
+
 

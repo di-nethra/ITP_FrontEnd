@@ -50,3 +50,13 @@ export const userData = [
     
     
   ];
+  export const testRows = [
+    { id: 1, patientName: 'Snow Sukumali', dateStarted: '29-03-2019 12:30', labassistantname: 'Ajith Muthukuda', status:'ongoing' },
+    { id: 2, patientName: 'Snow Sukumali', dateStarted: '29-03-2019 12:30', labassistantname: 'Ajith Muthukuda', status:'ongoing' },
+    { id: 3, patientName: 'Snow Sukumali', dateStarted: '29-03-2019 12:30', labassistantname: 'Ajith Muthukuda', status:'ongoing' },
+    { id: 4, patientName: 'Snow Sukumali', dateStarted: '29-03-2019 12:30', labassistantname: 'Ajith Muthukuda', status:'ongoing' },
+    { id: 5, patientName: 'Snow Sukumali', dateStarted: '29-03-2019 12:30', labassistantname: 'Ajith Muthukuda', status:'ongoing' },
+    { id: 6, patientName: 'Snow Sukumali', dateStarted: '29-03-2019 12:30', labassistantname: 'Ajith Muthukuda', status:'ongoing' },
+    { id: 7, patientName: 'Snow Sukumali', dateStarted: '29-03-2019 12:30', labassistantname: 'Ajith Muthukuda', status:'ongoing' },
+    { id: 8, patientName: 'Snow Sukumali', dateStarted: '29-03-2019 12:30', labassistantname: 'Ajith Muthukuda', status:'ongoing' },   
+  ];

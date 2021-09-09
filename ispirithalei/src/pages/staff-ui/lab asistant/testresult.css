@@ -5,7 +5,7 @@
   }
   
   .newUserItem {
-    width: 500px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -33,7 +33,7 @@
   
   .newUserGender>label{
       margin: 10px;
-      font-size: 14px;
+      font-size: 18px;
       color: #555;
   }
   
@@ -50,7 +50,7 @@
       padding: 7px 10px;
       font-weight: 600;
       border-radius: 10px;
-      margin-top: 10px;
+      margin-top: 30px;
       cursor: pointer;
   }
   .newUserTitle{
@@ -72,10 +72,3 @@
 .detailsbock1{
     margin-top: 25px;
 }
-.newUserItem1 {
-    margin-top: 20px;
-    margin-bottom: 1px;
-    font-size: 14px;
-    font-weight: 600;
-    color: rgb(61, 61, 61);
-  }
