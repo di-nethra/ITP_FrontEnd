@@ -12,13 +12,13 @@ const columns = [
     {
         field: 'pName',
         headerName: 'PATIENT NAME',
-        width: 500,
+        width: 400,
         editable: false,
     },
     {
         field: 'pPhone',
         headerName: 'PHONE NUMBER',
-        width: 200,
+        width: 250,
         editable: false,
     },
     {
