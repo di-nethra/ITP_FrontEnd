@@ -1,6 +1,8 @@
 import React from "react";
 import Sidebar from "../components/staff-ui/sidebar/Sidebar";
-import LabassHome from "../pages/staff-ui/lab asistant/LabassHome"
+import LabassHome from "../pages/staff-ui/lab asistant/LabassHome";
+import SubmittedTests from "../pages/staff-ui/lab asistant/SubmittedTests";
+import StaffAssign from "../pages/staff-ui/lab asistant/StaffAssign"
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import DoneIcon from '@material-ui/icons/Done';
 import ClearAllIcon from '@material-ui/icons/ClearAll';
@@ -11,6 +13,7 @@ import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
 import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
 import TransformIcon from '@material-ui/icons/Transform';
 import "./layout.css"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const Receptionist = () => {
   const user = {
@@ -74,14 +77,26 @@ const Receptionist = () => {
   
   return(
   <div >
+    <Router>
     <div className="container">
-
       <Sidebar user={user}/>
       <div className="others">
           <Topbar page={user.list}/>
-          <LabassHome/>
+        <Switch>
+          <Route exact path="/staff/labassistant/">
+            <LabassHome/>
+          </Route>
+          <Route path="/staff/labassistant/submittedtests">
+            <SubmittedTests/>
+          </Route>
+          <Route path="/staff/labassistant/submittedtest/:topicId">
+            <StaffAssign/>
+          </Route>
+        </Switch>
       </div>
+      
     </div>
+    </Router>
   </div>
   )
 }

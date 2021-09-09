@@ -37,3 +37,16 @@ export const userData = [
     }
     
   ];
+
+  export const userRows = [
+    { id: 1, patientName: 'Snow', dateSubbmitted: '29-03-2019 12:30', specimenType: 'FBC', status:'Subbmitted' },
+    { id: 2, patientName: 'Snow', dateSubbmitted: '29-03-2019 12:30', specimenType: 'FBC', status:'Subbmitted' },
+    { id: 3, patientName: 'Snow', dateSubbmitted: '29-03-2020 12:30', specimenType: 'FBC', status:'Subbmitted' },
+    { id: 4, patientName: 'Snow', dateSubbmitted: '29-03-2019 12:30', specimenType: 'FBC', status:'Subbmitted' },
+    { id: 5, patientName: 'Snow', dateSubbmitted: '29-03-2019 12:30', specimenType: 'FBC', status:'Subbmitted' },
+    { id: 6, patientName: 'Snow', dateSubbmitted: '29-03-2019 12:30', specimenType: 'FBC', status:'Subbmitted' },
+    { id: 7, patientName: 'Snow', dateSubbmitted: '29-03-2019 12:30', specimenType: 'FBC', status:'Subbmitted' },
+    { id: 8, patientName: 'Snow', dateSubbmitted: '29-03-2019 12:30', specimenType: 'FBC', status:'Subbmitted' },
+    
+    
+  ];
