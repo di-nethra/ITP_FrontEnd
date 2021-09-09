@@ -127,12 +127,12 @@ function InventoryRegister(){
           />
           
         <TextField
-          label="Register Date"
+          label=""
           id="registerDate"
-          defaultValue=""
+          defaultValue={new Date().getDate()+"-"+(new Date().getMonth()+1)+"-"+new Date().getFullYear()}
           placeholder = "Enter date"
           className={classes.textField}
-          helperText=""
+          helperText="Register Date"
           variant="outlined"
           />
           <br/>

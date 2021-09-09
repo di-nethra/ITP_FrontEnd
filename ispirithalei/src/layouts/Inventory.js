@@ -12,6 +12,8 @@ import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOut
 import "./layout.css"
 import InventoryHome from "../pages/staff-ui/inventory/InventoryHome";
 import InventoryRegister from "../pages/staff-ui/inventory/InventoryRegister";
+import InventoryTable from "../components/staff-ui/ad_inventory/InventoryTable";
+import InventoryList from "../pages/staff-ui/inventory/InventoryList";
 
 const Inventory = () => {
   const user = {
@@ -60,7 +62,7 @@ const Inventory = () => {
     <div className="container">
 
       <Sidebar user={user}/>
-      <InventoryRegister />
+      <InventoryList />
       <div className="others">
           <Topbar page={user.list}/>
           

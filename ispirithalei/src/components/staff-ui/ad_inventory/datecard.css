@@ -23,3 +23,14 @@
 .cardFloat{
     padding-left: 900px;
 }
+
+.userListEdit{
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: #005792;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+
+}
