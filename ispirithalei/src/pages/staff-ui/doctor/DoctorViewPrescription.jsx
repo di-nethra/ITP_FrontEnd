@@ -44,7 +44,7 @@ const rows = [
     { id: 10, patientName: 'Janaka Jayasinghe', diagnosis: 'Cough', action: 35 },
 ];
 
-export default function DataTable() {
+export default function DoctorViewPrescription() {
 
     return (
         <div>

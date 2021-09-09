@@ -23,13 +23,13 @@ const columns = [
 ];
 
 const rows = [
-    { id: 1, pNName: 'Praveen Dias', pMessage: 'Terminal illness stop unnessasary treatments',},
-    { id: 2, pNName: 'Nipuna Dias', pMessage: 'Lung cancer patient',},
-    { id: 3, pNName: 'Nalaka Silva', pMessage: 'Prolonged radiation exposure and cancer',},
-    { id: 4, pNName: 'Ananda Silva', pMessage: 'Extreme paranoia',},
-    { id: 5, pNName: 'Darley Samararathne', pMessage: 'Terminal illness stop unnessasary treatments',},
-    { id: 6, pNName: 'Dudley Alvis', pMessage: 'Chronic heart failure',},
-    { id: 7, pNName: 'Janaka Dias', pMessage: 'Unmanaged diabetes',},
+    { id: 1, pNName: 'Praveen Dias', pMessage: 'Terminal illness stop unnessasary treatments', },
+    { id: 2, pNName: 'Nipuna Dias', pMessage: 'Lung cancer patient', },
+    { id: 3, pNName: 'Nalaka Silva', pMessage: 'Prolonged radiation exposure and cancer', },
+    { id: 4, pNName: 'Ananda Silva', pMessage: 'Extreme paranoia', },
+    { id: 5, pNName: 'Darley Samararathne', pMessage: 'Terminal illness stop unnessasary treatments', },
+    { id: 6, pNName: 'Dudley Alvis', pMessage: 'Chronic heart failure', },
+    { id: 7, pNName: 'Janaka Dias', pMessage: 'Unmanaged diabetes', },
 ];
 
 export default function DoctorViewNotes() {
