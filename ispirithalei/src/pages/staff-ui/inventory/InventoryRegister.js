@@ -123,6 +123,7 @@ function InventoryRegister(){
           placeholder = "Enter unit price"
           className={classes.textField}
           helperText=""
+          required
           variant="outlined"
           />
           

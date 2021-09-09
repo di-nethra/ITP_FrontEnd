@@ -14,6 +14,7 @@ import InventoryHome from "../pages/staff-ui/inventory/InventoryHome";
 import InventoryRegister from "../pages/staff-ui/inventory/InventoryRegister";
 import InventoryTable from "../components/staff-ui/ad_inventory/InventoryTable";
 import InventoryList from "../pages/staff-ui/inventory/InventoryList";
+import Restock from "../pages/staff-ui/inventory/Restock";
 
 const Inventory = () => {
   const user = {
@@ -62,7 +63,7 @@ const Inventory = () => {
     <div className="container">
 
       <Sidebar user={user}/>
-      <InventoryList />
+      <Restock />
       <div className="others">
           <Topbar page={user.list}/>
           
