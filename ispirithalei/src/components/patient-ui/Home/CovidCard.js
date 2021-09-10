@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {Box, Grid, Typography, useTheme} from "@material-ui/core";
+import Fade from 'react-reveal/Fade';
 import CovidDetail from "./CovidDetail";
 import {faHeartbeat, faHospitalUser, faProcedures, faSkullCrossbones} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -32,11 +33,31 @@ const useStyles = makeStyles({
 
 function CovidCard() {
     const theme = useTheme();
+    const [data, setData] = useState({"data" : {
+            "local_total_cases": 0,
+            "local_total_number_of_individuals_in_hospitals": 0,
+            "local_deaths": 0,
+            "local_recovered": 0,
+        }})
+
+    useEffect(() => {
+        fetch('https://hpb.health.gov.lk/api/get-current-statistical')
+            .then(response =>
+                response.json())
+            .then(apiData => {
+                    setData(apiData);
+                }
+            )
+            .catch(e => {
+                console.log(e);
+            })
+    }, [])
 
 
-    const detailArr = [{
+
+    let detailArr = [{
         heading: "Total Cases",
-        number: "129995",
+        number: data.data.local_total_cases,
         icon: function () {
             return <FontAwesomeIcon icon={faHospitalUser} size='3x' color={theme.palette.warning.main}/>
         },
@@ -44,7 +65,7 @@ function CovidCard() {
     },
         {
             heading: "Active Cases",
-            number: "29995",
+            number: data.data.local_total_number_of_individuals_in_hospitals,
             icon: function icon() {
                 return <FontAwesomeIcon icon={faProcedures} size='3x' color={theme.palette.error.main}/>
             },
@@ -52,7 +73,7 @@ function CovidCard() {
         },
         {
             heading: "Recovered",
-            number: "101527",
+            number: data.data.local_recovered,
             icon: function icon() {
                 return <FontAwesomeIcon icon={faHeartbeat} size='3x' color={theme.palette.success.main}/>
             },
@@ -60,7 +81,7 @@ function CovidCard() {
         },
         {
             heading: "Deaths",
-            number: "1595",
+            number: data.data.local_deaths,
             icon: function icon() {
                 return <FontAwesomeIcon icon={faSkullCrossbones} size='3x' color={theme.palette.error.dark}/>
             },
@@ -76,6 +97,7 @@ function CovidCard() {
                     <img src={Virus} className={style.virusImage} alt="Virus" />
                 </div>
                 <Typography className={style.heading} variant="h4">COVID-19 SRI LANKA</Typography>
+
                 <Grid container spacing={8} justifyContent={"space-evenly"}>
                     {
                         detailArr.map((item, index) => (
@@ -90,9 +112,16 @@ function CovidCard() {
                         )
                     }
                 </Grid>
+            <Fade bottom>
+                <div>
                 <Box className={style.adviseBox} color={theme.palette.primary.light}
-                     bgcolor={theme.palette.primary.main}><Typography align="center" variant="h6">BE A RESPONSIBLE
-                    CITIZEN AND ADHERE TO COVID SAFETY GUIDELINES</Typography></Box>
+                     bgcolor={theme.palette.primary.main}>
+                    <Typography align="center" variant="h6">
+                        BE A RESPONSIBLE CITIZEN AND ADHERE TO COVID SAFETY GUIDELINES
+                    </Typography>
+                </Box>
+                </div>
+            </Fade>
             </div>
         </Box>
     )
