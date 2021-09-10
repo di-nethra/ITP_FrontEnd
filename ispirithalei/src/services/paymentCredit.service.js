@@ -4,9 +4,9 @@ const getAll = () => {
   return http.get("/payments/info");
 };
 
-// const get = (id) => {
-//   return http.get("/payments/info" + id);
-// };
+const get = (id) => {
+  return http.get("/payments/info" + id);
+};
 
 const create = (data) => {
   return http.post("/payments", data);
@@ -26,7 +26,7 @@ const create = (data) => {
 
 export default {
   getAll,
-  // get,
+  get,
   create,
   // update,
   // remove,

@@ -14,7 +14,6 @@ import Footer from "./components/patient-ui/Footer/Footer";
 import Login from "./components/staff-ui/Login";
 import Doctor from "./layouts/Doctor"
 import Inventory from './layouts/Inventory';
-import SysAdmin from './layouts/SysAdmin';
 
 const theme = createTheme({
     palette: {
@@ -41,16 +40,14 @@ const App = () => (
     <ThemeProvider theme={theme}>
         <Router>
             <Switch>
-                <Route path={["/staff/inventorymanager", "/staff/receptionist", "/login","/staff/doctor", "/staff/sysadmin", "/staff/labassistant"]}>
+                <Route path={["/staff/inventorymanager", "/staff/receptionist", "/login","/staff/doctor/sessions/find/:id"]}>
 
                     <Switch>
                         <Route path="/staff/inventorymanager" component={Inventory} />
                         <Route path="/staff/receptionist" component={Receptionist} />
                         <Route path="/login" component={Login} />
-                        <Route path="/staff/labassistant" component={Labasisstant} />
-                        <Route path="/staff/doctor" component={Doctor} />
-                        <Route path="/staff/sysadmin" component={SysAdmin} />
-
+                        {/*<Route path="/staff/doctor/newsession" component={Doctor} />*/}
+                        <Route path="/staff/doctor/sessions/find/:id" component={Doctor} />
                     </Switch>
 
                 </Route>
@@ -70,8 +67,4 @@ const App = () => (
         </Router>
     </ThemeProvider>
 )
-<<<<<<< HEAD
 export default App
-=======
-export default App
->>>>>>> df25512aaf44f82a1b62f9e58780f162d63dc4b0
