@@ -17,6 +17,8 @@ import "./layout.css"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import InTransist from "../pages/staff-ui/lab asistant/InTransist";
 import TestReslt from "../pages/staff-ui/lab asistant/TestResult";
+import CompletedTest from '../pages/staff-ui/lab asistant/CompletedTest'
+import PatientsLists from "../pages/staff-ui/lab asistant/PatientsLists";
 
 const Receptionist = () => {
   const user = {
@@ -55,22 +57,16 @@ const Receptionist = () => {
         id: 5
       },
       {
-        path: "alltests",
-        icon: <ClearAllIcon className="sidebarIcon"/>,
-        iconlabel: 'All Tests',
-        id: 6
-      },
-      {
         path: "patients",
         icon: <PersonOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'Patients',
-        id: 7
+        id: 6
       },
       {
         path: "support",
         icon: <HelpOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'Support',
-        id: 8
+        id: 7
       },
 
       
@@ -103,6 +99,12 @@ const Receptionist = () => {
           </Route>
           <Route path="/staff/labassistant/intransisttests/:testId">
             <TestReslt/>
+          </Route>
+          <Route path="/staff/labassistant/completedtests">
+            <CompletedTest/>
+          </Route>
+          <Route path="/staff/labassistant/patients">
+            <PatientsLists/>
           </Route>
         </Switch>
       </div>
