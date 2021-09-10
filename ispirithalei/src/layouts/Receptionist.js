@@ -65,7 +65,6 @@ const Receptionist = () => {
       <Sidebar user={user}/>
       <div className="others">
           <Topbar page={user.list}/>
-
        
       </div>
     </div>
