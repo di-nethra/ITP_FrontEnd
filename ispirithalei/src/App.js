@@ -1,70 +1,97 @@
-import React from 'react'
+import React from "react";
 import Header from "./components/patient-ui/Header/Header";
 import Home from "./pages/patient-ui/Home";
-import {createTheme, ThemeProvider} from "@material-ui/core";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-} from "react-router-dom";
+import { createTheme, ThemeProvider } from "@material-ui/core";
+import PaymentNavigation from "./components/patient-ui/Payments/PaymentNavigation";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from "./pages/patient-ui/About";
 import Labasisstant from "./layouts/Labasisstant";
 import Receptionist from "./layouts/Receptionist";
-import Footer from "./components/patient-ui/Footer/Footer";
-import Login from "./components/staff-ui/Login";
-import Doctor from "./layouts/Doctor"
-import Inventory from './layouts/Inventory';
-
+import PaymentOptionPage from "./pages/patient-ui/PaymentOptionPage";
+import UserForm from "./components/patient-ui/Payments/UserForm";
+import Checkout from "./pages/patient-ui/Checkout";
+import PaymentInvoice from "./pages/patient-ui/PaymentInvoice";
+import Refunds from "./pages/patient-ui/RefundsPage";
+import PaymentAdmin from "./layouts/PaymentAdmin";
 const theme = createTheme({
-    palette: {
-        primary: {
-            main: '#005792',
-            dark: '#00204A',
-            light: '#D9FAFF',
-        },
+  palette: {
+    primary: {
+      main: "#005792",
+      dark: "#00204A",
+      light: "#D9FAFF",
     },
+  },
 
-    typography: {
-        fontFamily: 'Poppins',
-        fontWeightLight: 400,
-        fontWeightRegular: 500,
-        fontWeightMedium: 600,
-        fontWeightBold: 700,
-    },
-    shape : {
-        borderRadius: '15px'
-    },
+  typography: {
+    fontFamily: "Poppins",
+    fontWeightLight: 400,
+    fontWeightRegular: 500,
+    fontWeightMedium: 600,
+    fontWeightBold: 700,
+  },
+  shape: {
+    borderRadius: "15px",
+  },
 });
 
 const App = () => (
-    <ThemeProvider theme={theme}>
-        <Router>
-            <Switch>
-                <Route path={["/staff/inventorymanager", "/staff/receptionist", "/login","/staff/doctor/sessions/find/:id"]}>
+  <ThemeProvider theme={theme}>
+    <Router>
+      <Switch>
+        <Route
+          path={[
+            "/payments",
+            "/payments/info",
+            "/payments/checkout",
+            "/payments/invoice",
+            "/payments/refunds",
+          ]}
+        >
+          <Header />
+          <PaymentNavigation />
+          <Switch>
+            <Route path="/payments/info">
+              <UserForm />
+            </Route>
+            <Route path="/payments/checkout">
+              <Checkout />
+            </Route>
+            <Route path="/payments/invoice">
+              <PaymentInvoice />
+            </Route>
 
-                    <Switch>
-                        <Route path="/staff/inventorymanager" component={Inventory} />
-                        <Route path="/staff/receptionist" component={Receptionist} />
-                        <Route path="/login" component={Login} />
-                        {/*<Route path="/staff/doctor/newsession" component={Doctor} />*/}
-                        <Route path="/staff/doctor/sessions/find/:id" component={Doctor} />
-                    </Switch>
+            <Route path="/payments/refunds">
+              <Refunds />
+            </Route>
+            <Route path="/payments">
+              <PaymentOptionPage />
+            </Route>
+          </Switch>
+        </Route>
 
-                </Route>
+        <Route
+          path={[
+            "/staff/labassistant",
+            "/staff/receptionist",
+            "/staff/paymentAdmin",
+          ]}
+        >
+          <Switch>
+            <Route path="/staff/labassistant" component={Labasisstant} />
+            <Route path="/staff/receptionist" component={Receptionist} />
+            <Route path="/staff/paymentAdmin" component={PaymentAdmin} />
+          </Switch>
+        </Route>
 
-                <Route path={["/about", "/"]}>
-                    <Header />
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/about" component={About} />
-
-
-
-                    </Switch>
-                    <Footer />
-                </Route>
-            </Switch>
-        </Router>
-    </ThemeProvider>
-)
-export default App
+        <Route path={["/about", "/"]}>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+          </Switch>
+        </Route>
+      </Switch>
+    </Router>
+  </ThemeProvider>
+);
+export default App;

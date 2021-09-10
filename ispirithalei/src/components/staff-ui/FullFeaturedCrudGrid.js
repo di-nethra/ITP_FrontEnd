@@ -9,9 +9,10 @@ import SaveIcon from "@material-ui/icons/Save";
 import CancelIcon from "@material-ui/icons/Close";
 import {
   useGridApiRef,
-  DataGridPro,
+  DataGrid,
   GridToolbarContainer,
-} from "@mui/x-data-grid-pro";
+} from "@mui/x-data-grid";
+
 import {
   randomCreatedDate,
   randomTraderName,
@@ -238,7 +239,7 @@ export default function FullFeaturedCrudGrid() {
 
   return (
     <div style={{ height: 500, width: "100%" }}>
-      <DataGridPro
+      <DataGrid
         rows={rows}
         columns={columns}
         apiRef={apiRef}
