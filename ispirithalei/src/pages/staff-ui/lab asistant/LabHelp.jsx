@@ -10,7 +10,7 @@ export default function LabHelp() {
                 </div>
                 <br></br>
                 <div class="content11">
-                    <span class="title11">Isspirithalei Laboratory user guide gives the overall idea about how this work. Please Contact Chamod(Admin) to get overallidea about it</span>
+                    <span class="title11">Ispirithalei Laboratory user guide gives the overall idea about how this work. Please Contact Chamod(Admin) to get overall idea about it</span>
                 </div>
                 
             </div>
