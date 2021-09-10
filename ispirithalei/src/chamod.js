@@ -10,13 +10,11 @@ import {
 import About from "./pages/patient-ui/About";
 import Labasisstant from "./layouts/Labasisstant";
 import Receptionist from "./layouts/Receptionist";
-import Footer from "./components/patient-ui/Footer/Footer";
-import Login from "./components/staff-ui/Login";
-import Doctor from "./layouts/Doctor"
-import Inventory from './layouts/Inventory';
+import EmpForm from './pages/staff-ui/sysadmin/EmpForm';
 import SysAdmin from './layouts/SysAdmin';
-import EForm from './pages/patient-ui/ChanellForm';
-
+import EmpList from './pages/staff-ui/sysadmin/EmpList';
+import EmpDashboard from './pages/staff-ui/sysadmin/EmpDashboard';
+import Payroll from './pages/staff-ui/sysadmin/Payroll';
 
 const theme = createTheme({
     palette: {
@@ -43,34 +41,49 @@ const App = () => (
     <ThemeProvider theme={theme}>
         <Router>
             <Switch>
-                <Route path={["/staff/inventorymanager", "/staff/receptionist", "/login","/staff/doctor", "/staff/sysadmin", "/staff/labassistant"]}>
+
+            <Route path={[ 
+                "/staff/sysadmin",
+                "/staff/sysadmin/empdashboard", 
+                "/staff/sysadmin/empform",
+                "/staff/sysadmin/emplist"
+                
+                ]}>
 
                     <Switch>
-                        <Route path="/staff/inventorymanager" component={Inventory} />
-                        <Route path="/staff/receptionist" component={Receptionist} />
-                        <Route path="/login" component={Login} />
+                        
+                        <Route path="/staff/sysadmin/empdashboard" component={EmpDashboard} />
+                        <Route path="/staff/sysadmin/emplist" component={EmpList} />
+                        <Route path="/staff/sysadmin/empform" component={EmpForm} />
+                        <Route path="/staff/sysadmin/payroll" component={Payroll} />
+                        
+                    </Switch>
+                    
+                </Route>
+                
+                <Route path={["/staff/labassistant", 
+                "/staff/receptionist"
+                ]}>
+
+                    <Switch>
+
                         <Route path="/staff/labassistant" component={Labasisstant} />
-                        <Route path="/staff/doctor" component={Doctor} />
-                        <Route path="/staff/sysadmin" component={SysAdmin} />
+                        <Route path="/staff/receptionist" component={Receptionist} />
 
                     </Switch>
 
                 </Route>
 
-                  
-            
 
 
-                <Route path={["/patient/newappointment","/about", "/"]}>
+                <Route path={["/about", "/"]}>
                     <Header />
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route path="/about" component={About} />
 
-                        <Route path="/patient/newappointment" component={EForm} />
-
                     </Switch>
-                    <Footer />
+
                 </Route>
             </Switch>
         </Router>

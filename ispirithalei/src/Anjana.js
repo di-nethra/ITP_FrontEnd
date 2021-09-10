@@ -45,7 +45,6 @@ const App = () => (
             "/payments/checkout",
             "/payments/invoice",
             "/payments/refunds",
-            "/staff/PaymentAdmin",
           ]}
         >
           <Header />
@@ -64,18 +63,23 @@ const App = () => (
             <Route path="/payments/refunds">
               <Refunds />
             </Route>
-            <Route path="/staff/PaymentAdmin">
-              <PaymentAdmin />
-            </Route>
             <Route path="/payments">
               <PaymentOptionPage />
             </Route>
           </Switch>
         </Route>
-        <Route path={["/staff/labassistant", "/staff/receptionist"]}>
+
+        <Route
+          path={[
+            "/staff/labassistant",
+            "/staff/receptionist",
+            "/staff/paymentAdmin",
+          ]}
+        >
           <Switch>
             <Route path="/staff/labassistant" component={Labasisstant} />
             <Route path="/staff/receptionist" component={Receptionist} />
+            <Route path="/staff/paymentAdmin" component={PaymentAdmin} />
           </Switch>
         </Route>
 

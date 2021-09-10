@@ -8,12 +8,12 @@ import CreditCardIcon from "@material-ui/icons/CreditCard";
 import Mobile from "@material-ui/icons/MobileFriendly";
 import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 import { Typography } from "@material-ui/core";
-import CreditCardPayments from "../pages/staff-ui/paymenentAdmin/creditCardPayments";
+import DisplayCredit from "../components/staff-ui/DisplayCredit";
 
 const PaymentAdmin = () => {
   const user = {
     name: "Anjana Samarakoon",
-    role: "Payment Admin",
+    role: "PaymentAdmin",
 
     list: [
       {
@@ -29,7 +29,7 @@ const PaymentAdmin = () => {
         id: 1,
       },
       {
-        path: "/creditCard",
+        path: "creditCard",
         icon: <CreditCardIcon className="sidebarIcon" />,
         iconlabel: (
           <Typography style={{ inlineSize: "max-content" }}>
@@ -39,7 +39,7 @@ const PaymentAdmin = () => {
         id: 2,
       },
       {
-        path: "/mobilePay",
+        path: "mobilePay",
         icon: <Mobile className="sidebarIcon" />,
         iconlabel: (
           <Typography style={{ inlineSize: "max-content" }}>
@@ -49,7 +49,7 @@ const PaymentAdmin = () => {
         id: 3,
       },
       {
-        path: "/refunds",
+        path: "refunds",
         icon: <LocalAtmIcon className="sidebarIcon" />,
         iconlabel: (
           <Typography style={{ inlineSize: "max-content" }}>Refunds</Typography>
@@ -67,7 +67,7 @@ const PaymentAdmin = () => {
           <Topbar style={{}} page={user.list} />
           <Switch>
             <Route path="/staff/PaymentAdmin/creditCard">
-              <CreditCardPayments />
+              <DisplayCredit />
             </Route>
             <Route path="/staff/PaymentAdmin/mobilePay">
               <h1>Hello Mobile</h1>
