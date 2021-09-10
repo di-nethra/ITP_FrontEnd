@@ -47,7 +47,6 @@ const styles = (theme) => ({
   },
   Paybutton: {
     marginTop: "20px",
-    marginBottom: "1000px",
     width: "400px",
     height: "50px",
     background: "#3C4257",
