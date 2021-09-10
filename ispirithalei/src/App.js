@@ -14,6 +14,7 @@ import Footer from "./components/patient-ui/Footer/Footer";
 import Login from "./components/staff-ui/Login";
 import Doctor from "./layouts/Doctor"
 import Inventory from './layouts/Inventory';
+import SysAdmin from './layouts/SysAdmin';
 
 const theme = createTheme({
     palette: {
@@ -40,7 +41,7 @@ const App = () => (
     <ThemeProvider theme={theme}>
         <Router>
             <Switch>
-                <Route path={["/staff/inventorymanager", "/staff/receptionist", "/login","/staff/doctor"]}>
+                <Route path={["/staff/inventorymanager", "/staff/receptionist", "/login","/staff/doctor", "/staff/sysadmin"]}>
 
                     <Switch>
                         <Route path="/staff/inventorymanager" component={Inventory} />
@@ -48,6 +49,7 @@ const App = () => (
                         <Route path="/login" component={Login} />
                         {/*<Route path="/staff/doctor/newsession" component={Doctor} />*/}
                         <Route path="/staff/doctor" component={Doctor} />
+                        <Route path="/staff/sysadmin" component={SysAdmin} />
                     </Switch>
 
                 </Route>

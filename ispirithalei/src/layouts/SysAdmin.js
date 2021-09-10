@@ -22,26 +22,26 @@ const SysAdmin = () => {
     role : 'SysAdmin',
     list : [
       {
-        path: "EmpDashboard",
+        path: "",
         exact: true,
         icon: <DashboardOutlinedIcon className="sidebarIcon"/>,
         iconlabel: 'Dashboard',
         id: 1
       },
       {
-        path: "EmpList",
+        path: "emplist",
         icon: <ViewListIcon className="sidebarIcon"/>,
         iconlabel: 'Employee List',
         id: 2
       },
       {
-        path: "EmpForm",
+        path: "empform",
         icon: <AddIcon className="sidebarIcon"/>,
         iconlabel: 'Add Employee',
         id: 3
       },
       {
-        path: "Payroll",
+        path: "payroll",
         icon: <MonetizationOnIcon className="sidebarIcon"/>,
         iconlabel: 'Payroll',
         id: 4
@@ -60,7 +60,7 @@ const SysAdmin = () => {
           <Topbar page={user.list}/>
           {/* <LabassHome/> */}
           <Switch>
-            <Route path="/staff/sysadmin/empdashboard" component={EmpDashboard} />
+            <Route exact path="/staff/sysadmin" component={EmpDashboard} />
             <Route path="/staff/sysadmin/emplist" component={EmpList} />
             <Route path="/staff/sysadmin/empform" component={EmpForm} /> 
             <Route path="/staff/sysadmin/payroll" component={Payroll} /> 
