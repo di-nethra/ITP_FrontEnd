@@ -9,7 +9,6 @@ const useStyles = makeStyles({
   logo: {
     marginTop: "100px",
     paddingLeft: "100px",
-    marginBottom: "1000px",
   },
   option: {
     "&:hover": {
