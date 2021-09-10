@@ -1,0 +1,25 @@
+.helpblock{
+    background-color: #EFEFEF;
+    width: 1000px;
+    height: 600px;
+    margin: auto;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+
+
+}
+.content1{
+    margin-bottom: 50px;
+    width: fit-content;
+    margin: auto;
+}
+.content11{
+    margin-bottom: 50px;
+    width: 800px;
+    margin: auto;
+    margin-top: 50px ;
+}
+.title11{
+    font-size: 20px;
+}

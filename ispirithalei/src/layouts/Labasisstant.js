@@ -19,6 +19,7 @@ import InTransist from "../pages/staff-ui/lab asistant/InTransist";
 import TestReslt from "../pages/staff-ui/lab asistant/TestResult";
 import CompletedTest from '../pages/staff-ui/lab asistant/CompletedTest'
 import PatientsLists from "../pages/staff-ui/lab asistant/PatientsLists";
+import LabHelp from "../pages/staff-ui/lab asistant/LabHelp";
 
 const Receptionist = () => {
   const user = {
@@ -76,7 +77,6 @@ const Receptionist = () => {
   
   return(
   <div >
-    <Router>
     <div className="container">
       <Sidebar user={user}/>
       <div className="others">
@@ -106,11 +106,13 @@ const Receptionist = () => {
           <Route path="/staff/labassistant/patients">
             <PatientsLists/>
           </Route>
+          <Route path="/staff/labassistant/support">
+            <LabHelp/>
+          </Route>
         </Switch>
       </div>
       
     </div>
-    </Router>
   </div>
   )
 }
