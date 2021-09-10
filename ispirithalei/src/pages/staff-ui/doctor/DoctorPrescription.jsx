@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
+import { Link } from "react-router-dom";
 
 function DoctorPrescription() {
     const [isDisabled, setIsDisabled] = useState(true);
@@ -61,11 +62,16 @@ function DoctorPrescription() {
                 </CardContent>
             </Card>
 
-            <Card style={{marginTop: 10, backgroundColor: "#D9FAFF"}}>
+            <Card style={{ marginTop: 10, backgroundColor: "#D9FAFF" }}>
                 <CardContent>
                     <center>
-                        <p style={{ fontSize: 24, color: "#9D9D9D", fontWeight: "bold"}}>Click to send a medical note to the pharmacist&emsp;
-                            <Button size="medium" color="primary" variant="contained" style={{ marginRight: 8 }}>Send Note</Button>
+                        <p style={{ fontSize: 24, color: "#9D9D9D", fontWeight: "bold" }}>Click to send a medical note to the pharmacist&emsp;
+                            <Link to="/staff/doctor/addnote">
+                                <Button size="medium" color="primary" variant="contained" style={{ marginRight: 8 }}>Send Note</Button>
+                            </Link>
+                            <Link to="/staff/doctor/viewnote">
+                            <Button size="medium" variant="contained">View Notes</Button>
+                            </Link>
                         </p>
                     </center>
                 </CardContent>

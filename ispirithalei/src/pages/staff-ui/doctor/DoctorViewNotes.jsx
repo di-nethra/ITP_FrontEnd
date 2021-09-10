@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
+import { Link } from "react-router-dom";
 
 const columns = [
     { field: 'id', headerName: 'PATIENT ID', width: 150 },
@@ -46,16 +47,18 @@ export default function DoctorViewNotes() {
                             pageSize={5}
                             checkboxSelection
                             disableSelectionOnClick
-                            style={{backgroundColor: "#D9FAFF"}}
+                            style={{ backgroundColor: "#D9FAFF" }}
                         />
                     </div>
 
                     <div style={{ marginTop: 15 }} className="buttonAlignRight">
-                        <Tooltip title="Add another note" placement="bottom" aria-label="add">
-                            <Fab color="primary">
-                                <AddIcon fontSize="large" />
-                            </Fab>
-                        </Tooltip>
+                        <Link to="/staff/doctor/addnote">
+                            <Tooltip title="Add another note" placement="bottom" aria-label="add">
+                                <Fab color="primary">
+                                    <AddIcon fontSize="large" />
+                                </Fab>
+                            </Tooltip>
+                        </Link>
                     </div>
                 </CardContent>
             </Card>

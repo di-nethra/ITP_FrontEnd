@@ -18,7 +18,7 @@ import Restock from "../pages/staff-ui/inventory/Restock";
 import InventoryItem from "../pages/staff-ui/inventory/InventoryItem";
 import InventoryReport from "../pages/staff-ui/inventory/InventoryReport";
 import InventoryReportTable from "../components/staff-ui/ad_inventory/InventoryReportTable";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {Switch, Route } from "react-router-dom";
 
 const Inventory = () => {
   const user = {

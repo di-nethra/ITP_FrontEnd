@@ -7,6 +7,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import './doctor.css';
+import { Link } from "react-router-dom";
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 100 },
@@ -62,25 +63,27 @@ export default function DoctorViewPrescription() {
                         // disableSelectionOnClick
                         />
                     </div>
-                    <div style={{ marginTop: 15 }}  className="buttonAlignRight">
-                        <Tooltip title="Add Prescription" placement="bottom" aria-label="add">
-                            <Fab color="primary">
-                                <AddIcon fontSize="large" />
-                            </Fab>
-                        </Tooltip>
+                    <div style={{ marginTop: 15 }} className="buttonAlignRight">
+                        <Link to="/staff/doctor/addprescription">
+                            <Tooltip title="Add Prescription" placement="bottom" aria-label="add">
+                                <Fab color="primary">
+                                    <AddIcon fontSize="large" />
+                                </Fab>
+                            </Tooltip>
+                        </Link>
                     </div>
                 </CardContent>
             </Card>
 
-            <Card style={{marginTop: 15, backgroundColor: "#D9FAFF" }}>
+            <Card style={{ marginTop: 15, backgroundColor: "#D9FAFF" }}>
                 <CardContent>
-                <p>
-                <strong>Disclaimer</strong> - You are able to produce prescription reports of you patients. Please use them
-                for your use only. We make it our obligation to protect patient privacy.
-                </p>
-                <div className="buttonAlignRight">
-                <Button size="medium" color="primary" variant="contained" style={{ marginTop: 10 }}>Create Report</Button>
-                     </div>   
+                    <p>
+                        <strong>Disclaimer</strong> - You are able to produce prescription reports of you patients. Please use them
+                        for your use only. We make it our obligation to protect patient privacy.
+                    </p>
+                    <div className="buttonAlignRight">
+                        <Button size="medium" color="primary" variant="contained" style={{ marginTop: 10 }}>Create Report</Button>
+                    </div>
                 </CardContent>
             </Card>
         </div>

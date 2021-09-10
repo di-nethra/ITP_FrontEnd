@@ -6,6 +6,7 @@ import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 import Calendar from './Calendar';
+import { Link } from "react-router-dom";
 
 const columns = [
     { field: 'id', headerName: 'PATIENT ID', width: 150 },
@@ -46,15 +47,15 @@ const rows = [
 export default function DoctorHome() {
     return (
         <div>
-            <Card style={{width: 380}}>
+            <Card style={{ width: 380 }}>
                 <CardContent>
                     <Calendar />
                 </CardContent>
             </Card>
             <br />
-            
+
             <Card>
-                <CardContent  style={{backgroundColor:"#D9FAFF"}}>
+                <CardContent style={{ backgroundColor: "#D9FAFF" }}>
                     <h3>PATIENT APPOINTMENTS</h3>
                     <br />
                     <div style={{ height: 400, width: '100%' }}>
@@ -64,16 +65,18 @@ export default function DoctorHome() {
                             pageSize={5}
                             checkboxSelection
                             disableSelectionOnClick
-                            style={{backgroundColor:"white"}}
+                            style={{ backgroundColor: "white" }}
                         />
                     </div>
 
                     <div style={{ marginTop: 15 }} className="buttonAlignRight">
-                        <Tooltip title="Add Prescription" placement="bottom" aria-label="add">
-                            <Fab color="primary">
-                                <AddIcon fontSize="large" />
-                            </Fab>
-                        </Tooltip>
+                        <Link to="/staff/doctor/addprescription">
+                            <Tooltip title="Add Prescription" placement="bottom" aria-label="add">
+                                <Fab color="primary">
+                                    <AddIcon fontSize="large" />
+                                </Fab>
+                            </Tooltip>
+                        </Link>
                     </div>
                 </CardContent>
             </Card>
