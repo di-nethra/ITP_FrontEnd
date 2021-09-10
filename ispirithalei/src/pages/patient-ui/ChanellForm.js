@@ -1,8 +1,9 @@
+import { Container } from '@material-ui/core';
 import React from 'react';
 import Controls from '../../components/patient-ui/Echannelling/Controls';
 import { useForm, Form } from '../../components/patient-ui/Echannelling/useForm';
 import * as PaitientService from "../../services/PaitientService";
-
+import PageHeader from "../../components/patient-ui/Echannelling/HeaderStyles";
 
 const genderItems = [
     { id: 'male', title: 'Male' },
@@ -59,6 +60,11 @@ export default function EForm() {
     }
 
     return (
+        
+        <Container maxWidth="md">
+        <h3>E Channelling</h3>
+        <h4>For channelling entry your details below</h4>
+        <br/>
         <Form onSubmit={handleSubmit}>
             <container>
                 
@@ -130,5 +136,6 @@ export default function EForm() {
              
             </container>
         </Form>
+        </Container>
     )
 }
