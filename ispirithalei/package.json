@@ -11,11 +11,7 @@
     "@material-ui/data-grid": "^4.0.0-alpha.37",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
-<<<<<<< HEAD
-    "@material-ui/pickers": "^3.2.10",
-=======
     "@material-ui/pickers": "^3.3.10",
->>>>>>> df25512aaf44f82a1b62f9e58780f162d63dc4b0
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
