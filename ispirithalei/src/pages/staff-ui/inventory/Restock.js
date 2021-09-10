@@ -31,7 +31,7 @@ export default function Restock() {
       <div style = {{paddingLeft:"30%"}}>
         <div className="formCard">
             <div className={classes.root}>
-
+              <h3>Restock Items</h3><br/>
             <TextField
               label="Item ID"
               id="outlined-margin-none"

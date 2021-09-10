@@ -7,12 +7,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from "./pages/patient-ui/About";
 import Labasisstant from "./layouts/Labasisstant";
 import Receptionist from "./layouts/Receptionist";
-import PaymentOptionPage from "./pages/patient-ui/PaymentOptionPage";
-import UserForm from "./components/patient-ui/Payments/UserForm";
-import Checkout from "./pages/patient-ui/Checkout";
-import PaymentInvoice from "./pages/patient-ui/PaymentInvoice";
-import Refunds from "./pages/patient-ui/RefundsPage";
+import Footer from "./components/patient-ui/Footer/Footer";
+import Login from "./components/staff-ui/Login";
+import Doctor from "./layouts/Doctor"
+import Inventory from './layouts/Inventory';
+import SysAdmin from './layouts/SysAdmin';
+import EForm from './pages/patient-ui/ChanellForm';
 import PaymentAdmin from "./layouts/PaymentAdmin";
+
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -35,10 +38,36 @@ const theme = createTheme({
 });
 
 const App = () => (
-  <ThemeProvider theme={theme}>
-    <Router>
-      <Switch>
-        <Route
+    <ThemeProvider theme={theme}>
+        <Router>
+            <Switch>
+                <Route path={["/staff/inventorymanager", "/staff/receptionist", "/login","/staff/doctor", "/staff/sysadmin", "/staff/labassistant","/staff/inventorymanager"]}>
+
+                    <Switch>
+                        <Route path="/staff/inventorymanager" component={Inventory} />
+                        <Route path="/staff/receptionist" component={Receptionist} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/staff/labassistant" component={Labasisstant} />
+                        <Route path="/staff/doctor" component={Doctor} />
+                        <Route path="/staff/sysadmin" component={SysAdmin} />
+                        <Route path="/staff/paymentadmin" component={PaymentAdmin} />
+                        
+                    </Switch>
+
+                </Route>
+
+                  
+            
+
+
+                <Route path={["/patient/newappointment","/about", "/"]}>
+                    <Header />
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/about" component={About} />
+
+                        <Route path="/patient/newappointment" component={EForm} />
+   <Route
           path={[
             "/payments",
             "/payments/info",
@@ -47,7 +76,7 @@ const App = () => (
             "/payments/refunds",
           ]}
         >
-          <Header />
+        
           <PaymentNavigation />
           <Switch>
             <Route path="/payments/info">
@@ -59,39 +88,13 @@ const App = () => (
             <Route path="/payments/invoice">
               <PaymentInvoice />
             </Route>
-
-            <Route path="/payments/refunds">
-              <Refunds />
-            </Route>
-            <Route path="/payments">
-              <PaymentOptionPage />
-            </Route>
-          </Switch>
-        </Route>
-
-        <Route
-          path={[
-            "/staff/labassistant",
-            "/staff/receptionist",
-            "/staff/paymentAdmin",
-          ]}
-        >
-          <Switch>
-            <Route path="/staff/labassistant" component={Labasisstant} />
-            <Route path="/staff/receptionist" component={Receptionist} />
-            <Route path="/staff/paymentAdmin" component={PaymentAdmin} />
-          </Switch>
-        </Route>
-
-        <Route path={["/about", "/"]}>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-          </Switch>
-        </Route>
-      </Switch>
-    </Router>
-  </ThemeProvider>
-);
-export default App;
+                    </Switch>
+                    <Footer />
+                </Route>
+            </Switch>
+            </ Route>
+            </Switch> 
+        </Router>
+    </ThemeProvider>
+)
+export default App

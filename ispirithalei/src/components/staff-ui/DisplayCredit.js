@@ -51,7 +51,7 @@ const DisplayCredit = () => {
       </Grid>
     </Grid>
   ) : (
-    <FullFeaturedCrudGrid creditCards={creditCards} />
+    <CreditMapping creditCards={creditCards} />
   );
 };
 

@@ -63,6 +63,7 @@ function InventoryRegister(){
      <div className="formCard"
      >
          <form  style={{marginLeft:'250px'}}>
+         <h3>Register a new Item</h3><br/>
          <TextField
           id="outlined-full-width"
           label="Item Name"
