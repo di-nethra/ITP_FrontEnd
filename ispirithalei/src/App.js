@@ -15,6 +15,8 @@ import Login from "./components/staff-ui/Login";
 import Doctor from "./layouts/Doctor"
 import Inventory from './layouts/Inventory';
 import SysAdmin from './layouts/SysAdmin';
+import EForm from './pages/patient-ui/ChanellForm';
+
 
 const theme = createTheme({
     palette: {
@@ -55,13 +57,17 @@ const App = () => (
 
                 </Route>
 
-                <Route path={["/about", "/"]}>
+                  
+            
+
+
+                <Route path={["/patient/newappointment","/about", "/"]}>
                     <Header />
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route path="/about" component={About} />
 
-
+                        <Route path="/patient/newappointment" component={EForm} />
 
                     </Switch>
                     <Footer />
