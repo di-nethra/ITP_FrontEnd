@@ -1,7 +1,8 @@
 import React from "react";
-import {Breadcrumbs, Grid, Link} from "@material-ui/core";
-import {useHistory, withRouter} from "react-router-dom";
-import {makeStyles} from "@material-ui/core/styles";
+import { Breadcrumbs, Typography, Link, Grid } from "@material-ui/core";
+import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import ListIcon from "@material-ui/icons/List";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -38,7 +39,6 @@ const PaymentNavigation = (props) => {
   const history = useHistory();
   const classes = useStyles();
   return (
-      
     <div>
       <Grid container className={classes.navigation}>
         <Breadcrumbs>
@@ -74,11 +74,7 @@ const PaymentNavigation = (props) => {
           </Link>
         </Breadcrumbs>
       </Grid>
-
-   
-
     </div>
-    
   );
 };
 

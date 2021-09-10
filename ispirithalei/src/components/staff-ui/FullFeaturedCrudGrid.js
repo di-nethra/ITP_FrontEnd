@@ -1,257 +1,258 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import Button from "@material-ui/core/Button";
-import AddIcon from "@material-ui/icons/Add";
-import IconButton from "@material-ui/core/IconButton";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/DeleteOutlined";
-import SaveIcon from "@material-ui/icons/Save";
-import CancelIcon from "@material-ui/icons/Close";
-import {
-  useGridApiRef,
-  DataGridPro,
-  GridToolbarContainer,
-} from "@mui/x-data-grid-pro";
-import {
-  randomCreatedDate,
-  randomTraderName,
-  randomUpdatedDate,
-  randomId,
-} from "@mui/x-data-grid-generator";
-import { createTheme } from "@material-ui/core/styles";
-import { makeStyles } from "@material-ui/styles";
+// import * as React from "react";
+// import PropTypes from "prop-types";
+// import Button from "@material-ui/core/Button";
+// import AddIcon from "@material-ui/icons/Add";
+// import IconButton from "@material-ui/core/IconButton";
+// import EditIcon from "@material-ui/icons/Edit";
+// import DeleteIcon from "@material-ui/icons/DeleteOutlined";
+// import SaveIcon from "@material-ui/icons/Save";
+// import CancelIcon from "@material-ui/icons/Close";
+// import {
+//   useGridApiRef,
+//   DataGrid,
+//   GridToolbarContainer,
+// } from "@mui/x-data-grid";
 
-const defaultTheme = createTheme();
+// import {
+//   randomCreatedDate,
+//   randomTraderName,
+//   randomUpdatedDate,
+//   randomId,
+// } from "@mui/x-data-grid-generator";
+// import { createTheme } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/styles";
 
-const useStyles = makeStyles(
-  (theme) => ({
-    root: {
-      display: "inline-flex",
-      alignItems: "center",
-      gap: theme.spacing(1),
-      color: theme.palette.text.secondary,
-    },
-    textPrimary: {
-      color: theme.palette.text.primary,
-    },
-  }),
-  { defaultTheme }
-);
+// const defaultTheme = createTheme();
 
-function RowMenuCell(props) {
-  const { api, id } = props;
-  const classes = useStyles();
-  const isInEditMode = api.getRowMode(id) === "edit";
+// const useStyles = makeStyles(
+//   (theme) => ({
+//     root: {
+//       display: "inline-flex",
+//       alignItems: "center",
+//       gap: theme.spacing(1),
+//       color: theme.palette.text.secondary,
+//     },
+//     textPrimary: {
+//       color: theme.palette.text.primary,
+//     },
+//   }),
+//   { defaultTheme }
+// );
 
-  const handleEditClick = (event) => {
-    event.stopPropagation();
-    api.setRowMode(id, "edit");
-  };
+// function RowMenuCell(props) {
+//   const { api, id } = props;
+//   const classes = useStyles();
+//   const isInEditMode = api.getRowMode(id) === "edit";
 
-  const handleSaveClick = (event) => {
-    event.stopPropagation();
-    api.commitRowChange(id);
-    api.setRowMode(id, "view");
+//   const handleEditClick = (event) => {
+//     event.stopPropagation();
+//     api.setRowMode(id, "edit");
+//   };
 
-    const row = api.getRow(id);
-    api.updateRows([{ ...row, isNew: false }]);
-  };
+//   const handleSaveClick = (event) => {
+//     event.stopPropagation();
+//     api.commitRowChange(id);
+//     api.setRowMode(id, "view");
 
-  const handleDeleteClick = (event) => {
-    event.stopPropagation();
-    api.updateRows([{ id, _action: "delete" }]);
-  };
+//     const row = api.getRow(id);
+//     api.updateRows([{ ...row, isNew: false }]);
+//   };
 
-  const handleCancelClick = (event) => {
-    event.stopPropagation();
-    api.setRowMode(id, "view");
+//   const handleDeleteClick = (event) => {
+//     event.stopPropagation();
+//     api.updateRows([{ id, _action: "delete" }]);
+//   };
 
-    const row = api.getRow(id);
-    if (row.isNew) {
-      api.updateRows([{ id, _action: "delete" }]);
-    }
-  };
+//   const handleCancelClick = (event) => {
+//     event.stopPropagation();
+//     api.setRowMode(id, "view");
 
-  if (isInEditMode) {
-    return (
-      <div className={classes.root}>
-        <IconButton
-          color="primary"
-          size="small"
-          aria-label="save"
-          onClick={handleSaveClick}
-        >
-          <SaveIcon fontSize="small" />
-        </IconButton>
-        <IconButton
-          color="inherit"
-          size="small"
-          aria-label="cancel"
-          className={classes.textPrimary}
-          onClick={handleCancelClick}
-        >
-          <CancelIcon fontSize="small" />
-        </IconButton>
-      </div>
-    );
-  }
+//     const row = api.getRow(id);
+//     if (row.isNew) {
+//       api.updateRows([{ id, _action: "delete" }]);
+//     }
+//   };
 
-  return (
-    <div className={classes.root}>
-      <IconButton
-        color="inherit"
-        className={classes.textPrimary}
-        size="small"
-        aria-label="edit"
-        onClick={handleEditClick}
-      >
-        <EditIcon fontSize="small" />
-      </IconButton>
-      <IconButton
-        color="inherit"
-        size="small"
-        aria-label="delete"
-        onClick={handleDeleteClick}
-      >
-        <DeleteIcon fontSize="small" />
-      </IconButton>
-    </div>
-  );
-}
+//   if (isInEditMode) {
+//     return (
+//       <div className={classes.root}>
+//         <IconButton
+//           color="primary"
+//           size="small"
+//           aria-label="save"
+//           onClick={handleSaveClick}
+//         >
+//           <SaveIcon fontSize="small" />
+//         </IconButton>
+//         <IconButton
+//           color="inherit"
+//           size="small"
+//           aria-label="cancel"
+//           className={classes.textPrimary}
+//           onClick={handleCancelClick}
+//         >
+//           <CancelIcon fontSize="small" />
+//         </IconButton>
+//       </div>
+//     );
+//   }
 
-RowMenuCell.propTypes = {
-  api: PropTypes.object.isRequired,
-  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-};
+//   return (
+//     <div className={classes.root}>
+//       <IconButton
+//         color="inherit"
+//         className={classes.textPrimary}
+//         size="small"
+//         aria-label="edit"
+//         onClick={handleEditClick}
+//       >
+//         <EditIcon fontSize="small" />
+//       </IconButton>
+//       <IconButton
+//         color="inherit"
+//         size="small"
+//         aria-label="delete"
+//         onClick={handleDeleteClick}
+//       >
+//         <DeleteIcon fontSize="small" />
+//       </IconButton>
+//     </div>
+//   );
+// }
 
-const rows = [
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 25,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 36,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 19,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 28,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 23,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
-  },
-];
+// RowMenuCell.propTypes = {
+//   api: PropTypes.object.isRequired,
+//   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+// };
 
-const columns = [
-  { field: "name", headerName: "Name", width: 180, editable: true },
-  { field: "age", headerName: "Age", type: "number", editable: true },
-  {
-    field: "dateCreated",
-    headerName: "Date Created",
-    type: "date",
-    width: 180,
-    editable: true,
-  },
-  {
-    field: "lastLogin",
-    headerName: "Last Login",
-    type: "dateTime",
-    width: 220,
-    editable: true,
-  },
-  {
-    field: "actions",
-    headerName: "Actions",
-    renderCell: RowMenuCell,
-    sortable: false,
-    width: 100,
-    headerAlign: "center",
-    filterable: false,
-    align: "center",
-    disableColumnMenu: true,
-    disableReorder: true,
-  },
-];
+// const rows = [
+//   {
+//     id: randomId(),
+//     name: randomTraderName(),
+//     age: 25,
+//     dateCreated: randomCreatedDate(),
+//     lastLogin: randomUpdatedDate(),
+//   },
+//   {
+//     id: randomId(),
+//     name: randomTraderName(),
+//     age: 36,
+//     dateCreated: randomCreatedDate(),
+//     lastLogin: randomUpdatedDate(),
+//   },
+//   {
+//     id: randomId(),
+//     name: randomTraderName(),
+//     age: 19,
+//     dateCreated: randomCreatedDate(),
+//     lastLogin: randomUpdatedDate(),
+//   },
+//   {
+//     id: randomId(),
+//     name: randomTraderName(),
+//     age: 28,
+//     dateCreated: randomCreatedDate(),
+//     lastLogin: randomUpdatedDate(),
+//   },
+//   {
+//     id: randomId(),
+//     name: randomTraderName(),
+//     age: 23,
+//     dateCreated: randomCreatedDate(),
+//     lastLogin: randomUpdatedDate(),
+//   },
+// ];
 
-function EditToolbar(props) {
-  const { apiRef } = props;
+// const columns = [
+//   { field: "name", headerName: "Name", width: 180, editable: true },
+//   { field: "age", headerName: "Age", type: "number", editable: true },
+//   {
+//     field: "dateCreated",
+//     headerName: "Date Created",
+//     type: "date",
+//     width: 180,
+//     editable: true,
+//   },
+//   {
+//     field: "lastLogin",
+//     headerName: "Last Login",
+//     type: "dateTime",
+//     width: 220,
+//     editable: true,
+//   },
+//   {
+//     field: "actions",
+//     headerName: "Actions",
+//     renderCell: RowMenuCell,
+//     sortable: false,
+//     width: 100,
+//     headerAlign: "center",
+//     filterable: false,
+//     align: "center",
+//     disableColumnMenu: true,
+//     disableReorder: true,
+//   },
+// ];
 
-  const handleClick = () => {
-    const id = randomId();
-    apiRef.current.updateRows([{ id, isNew: true }]);
-    apiRef.current.setRowMode(id, "edit");
-    // Wait for the grid to render with the new row
-    setTimeout(() => {
-      apiRef.current.scrollToIndexes({
-        rowIndex: apiRef.current.getRowsCount() - 1,
-      });
+// function EditToolbar(props) {
+//   const { apiRef } = props;
 
-      apiRef.current.setCellFocus(id, "name");
-    }, 150);
-  };
+//   const handleClick = () => {
+//     const id = randomId();
+//     apiRef.current.updateRows([{ id, isNew: true }]);
+//     apiRef.current.setRowMode(id, "edit");
+//     // Wait for the grid to render with the new row
+//     setTimeout(() => {
+//       apiRef.current.scrollToIndexes({
+//         rowIndex: apiRef.current.getRowsCount() - 1,
+//       });
 
-  return (
-    <GridToolbarContainer>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-        Add record
-      </Button>
-    </GridToolbarContainer>
-  );
-}
+//       apiRef.current.setCellFocus(id, "name");
+//     }, 150);
+//   };
 
-EditToolbar.propTypes = {
-  apiRef: PropTypes.shape({
-    current: PropTypes.object.isRequired,
-  }).isRequired,
-};
+//   return (
+//     <GridToolbarContainer>
+//       <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+//         Add record
+//       </Button>
+//     </GridToolbarContainer>
+//   );
+// }
 
-export default function FullFeaturedCrudGrid() {
-  const apiRef = useGridApiRef();
+// EditToolbar.propTypes = {
+//   apiRef: PropTypes.shape({
+//     current: PropTypes.object.isRequired,
+//   }).isRequired,
+// };
 
-  const handleRowEditStart = (params, event) => {
-    event.defaultMuiPrevented = true;
-  };
+// export default function FullFeaturedCrudGrid() {
+//   const apiRef = useGridApiRef();
 
-  const handleRowEditStop = (params, event) => {
-    event.defaultMuiPrevented = true;
-  };
+//   const handleRowEditStart = (params, event) => {
+//     event.defaultMuiPrevented = true;
+//   };
 
-  return (
-    <div style={{ height: 500, width: "100%" }}>
-      <DataGridPro
-        rows={rows}
-        columns={columns}
-        apiRef={apiRef}
-        editMode="row"
-        onRowEditStart={handleRowEditStart}
-        onRowEditStop={handleRowEditStop}
-        components={{
-          Toolbar: EditToolbar,
-        }}
-        componentsProps={{
-          toolbar: { apiRef },
-        }}
-      />
-    </div>
-  );
-}
+//   const handleRowEditStop = (params, event) => {
+//     event.defaultMuiPrevented = true;
+//   };
+
+//   return (
+//     <div style={{ height: 500, width: "100%" }}>
+//       <DataGrid
+//         rows={rows}
+//         columns={columns}
+//         apiRef={apiRef}
+//         editMode="row"
+//         onRowEditStart={handleRowEditStart}
+//         onRowEditStop={handleRowEditStop}
+//         components={{
+//           Toolbar: EditToolbar,
+//         }}
+//         componentsProps={{
+//           toolbar: { apiRef },
+//         }}
+//       />
+//     </div>
+//   );
+// }
