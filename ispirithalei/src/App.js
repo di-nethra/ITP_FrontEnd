@@ -1,58 +1,73 @@
-import React from 'react';
+import React from 'react'
+import Header from "./components/patient-ui/Header/Header";
+import Home from "./pages/patient-ui/Home";
+import {createTheme, ThemeProvider} from "@material-ui/core";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
+import About from "./pages/patient-ui/About";
+import Labasisstant from "./layouts/Labasisstant";
+import Receptionist from "./layouts/Receptionist";
+import Footer from "./components/patient-ui/Footer/Footer";
+import Login from "./components/staff-ui/Login";
+import Doctor from "./layouts/Doctor"
+import Inventory from './layouts/Inventory';
+import SysAdmin from './layouts/SysAdmin';
 
-import { makeStyles, CssBaseline, createMuiTheme, ThemeProvider } from '@material-ui/core';
-import Display from './pages/patient-ui/ChanellView';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#333996",
-      light: '#3c44b126'
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#005792',
+            dark: '#00204A',
+            light: '#D9FAFF',
+        },
     },
-    secondary: {
-      main: "#f83245",
-      light: '#f8324526'
+
+    typography: {
+        fontFamily: 'Poppins',
+        fontWeightLight: 400,
+        fontWeightRegular: 500,
+        fontWeightMedium: 600,
+        fontWeightBold: 700,
     },
-    background: {
-      default: "#f4f5fd"
+    shape : {
+        borderRadius: '15px'
     },
-  },
-  overrides:{
-    MuiAppBar:{
-      root:{
-        transform:'translateZ(0)'
-      }
-    }
-  },
-  props:{
-    MuiIconButton:{
-      disableRipple:true
-    }
-  }
-})
+});
 
-
-const useStyles = makeStyles({
-  appMain: {
-    paddingLeft: '320px',
-    width: '80%'
-  }
-})
-
-function App() {
-  const classes = useStyles();
-
-  return (
+const App = () => (
     <ThemeProvider theme={theme}>
-      
-      <div className={classes.appMain}>
+        <Router>
+            <Switch>
+                <Route path={["/staff/inventorymanager", "/staff/receptionist", "/login","/staff/doctor", "/staff/sysadmin", "/staff/labassistant"]}>
+
+                    <Switch>
+                        <Route path="/staff/inventorymanager" component={Inventory} />
+                        <Route path="/staff/receptionist" component={Receptionist} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/staff/labassistant" component={Labasisstant} />
+                        <Route path="/staff/doctor" component={Doctor} />
+                        <Route path="/staff/sysadmin" component={SysAdmin} />
+
+                    </Switch>
+
+                </Route>
+
+                <Route path={["/about", "/"]}>
+                    <Header />
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/about" component={About} />
 
 
-        <Display/>
-      </div>
-      <CssBaseline />
+
+                    </Switch>
+                    <Footer />
+                </Route>
+            </Switch>
+        </Router>
     </ThemeProvider>
-  );
-}
-
-export default App;
+)
+export default App
