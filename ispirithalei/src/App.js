@@ -41,15 +41,16 @@ const App = () => (
     <ThemeProvider theme={theme}>
         <Router>
             <Switch>
-                <Route path={["/staff/inventorymanager", "/staff/receptionist", "/login","/staff/doctor", "/staff/sysadmin"]}>
+                <Route path={["/staff/inventorymanager", "/staff/receptionist", "/login","/staff/doctor", "/staff/sysadmin", "/staff/labassistant"]}>
 
                     <Switch>
                         <Route path="/staff/inventorymanager" component={Inventory} />
                         <Route path="/staff/receptionist" component={Receptionist} />
                         <Route path="/login" component={Login} />
-                        {/*<Route path="/staff/doctor/newsession" component={Doctor} />*/}
+                        <Route path="/staff/labassistant" component={Labasisstant} />
                         <Route path="/staff/doctor" component={Doctor} />
                         <Route path="/staff/sysadmin" component={SysAdmin} />
+
                     </Switch>
 
                 </Route>
@@ -69,8 +70,4 @@ const App = () => (
         </Router>
     </ThemeProvider>
 )
-<<<<<<< HEAD
 export default App
-=======
-export default App
->>>>>>> 401871d4ce3f479ef0993744cf4f4a68157e9d8d
