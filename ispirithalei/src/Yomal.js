@@ -40,14 +40,14 @@ const App = () => (
     <ThemeProvider theme={theme}>
         <Router>
             <Switch>
-                <Route path={["/staff/inventorymanager", "/staff/receptionist", "/login","/staff/doctor"]}>
+                <Route path={["/staff/inventorymanager", "/staff/receptionist", "/login","/staff/doctor/sessions/find/:id"]}>
 
                     <Switch>
                         <Route path="/staff/inventorymanager" component={Inventory} />
                         <Route path="/staff/receptionist" component={Receptionist} />
                         <Route path="/login" component={Login} />
                         {/*<Route path="/staff/doctor/newsession" component={Doctor} />*/}
-                        <Route path="/staff/doctor" component={Doctor} />
+                        <Route path="/staff/doctor/sessions/find/:id" component={Doctor} />
                     </Switch>
 
                 </Route>

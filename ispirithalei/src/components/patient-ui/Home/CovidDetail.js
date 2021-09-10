@@ -1,7 +1,7 @@
 import React from 'react';
 import {loadCSS} from 'fg-loadcss';
 import {Box, Typography} from "@material-ui/core";
-
+import Fade from 'react-reveal/Fade';
 
 function CovidDetail(props) {
     React.useEffect(() => {
@@ -15,6 +15,7 @@ function CovidDetail(props) {
         };
     }, []);
     return (
+        <Fade bottom>
         <div>
             <Box>
                 {props.icon}
@@ -27,6 +28,7 @@ function CovidDetail(props) {
             </Typography>
 
         </div>
+        </Fade>
     )
 }
 
