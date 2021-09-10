@@ -63,6 +63,7 @@ function InventoryItem(){
      <div className="formCard"
      >
          <form  style={{marginLeft:'250px'}}>
+         <h3>Edit Details of an Item</h3>
          <TextField
           id="outlined-full-width"
           label="Item Name"
