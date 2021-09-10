@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "../components/staff-ui/sidebar/Sidebar";
-
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import DoneIcon from '@material-ui/icons/Done';
@@ -67,6 +66,7 @@ const Receptionist = () => {
       <div className="others">
           <Topbar page={user.list}/>
 
+       
       </div>
     </div>
   </div>

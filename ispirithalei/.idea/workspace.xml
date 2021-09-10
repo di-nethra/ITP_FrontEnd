@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4a38bb7-9012-4fa3-8785-5721a4d391d3" name="Default Changelist" comment="Changed git ignore and updated Amaan.js">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/patient-ui/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/patient-ui/Footer/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/patient-ui/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/patient-ui/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/patient-ui/Home/CovidCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/patient-ui/Home/CovidCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/patient-ui/Home/CovidDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/patient-ui/Home/CovidDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/patient-ui/Home/Service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/patient-ui/Home/Service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/patient-ui/Home/ServicesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/patient-ui/Home/ServicesCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/patient-ui/Home/WelcomeMessage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/patient-ui/Home/WelcomeMessage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/patient-ui/patientUI.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/patient-ui/patientUI.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/PatientAbout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/PatientAbout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/PatientHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/PatientHome.js" afterDir="false" />
     </list>
-    <list id="1ca25bd7-cf9f-4ee4-8d70-690dbfbd5481" name="IDEA" comment="IDEA">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_20_2021_1_45_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_20_2021_1_45_PM__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list id="1ca25bd7-cf9f-4ee4-8d70-690dbfbd5481" name="IDEA" comment="IDEA" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="master" />
+        <entry key="$PROJECT_DIR$/.." value="anjana" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -57,14 +64,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ITP_BackEnd" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -115,6 +123,8 @@
       <workItem from="1629716771320" duration="14485000" />
       <workItem from="1630736771359" duration="5499000" />
       <workItem from="1630797635569" duration="593000" />
+      <workItem from="1630843321888" duration="3923000" />
+      <workItem from="1631001412429" duration="22212000" />
     </task>
     <task id="LOCAL-00001" summary="Designed Header">
       <created>1629315673431</created>
@@ -193,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630843285251</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="IDEA">
+      <created>1630843332993</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1630843332993</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,7 +221,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -221,8 +250,8 @@
     <MESSAGE value="updated display session layout" />
     <MESSAGE value="updated sidebar layout to be fixed and changed routing system slightly" />
     <MESSAGE value="Added Receptionist pending page" />
-    <MESSAGE value="IDEA" />
     <MESSAGE value="Changed git ignore and updated Amaan.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed git ignore and updated Amaan.js" />
+    <MESSAGE value="IDEA" />
+    <option name="LAST_COMMIT_MESSAGE" value="IDEA" />
   </component>
 </project>

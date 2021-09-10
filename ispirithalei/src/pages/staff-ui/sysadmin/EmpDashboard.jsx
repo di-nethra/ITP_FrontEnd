@@ -1,5 +1,9 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
+import { Typography } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import CardContent from '@material-ui/core/CardContent';
+import { Card } from '@material-ui/core';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -49,15 +53,15 @@ const rows = [
 
 function EmpDashboard() {
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        checkboxSelection
-        disableSelectionOnClick
-      />
-    </div>
+          <div style={{ height: 400, width: '100%' }}>
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={5}
+              checkboxSelection
+              disableSelectionOnClick
+            />
+          </div>
   );
 }
 

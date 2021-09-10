@@ -5,7 +5,7 @@ export class EmpForm extends Component{
     state ={
         step: 1,
         firstName: '',
-        firstName: '',
+        lastName: '',
         email: '',
         mobile: '',
         address: ''
@@ -36,8 +36,8 @@ export class EmpForm extends Component{
 
     render(){
         const {step} = this.state;
-        const {firstname, lastName, email, mobile, address} = this.state;
-        const values = {firstname, lastName, email, mobile, address}
+        const {firstName, lastName, email, mobile, address} = this.state;
+        const values = {firstName, lastName, email, mobile, address}
 
         switch(step){
             case 1:

@@ -3,26 +3,29 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import MenuItem from "@material-ui/core/MenuItem";
-
-const role = [
+const countries = [
   {
-    value: "Doc",
-    label: "Doctor",
+    value: "Rs",
+    label: "Sri Lanka",
   },
   {
-    value: "Nur",
-    label: "Nurse",
+    value: "IRs",
+    label: "India",
   },
   {
-    value: "Pha",
-    label: "Pharmasist",
+    value: "USD",
+    label: "USA",
+  },
+  {
+    value: "Yen",
+    label: "Japan",
   },
 ];
 
-function Role() {
-  const [Role, setRole] = useState("");
+function DropDown() {
+  const [Country, setCountry] = useState("");
   const handleChanges = (event) => {
-    setRole(event.target.value);
+    setCountry(event.target.value);
   };
 
   return (
@@ -30,11 +33,12 @@ function Role() {
       <TextField
         id="standard-select-country"
         select
+        fullWidth="true"
         variant="outlined"
-        value={Role}
+        value={Country}
         onChange={handleChanges}
       >
-        {role.map((option) => (
+        {countries.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
           </MenuItem>
@@ -44,4 +48,4 @@ function Role() {
   );
 }
 
-export default Role;
+export default DropDown;

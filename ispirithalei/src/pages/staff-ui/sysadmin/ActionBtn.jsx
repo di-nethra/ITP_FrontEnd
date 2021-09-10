@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,10 +20,10 @@ function ActionBtn() {
 
   return (
     <div className={classes.root}>
-      <Fab color="primary" aria-label="add">
-        <AddIcon />
+      <Fab color="secondary" aria-label="delete">
+        <DeleteIcon />
       </Fab>
-      <Fab color="secondary" aria-label="edit">
+      <Fab color="primary" aria-label="edit">
         <EditIcon />
       </Fab>
     </div>
