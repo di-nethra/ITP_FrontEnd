@@ -6,6 +6,8 @@ import Medicine from "../../../assets/images/medicine_1.png";
 import Lab from "../../../assets/images/lab_1.png";
 import {makeStyles} from "@material-ui/core/styles";
 
+
+
 const useStyles = makeStyles({
     box: {
         backgroundColor: "#D9FAFF",
@@ -19,7 +21,7 @@ const useStyles = makeStyles({
     }
 });
 
-function ServicesCard() {
+function ServicesCard(props) {
     const style = useStyles();
     const serviceArr = [
         {
@@ -41,7 +43,7 @@ function ServicesCard() {
     return (
         <Box className={style.box}>
             <Typography className={style.heading} variant="h4">ONE STOP MEDICARE</Typography>
-            <Grid container spacing={4} justifyContent={"space-between"}>
+            <Grid container spacing={4} justifyContent={"space-between"} className="serviceStyle">
                 {
                     serviceArr.map((item, index) => (
                         <Grid item lg={4} xl={4} key={index}>

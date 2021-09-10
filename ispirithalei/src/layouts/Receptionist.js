@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "../components/staff-ui/sidebar/Sidebar";
-
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import DoneIcon from '@material-ui/icons/Done';
@@ -9,7 +8,7 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
 import "./layout.css"
-import ReceptionistPending from "../pages/staff-ui/receptionist/ReceptionistPending";
+
 
 const Receptionist = () => {
   const user = {
@@ -66,7 +65,7 @@ const Receptionist = () => {
       <Sidebar user={user}/>
       <div className="others">
           <Topbar page={user.list}/>
-          <ReceptionistPending />
+       
       </div>
     </div>
   </div>

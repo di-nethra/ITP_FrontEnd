@@ -69,4 +69,8 @@ const App = () => (
         </Router>
     </ThemeProvider>
 )
+<<<<<<< HEAD
 export default App
+=======
+export default App
+>>>>>>> 401871d4ce3f479ef0993744cf4f4a68157e9d8d
