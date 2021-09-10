@@ -11,12 +11,7 @@
     "@material-ui/data-grid": "^4.0.0-alpha.37",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
-<<<<<<< HEAD
-    "@mui/x-data-grid-generator": "^4.0.0",
-    "@mui/x-data-grid-pro": "^4.0.0",
-=======
     "@material-ui/pickers": "^3.3.10",
->>>>>>> 082d8802949567b803e3595fed45d2bd419ec1b0
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
