@@ -10,7 +10,6 @@ import Grid from "@material-ui/core/Grid";
 import SummaryBackground from "../../assets/images/SummaryBackground.svg";
 import PaymentSummaryText from "../../assets/images/PaymentSummary.svg";
 import { Link } from "react-router-dom";
-import paymentCreditService from "../../services/paymentCredit.service";
 
 const styles = (theme) => ({
   infoLogo: {
@@ -160,7 +159,7 @@ export class Checkout extends Component {
                 className={classes.label}
               />
 
-              <Link to="/invoice">
+              <Link to="/payments/invoice">
                 <Button
                   variant="contained"
                   color="primary"
