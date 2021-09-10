@@ -42,8 +42,9 @@ const columns = [
     renderCell: (params) => {
       return (
         <>
-          <Link to={"/staff/inventorymanager/viewregistereditems/" + params.row.id}>
-          <button className="userListEdit">Edit</button>
+          <Link to={"/staff/inventorymanager/viewregistereditem/" + params.row.id}>
+          
+          <button className="userListEdit" >Edit</button>
             </Link>
             
   

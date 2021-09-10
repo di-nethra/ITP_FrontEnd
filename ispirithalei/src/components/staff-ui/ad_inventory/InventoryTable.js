@@ -10,6 +10,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
+import { Link } from "react-router-dom";
 
 const columns = [
   { id: 'name', label: 'ID', minWidth: 170 },
@@ -137,7 +138,8 @@ export default function InventoryTable() {
       />
 
     </Paper> <br /><br />
-    <Button
+    <Link to={"/staff/inventorymanager/inventoryreport/"}>       
+      <Button
             variant="contained"
             color="primary"
             className={b_classes.button}
@@ -145,6 +147,7 @@ export default function InventoryTable() {
           >
            Generate Report
           </Button>
+    </Link>
     </div>
           
   );

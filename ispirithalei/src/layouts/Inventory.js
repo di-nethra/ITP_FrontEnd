@@ -18,62 +18,93 @@ import Restock from "../pages/staff-ui/inventory/Restock";
 import InventoryItem from "../pages/staff-ui/inventory/InventoryItem";
 import InventoryReport from "../pages/staff-ui/inventory/InventoryReport";
 import InventoryReportTable from "../components/staff-ui/ad_inventory/InventoryReportTable";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const Inventory = () => {
   const user = {
-    name : 'Yomal Bandara',
-    role : 'InventoryManager',
-    list : [
+    name: 'Yomal Bandara',
+    role: 'InventoryManager',
+    list: [
       {
         path: "",
         exact: true,
-        icon: <DashboardOutlinedIcon className="sidebarIcon"/>,
+        icon: <DashboardOutlinedIcon className="sidebarIcon" />,
         iconlabel: 'Dashboard',
         id: 1
       },
       {
         path: "registeranewitem",
-        icon: <ExitToAppOutlinedIcon className="sidebarIcon"/>,
+        icon: <ExitToAppOutlinedIcon className="sidebarIcon" />,
         iconlabel: 'Register a New Item',
         id: 2
       },
       {
         path: "viewregistereditems",
-        icon: <ListOutlinedIcon className="sidebarIcon"/>,
+        icon: <ListOutlinedIcon className="sidebarIcon" />,
         iconlabel: 'View Registered Items',
         id: 3
       },
       {
         path: "restockitems",
-        icon: <AddCircleOutlineOutlinedIcon className="sidebarIcon"/>,
+        icon: <AddCircleOutlineOutlinedIcon className="sidebarIcon" />,
         iconlabel: 'Restock Items',
         id: 4
       },
       {
         path: "support",
-        icon: <HelpOutlineIcon className="sidebarIcon"/>,
+        icon: <HelpOutlineIcon className="sidebarIcon" />,
         iconlabel: 'Support',
         id: 5
       },
 
-      
+
 
     ]
   }
-  
-  return(
-  <div >
-    <div className="container">
 
-      <Sidebar user={user}/>
-      <InventoryReport />
-      <div className="others">
-          <Topbar page={user.list}/>
-          
-      </div>
+  return (
+    <div >
+      
+        <div className="container">
+
+          <Sidebar user={user} />
+          {/* <InventoryReport /> */}
+          <div className="others">
+            <Topbar page={user.list} />
+            <Switch>
+              <Route exact path="/staff/inventorymanager/">
+                <InventoryHome />
+              </Route>
+
+              
+              <Route path="/staff/inventorymanager/registeranewitem">
+                <InventoryRegister />
+              </Route>
+
+              <Route path="/staff/inventorymanager/viewregistereditems">
+                <InventoryList />
+              </Route>
+
+              <Route path="/staff/inventorymanager/restockitems">
+                <Restock />
+              </Route>
+
+              <Route path="/staff/inventorymanager/support">
+                <InventoryReport />
+              </Route>
+
+              <Route path="/staff/inventorymanager/viewregistereditem/:topicId">
+            <InventoryItem />
+          </Route>
+
+          <Route path="/staff/inventorymanager/inventoryreport/">
+            <InventoryReport />
+          </Route>
+            </Switch>
+          </div>
+        </div>
+      
     </div>
-    
-  </div>
   )
 }
 
