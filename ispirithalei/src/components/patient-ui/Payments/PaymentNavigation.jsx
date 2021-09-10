@@ -1,18 +1,11 @@
 import React from "react";
-import { Breadcrumbs, Typography, Link, Grid } from "@material-ui/core";
-import { Route, Switch } from "react-router-dom";
-import { withRouter } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-import PaymentOptionPage from "../../../pages/patient-ui/PaymentOptionPage";
-import { useHistory } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import {Breadcrumbs, Grid, Link} from "@material-ui/core";
+import {useHistory, withRouter} from "react-router-dom";
+import {makeStyles} from "@material-ui/core/styles";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import ListIcon from "@material-ui/icons/List";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import DescriptionIcon from "@material-ui/icons/Description";
-import UserForm from "./UserForm";
-import { Checkout } from "../../../pages/patient-ui/Checkout";
-import PaymentInvoice from "../../../pages/patient-ui/PaymentInvoice";
 
 const useStyles = makeStyles((theme) => ({
   navigation: {
