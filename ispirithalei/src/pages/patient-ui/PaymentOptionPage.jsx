@@ -5,7 +5,10 @@ import StripePay from "../../assets/images/StripePayLogo.svg";
 import {useHistory} from "react-router-dom";
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+<<<<<<< HEAD
 
+=======
+>>>>>>> eaf61f78aa32eadfa25a6a7b9054d2e700c1c5c7
 const useStyles = makeStyles({
   logo: {
     marginTop: "100px",

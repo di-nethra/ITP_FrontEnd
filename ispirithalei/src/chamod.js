@@ -10,6 +10,11 @@ import {
 import About from "./pages/patient-ui/About";
 import Labasisstant from "./layouts/Labasisstant";
 import Receptionist from "./layouts/Receptionist";
+import EmpForm from './pages/staff-ui/sysadmin/EmpForm';
+import SysAdmin from './layouts/SysAdmin';
+import EmpList from './pages/staff-ui/sysadmin/EmpList';
+import EmpDashboard from './pages/staff-ui/sysadmin/EmpDashboard';
+import Payroll from './pages/staff-ui/sysadmin/Payroll';
 
 const theme = createTheme({
     palette: {
@@ -36,14 +41,40 @@ const App = () => (
     <ThemeProvider theme={theme}>
         <Router>
             <Switch>
-                <Route path={["/staff/labassistant", "/staff/receptionist"]}>
+
+            <Route path={[ 
+                "/staff/sysadmin",
+                "/staff/sysadmin/empdashboard", 
+                "/staff/sysadmin/empform",
+                "/staff/sysadmin/emplist"
+                
+                ]}>
 
                     <Switch>
+                        
+                        <Route path="/staff/sysadmin/empdashboard" component={EmpDashboard} />
+                        <Route path="/staff/sysadmin/emplist" component={EmpList} />
+                        <Route path="/staff/sysadmin/empform" component={EmpForm} />
+                        <Route path="/staff/sysadmin/payroll" component={Payroll} />
+                        
+                    </Switch>
+                    
+                </Route>
+                
+                <Route path={["/staff/labassistant", 
+                "/staff/receptionist"
+                ]}>
+
+                    <Switch>
+
                         <Route path="/staff/labassistant" component={Labasisstant} />
                         <Route path="/staff/receptionist" component={Receptionist} />
+
                     </Switch>
 
                 </Route>
+
+
 
                 <Route path={["/about", "/"]}>
                     <Header />

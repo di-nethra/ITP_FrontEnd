@@ -8,7 +8,6 @@ function CreditCardPayments() {
   //   return name;
   // });
 
-  // var state = useState();
   // state = {
   //   credit: [],
   // };
@@ -18,18 +17,16 @@ function CreditCardPayments() {
       .getAll()
       .then((response) => {
         const data = response.data;
-
+        this.setState({ credit: data });
         // console.log(state);
       })
       .catch((err) => {
         alert("error is show credit");
       });
   }
-
   return (
     <div>
-      <h1>hello credit</h1>
-      <button onClick={showCredit}></button>
+      <h1>{showCredit}</h1>
     </div>
   );
 }
