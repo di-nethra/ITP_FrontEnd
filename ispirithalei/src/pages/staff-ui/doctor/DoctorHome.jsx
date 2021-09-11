@@ -7,7 +7,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 import Calendar from './Calendar';
 import { Link } from "react-router-dom";
-import ThankYouDoc from "../../../assets/images/thank-you-doctor.png";
+import ReactPlayer from 'react-player/youtube';
 
 const columns = [
     { field: 'id', headerName: 'PATIENT ID', width: 150 },
@@ -51,7 +51,8 @@ export default function DoctorHome() {
             <div>
             <Card style={{float:"right", backgroundColor: "#005792"}}>
                 <CardContent style={{float:"right", width: 690, height: 295, }}>
-                <img src={ThankYouDoc} style={{width:"100%", height: "100%"}} alt="Thank You Doctor Image" />
+                <ReactPlayer url='https://www.youtube.com/watch?v=eUAp3lWxJSo&ab_channel=Minist%C3%A8redelaSant%C3%A9etdesServicessociaux' 
+                width="100%" height="100%" controls="true" volume="0.09" loop="true" />
                 </CardContent>
             </Card>
                 <Card style={{ width: 380, backgroundColor: "#005792" }}>
