@@ -48,7 +48,7 @@ const rows = [
 export default function DoctorViewPrescription() {
 
     return (
-        <div>
+        <div style={{marginBottom: 10}}>
             <Card>
                 <CardContent>
                     <h3>PATIENT PRESCRIPTIONS</h3>

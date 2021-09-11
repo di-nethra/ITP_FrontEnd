@@ -46,8 +46,8 @@ const rows = [
 
 export default function DoctorHome() {
     return (
-        <div>
-            <Card style={{ width: 380 }}>
+        <div style={{marginBottom: 10}}>
+            <Card style={{ width: 380, backgroundColor: "#005792"}}>
                 <CardContent>
                     <Calendar />
                 </CardContent>
@@ -55,8 +55,8 @@ export default function DoctorHome() {
             <br />
 
             <Card>
-                <CardContent style={{ backgroundColor: "#D9FAFF" }}>
-                    <h3>PATIENT APPOINTMENTS</h3>
+                <CardContent style={{ backgroundColor: "#005792" }}>
+                    <h3 style={{color:"white"}} >PATIENT APPOINTMENTS</h3>
                     <br />
                     <div style={{ height: 400, width: '100%' }}>
                         <DataGrid
@@ -72,7 +72,7 @@ export default function DoctorHome() {
                     <div style={{ marginTop: 15 }} className="buttonAlignRight">
                         <Link to="/staff/doctor/addprescription">
                             <Tooltip title="Add Prescription" placement="bottom" aria-label="add">
-                                <Fab color="primary">
+                                <Fab style={{backgroundColor :"#D9FAFF"}}>
                                     <AddIcon fontSize="large" />
                                 </Fab>
                             </Tooltip>

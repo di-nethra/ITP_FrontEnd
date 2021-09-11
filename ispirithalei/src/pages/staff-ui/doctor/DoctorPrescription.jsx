@@ -15,7 +15,7 @@ function DoctorPrescription() {
     }
 
     return (
-        <div>
+        <div style={{marginBottom: 10}} >
             <Card>
                 <CardContent>
                     <h3>PRESCRIPTION FORM</h3>

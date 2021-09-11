@@ -7,7 +7,7 @@ import "./doctor.css"
 
 function DoctorAddNote() {
     return (
-        <div>
+        <div style={{marginBottom: 10}}>
             <Card>
                 <CardContent>
                     <h3>DOCTOR'S NOTE</h3>
