@@ -58,7 +58,7 @@ function CovidCard() {
     let detailArr = [{
         heading: "Total Cases",
         number: data.data.local_total_cases,
-        icon: function () {
+        icon: function icon() {
             return <FontAwesomeIcon icon={faHospitalUser} size='3x' color={theme.palette.warning.main}/>
         },
         color: theme.palette.warning.main,

@@ -23,7 +23,6 @@ const NewSession = () => {
     }
     const handleTimeChange = event => {
         setSelectedTime(event.target.value);
-        console.log(event.target.name);
     }
     const handleValueChange = event => {
         setValue(event.target.value);

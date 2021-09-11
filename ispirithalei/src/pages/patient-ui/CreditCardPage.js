@@ -1,11 +1,9 @@
-import React, { Component } from "react";
-import { useState } from "react";
+import React, {Component} from "react";
 import logo from "../../assets/images/infoPageLogo.svg";
-import { withStyles } from "@material-ui/core/styles";
+import {withStyles} from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import PayCredit from "../../assets/images/PayWithCreditCard.svg";
-import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import DropDown from "../../components/patient-ui/Payments/DropDown";
 import paymentCreditService from "../../services/paymentCredit.service";

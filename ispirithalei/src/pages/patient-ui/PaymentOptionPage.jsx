@@ -2,8 +2,8 @@ import React from "react";
 import CreditCard from "../../assets/images/CreditcardLogo.svg";
 import MobilePay from "../../assets/images/MobilePayLogo.svg";
 import StripePay from "../../assets/images/StripePayLogo.svg";
-import { useHistory } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import {useHistory} from "react-router-dom";
+import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles({
   logo: {
