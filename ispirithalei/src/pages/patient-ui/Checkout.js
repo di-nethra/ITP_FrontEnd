@@ -10,6 +10,48 @@ import Grid from "@material-ui/core/Grid";
 import SummaryBackground from "../../assets/images/SummaryBackground.svg";
 import PaymentSummaryText from "../../assets/images/PaymentSummary.svg";
 import { Link } from "react-router-dom";
+import { Payhere, AccountCategory } from "payhere-js-sdk";
+import {
+  Customer,
+  CurrencyType,
+  PayhereCheckout,
+  CheckoutParams,
+} from "payhere-js-sdk";
+Payhere.init("1218569", AccountCategory.SANDBOX);
+
+function onPayhereCheckoutError(errorMsg) {
+  alert(errorMsg);
+}
+function checkout() {
+  const customer = new Customer({
+    first_name: "Pavindu",
+    last_name: "Lakshan",
+    phone: "+94771234567",
+    email: "plumberhl@gmail.com",
+    address: "No. 50, Highlevel Road",
+    city: "Panadura",
+    country: "Sri Lanka",
+  });
+
+  const checkoutData = new CheckoutParams({
+    returnUrl: "http://localhost:3000/return",
+    cancelUrl: "http://localhost:3000/cancel",
+    notifyUrl: "http://localhost:8080/notify",
+    order_id: "112233",
+    itemTitle: "Demo Item",
+    currency: CurrencyType.LKR,
+    amount: 100,
+  });
+
+  const checkout = new PayhereCheckout(
+    customer,
+    checkoutData,
+    onPayhereCheckoutError
+  );
+  var win = window.open("/page", "title");
+  checkout.start();
+  win();
+}
 
 const styles = (theme) => ({
   infoLogo: {
@@ -163,6 +205,7 @@ export class Checkout extends Component {
                   variant="contained"
                   color="primary"
                   className={classes.Paybutton}
+                  onClick={checkout}
                 >
                   Pay Rs.0.00
                 </Button>

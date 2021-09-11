@@ -16,9 +16,9 @@ const create = (data) => {
 //   return http.put(`/payments/info/${id}`, data);
 // };
 
-// const remove = (id) => {
-//   return http.delete(`/payments/info${id}`);
-// };
+const remove = (id) => {
+  return http.delete(`/payments/${id}`);
+};
 
 // const removeAll = () => {
 //   return http.delete(`/payments/info`);
@@ -29,6 +29,6 @@ export default {
   get,
   create,
   // update,
-  // remove,
+  remove,
   // removeAll,
 };
