@@ -84,9 +84,9 @@ const Doctor = () => {
               <NewSession />
             </Route>
 
-            <Route path="/staff/doctor/support">
-              <DoctorEditPrescription />
-            </Route>
+            {/* <Route path="/staff/doctor/support">
+              <# />
+            </Route> */}
 
             <Route path="/staff/doctor/addnote">
               <DoctorAddNote />
@@ -94,6 +94,10 @@ const Doctor = () => {
 
             <Route path="/staff/doctor/viewnote">
               <DoctorViewNotes />
+            </Route>
+
+            <Route path="/staff/doctor/editprescription">
+              <DoctorEditPrescription />
             </Route>
           </Switch>
         </div>
