@@ -32,14 +32,14 @@ const columns = [
         editable: false,
         renderCell: (params) => {
             return (
-              <>
-                <Link to={"/staff/doctor/editprescription" /*+ params.row.id*/}>
-                  <Button size="small" color="primary" variant="contained" style={{ marginRight: 5 }}>Edit</Button>
-                </Link>
-                <Button size="small" color="secondary" variant="contained"><DeleteOutline /></Button>
-              </>
+                <>
+                    <Link to={"/staff/doctor/editprescription" /*+ params.row.id*/}>
+                        <Button size="small" color="primary" variant="contained" style={{ marginRight: 5 }}>Edit</Button>
+                    </Link>
+                    <Button size="small" color="secondary" variant="contained"><DeleteOutline /></Button>
+                </>
             );
-          },
+        },
     },
 ];
 
@@ -59,7 +59,7 @@ const rows = [
 export default function DoctorViewPrescription() {
 
     return (
-        <div style={{marginBottom: 10}}>
+        <div style={{ marginBottom: 10 }}>
             <Card>
                 <CardContent>
                     <h3>PATIENT PRESCRIPTIONS</h3>

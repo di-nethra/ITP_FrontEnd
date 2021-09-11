@@ -49,12 +49,12 @@ export default function DoctorHome() {
     return (
         <div style={{ marginBottom: 10 }}>
             <div>
-            <Card style={{float:"right", backgroundColor: "#005792"}}>
-                <CardContent style={{float:"right", width: 690, height: 295, }}>
-                <ReactPlayer url='https://www.youtube.com/watch?v=eUAp3lWxJSo&ab_channel=Minist%C3%A8redelaSant%C3%A9etdesServicessociaux' 
-                width="100%" height="100%" controls="true" volume="0.09" loop="true" />
-                </CardContent>
-            </Card>
+                <Card style={{ float: "right", backgroundColor: "#005792" }}>
+                    <CardContent style={{ float: "right", width: 690, height: 295, }}>
+                        <ReactPlayer url='https://www.youtube.com/watch?v=eUAp3lWxJSo&ab_channel=Minist%C3%A8redelaSant%C3%A9etdesServicessociaux'
+                            width="100%" height="100%" controls="true" volume="0.09" loop="true" />
+                    </CardContent>
+                </Card>
                 <Card style={{ width: 380, backgroundColor: "#005792" }}>
                     <CardContent>
                         <Calendar />

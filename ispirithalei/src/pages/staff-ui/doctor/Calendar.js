@@ -4,12 +4,12 @@ import Calendar from 'react-calendar';
 const Calendar1 = () => {
     const [value, onChange] = useState(new Date());
 
-    return(
+    return (
         <div>
-            <Calendar onChange = {onChange}
-            value = {value} />
+            <Calendar onChange={onChange}
+                value={value} />
         </div>
-    ); 
+    );
 }
 
 export default Calendar1;

@@ -35,7 +35,7 @@ const rows = [
 
 export default function DoctorViewNotes() {
     return (
-        <div style={{marginBottom: 10}} >
+        <div style={{ marginBottom: 10 }} >
             <Card>
                 <CardContent>
                     <h3>DOCTOR NOTES LIST</h3>
