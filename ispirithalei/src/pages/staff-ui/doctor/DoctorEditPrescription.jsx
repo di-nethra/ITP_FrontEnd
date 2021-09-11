@@ -21,29 +21,29 @@ function DoctorPrescription() {
                     <h3>EDIT PRESCRIPTION FORM</h3>
                     <br />
                     <form>
-                        <TextField id="dEditPName" label="PATIENT NAME" style={{ margin: 0 }} placeholder="Enter patient name" helperText="ex: Asel Jayasooriya"
+                        <TextField id="dEditPName" name="dEditPName" label="PATIENT NAME" style={{ margin: 0 }} placeholder="Enter patient name" helperText="ex: Asel Jayasooriya"
                             fullWidth margin="normal" InputLabelProps={{ shrink: true, }} variant="outlined" required />
                         <br /><br />
 
-                        <TextField id="dEditPDignosis" label="DIAGNOSIS" style={{ margin: 0 }} placeholder="Enter diagnosis" helperText="ex: Chronic heart failure"
+                        <TextField id="dEditPDignosis" name="dEditPDignosis" label="DIAGNOSIS" style={{ margin: 0 }} placeholder="Enter diagnosis" helperText="ex: Chronic heart failure"
                             fullWidth margin="normal" InputLabelProps={{ shrink: true, }} variant="outlined" required />
                         <br /><br />
 
                         <div>
-                            <TextField id="dEditMed1" label="MEDICINE 1" style={{ marginRight: 40 }} InputLabelProps={{ shrink: true, }}
+                            <TextField id="dEditMed1" name="dEditMed1" label="MEDICINE 1" style={{ marginRight: 40 }} InputLabelProps={{ shrink: true, }}
                                 placeholder="Enter medicine 1 name" helperText="ex: Valparine" variant="outlined" required />
 
-                            <TextField id="dEditDose1" label="DOSAGE" style={{ margin: 0 }} InputLabelProps={{ shrink: true, }}
+                            <TextField id="dEditDose1" name="dEditDose1" label="DOSAGE" style={{ margin: 0 }} InputLabelProps={{ shrink: true, }}
                                 placeholder="Enter medicine 1 dosage" helperText="ex: 2 tds" variant="outlined" required />
 
                         </div>
                         <br />
 
                         <div>
-                            <TextField id="dEditMed2" label="MEDICINE 2" style={{ marginRight: 40 }} InputLabelProps={{ shrink: true, }}
+                            <TextField id="dEditMed2" name="dEditMed2" label="MEDICINE 2" style={{ marginRight: 40 }} InputLabelProps={{ shrink: true, }}
                                 placeholder="Enter medicine 2 name" helperText="ex: Valparine" variant="outlined" />
 
-                            <TextField id="dEditDose2" label="DOSAGE" style={{ margin: 0 }} InputLabelProps={{ shrink: true, }}
+                            <TextField id="dEditDose2" name="dEditDose2" label="DOSAGE" style={{ margin: 0 }} InputLabelProps={{ shrink: true, }}
                                 placeholder="Enter medicine 2 dosage" helperText="ex: 2 tds" variant="outlined" />
 
                         </div>

@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import { Button } from "@material-ui/core";
 import "./doctor.css"
 
+
+
 function DoctorAddNote() {
+    const [note, setNote] = useState({
+        pNoteId: "",
+        pNoteName: "",
+        pNoteMessage: ""
+      });
+    
+      function handleNoteChange(event) {
+        const { name, value } = event.target;
+    
+        setNote(prevValue => {
+          return {
+            ...prevValue,
+            [name]: value
+          };
+        });
+      }
+    // console.log(note.pNoteId);
+    // console.log(note.pNoteName);
+    // console.log(note.pNoteMessage);
+    
     return (
         <div style={{marginBottom: 10}}>
             <Card>
@@ -17,16 +39,20 @@ function DoctorAddNote() {
 
                         <TextField
                             id="pNoteId"
+                            name="pNoteId"
                             label="PATIENT ID"
                             style={{ margin: 0 }}
                             InputLabelProps={{ shrink: true, }}
                             placeholder="Enter patient ID"
                             helperText="Please enter a number only"
                             variant="outlined"
+                            onChange={handleNoteChange}
+                            value={note.pNoteId}
                             required /><br /><br />
 
                         <TextField
                             id="pNoteName"
+                            name="pNoteName"
                             label="Patient Name"
                             style={{ margin: 0 }}
                             placeholder="Enter patient name"
@@ -35,10 +61,13 @@ function DoctorAddNote() {
                             margin="normal"
                             InputLabelProps={{ shrink: true, }}
                             variant="outlined"
+                            onChange={handleNoteChange}
+                            value={note.pNoteName}
                             required /><br /><br />
 
                         <TextField
                             id="pNoteMessage"
+                            name="pNoteMessage"
                             label="Message"
                             style={{ margin: 0 }}
                             placeholder="Enter message"
@@ -49,6 +78,8 @@ function DoctorAddNote() {
                             rows={5}
                             InputLabelProps={{ shrink: true, }}
                             variant="outlined"
+                            onChange={handleNoteChange}
+                            value={note.pNoteMessage}
                             required /><br /><br />
 
                         <div className="buttonAlignRight">
