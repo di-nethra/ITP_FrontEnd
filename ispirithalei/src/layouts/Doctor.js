@@ -16,7 +16,7 @@ import DoctorEditPrescription from "../pages/staff-ui/doctor/DoctorEditPrescript
 import DoctorAddNote from "../pages/staff-ui/doctor/DoctorAddNote";
 import DoctorViewNotes from "../pages/staff-ui/doctor/DoctorViewNotes";
 import NewSession from '../pages/staff-ui/doctor/NewSession'
-import {Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 const Doctor = () => {
   const user = {
@@ -84,9 +84,9 @@ const Doctor = () => {
               <NewSession />
             </Route>
 
-            {/* <Route path="/staff/doctor/support">
-              <InventoryReport />
-            </Route> */}
+            <Route path="/staff/doctor/support">
+              <DoctorEditPrescription />
+            </Route>
 
             <Route path="/staff/doctor/addnote">
               <DoctorAddNote />
@@ -95,11 +95,6 @@ const Doctor = () => {
             <Route path="/staff/doctor/viewnote">
               <DoctorViewNotes />
             </Route>
-
-            <Route path="/staff/doctor/addprescription">
-              <DoctorViewNotes />
-            </Route>
-
           </Switch>
         </div>
       </div>

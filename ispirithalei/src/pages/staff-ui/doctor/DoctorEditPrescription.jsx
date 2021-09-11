@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import "./doctor.css"
+import { Link } from "react-router-dom";
 
 function DoctorPrescription() {
     const [isDisabled, setIsDisabled] = useState(true);
@@ -14,7 +15,7 @@ function DoctorPrescription() {
     }
 
     return (
-        <div style={{marginBottom: 10}}>
+        <div style={{ marginBottom: 10 }}>
             <Card>
                 <CardContent>
                     <h3>EDIT PRESCRIPTION FORM</h3>
@@ -52,7 +53,9 @@ function DoctorPrescription() {
                             &ensp;Check to confirm the edited prescription submission.</p>
 
                         <div className="buttonAlignRight">
-                            <Button size="large" variant="contained" style={{ marginRight: 8 }} >Cancel</Button>
+                            <Link to="/staff/doctor/viewprescription">
+                                <Button size="large" variant="contained" style={{ marginRight: 8 }} >Cancel</Button>
+                            </Link>
                             <Button size="large" variant="contained" color="primary" type="submit" disabled={isDisabled}>Edit Prescription</Button>
                         </div>
 
