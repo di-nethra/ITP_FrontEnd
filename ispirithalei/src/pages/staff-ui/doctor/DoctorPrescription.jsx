@@ -32,8 +32,17 @@ function DoctorPrescription() {
         });
     }
 
-    // console.log(form.dPName); console.log(form.dPDignosis); console.log(form.dMed1); 
+    // console.log(form.dPName); console.log(form.dPDignosis); console.log(form.dMed1);
     // console.log(form.dDose1); console.log(form.dMed2); console.log(form.dDose2);
+
+    const handleReset = (e) => {
+        e.preventDefault();
+        setForm(prevState => ({
+            ...prevState,
+            dPName: "", dPDignosis: "", dMed1: "",
+            dDose1: "", dMed2: "", dDose2: ""
+        }))
+    }
 
     return (
         <div style={{ marginBottom: 10 }} >
@@ -86,7 +95,7 @@ function DoctorPrescription() {
                             &ensp;Check to confirm the prescription submission.</p>
 
                         <div>
-                            <Button size="large" variant="contained" style={{ marginRight: 8 }} type="reset">Reset</Button>
+                            <Button size="large" variant="contained" style={{ marginRight: 8 }} type="reset" onClick={handleReset}>Clear</Button>
                             <Button size="large" variant="contained" color="primary" type="submit" disabled={isDisabled}>Add Prescription</Button>
                         </div>
 

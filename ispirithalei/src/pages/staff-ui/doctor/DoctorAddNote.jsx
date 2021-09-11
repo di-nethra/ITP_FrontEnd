@@ -12,24 +12,34 @@ function DoctorAddNote() {
         pNoteId: "",
         pNoteName: "",
         pNoteMessage: ""
-      });
-    
-      function handleNoteChange(event) {
+    });
+
+    function handleNoteChange(event) {
         const { name, value } = event.target;
-    
+
         setNote(prevValue => {
-          return {
-            ...prevValue,
-            [name]: value
-          };
+            return {
+                ...prevValue,
+                [name]: value
+            };
         });
-      }
+    }
     // console.log(note.pNoteId);
     // console.log(note.pNoteName);
     // console.log(note.pNoteMessage);
-    
+
+    const handleReset = (e) => {
+        e.preventDefault();
+        setNote(prevState => ({
+            ...prevState,
+            pNoteId: "",
+            pNoteName: "",
+            pNoteMessage: ""
+        }))
+    }
+
     return (
-        <div style={{marginBottom: 10}}>
+        <div style={{ marginBottom: 10 }}>
             <Card>
                 <CardContent>
                     <h3>DOCTOR'S NOTE</h3>
@@ -83,7 +93,7 @@ function DoctorAddNote() {
                             required /><br /><br />
 
                         <div className="buttonAlignRight">
-                            <Button size="medium" variant="contained" style={{ marginRight: 8 }} type="reset">Clear</Button>
+                            <Button size="medium" variant="contained" style={{ marginRight: 8 }} type="reset" onClick={handleReset}>Clear</Button>
                             <Button size="medium" variant="contained" color="primary" type="submit">Send</Button>
                         </div>
 
