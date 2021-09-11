@@ -49,7 +49,7 @@ export class CreditCardPage extends Component {
     const ranNum = "CPAY" + Math.floor(1000 + Math.random() * 9000);
     const currentDate = new Date().toDateString();
 
-    const tempPrice = 5650.0;
+    const tempPrice = "RS.5650.00";
     const data = {
       paymentid: ranNum,
       name: this.props.values.nameOnTheCard,

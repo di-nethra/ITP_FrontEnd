@@ -89,9 +89,9 @@ const App = () => (
                   <PaymentOptionPage />
                 </Route>
               </Switch>
-              <Footer />
             </Route>
           </Switch>
+          <Footer />
         </Route>
       </Switch>
     </Router>

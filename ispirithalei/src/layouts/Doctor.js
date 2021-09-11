@@ -10,6 +10,7 @@ import "./layout.css"
 import DoctorHome from "../pages/staff-ui/doctor/DoctorHome";
 import DoctorPrescription from "../pages/staff-ui/doctor/DoctorPrescription";
 import DoctorViewPrecription from "../pages/staff-ui/doctor/DoctorViewPrescription";
+import DoctorEditPrescription from "../pages/staff-ui/doctor/DoctorEditPrescription";
 import DoctorAddNote from "../pages/staff-ui/doctor/DoctorAddNote";
 import DoctorViewNotes from "../pages/staff-ui/doctor/DoctorViewNotes";
 import NewSession from '../pages/staff-ui/doctor/NewSession'
@@ -24,83 +25,76 @@ const Doctor = () => {
       {
         path: "",
         exact: true,
-        icon: <DashboardOutlinedIcon className="sidebarIcon"/>,
+        icon: <DashboardOutlinedIcon className="sidebarIcon" />,
         iconlabel: 'Dashboard',
         id: 1
       },
       {
         path: "addprescription",
-        icon: <PublishOutlinedIcon className="sidebarIcon"/>,
+        icon: <PublishOutlinedIcon className="sidebarIcon" />,
         iconlabel: 'Add Prescription',
         id: 2
       },
       {
         path: "viewprescription",
-        icon: <TransformIcon className="sidebarIcon"/>,
+        icon: <TransformIcon className="sidebarIcon" />,
         iconlabel: 'View Prescriptions',
         id: 3
       },
       {
         path: "doctorschedule",
-        icon: <DoneIcon className="sidebarIcon"/>,
+        icon: <DoneIcon className="sidebarIcon" />,
         iconlabel: 'Doctor Schedule',
         id: 4
       },
       {
         path: "support",
-        icon: <HelpOutlineIcon className="sidebarIcon"/>,
+        icon: <HelpOutlineIcon className="sidebarIcon" />,
         iconlabel: 'Support',
         id: 5
       },
-
-
     ]
   }
 
   return (
-      <div>
-        <div className="container">
-          <Sidebar user={user}/>
-          <div className="others">
-            <Topbar page={user.list}/>
-            <Switch>
-              <Route exact path="/staff/doctor/">
-                <DoctorHome/>
-              </Route>
+    <div >
+      <div className="container">
+        <Sidebar user={user} />
+        <div className="others">
+          <Topbar page={user.list} />
+          <Switch>
+            <Route exact path="/staff/doctor/">
+              <DoctorHome />
+            </Route>
 
 
-              <Route path="/staff/doctor/addprescription">
-                <DoctorPrescription/>
-              </Route>
+            <Route path="/staff/doctor/addprescription">
+              <DoctorPrescription />
+            </Route>
 
-              <Route path="/staff/doctor/viewprescription">
-                <DoctorViewPrecription/>
-              </Route>
+            <Route path="/staff/doctor/viewprescription">
+              <DoctorViewPrecription />
+            </Route>
 
-              <Route path="/staff/doctor/doctorschedule/:id">
-                <DoctorViewSessions/>
-              </Route>
+            <Route path="/staff/doctor/doctorschedule">
+              <NewSession />
+            </Route>
 
-              <Route path="/staff/doctor/newsession">
-                <NewSession/>
-              </Route>
+            <Route path="/staff/doctor/addnote">
+              <DoctorAddNote />
+            </Route>
 
-              <Route path="/staff/doctor/addnote">
-                <DoctorAddNote/>
-              </Route>
+            <Route path="/staff/doctor/viewnote">
+              <DoctorViewNotes />
+            </Route>
 
-              <Route path="/staff/doctor/viewnote">
-                <DoctorViewNotes/>
-              </Route>
-
-              <Route path="/staff/doctor/addprescription">
-                <DoctorViewNotes/>
-              </Route>
-
-            </Switch>
-          </div>
+            <Route path="/staff/doctor/editprescription">
+              <DoctorEditPrescription />
+            </Route>
+          </Switch>
         </div>
       </div>
+    </div>
   )
 }
 
