@@ -77,6 +77,10 @@ const Doctor = () => {
             </Route>
 
             <Route path="/staff/doctor/doctorschedule">
+              <DoctorViewSessions />
+            </Route>
+
+            <Route path="/staff/doctor/newsession">
               <NewSession />
             </Route>
 
