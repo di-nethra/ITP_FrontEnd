@@ -4,8 +4,6 @@ import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
 import TransformIcon from '@material-ui/icons/Transform';
 import DoneIcon from '@material-ui/icons/Done';
-import ClearAllIcon from '@material-ui/icons/ClearAll';
-import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
 import "./layout.css"
@@ -16,7 +14,8 @@ import DoctorEditPrescription from "../pages/staff-ui/doctor/DoctorEditPrescript
 import DoctorAddNote from "../pages/staff-ui/doctor/DoctorAddNote";
 import DoctorViewNotes from "../pages/staff-ui/doctor/DoctorViewNotes";
 import NewSession from '../pages/staff-ui/doctor/NewSession'
-import { Switch, Route } from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
+import DoctorViewSessions from "../pages/staff-ui/doctor/DoctorViewSessions";
 
 const Doctor = () => {
   const user = {
@@ -54,9 +53,6 @@ const Doctor = () => {
         iconlabel: 'Support',
         id: 5
       },
-
-
-
     ]
   }
 
@@ -80,13 +76,13 @@ const Doctor = () => {
               <DoctorViewPrecription />
             </Route>
 
-            <Route path="/staff/doctor/doctorschedule">
-              <NewSession />
+            <Route path="/staff/doctor/doctorschedule/:id">
+              <DoctorViewSessions />
             </Route>
 
-            {/* <Route path="/staff/doctor/support">
-              <# />
-            </Route> */}
+            <Route path="/staff/doctor/newsession">
+              <NewSession />
+            </Route>
 
             <Route path="/staff/doctor/addnote">
               <DoctorAddNote />
