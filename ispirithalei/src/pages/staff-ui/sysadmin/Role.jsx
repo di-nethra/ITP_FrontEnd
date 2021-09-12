@@ -3,8 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import MenuItem from "@material-ui/core/MenuItem";
+import { Select } from "@material-ui/core";
 
-const role = [
+const roles = [
   {
     value: "Doc",
     label: "Doctor",
@@ -19,27 +20,28 @@ const role = [
   },
 ];
 
-function Role() {
-  const [Role, setRole] = useState("");
-  const handleChanges = (event) => {
-    setRole(event.target.value);
-  };
+function Role(props) {
+  const [role, setRole] = useState("");
+  const handleRoleChange = event => {
+    setRole(event.currentTarget.value);
+    props.onChange(role);
+    console.log(role);
+  }
+ 
 
   return (
     <div>
-      <TextField
+      <Select
         id="standard-select-country"
-        select
         variant="outlined"
-        value={Role}
-        onChange={handleChanges}
+        value={role}
+        onChange={handleRoleChange}
       >
-        {role.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
+        
+          <MenuItem value="1">1 
           </MenuItem>
-        ))}
-      </TextField>
+      
+      </Select>
     </div>
   );
 }
