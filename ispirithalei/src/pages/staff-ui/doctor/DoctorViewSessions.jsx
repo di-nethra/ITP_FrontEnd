@@ -14,53 +14,65 @@ import {Link, useParams} from "react-router-dom";
 import SessionDataService from "../../../services/doctorSession.service";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-const columns = [
-    {
-        field: 'date',
-        headerName: 'Date',
-        width: 200,
-        editable: false,
-    },
-    {
-        field: 'time',
-        headerName: 'Time',
-        width: 200,
-        editable: false,
-    },
-
-    {
-        field: 'currentAppointments',
-        headerName: 'Current Appointments',
-        width: 250,
-        editable: false,
-    },
-
-    {
-        field: 'maximumAppointments',
-        headerName: 'Max Appointments',
-        width: 250,
-        editable: false,
-    },
-    {
-        field: 'action',
-        headerName: 'Action',
-        width: 180,
-        renderCell: (params) => (
-            <Button
-                variant="contained"
-                color="secondary"
-                value={params.row.id}
-                onClick={() => {
-                    alert(params.row.id);
-                }}
-            >
-                <DeleteIcon/>
-            </Button>
-        ),
-    },
-];
 
 export default function DoctorViewSessions() {
+    const columns = [
+        {
+            field: 'date',
+            headerName: 'Date',
+            width: 200,
+            editable: false,
+        },
+        {
+            field: 'time',
+            headerName: 'Time',
+            width: 180,
+            editable: false,
+        },
+
+        {
+            field: 'currentAppointments',
+            headerName: 'Current Appointments',
+            align: "center",
+            width: 240,
+            editable: false,
+        },
+
+        {
+            field: 'maximumAppointments',
+            headerName: 'Max Appointments',
+            align: "center",
+            width: 220,
+            editable: false,
+        },
+        {
+            field: 'action',
+            headerName: 'Action',
+            type: "number",
+            width: 180,
+            renderCell: (params) => (
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    value={params.row.id}
+                    onClick={deleteSession}
+                >
+                    <DeleteIcon/>
+                </Button>
+            ),
+        },
+    ];
+    const deleteSession = event => {
+        SessionDataService.remove(event.currentTarget.value)
+            .then(response => {
+                alert(response.statusText)
+                window.location.reload();
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     const [sessions, setSessions] = useState([]);
     let {id} = useParams();
     useEffect(() => {
@@ -71,10 +83,9 @@ export default function DoctorViewSessions() {
         SessionDataService.get(id)
             .then(response => {
                 setSessions(response.data)
-                console.log(response.data)
             })
             .catch(err => {
-                    console.log(err);
+                    console.log("Error while getting data from database" + err);
                 }
             )
     }
@@ -92,6 +103,8 @@ export default function DoctorViewSessions() {
         )
     }
 
+
+
     return (
         <div>
             <Card>
@@ -104,6 +117,7 @@ export default function DoctorViewSessions() {
                             rows={rows}
                             columns={columns}
                             pageSize={5}
+
                         />
                     </div>
                     <div style={{marginTop: 15}} className="buttonAlignRight">
