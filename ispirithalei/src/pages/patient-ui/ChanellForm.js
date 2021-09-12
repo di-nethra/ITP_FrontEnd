@@ -3,7 +3,7 @@ import React from 'react';
 import Controls from '../../components/patient-ui/Echannelling/Controls';
 import { useForm, Form } from '../../components/patient-ui/Echannelling/useForm';
 import * as PaitientService from "../../services/PaitientService";
-import PageHeader from "../../components/patient-ui/Echannelling/HeaderStyles";
+import { useState } from "react";
 
 const genderItems = [
     { id: 'male', title: 'Male' },
@@ -16,11 +16,12 @@ const initialFValues = {
     fullName: '',
     email: '',
     mobile: '',
-    city: '',
+    age: '',
+    nic:'',
     gender: 'male',
     doctorId: '',
     bookDate: new Date(),
-    isConfirm: false,
+   
 }
 
 export default function EForm() {
@@ -33,8 +34,10 @@ export default function EForm() {
             temp.email = (/$^|.+@.+..+/).test(fieldValues.email) ? "" : "Email is not valid."
         if ('mobile' in fieldValues)
             temp.mobile = fieldValues.mobile.length > 9 ? "" : "Minimum 10 numbers required."
-        if ('doctorId' in fieldValues)
-            temp.doctorId = fieldValues.doctorId.length!== 0 ? "" : "This field is required."
+        if ('nic' in fieldValues)
+            temp.nic = fieldValues.nic.length > 9 ? "" : "Minimum 10 Characters required icluding V"
+        if ('age' in fieldValues)
+            temp.age = fieldValues.age ? "" : "This field is required"
         setErrors({
             ...temp
         })
@@ -59,6 +62,15 @@ export default function EForm() {
         }
     }
 
+    const [isDisabled, setIsDisabled] = useState(true);
+
+    function changeCheck() {
+        setIsDisabled(!isDisabled);
+    }
+
+
+
+
     return (
         
         <Container maxWidth="md">
@@ -75,6 +87,21 @@ export default function EForm() {
                         onChange={handleInputChange}
                         error={errors.fullName}
                     />
+                     <Controls.RadioGroup
+                        name="gender"
+                        label="Gender"
+                        value={values.gender}
+                        onChange={handleInputChange}
+                        items={genderItems}
+                    />
+                     <Controls.Input
+                        label="National Identity Card Number (NIC)"
+                        name="nic"
+                        value={values.nic}
+                        onChange={handleInputChange}
+                        error={errors.nic}
+                    />
+                   
                     <Controls.Input
                         label="Email"
                         name="email"
@@ -90,20 +117,14 @@ export default function EForm() {
                         error={errors.mobile}
                     />
                     <Controls.Input
-                        label="City/Town"
-                        name="city"
-                        value={values.city}
+                        label="Age"
+                        name="age"
+                        value={values.age}
                         onChange={handleInputChange}
                     />
 
-                    <Controls.RadioGroup
-                        name="gender"
-                        label="Gender"
-                        value={values.gender}
-                        onChange={handleInputChange}
-                        items={genderItems}
-                    />
-                    <Controls.Select
+                   
+                    {/* <Controls.Select
                         name="doctorId"
                         label="Doctor"
                         value={values.doctorId}
@@ -116,22 +137,24 @@ export default function EForm() {
                         label="Appointment Date"
                         value={values.bookDate}
                         onChange={handleInputChange}
-                    />
+                    /> */}
                     <Controls.Checkbox
                         name="isConfirm"
                         label="Confirming that all the above entered details are correct!"
-                        value={values.isConfirm}
-                        onChange={handleInputChange}
+                         onChange={changeCheck}
                     />
 
                     <div>
                         <Controls.Button
+                            disabled={isDisabled}
                             type="submit"
                             text="Channel" />
                         <Controls.Button
                             text="Reset"
                             color="default"
-                            onClick={resetForm} />
+                            onClick={resetForm} 
+                                
+                            />
                     </div>
              
             </container>

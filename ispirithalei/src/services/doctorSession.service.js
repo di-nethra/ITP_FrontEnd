@@ -12,25 +12,25 @@ const create = data => {
     return http.post("/sessions", data);
 };
 
-const update = (id, data) => {
-    return http.put(`/sessions/${id}`, data);
-};
+// const update = (id, data) => {
+//     return http.put(`/sessions/${id}`, data);
+// };
 
 const remove = id => {
-    return http.delete(`/sessions/${id}`);
+    return http.delete("/sessions/" + id);
 };
 
-const removeAll = () => {
-    return http.delete(`/sessions`);
-};
+// const removeAll = () => {
+//     return http.delete(`/sessions`);
+// };
 
 
-export default {
+const sessionServices = {
     // getAll,
     get,
     create,
-    update,
+    // update,
     remove,
-    removeAll,
-
+    // removeAll,
 };
+export default sessionServices;
