@@ -9,9 +9,8 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
-import { Alert } from "@material-ui/lab";
-import { keys } from "@material-ui/core/styles/createBreakpoints";
 import paymentCreditService from "../../services/paymentCredit.service";
+import Swal from "sweetalert2";
 const useStyles = makeStyles({
   root: {
     width: "1150px",
@@ -47,16 +46,29 @@ const useStyles = makeStyles({
 
 export default function CreditMapping(props) {
   function deleteRecord(event) {
-    var paymentid = event.currentTarget.value;
-    paymentCreditService
-      .remove(paymentid)
-      .then(() => {
-        alert("succuess delete");
-      })
-      .catch(() => {
-        alert("error Delete");
-      });
-    alert("Hello " + event.currentTarget.value);
+    var id = event.currentTarget.value;
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Hello " + event.currentTarget.value,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        paymentCreditService
+          .remove(id)
+          .then(() => {
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            window.location.reload();
+          })
+          .catch(() => {
+            alert("error Delete");
+          });
+      }
+    });
+
     console.log(event.target.value);
   }
   const classes = useStyles();
@@ -110,7 +122,7 @@ export default function CreditMapping(props) {
                     <Grid item>
                       <Button
                         className={classes.hover}
-                        value={creditCard.payment_id}
+                        value={creditCard._id}
                         onClick={deleteRecord}
                       >
                         <DeleteIcon className={classes.deleteIcon} />
