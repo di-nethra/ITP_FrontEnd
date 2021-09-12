@@ -8,41 +8,43 @@ const hoveredStyle = {
 };
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 90 },
+  { field: 'id', headerName: 'Item ID', width: 127 },
   {
-    field: 'firstName',
-    headerName: 'First name',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'lastName',
-    headerName: 'Last name',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 110,
-    editable: true,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
+    field: 'item_name',
+    headerName: 'Item Name',
     width: 160,
-    valueGetter: (params) =>
-      `${params.getValue(params.id, 'firstName') || ''} ${
-        params.getValue(params.id, 'lastName') || ''
-      }`,
+    editable: true,
+  },
+  {
+    field: 'supplier_name',
+    headerName: 'Supplier Name',
+    width: 195,
+    editable: true,
+  },
+  {
+    field: 'supplier_email',
+    headerName: 'Supplier Email',
+    type: 'String',
+    width: 180,
+    editable: true,
+  },
+  {
+    field: 'type_medicine',
+    headerName: 'Type of Medicine',
+    type:'String',
+    // description: 'This column has a value getter and is not sortable.',
+    sortable: false,
+    editable: true,
+    width: 180,
+    // valueGetter: (params) =>
+    //   `${params.getValue(params.id, 'firstName') || ''} ${
+    //     params.getValue(params.id, 'lastName') || ''
+    //   }`,
   },
   {
     field: "action",
     headerName: "Action",
-    width: 200,
+    width: 180,
     align: 'center',
     renderCell: (params) => {
       return (
@@ -63,15 +65,15 @@ const columns = [
 ];
 
 const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 1, item_name: 'Panadol', supplier_name: 'Jon', supplier_email: 'jon@gmail.com', type_medicine:'Capsule'},
+  { id: 2, item_name: 'Piriton', supplier_name: 'Cersei', supplier_email: 'carsie@mail.com' , type_medicine:'Capsule'},
+  { id: 3, item_name: 'Brufen', supplier_name: 'Jaime', supplier_email: 'jaime@gmail.com',type_medicine: 'Capsule' },
+  { id: 4, item_name: 'Vitamin C', supplier_name: 'Arya', supplier_email: 'arya@gmail.com',type_medicine: 'Capsule'},
+  { id: 5, item_name: 'Voltaren', supplier_name: 'Daenerys', supplier_email: 'daen@ymail.com', type_medicine: 'Capsule'},
+  { id: 6, item_name: 'Candid B', supplier_name: null, supplier_email: null,type_medicine: 'Liquid'},
+  { id: 7, item_name: 'Zaart', supplier_name: 'Ferrara', supplier_email: 'ferrera@mail.com',type_medicine:'Capsule' },
+  { id: 8, item_name: 'Roparc', supplier_name: 'Rossini', supplier_email: 'Rossini@ymail.com',type_medicine: 'Capsule'},
+  { id: 9, item_name: 'Penicilin', supplier_name: 'Harvey', supplier_email: 'harvey@yahoo.com',type_medicine: 'Capsule'},
 ];
 
 export default function InventoryList() {
