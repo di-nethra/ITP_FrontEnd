@@ -18,7 +18,6 @@ import {
   CheckoutParams,
 } from "payhere-js-sdk";
 Payhere.init("1218569", AccountCategory.SANDBOX);
-
 function onPayhereCheckoutError(errorMsg) {
   alert(errorMsg);
 }
