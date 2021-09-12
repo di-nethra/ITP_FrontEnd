@@ -1,11 +1,9 @@
-import React, { Component } from "react";
-import { useState } from "react";
+import React, {Component} from "react";
 import logo from "../../assets/images/infoPageLogo.svg";
-import { withStyles } from "@material-ui/core/styles";
+import {withStyles} from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import PayCredit from "../../assets/images/PayWithCreditCard.svg";
-import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import DropDown from "../../components/patient-ui/Payments/DropDown";
 import paymentCreditService from "../../services/paymentCredit.service";
@@ -51,7 +49,7 @@ export class CreditCardPage extends Component {
     const ranNum = "CPAY" + Math.floor(1000 + Math.random() * 9000);
     const currentDate = new Date().toDateString();
 
-    const tempPrice = 5650.0;
+    const tempPrice = "RS.5650.00";
     const data = {
       paymentid: ranNum,
       name: this.props.values.nameOnTheCard,

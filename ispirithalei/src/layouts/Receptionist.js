@@ -47,7 +47,7 @@ const Receptionist = () => {
         id: 5
       },
       {
-        path: "/support",
+        path: "support",
         icon: <HelpOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'Support',
         id: 6

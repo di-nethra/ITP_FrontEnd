@@ -7,6 +7,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 import Calendar from './Calendar';
 import { Link } from "react-router-dom";
+import ReactPlayer from 'react-player/youtube';
 
 const columns = [
     { field: 'id', headerName: 'PATIENT ID', width: 150 },
@@ -46,17 +47,24 @@ const rows = [
 
 export default function DoctorHome() {
     return (
-        <div>
-            <Card style={{ width: 380 }}>
-                <CardContent>
-                    <Calendar />
-                </CardContent>
-            </Card>
-            <br />
-
+        <div style={{ marginBottom: 10 }}>
+            <div>
+                <Card style={{ float: "right", backgroundColor: "#005792" }}>
+                    <CardContent style={{ float: "right", width: 690, height: 295, }}>
+                        <ReactPlayer url='https://www.youtube.com/watch?v=eUAp3lWxJSo&ab_channel=Minist%C3%A8redelaSant%C3%A9etdesServicessociaux'
+                            width="100%" height="100%" controls="true" volume="0.09" loop="true" />
+                    </CardContent>
+                </Card>
+                <Card style={{ width: 380, backgroundColor: "#005792" }}>
+                    <CardContent>
+                        <Calendar />
+                    </CardContent>
+                </Card>
+                <br />
+            </div>
             <Card>
-                <CardContent style={{ backgroundColor: "#D9FAFF" }}>
-                    <h3>PATIENT APPOINTMENTS</h3>
+                <CardContent style={{ backgroundColor: "#005792" }}>
+                    <h3 style={{ color: "white" }} >PATIENT APPOINTMENTS</h3>
                     <br />
                     <div style={{ height: 400, width: '100%' }}>
                         <DataGrid
@@ -72,7 +80,7 @@ export default function DoctorHome() {
                     <div style={{ marginTop: 15 }} className="buttonAlignRight">
                         <Link to="/staff/doctor/addprescription">
                             <Tooltip title="Add Prescription" placement="bottom" aria-label="add">
-                                <Fab color="primary">
+                                <Fab style={{ backgroundColor: "#D9FAFF" }}>
                                     <AddIcon fontSize="large" />
                                 </Fab>
                             </Tooltip>

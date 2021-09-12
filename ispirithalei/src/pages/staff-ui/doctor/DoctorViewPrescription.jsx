@@ -8,6 +8,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import './doctor.css';
 import { Link } from "react-router-dom";
+import { DeleteOutline } from "@material-ui/icons";
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 100 },
@@ -29,6 +30,16 @@ const columns = [
         width: 200,
         sortable: false,
         editable: false,
+        renderCell: (params) => {
+            return (
+                <>
+                    <Link to={"/staff/doctor/editprescription" /*+ params.row.id*/}>
+                        <Button size="small" color="primary" variant="contained" style={{ marginRight: 5 }}>Edit</Button>
+                    </Link>
+                    <Button size="small" color="secondary" variant="contained"><DeleteOutline /></Button>
+                </>
+            );
+        },
     },
 ];
 
@@ -48,7 +59,7 @@ const rows = [
 export default function DoctorViewPrescription() {
 
     return (
-        <div>
+        <div style={{ marginBottom: 10 }}>
             <Card>
                 <CardContent>
                     <h3>PATIENT PRESCRIPTIONS</h3>
