@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import { Link } from "react-router-dom";
+import DeleteSweepOutlinedIcon from '@material-ui/icons/DeleteSweepOutlined';
+
+const hoveredStyle = {
+  cursor: 'pointer'
+};
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -46,7 +51,10 @@ const columns = [
           
           <button className="userListEdit" >Edit</button>
             </Link>
-            
+            <DeleteSweepOutlinedIcon
+            color = "secondary"
+            style={hoveredStyle}
+             />
   
         </>
       );
