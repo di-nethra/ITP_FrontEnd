@@ -45,9 +45,7 @@ const Content = (props) => {
   
 }
 const List = (props) =>{
-  console.log(props.icon)
-  
-  return(
+return(
     <>
       <NavLink to={"/staff/" + props.role.toLowerCase() + "/" + props.path} exact={props.exact} className="sidebarListItem" replace>
         {props.icon}
