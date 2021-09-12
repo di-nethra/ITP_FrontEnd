@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { Skeleton } from "@material-ui/lab";
 import { Grid, useTheme } from "@material-ui/core";
 import CreditMapping from "./CreditMapping";
-import DataTable from "./FullFeaturedCrudGrid";
-import FullFeaturedCrudGrid from "./FullFeaturedCrudGrid";
+
 const DisplayCredit = () => {
   const theme = useTheme();
 
