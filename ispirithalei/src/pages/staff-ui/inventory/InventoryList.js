@@ -71,6 +71,7 @@ const columns = [
             <DeleteSweepOutlinedIcon
             color = "secondary"
             style={hoveredStyle}
+            onClick={deleteInventory}
              />
   
         </>
@@ -78,6 +79,17 @@ const columns = [
     },
   }
 ];
+
+const deleteInventory = event => {
+  InventoryDataService.remove(event.currentTarget.value)
+      .then(response => {
+          alert(response.statusText)
+          window.location.reload();
+      })
+      .catch(error => {
+          console.log(error);
+      })
+}
 
 let rows = [];
     for (const inventoryy of inventory) {

@@ -75,6 +75,7 @@ function InventoryRegister() {
         });
         setSubmitted(true);
         console.log(response.data);
+        window.location.reload();
       })
       .catch(e => {
         console.log(e);
@@ -235,6 +236,7 @@ function InventoryRegister() {
           className={b_classes.button}
           onClick={saveInventory}
           endIcon={<ArrowForwardIosOutlinedIcon />}
+      
         >
           Proceed to Register
         </Button>

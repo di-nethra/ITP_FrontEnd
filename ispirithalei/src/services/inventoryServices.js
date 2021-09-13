@@ -8,10 +8,15 @@ const create = data => {
     return http.post("/inventories", data);
   };
 
+const remove = id => {
+    return http.delete("/inventories/" + id);
+};
+
 
   const inventoryServices = {
     getAll,
-    create
+    create,
+    remove
   }
   
   export default inventoryServices
