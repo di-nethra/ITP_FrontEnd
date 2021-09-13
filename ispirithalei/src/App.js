@@ -18,6 +18,8 @@ import UserForm from "./components/patient-ui/Payments/UserForm";
 import Checkout from "./pages/patient-ui/Checkout";
 import PaymentInvoice from "./pages/patient-ui/PaymentInvoice";
 import PaymentOptionPage from "./pages/patient-ui/PaymentOptionPage";
+import MobileQrPay from "./pages/patient-ui/MobileQrPay";
+import QRpage from "./pages/patient-ui/QRpage";
 const theme = createTheme({
   palette: {
     primary: {
@@ -81,6 +83,12 @@ const App = () => (
                 </Route>
                 <Route path="/payments/checkout">
                   <Checkout />
+                </Route>
+                <Route path="/payments/mobileqr">
+                  <MobileQrPay />
+                </Route>
+                <Route path="/payments/qrcode">
+                  <QRpage />
                 </Route>
                 <Route path="/payments/invoice">
                   <PaymentInvoice />
