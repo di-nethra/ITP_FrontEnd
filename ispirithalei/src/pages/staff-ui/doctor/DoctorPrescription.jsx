@@ -5,44 +5,68 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Link } from "react-router-dom";
+import PrescriptionDataService from "../../../services/doctorPrescriptionService";
 
 function DoctorPrescription() {
     const [isDisabled, setIsDisabled] = useState(true);
-    const [form, setForm] = useState({
+
+    function changeCheck() {
+        setIsDisabled(!isDisabled);
+    }
+
+    const initialPrescriptionState = {
+        //id: null,
+        dId: "D0001",
         dPName: "",
         dPDignosis: "",
         dMed1: "",
         dDose1: "",
         dMed2: "",
         dDose2: ""
-    });
+    };
+    const [prescription, setPrescription] = useState(initialPrescriptionState);
+    const [submitted, setSubmitted] = useState(false);
 
-    function changeCheck() {
-        setIsDisabled(!isDisabled);
-    }
-
-    function handleFormChange(event) {
+    const handleInputChange = event => {
         const { name, value } = event.target;
+        setPrescription({ ...prescription, [name]: value });
+    };
 
-        setForm(prevValue => {
-            return {
-                ...prevValue,
-                [name]: value
-            };
-        });
-    }
+    const savePrescription = () => {
+        var data = {
+            dId: prescription.dId,
+            dPName: prescription.dPName,
+            dPDignosis: prescription.dPDignosis,
+            dMed1: prescription.dMed1,
+            dDose1: prescription.dDose1,
+            dMed2: prescription.dMed2,
+            dDose2: prescription.dDose2
+        };
 
-    // console.log(form.dPName); console.log(form.dPDignosis); console.log(form.dMed1);
-    // console.log(form.dDose1); console.log(form.dMed2); console.log(form.dDose2);
+        PrescriptionDataService.create(data)
+            .then(response => {
+                setPrescription({
+                    //id: response.data.id,
+                    //dId: response.data.dId,
+                    dPName: response.data.dPName,
+                    dPDignosis: response.data.dPDignosis,
+                    dMed1: response.data.dMed1,
+                    dDose1: response.data.dDose1,
+                    dMed2: response.data.dMed2,
+                    dDose2: response.data.dDose2
+                });
+                setSubmitted(true);
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
 
-    const handleReset = (e) => {
-        e.preventDefault();
-        setForm(prevState => ({
-            ...prevState,
-            dPName: "", dPDignosis: "", dMed1: "",
-            dDose1: "", dMed2: "", dDose2: ""
-        }))
-    }
+    const newPrescription = () => {
+        setPrescription(initialPrescriptionState);
+        setSubmitted(false);
+    };
 
     return (
         <div style={{ marginBottom: 10 }} >
@@ -53,25 +77,25 @@ function DoctorPrescription() {
                     <form>
                         <TextField id="dPName" name="dPName" label="PATIENT NAME" style={{ margin: 0 }} placeholder="Enter patient name" helperText="ex: Asel Jayasooriya"
                             fullWidth margin="normal" InputLabelProps={{ shrink: true, }} variant="outlined" required
-                            onChange={handleFormChange} value={form.dPName}
+                            onChange={handleInputChange} value={prescription.dPName}
                         />
                         <br /><br />
 
                         <TextField id="dPDignosis" name="dPDignosis" label="DIAGNOSIS" style={{ margin: 0 }} placeholder="Enter diagnosis" helperText="ex: Chronic heart failure"
                             fullWidth margin="normal" InputLabelProps={{ shrink: true, }} variant="outlined" required
-                            onChange={handleFormChange} value={form.dPDignosis}
+                            onChange={handleInputChange} value={prescription.dPDignosis}
                         />
                         <br /><br />
 
                         <div>
                             <TextField id="dMed1" name="dMed1" label="MEDICINE 1" style={{ marginRight: 40 }} InputLabelProps={{ shrink: true, }}
                                 placeholder="Enter medicine 1 name" helperText="ex: Valparine" variant="outlined" required
-                                onChange={handleFormChange} value={form.dMed1}
+                                onChange={handleInputChange} value={prescription.dMed1}
                             />
 
                             <TextField id="dDose1" name="dDose1" label="DOSAGE" style={{ margin: 0 }} InputLabelProps={{ shrink: true, }}
                                 placeholder="Enter medicine 1 dosage" helperText="ex: 2 tds" variant="outlined" required
-                                onChange={handleFormChange} value={form.dDose1}
+                                onChange={handleInputChange} value={prescription.dDose1}
                             />
 
                         </div>
@@ -80,12 +104,12 @@ function DoctorPrescription() {
                         <div>
                             <TextField id="dMed2" name="dMed2" label="MEDICINE 2" style={{ marginRight: 40 }} InputLabelProps={{ shrink: true, }}
                                 placeholder="Enter medicine 2 name" helperText="ex: Valparine" variant="outlined"
-                                onChange={handleFormChange} value={form.dMed2}
+                                onChange={handleInputChange} value={prescription.dMed2}
                             />
 
                             <TextField id="dDose2" name="dDose2" label="DOSAGE" style={{ margin: 0 }} InputLabelProps={{ shrink: true, }}
                                 placeholder="Enter medicine 2 dosage" helperText="ex: 2 tds" variant="outlined"
-                                onChange={handleFormChange} value={form.dDose2}
+                                onChange={handleInputChange} value={prescription.dDose2}
                             />
 
                         </div>
@@ -95,8 +119,8 @@ function DoctorPrescription() {
                             &ensp;Check to confirm the prescription submission.</p>
 
                         <div>
-                            <Button size="large" variant="contained" style={{ marginRight: 8 }} type="reset" onClick={handleReset}>Clear</Button>
-                            <Button size="large" variant="contained" color="primary" type="submit" disabled={isDisabled}>Add Prescription</Button>
+                            <Button size="large" variant="contained" style={{ marginRight: 8 }} type="reset" onClick={newPrescription}>Clear</Button>
+                            <Button size="large" variant="contained" color="primary" type="submit" disabled={isDisabled} onClick={savePrescription}>Add Prescription</Button>
                         </div>
 
 
