@@ -8,14 +8,16 @@ import CardContent from "@material-ui/core/CardContent";
 import { Card } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
-import Controls from "../../../components/patient-ui/Echannelling/Controls";
 import {
+  useForm,
   Form,
 } from "../../../components/patient-ui/Echannelling/useForm";
 import { useState } from "react";
 import passwordService from "../../../services/password.service";
 import MenuItem from "@material-ui/core/MenuItem";
 import { Select } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 const initialFValues = {
   step: 1,
@@ -145,7 +147,7 @@ function EmpForm() {
                         <p style={styles.label}>First Name</p>
                       </Grid>
                       <Grid item xs={5}>
-                        <Controls.Input
+                        <TextField
                           name="firstName"
                           label="First Name"
                           variant="outlined"
@@ -160,7 +162,7 @@ function EmpForm() {
                         <p style={styles.label}>Last Name</p>
                       </Grid>
                       <Grid item xs={5}>
-                        <Controls.Input
+                        <TextField
                           name="lastName"
                           label="Last Name"
                           variant="outlined"
@@ -175,7 +177,7 @@ function EmpForm() {
                         <p style={styles.label}>Email</p>
                       </Grid>
                       <Grid item xs={5}>
-                        <Controls.Input
+                        <TextField
                           name="email"
                           label="Email"
                           variant="outlined"
@@ -190,12 +192,14 @@ function EmpForm() {
                         <p style={styles.label}>Mobile</p>
                       </Grid>
                       <Grid item xs={5}>
-                        <Controls.Input
+                        <TextField
+                          type="number"
                           name="mobile"
                           label="Mobile"
                           variant="outlined"
                           required
                           fullWidth={true}
+                          InputProps={{inputProps:{min: 10, max: 10}}}
                           onChange={handleMobileChange}
                           defaultValue={selectedMobile}
                         />
@@ -205,7 +209,7 @@ function EmpForm() {
                         <p style={styles.label}>Address</p>
                       </Grid>
                       <Grid item xs={5}>
-                        <Controls.Input
+                        <TextField
                           name="address"
                           label="Adress"
                           variant="outlined"
@@ -217,23 +221,23 @@ function EmpForm() {
                       </Grid>
 
                       <Grid item xs={12}>
-                        <Controls.Button
-                          text="Reset"
+                        <Button
+                          
                           variant="contained"
                           color="secondary"
                           style={styles.button}
                           startIcon={<AutorenewIcon />}
-                        />
+                        >Reset</Button>
 
-                        <Controls.Button
-                          text="submit"
+                        <Button
+                          
                           type="submit"
                           variant="contained"
                           color="primary"
                           style={styles.button}
                           onClick={handleSubmit}
                           startIcon={<SendIcon />}
-                        />
+                        >submit</Button>
                       </Grid>
                     </Grid>
                   </CardContent>
