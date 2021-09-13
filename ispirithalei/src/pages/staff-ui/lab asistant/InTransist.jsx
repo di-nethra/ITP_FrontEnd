@@ -1,31 +1,32 @@
 import React from 'react'
+import { useEffect, useState } from 'react';
 import { DataGrid } from "@material-ui/data-grid";
 import { testRows } from "../../../dummyData";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import './intransist.css'
+import './intransist.css';
+import TestDataService from "../../../services/tests.service";
 
 export default function InTransist() {
   const [data, setData] = useState(testRows);
     console.log(data)
   
   const columns = [
-    { field: 'id', headerName: 'Specimen ID', width: 140 },
+    { field: 'specimenid', headerName: 'Specimen ID', width: 140 },
     {
-        field: 'dateStarted',
+        field: 'starteddate',
         headerName: 'Date Started',
         width: 200,
         type:'date',
         editable: true,
     },
     {
-        field: 'patientName',
+        field: 'patientsname',
         headerName: 'Patient Name',
         width: 200,
         editable: true,
     },
     {
-        field: 'labassistantname',
+        field: 'inchargelabass',
         headerName: 'Lab Assistant Name',
         type: 'text',
         width: 160,
@@ -54,10 +55,41 @@ export default function InTransist() {
     }
   ];
 
+  const [tests, setTests] = useState([]);
+  useEffect(() => {
+    retrieveStartedTests();
+  }, []);
+
+  const retrieveStartedTests = () => {
+    TestDataService.getAllStarted()
+      .then(response => {
+        setTests(response.data)
+      })
+      .catch(err => {
+        console.log("Error while getting data from database" + err);
+      }
+      )
+  };
+
+  let rows = [];
+  for (const test of tests) {
+    rows.push(
+      {
+        id: test._id,
+        specimenid: test.specimenid,
+        starteddate:test.starteddate,
+        patientsname: test.patientsname,
+        inchargelabass:test.inchargelabass,
+        status: test.status
+
+      }
+    )
+  }
+
   return (
     <div style={{ height: 550, width: '100%' }} className="userList">
       <DataGrid
-        rows={data}
+        rows={rows}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
