@@ -1,4 +1,5 @@
 import "./patientslist.css";
+import Swal from 'sweetalert2';
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { patientRows } from "../../../dummyData";
@@ -63,9 +64,14 @@ export default function PatientsLists() {
   ];
 
   const deleteTest = event => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Test has been Deleted',
+      showConfirmButton: false,
+      timer: 1500
+    })
     TestDataService.remove(event.currentTarget.value)
       .then(response => {
-        alert(response.statusText)
         window.location.reload();
       })
       .catch(error => {

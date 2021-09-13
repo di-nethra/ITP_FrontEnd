@@ -1,5 +1,5 @@
 import "./sbbmittedtests.css";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { userRows } from "../../../dummyData";
@@ -52,22 +52,27 @@ export default function SubbmittedTests() {
               <button className="userListEdit">Assign Staff</button>
             </Link>
             <Button
-                    variant="contained"
-                    color="secondary"
-                    value={params.row.id}
-                    onClick={deleteTest}
-                >
-                    <DeleteIcon/>
-                </Button>
+              variant="contained"
+              color="secondary"
+              value={params.row.id}
+              onClick={deleteTest}
+            >
+              <DeleteIcon />
+            </Button>
           </>
         );
       },
     }
   ];
   const deleteTest = event => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Test has been Deleted',
+      showConfirmButton: false,
+      timer: 1500
+    })
     TestDataService.remove(event.currentTarget.value)
       .then(response => {
-        alert(response.statusText)
         window.location.reload();
       })
       .catch(error => {
