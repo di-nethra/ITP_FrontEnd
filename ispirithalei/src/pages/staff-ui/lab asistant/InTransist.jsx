@@ -1,14 +1,14 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import { DataGrid } from "@material-ui/data-grid";
-import { testRows } from "../../../dummyData";
+/*import { testRows } from "../../../dummyData";*/
 import { Link } from "react-router-dom";
 import './intransist.css';
 import TestDataService from "../../../services/tests.service";
 
 export default function InTransist() {
-  const [data, setData] = useState(testRows);
-    console.log(data)
+  /*const [data, setData] = useState(testRows);
+    console.log(data)*/
   
   const columns = [
     { field: 'specimenid', headerName: 'Specimen ID', width: 140 },

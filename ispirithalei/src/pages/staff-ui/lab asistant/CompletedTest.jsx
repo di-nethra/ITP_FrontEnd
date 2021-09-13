@@ -1,8 +1,6 @@
 import "./completedtest.css";
 import Swal from 'sweetalert2';
 import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
-import { completeRows } from "../../../dummyData";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import TestDataService from "../../../services/tests.service";
