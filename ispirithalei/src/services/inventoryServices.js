@@ -8,7 +8,10 @@ const create = data => {
     return http.post("/inventories", data);
   };
 
-  export default {
+
+  const inventoryServices = {
     getAll,
     create
-  };
+  }
+  
+  export default inventoryServices

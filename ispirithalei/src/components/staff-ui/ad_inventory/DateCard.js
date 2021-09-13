@@ -1,11 +1,22 @@
-import React from "react";
+import React ,{ useState } from "react";
 import "../ad_inventory/datecard.css"
 
+function DateCard() {
+   
 var date = new Date();
 var today = date.getDate() + " - " + (date.getMonth()+1) + " - " + date.getFullYear();
- var time = date.toLocaleTimeString();
-// var newTime = setInterval(time,1000);
-function DateCard() {
+
+setInterval(updateTime, 1000);
+
+  const now = new Date().toLocaleTimeString();
+
+  const [time, setTime] = useState(now);
+
+  function updateTime() {
+    const newTime = new Date().toLocaleTimeString();
+    setTime(newTime);
+  }
+
     return (
         <div className = "cardFloat" >
             <div className = "card">

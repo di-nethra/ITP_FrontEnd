@@ -5,7 +5,8 @@ import Button from '@material-ui/core/Button';
 import ArrowForwardIosOutlinedIcon from '@material-ui/icons/ArrowForwardIosOutlined';
 import DirectionsRunOutlinedIcon from '@material-ui/icons/DirectionsRunOutlined';
 import "../inventory/page.css"
-import InventoryDataServices from '../../../services/inventoryServices';
+import InventoryDataService from '../../../services/inventoryServices';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,17 +22,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-const f_useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 220,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
-
 function InventoryRegister() {
   const b_classes = useStyles();
 
@@ -40,6 +30,7 @@ function InventoryRegister() {
   // const dateString = date.toString();
 
   const initialInventoryState = {
+    // id: null,
     item_id: "",
     item_name: "",
     supplier_name: "",
@@ -49,12 +40,11 @@ function InventoryRegister() {
     registered_date: "",
     type_medicine: ""
   };
-
   const [inventory, setInventory] = useState(initialInventoryState);
   const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = event => {
-    const { name, value } = event.current.target;
+    const { name, value } = event.target;
     setInventory({ ...inventory, [name]: value });
   };
 
@@ -70,10 +60,10 @@ function InventoryRegister() {
       type_medicine: inventory.type_medicine
     };
 
-    InventoryDataServices.create(data)
+    InventoryDataService.create(data)
       .then(response => {
-        console.log(data);
         setInventory({
+          // id: response.data.id,
           item_id: response.data.item_id,
           item_name: response.data.item_name,
           supplier_name: response.data.supplier_name,
@@ -103,16 +93,16 @@ function InventoryRegister() {
       <form style={{ marginLeft: '250px' }}>
         <h3>Register a new Item</h3><br />
 
-        <TextField
+        <TextField 
           id="item_id"
+          name="item_id"
           label="Item ID"
-          defaultValue={inventory.item_id}
+          value={inventory.item_id}
           onChange={handleInputChange}
-          style={{ margin: 8 }}
+          style={{ margin: 8,width: 600 }}
           placeholder="Enter Item ID"
           helperText=""
           required
-          style={{ width: 600 }}
           margin="normal"
           InputLabelProps={{
             shrink: true,
@@ -122,13 +112,12 @@ function InventoryRegister() {
 
         <TextField
           id="item_name"
+          name="item_name"
           label="Item Name"
-          defaultValue={inventory.item_name}
+          value={inventory.item_name}
           onChange={handleInputChange}
-          style={{ margin: 8 }}
+          style={{ margin: 8,width: 600 }}
           placeholder="Enter Item Name"
-          helperText=""
-          style={{ width: 600 }}
           margin="normal"
           InputLabelProps={{
             shrink: true,
@@ -138,13 +127,12 @@ function InventoryRegister() {
 
         <TextField
           id="supplier_name"
+          name="supplier_name"
           label="Supplier Name"
-          defaultValue={inventory.supplier_name}
+          value={inventory.supplier_name}
           onChange={handleInputChange}
-          style={{ margin: 8 }}
+          style={{ margin: 8,width: 600  }}
           placeholder="Enter Supplier Name"
-          style={{ width: 600 }}
-          helperText=""
           fullWidth
           margin="normal"
           InputLabelProps={{
@@ -155,14 +143,13 @@ function InventoryRegister() {
 
         <TextField
           id="supplier_email"
+          name="supplier_email"
           label="Supplier Email"
-          defaultValue={inventory.supplier_email}
+          value={inventory.supplier_email}
           onChange={handleInputChange}
-          style={{ margin: 8 }}
+          style={{ margin: 8,width: 600 }}
           placeholder="Enter Supplier Email"
-          style={{ width: 600 }}
           required
-          helperText=""
           fullWidth
           margin="normal"
           InputLabelProps={{
@@ -173,13 +160,12 @@ function InventoryRegister() {
 
         <TextField
           id="supplier_contact"
+          name="supplier_contact"
           label="Supplier Contact Number"
-          defaultValue={inventory.supplier_contact}
+          value={inventory.supplier_contact}
           onChange={handleInputChange}
-          style={{ margin: 8 }}
+          style={{ margin: 8,width: 600 }}
           placeholder="Enter supplier contact number"
-          style={{ width: 600 }}
-          helperText=""
           required
           fullWidth
           margin="normal"
@@ -192,13 +178,12 @@ function InventoryRegister() {
 
         <TextField
           id="purchase_price"
+          name="purchase_price"
           label="Purchase Price"
-          defaultValue={inventory.purchase_price}
+          value={inventory.purchase_price}
           onChange={handleInputChange}
-          style={{ margin: 8 }}
+          style={{ margin: 8, width: 300}}
           placeholder="Enter Purchase Price"
-          style={{ width: 300 }}
-          helperText=""
           fullWidth
           margin="normal"
           InputLabelProps={{
@@ -209,15 +194,13 @@ function InventoryRegister() {
 
         <TextField
           id="registered_date"
+          name="registered_date"
           label="Registered Date"
-          defaultValue={inventory.registered_date}
+          value={inventory.registered_date}
           onChange={handleInputChange}
-          style={{ margin: 8 }}
           placeholder="Enter the date"
-          style={{ width: 200, marginLeft: 100 }}
-          helperText=""
+          style={{ width: 200, marginLeft: 100 , margin: 8}}
           fullWidth
-          // value={dateString}
           margin="normal"
           InputLabelProps={{
             shrink: true,
@@ -228,13 +211,12 @@ function InventoryRegister() {
 
         <TextField
           id="type_medicine"
+          name="type_medicine"
           label="Type of Medicine"
-          defaultValue={inventory.type_medicine}
+          value={inventory.type_medicine}
           onChange={handleInputChange}
-          style={{ margin: 8 }}
+          style={{ margin: 8,width: 300 }}
           placeholder="Enter the type"
-          style={{ width: 300 }}
-          helperText=""
           fullWidth
           margin="normal"
           InputLabelProps={{
@@ -269,8 +251,6 @@ function InventoryRegister() {
           Demo
         </Button>
 
-        {/* <button >Register</button><br />
-            <button>Demo</button> */}
       </form>
     </div>
   );
