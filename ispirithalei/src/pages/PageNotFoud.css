@@ -1,0 +1,19 @@
+.page_404{ background:#fff;
+}
+
+.page_404  img{ width:100%;}
+
+.four_zero_four_bg{
+    width: 100%;
+    background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: 500px;
+    background-position: top;
+}
+
+
+.four_zero_four_bg h1{
+    color: #00204A;
+    font-size:100px;
+}
+
+

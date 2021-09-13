@@ -24,7 +24,7 @@ const remove = (id) => {
 //   return http.delete(`/payments/info`);
 // };
 
-export default {
+const CreditServices = {
   getAll,
   get,
   create,
@@ -32,3 +32,5 @@ export default {
   remove,
   // removeAll,
 };
+
+export default CreditServices;
