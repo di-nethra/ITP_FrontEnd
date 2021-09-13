@@ -13,9 +13,12 @@ import './doctor.css';
 import {Link, useParams} from "react-router-dom";
 import SessionDataService from "../../../services/doctorSession.service";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Swal from "sweetalert2";
+import {useTheme} from "@material-ui/core";
 
 
 export default function DoctorViewSessions() {
+    const theme = useTheme();
     const columns = [
         {
             field: 'date',
@@ -63,14 +66,31 @@ export default function DoctorViewSessions() {
         },
     ];
     const deleteSession = event => {
-        SessionDataService.remove(event.currentTarget.value)
-            .then(response => {
-                alert(response.statusText)
-                window.location.reload();
-            })
-            .catch(error => {
-                console.log(error);
-            })
+        let id = event.currentTarget.value;
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: theme.palette.secondary.main,
+            cancelButtonColor: theme.palette.primary.main,
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                SessionDataService.remove(id)
+                    .then(() => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your session has been deleted.',
+                            'success'
+                        )
+                        window.location.reload();
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
+        })
     }
 
     const [sessions, setSessions] = useState([]);
