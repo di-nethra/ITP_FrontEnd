@@ -86,10 +86,10 @@ return (
                         <input
                             value={values.specimenid}
                             name="specimenid"
-                            type="text"
+                            type="number"
                             required
-                            minlength="3"
-                            maxlength="3"
+                            min="100"
+                            max="999"
                             placeholder="Enter Specimen ID"
                             onChange={handleInputChange}
                         />
