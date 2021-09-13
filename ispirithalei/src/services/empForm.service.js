@@ -1,8 +1,8 @@
 import http from "../http-common";
 
-const getAll = () => {
-  return http.get("/empform");
-};
+// const getAll = () => {
+//   return http.get("/empform");
+// };
 
 const get = (id) => {
   return http.get("/empform" + id);
@@ -25,7 +25,7 @@ const removeAll = () => {
 };
 
 export default {
-  getAll,
+  // getAll,
   get,
   create,
   update,
