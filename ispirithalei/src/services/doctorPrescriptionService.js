@@ -20,10 +20,12 @@ const create = data => {
 //     return http.delete(`/prescriptions/${id}`);
 // };
 
-export default {
+const PrescriptionDataServices = {
     // getAll,
     get,
     create,
     // update,
     // remove
 };
+
+export default PrescriptionDataServices;
