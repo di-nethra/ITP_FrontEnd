@@ -16,6 +16,10 @@ const remove = id => {
     return http.delete("/tests/" + id);
 };
 
+const getOneTest = id => {
+    return http.get("/tests/" + id);
+};
+
 const getAllSubbmited = () => {
     return http.get("/tests/subbmitted");
 };
@@ -35,6 +39,7 @@ const findByCNandID = (contactnumber, specimenid) =>{
 
 const TestDataService = {
     getAll,
+    getOneTest,
     getAllSubbmited,
     getAllStarted,
     getAllCompleted,
