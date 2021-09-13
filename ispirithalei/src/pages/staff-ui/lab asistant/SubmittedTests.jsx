@@ -6,6 +6,8 @@ import { userRows } from "../../../dummyData";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import TestDataService from "../../../services/tests.service";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Button from '@material-ui/core/Button';
 
 export default function SubbmittedTests() {
 
@@ -49,11 +51,14 @@ export default function SubbmittedTests() {
             <Link to={"/staff/labassistant/submittedtest/" + params.row.id}>
               <button className="userListEdit">Assign Staff</button>
             </Link>
-            <DeleteOutline
-              className="userListDelete"
-              value={params.row.id}
-              onClick={deleteTest}
-            />
+            <Button
+                    variant="contained"
+                    color="secondary"
+                    value={params.row.id}
+                    onClick={deleteTest}
+                >
+                    <DeleteIcon/>
+                </Button>
           </>
         );
       },
