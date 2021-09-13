@@ -10,7 +10,6 @@ import SendIcon from "@material-ui/icons/Send";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import Controls from "../../../components/patient-ui/Echannelling/Controls";
 import {
-  useForm,
   Form,
 } from "../../../components/patient-ui/Echannelling/useForm";
 import { useState } from "react";
@@ -29,15 +28,6 @@ const initialFValues = {
 };
 
 function EmpForm() {
-
-    
-
-  const { values, errors, setErrors, resetForm } = useForm(
-    initialFValues,
-    true,
-  
-  );
-
   const handleSubmit = (e) => {
     console.log("submitted");
     //password generator
@@ -45,44 +35,42 @@ function EmpForm() {
     console.log(randomstring);
 
     e.preventDefault();
- 
-      const data = {
-        role: role,
-        firstName: selectedFirstName,
-        lastName: selectedLastName,
-        email: selectedEmail,
-        mobile: selectedMobile,
-        address: selectedAddress,
-        password: randomstring,
-      };
 
-      empFormService
-        .create(data)
+    const data = {
+      role: role,
+      firstName: selectedFirstName,
+      lastName: selectedLastName,
+      email: selectedEmail,
+      mobile: selectedMobile,
+      address: selectedAddress,
+      password: randomstring,
+    };
 
-        .then((response) => {
-          alert("success");
-          console.log("inside create" + response.data);
-          console.log("inside then" + response.data);
-        })
-        .catch((e) => {
-          // alert(e );
-          console.log("this is the error:" + e);
-        });
+    empFormService
+      .create(data)
 
-      passwordService
-        .create(data)
+      .then((response) => {
+        alert("success");
+        console.log("inside create" + response.data);
+        console.log("inside then" + response.data);
+      })
+      .catch((e) => {
+        // alert(e );
+        console.log("this is the error:" + e);
+      });
 
-        .then((response) => {
-          alert("success");
-          console.log("inside create" + response.data);
-          console.log("inside then" + response.data);
-        })
-        .catch((e) => {
-          // alert(e );
-          console.log("this is the error:" + e);
-        });
-    
+    passwordService
+      .create(data)
 
+      .then((response) => {
+        alert("success");
+        console.log("inside create" + response.data);
+        console.log("inside then" + response.data);
+      })
+      .catch((e) => {
+        // alert(e );
+        console.log("this is the error:" + e);
+      });
   };
 
   const [selectedFirstName, setSelectedFirstName] = useState("");
@@ -93,34 +81,29 @@ function EmpForm() {
 
   const handleFirstNameChange = (event) => {
     setSelectedFirstName(event.target.value);
-    
   };
   const handleLastNameChange = (event) => {
     setSelectedLastName(event.target.value);
-    
   };
   const handleEmailChange = (event) => {
     setSelectedEmail(event.target.value);
-    
   };
   const handleMobileChange = (event) => {
     setSelectedMobile(event.target.value);
-    
   };
   const handleAddressChange = (event) => {
     setSelectedAddress(event.target.value);
-    
   };
-
   const [role, setRole] = useState("");
+
   const handleRoleChange = (event) => {
     setRole(event.target.value);
-    
+    console.log(event.target.value);
   };
 
   return (
     <Container maxWidth="md">
-      <Form >
+      <Form>
         <container>
           <div>
             <MuiThemeProvider>
@@ -152,6 +135,7 @@ function EmpForm() {
                           </MenuItem>
                           <MenuItem value="Labassistant">Labassistant</MenuItem>
                           <MenuItem value="Pharmasist">Pharmasist</MenuItem>
+                          <MenuItem value="PaymentAdmin">PaymentAdmin</MenuItem>
                           <MenuItem value="Receptionist">Receptionist</MenuItem>
                           <MenuItem value="SysAdmin">SysAdmin</MenuItem>
                         </Select>
@@ -165,9 +149,9 @@ function EmpForm() {
                           name="firstName"
                           label="First Name"
                           variant="outlined"
+                          required
                           fullWidth={true}
                           onChange={handleFirstNameChange}
-                          error={errors.firstName}
                           defaultValue={selectedFirstName}
                         />
                       </Grid>
@@ -180,6 +164,7 @@ function EmpForm() {
                           name="lastName"
                           label="Last Name"
                           variant="outlined"
+                          required
                           fullWidth={true}
                           onChange={handleLastNameChange}
                           defaultValue={selectedLastName}
@@ -194,6 +179,7 @@ function EmpForm() {
                           name="email"
                           label="Email"
                           variant="outlined"
+                          required
                           fullWidth={true}
                           onChange={handleEmailChange}
                           defaultValue={selectedEmail}
@@ -208,8 +194,8 @@ function EmpForm() {
                           name="mobile"
                           label="Mobile"
                           variant="outlined"
+                          required
                           fullWidth={true}
-                          error={errors.mobile}
                           onChange={handleMobileChange}
                           defaultValue={selectedMobile}
                         />
@@ -223,6 +209,7 @@ function EmpForm() {
                           name="address"
                           label="Adress"
                           variant="outlined"
+                          required
                           fullWidth={true}
                           onChange={handleAddressChange}
                           defaultValue={selectedAddress}
@@ -236,7 +223,6 @@ function EmpForm() {
                           color="secondary"
                           style={styles.button}
                           startIcon={<AutorenewIcon />}
-                          onClick={resetForm}
                         />
 
                         <Controls.Button
@@ -246,7 +232,6 @@ function EmpForm() {
                           color="primary"
                           style={styles.button}
                           onClick={handleSubmit}
-            
                           startIcon={<SendIcon />}
                         />
                       </Grid>

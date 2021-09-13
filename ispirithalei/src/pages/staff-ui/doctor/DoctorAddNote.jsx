@@ -40,8 +40,8 @@ const DoctorAddNote = () => {
                 setSubmitted(true);
                 console.log(response.data);
             })
-            .catch(e => {
-                console.log(e);
+            .catch(err => {
+                console.log(err);
             });
     };
 
