@@ -2,8 +2,26 @@ import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import { Link } from "react-router-dom";
 import DeleteSweepOutlinedIcon from '@material-ui/icons/DeleteSweepOutlined';
+import InventoryDataService from '../../../services/inventoryServices';
+import { useState, useEffect } from "react";
 
 export default function InventoryList() {
+  const [inventory, setInventory] = useState([]);
+
+  useEffect(() => {
+    retrieveInventory();
+  }, []);
+
+  const retrieveInventory = () => {
+    InventoryDataService.getAll()
+    .then(response => {
+      setInventory(response.data);
+      console.log(response.data);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+};
 
 const hoveredStyle = {
   cursor: 'pointer'
@@ -34,14 +52,9 @@ const columns = [
     field: 'type_medicine',
     headerName: 'Type of Medicine',
     type:'String',
-    // description: 'This column has a value getter and is not sortable.',
     sortable: false,
     editable: true,
     width: 180,
-    // valueGetter: (params) =>
-    //   `${params.getValue(params.id, 'firstName') || ''} ${
-    //     params.getValue(params.id, 'lastName') || ''
-    //   }`,
   },
   {
     field: "action",
@@ -66,18 +79,19 @@ const columns = [
   }
 ];
 
-const rows = [
-  { id: 1, item_name: 'Panadol', supplier_name: 'Jon', supplier_email: 'jon@gmail.com', type_medicine:'Capsule'},
-  { id: 2, item_name: 'Piriton', supplier_name: 'Cersei', supplier_email: 'carsie@mail.com' , type_medicine:'Capsule'},
-  { id: 3, item_name: 'Brufen', supplier_name: 'Jaime', supplier_email: 'jaime@gmail.com',type_medicine: 'Capsule' },
-  { id: 4, item_name: 'Vitamin C', supplier_name: 'Arya', supplier_email: 'arya@gmail.com',type_medicine: 'Capsule'},
-  { id: 5, item_name: 'Voltaren', supplier_name: 'Daenerys', supplier_email: 'daen@ymail.com', type_medicine: 'Capsule'},
-  { id: 6, item_name: 'Candid B', supplier_name: null, supplier_email: null,type_medicine: 'Liquid'},
-  { id: 7, item_name: 'Zaart', supplier_name: 'Ferrara', supplier_email: 'ferrera@mail.com',type_medicine:'Capsule' },
-  { id: 8, item_name: 'Roparc', supplier_name: 'Rossini', supplier_email: 'Rossini@ymail.com',type_medicine: 'Capsule'},
-  { id: 9, item_name: 'Penicilin', supplier_name: 'Harvey', supplier_email: 'harvey@yahoo.com',type_medicine: 'Capsule'},
-];
+let rows = [];
+    for (const inventoryy of inventory) {
+        rows.push(
+            {
+                id: inventoryy.item_id,
+                item_name: inventoryy.item_name,
+                supplier_name: inventoryy.supplier_name,
+                supplier_email: inventoryy.supplier_email,
+                type_medicine: inventoryy.type_medicine
 
+            }
+        )
+    }
 
   return (
     <div style={{ height: 400, width: '100%' }}>
