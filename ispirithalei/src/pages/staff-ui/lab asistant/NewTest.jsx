@@ -75,6 +75,7 @@ return (
                         <input
                             value={values.patientsname}
                             name="patientsname"
+                            required
                             type="text"
                             placeholder="Enter Patient Name"
                             onChange={handleInputChange}
@@ -86,6 +87,9 @@ return (
                             value={values.specimenid}
                             name="specimenid"
                             type="text"
+                            required
+                            minlength="3"
+                            maxlength="3"
                             placeholder="Enter Specimen ID"
                             onChange={handleInputChange}
                         />
@@ -96,6 +100,9 @@ return (
                             value={values.contactnumber}
                             name="contactnumber"
                             type="text"
+                            minlength="10"
+                            maxlength="10"
+                            required
                             placeholder="Enter Contact Number"
                             onChange={handleInputChange}
                         />
@@ -106,6 +113,7 @@ return (
                             value={values.dateofbirth}
                             name="dateofbirth"
                             type="text"
+                            required
                             placeholder="Enter Patients Age"
                             onChange={handleInputChange}
                         />
@@ -146,6 +154,7 @@ return (
                             value={values.testtype}
                             name="testtype"
                             type="text"
+                            required
                             placeholder="Enter test type"
                             onChange={handleInputChange}
                         />
@@ -156,6 +165,7 @@ return (
                             value={values.collectedperson}
                             name="collectedperson"
                             ype="text"
+                            required
                             placeholder="Enter the collected person name"
                             onChange={handleInputChange}
                         />
