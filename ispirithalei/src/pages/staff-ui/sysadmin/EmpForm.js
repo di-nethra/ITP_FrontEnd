@@ -51,7 +51,7 @@ export class EmpForm extends Component{
                         values={values}
                     />
                 )
-            case 2:
+            default:
                 return <h1>form details</h1>
         }
     }
