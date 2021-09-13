@@ -1,11 +1,13 @@
 import "./sbbmittedtests.css";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { userRows } from "../../../dummyData";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import TestDataService from "../../../services/tests.service";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Button from '@material-ui/core/Button';
 
 export default function SubbmittedTests() {
 
@@ -49,20 +51,28 @@ export default function SubbmittedTests() {
             <Link to={"/staff/labassistant/submittedtest/" + params.row.id}>
               <button className="userListEdit">Assign Staff</button>
             </Link>
-            <DeleteOutline
-              className="userListDelete"
+            <Button
+              variant="contained"
+              color="secondary"
               value={params.row.id}
               onClick={deleteTest}
-            />
+            >
+              <DeleteIcon />
+            </Button>
           </>
         );
       },
     }
   ];
   const deleteTest = event => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Test has been Deleted',
+      showConfirmButton: false,
+      timer: 1500
+    })
     TestDataService.remove(event.currentTarget.value)
       .then(response => {
-        alert(response.statusText)
         window.location.reload();
       })
       .catch(error => {

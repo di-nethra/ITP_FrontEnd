@@ -1,20 +1,68 @@
 import "./staffassign.css"
 import 'date-fns';
 import React from 'react';
+import { useEffect, useState } from 'react';
+import TestDataService from "../../../services/tests.service";
 import Grid from '@material-ui/core/Grid';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardTimePicker,
-    KeyboardDatePicker,
-} from '@material-ui/pickers';
 
 export default function StaffAssign() {
-    const [selectedDate, setSelectedDate] = React.useState(new Date('2021-08-18T21:11:54'));
-
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
+    /*const initialTestState = {
+        specimenid: "",
+        title: "",
+        description: "",
+        published: false
     };
+    const [CurrentTest, setCurrentTest] = useState(initialTestState);
+    const getTest = id => {
+        Tes.get(id)
+            .then(response => {
+                setCurrentTest(response.data);
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
+
+    useEffect(() => {
+        getTest(props.match.params.id);
+    }, [props.match.params.id]);
+
+    const handleInputChange = event => {
+        const { name, value } = event.target;
+        setCurrentTest({ ...CurrentTest, [name]: value });
+    };
+
+    const updatePublished = status => {
+        var data = {
+            id: currentTutorial.id,
+            title: currentTutorial.title,
+            description: currentTutorial.description,
+            published: status
+        };
+
+        TutorialDataService.update(currentTutorial.id, data)
+            .then(response => {
+                setCurrentTutorial({ ...currentTutorial, published: status });
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
+
+    const updateTest = () => {
+
+        TutorialDataService.update(currentTutorial.id, currentTutorial)
+            .then(response => {
+                console.log(response.data);
+                setMessage("The tutorial was updated successfully!");
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };*/
+
     return (
 
         <div className="newUser">
@@ -47,7 +95,7 @@ export default function StaffAssign() {
             <div class="detailsbock1">
                 <span className="newUserTitle1">Staff Assigning</span>
                 <div class="detailsbock">
-                    <form className="newUserForm">
+                    <form className="newUserForm" /*onSubmit={updateTest}*/>
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant ID</label>
                             <input type="text" placeholder="Insert a lab asistant ID" />
@@ -56,31 +104,8 @@ export default function StaffAssign() {
                             <label>Incharge Lab Assistant Name</label>
                             <input type="text" placeholder="Insert a lab asistant name" />
                         </div>
-                        <div className="newUserItem">
-                            <label>Status</label>
-                            <select className="newUserSelect" name="active" id="active">
-                                <option value="subbmitted">Subbmitted</option>
-                                <option value="inprogress">In-Progress</option>
-                            </select>
-                        </div>
-                        <div className="newUserItem">
-                            <label>Start Date by Assistant</label>
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <KeyboardDatePicker
-                                    disableToolbar
-                                    variant="inline"
-                                    format="MM/dd/yyyy"
-                                    margin="normal"
-                                    id="date-picker-inline"
-                                    value={selectedDate}
-                                    onChange={handleDateChange}
-                                    KeyboardButtonProps={{
-                                        'aria-label': 'change date',
-                                    }}
-                                />
-                            </MuiPickersUtilsProvider>
-                        </div>
-                        <button className="newUserButton">Assign Test</button>
+
+                        <button className="newUserButton">Assign Test(Update Test)</button>
                     </form>
                 </div>
             </div>
