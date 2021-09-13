@@ -7,7 +7,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
+// import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import "../inventory/page.css"
 
 
@@ -176,20 +176,7 @@ function InventoryItem(){
       </FormControl>
 
         <br /><br />
-             {/* <input name = "name" type="text" placeholder = "Enter name" /><br/>
-             <input name = "supplier" type="text" placeholder = "Enter Supplier Name" required/><br/>
-             <input name = "supplierEmail" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder = "Enter Supplier Email" required/><br/>
-             <input name = "supplierContact" type="text" pattern="[0-9]{10}" required/> <br />
-             <input name = "price" type="text" placeholder = "Enter purchase price" /><br/>
-             <input name = "date" type = "text" value={new Date().getDate()+"-"+(new Date().getMonth()+1)+"-"+new Date().getFullYear()} /><br/> */}
-             {/* <select name="type" id="drugType">
-                <option value="liquid">Liquid</option>
-                <option value="tablet">Tablet</option>
-                <option value="capsules">Capsules</option>
-                <option value="inhalers">Inhaler</option>
-                <option value="injections">Injection</option>
-                <option value="other">Other</option>
-            </select><br /> */}
+             
 
             <Button
             variant="contained"
@@ -201,7 +188,7 @@ function InventoryItem(){
             Update
             </Button> 
           
-            <Button
+            {/* <Button
             variant="contained"
             color="primary"
             className={b_classes.button}
@@ -209,20 +196,9 @@ function InventoryItem(){
             endIcon={<DeleteOutlineOutlinedIcon />}
             >
             Delete
-            </Button> 
+            </Button>  */}
 
-            {/* <Button
-            variant="contained"
-            color="primary"
-            className={b_classes.button}
-            style={{marginLeft:'20px'}}
-            endIcon={<DirectionsRunOutlinedIcon />}
-          >
-           Demo
-          </Button> */}
-
-            {/* <button >Register</button><br />
-            <button>Demo</button> */}
+            
          </form>
      </div>
  );
