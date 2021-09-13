@@ -36,7 +36,7 @@ const Doctor = () => {
         id: 2
       },
       {
-        path: "viewprescription/1234",
+        path: "viewprescription/D001",
         icon: <TransformIcon className="sidebarIcon" />,
         iconlabel: 'View Prescriptions',
         id: 3

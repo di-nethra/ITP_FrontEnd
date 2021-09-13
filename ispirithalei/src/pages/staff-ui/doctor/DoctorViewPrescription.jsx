@@ -11,6 +11,7 @@ import './doctor.css';
 import { Link, useParams } from "react-router-dom";
 import { DeleteOutline } from "@material-ui/icons";
 import PrescriptionDataService from "../../../services/doctorPrescriptionService";
+import PrescriptionDataServices from '../../../services/doctorPrescriptionService';
 
 export default function DoctorViewPrescription() {
     const columns = [
@@ -43,12 +44,24 @@ export default function DoctorViewPrescription() {
                         <Link to={"/staff/doctor/editprescription" /*+ params.row.id*/}>
                             <Button size="small" color="primary" variant="contained" style={{ marginRight: 5 }}>Edit</Button>
                         </Link>
-                        <Button size="small" color="secondary" variant="contained"><DeleteOutline /></Button>
+                        <Button size="small" color="secondary" variant="contained" value={params.row.id}
+                            onClick={deletePrescription}><DeleteOutline /></Button>
                     </>
                 );
             },
         },
     ];
+
+    const deletePrescription = event => {
+        PrescriptionDataServices.remove(event.currentTarget.value)
+            .then(response => {
+                alert(response.statusText)
+                window.location.reload();
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     const [prescriptions, setPrescriptions] = useState([]);
     let { id } = useParams();

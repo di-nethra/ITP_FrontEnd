@@ -16,7 +16,7 @@ function DoctorPrescription() {
 
     const initialPrescriptionState = {
         //id: null,
-        dId: "D0001",
+        dId: "D001",
         dPName: "",
         dPDignosis: "",
         dMed1: "",

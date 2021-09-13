@@ -16,16 +16,16 @@ const create = data => {
 //     return http.put(`/prescriptions/${id}`, data);
 // };
 
-// const remove = id => {
-//     return http.delete(`/prescriptions/${id}`);
-// };
+const remove = id => {
+    return http.delete("/prescriptions/" + id);
+};
 
 const PrescriptionDataServices = {
     // getAll,
     get,
     create,
     // update,
-    // remove
+    remove
 };
 
 export default PrescriptionDataServices;
