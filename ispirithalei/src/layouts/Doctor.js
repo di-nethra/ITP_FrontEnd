@@ -36,7 +36,7 @@ const Doctor = () => {
         id: 2
       },
       {
-        path: "viewprescription",
+        path: "viewprescription/1234",
         icon: <TransformIcon className="sidebarIcon" />,
         iconlabel: 'View Prescriptions',
         id: 3
@@ -72,7 +72,7 @@ const Doctor = () => {
               <DoctorPrescription />
             </Route>
 
-            <Route path="/staff/doctor/viewprescription">
+            <Route path="/staff/doctor/viewprescription/:id">
               <DoctorViewPrecription />
             </Route>
 
