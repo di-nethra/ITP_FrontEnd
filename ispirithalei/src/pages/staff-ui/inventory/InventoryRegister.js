@@ -1,92 +1,118 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ArrowForwardIosOutlinedIcon from '@material-ui/icons/ArrowForwardIosOutlined';
 import DirectionsRunOutlinedIcon from '@material-ui/icons/DirectionsRunOutlined';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import "../inventory/page.css"
+import InventoryDataServices from '../../../services/inventoryServices';
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      width: '25ch',
-    },
-  }));
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: '25ch',
+  },
+}));
 
-  const b_useStyles = makeStyles((theme) => ({
-    button: {
-      margin: theme.spacing(1),
-      
-    },
-  }));
 
-  const f_useStyles = makeStyles((theme) => ({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 220,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-  }));
 
-function InventoryRegister(){
-    const classes = useStyles()
-    const b_classes = useStyles();
-    const f_classes = f_useStyles();
+const f_useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 220,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
-    const [state, setState] = React.useState({
-        type: '',
-        name: 'hai',
-      });
+function InventoryRegister() {
+  const b_classes = useStyles();
 
-    const handleChange = (event) => {
-        const name = event.target.name;
-        setState({
-          ...state,
-          [name]: event.target.value,
+  // //date value
+  // const date = new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear();
+  // const dateString = date.toString();
+
+  const initialInventoryState = {
+    item_id: "",
+    item_name: "",
+    supplier_name: "",
+    supplier_email: "",
+    supplier_contact: "",
+    purchase_price: "",
+    registered_date: "",
+    type_medicine: ""
+  };
+
+  const [inventory, setInventory] = useState(initialInventoryState);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleInputChange = event => {
+    const { name, value } = event.current.target;
+    setInventory({ ...inventory, [name]: value });
+  };
+
+  const saveInventory = () => {
+    var data = {
+      item_id: inventory.item_id,
+      item_name: inventory.item_name,
+      supplier_name: inventory.supplier_name,
+      supplier_email: inventory.supplier_email,
+      supplier_contact: inventory.supplier_contact,
+      purchase_price: inventory.purchase_price,
+      registered_date: inventory.registered_date,
+      type_medicine: inventory.type_medicine
+    };
+
+    InventoryDataServices.create(data)
+      .then(response => {
+        console.log(data);
+        setInventory({
+          item_id: response.data.item_id,
+          item_name: response.data.item_name,
+          supplier_name: response.data.supplier_name,
+          supplier_email: response.data.supplier_email,
+          supplier_contact: response.data.supplier_contact,
+          purchase_price: response.data.purchase_price,
+          registered_date: response.data.registered_date,
+          type_medicine: response.data.type_medicine
         });
-      };
+        setSubmitted(true);
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
+  const newInventory = () => {
+    setInventory(initialInventoryState);
+    setSubmitted(false);
+  };
 
 
- return (
-     <div className="formCard"
-     >
-         <form  style={{marginLeft:'250px'}}>
-         <h3>Register a new Item</h3><br/>
+  return (
+    <div className="formCard"
+    >
+      <form style={{ marginLeft: '250px' }}>
+        <h3>Register a new Item</h3><br />
 
-         <TextField
-          id="outlined-full-width"
+        <TextField
+          id="item_id"
           label="Item ID"
+          defaultValue={inventory.item_id}
+          onChange={handleInputChange}
           style={{ margin: 8 }}
           placeholder="Enter Item ID"
           helperText=""
           required
-          style={{width:600}}
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-        />
-
-         <TextField
-          id="outlined-full-width"
-          label="Item Name"
-          style={{ margin: 8 }}
-          placeholder="Enter Item Name"
-          helperText=""
-          style={{width:600}}
+          style={{ width: 600 }}
           margin="normal"
           InputLabelProps={{
             shrink: true,
@@ -95,11 +121,29 @@ function InventoryRegister(){
         />
 
         <TextField
-          id="outlined-full-width"
+          id="item_name"
+          label="Item Name"
+          defaultValue={inventory.item_name}
+          onChange={handleInputChange}
+          style={{ margin: 8 }}
+          placeholder="Enter Item Name"
+          helperText=""
+          style={{ width: 600 }}
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+        />
+
+        <TextField
+          id="supplier_name"
           label="Supplier Name"
+          defaultValue={inventory.supplier_name}
+          onChange={handleInputChange}
           style={{ margin: 8 }}
           placeholder="Enter Supplier Name"
-          style={{width:600}}
+          style={{ width: 600 }}
           helperText=""
           fullWidth
           margin="normal"
@@ -109,12 +153,14 @@ function InventoryRegister(){
           variant="outlined"
         />
 
-<TextField
-          id="outlined-full-width"
+        <TextField
+          id="supplier_email"
           label="Supplier Email"
+          defaultValue={inventory.supplier_email}
+          onChange={handleInputChange}
           style={{ margin: 8 }}
           placeholder="Enter Supplier Email"
-          style={{width:600}}
+          style={{ width: 600 }}
           required
           helperText=""
           fullWidth
@@ -126,11 +172,13 @@ function InventoryRegister(){
         />
 
         <TextField
-          id="outlined-full-width"
+          id="supplier_contact"
           label="Supplier Contact Number"
+          defaultValue={inventory.supplier_contact}
+          onChange={handleInputChange}
           style={{ margin: 8 }}
           placeholder="Enter supplier contact number"
-          style={{width:600}}
+          style={{ width: 600 }}
           helperText=""
           required
           fullWidth
@@ -143,11 +191,13 @@ function InventoryRegister(){
         <br />
 
         <TextField
-          id="outlined-full-width1"
+          id="purchase_price"
           label="Purchase Price"
+          defaultValue={inventory.purchase_price}
+          onChange={handleInputChange}
           style={{ margin: 8 }}
           placeholder="Enter Purchase Price"
-          style={{width:300}}
+          style={{ width: 300 }}
           helperText=""
           fullWidth
           margin="normal"
@@ -156,84 +206,74 @@ function InventoryRegister(){
           }}
           variant="outlined"
         />
-         
-         <TextField
-          id="outlined-full-width"
+
+        <TextField
+          id="registered_date"
           label="Registered Date"
+          defaultValue={inventory.registered_date}
+          onChange={handleInputChange}
           style={{ margin: 8 }}
           placeholder="Enter the date"
-          style={{width:200,marginLeft:100}}
+          style={{ width: 200, marginLeft: 100 }}
           helperText=""
           fullWidth
-          defaultValue={new Date().getDate()+"-"+(new Date().getMonth()+1)+"-"+new Date().getFullYear()}
+          // value={dateString}
           margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           variant="outlined"
         />
-          <br/>
+        <br />
 
-          <FormControl variant="outlined" className={f_classes.formControl}>
-            <InputLabel htmlFor="outlined-age-native-simple">Type of medicine</InputLabel>
-                <Select
-                    native
-                    value={state.type}
-                    onChange={handleChange}
-                    label="Type of medicine"
-                    inputProps={{
-                        name: 'type',
-                        id: 'outlined-age-native-simple',
-                    }}
-                >
-                <option aria-label="None" value="" />
-                <option value={"liquid"}>Liquid</option>
-                <option value={"injection"}>Injection</option>
-                <option value={"capsules"}>Capsules</option>
-                </Select>
-      </FormControl>
+        <TextField
+          id="type_medicine"
+          label="Type of Medicine"
+          defaultValue={inventory.type_medicine}
+          onChange={handleInputChange}
+          style={{ margin: 8 }}
+          placeholder="Enter the type"
+          style={{ width: 300 }}
+          helperText=""
+          fullWidth
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+        />
+
 
         <br /><br />
-             {/* <input name = "name" type="text" placeholder = "Enter name" /><br/>
-             <input name = "supplier" type="text" placeholder = "Enter Supplier Name" required/><br/>
-             <input name = "supplierEmail" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder = "Enter Supplier Email" required/><br/>
-             <input name = "supplierContact" type="text" pattern="[0-9]{10}" required/> <br />
-             <input name = "price" type="text" placeholder = "Enter purchase price" /><br/>
-             <input name = "date" type = "text" value={new Date().getDate()+"-"+(new Date().getMonth()+1)+"-"+new Date().getFullYear()} /><br/> */}
-             {/* <select name="type" id="drugType">
-                <option value="liquid">Liquid</option>
-                <option value="tablet">Tablet</option>
-                <option value="capsules">Capsules</option>
-                <option value="inhalers">Inhaler</option>
-                <option value="injections">Injection</option>
-                <option value="other">Other</option>
-            </select><br /> */}
 
-            <Button
-            variant="contained"
-            color="primary"
-            className={b_classes.button}
-            endIcon={<ArrowForwardIosOutlinedIcon />}
-            >
-            Proceed to Register
-            </Button> 
-          
 
-          <Button
-            variant="contained"
-            color="primary"
-            className={b_classes.button}
-            style={{marginLeft:'20px'}}
-            endIcon={<DirectionsRunOutlinedIcon />}
-          >
-           Demo
-          </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          className={b_classes.button}
+          onClick={saveInventory}
+          endIcon={<ArrowForwardIosOutlinedIcon />}
+        >
+          Proceed to Register
+        </Button>
 
-            {/* <button >Register</button><br />
+
+        <Button
+          variant="contained"
+          color="primary"
+          className={b_classes.button}
+          onClick={newInventory}
+          style={{ marginLeft: '20px' }}
+          endIcon={<DirectionsRunOutlinedIcon />}
+        >
+          Demo
+        </Button>
+
+        {/* <button >Register</button><br />
             <button>Demo</button> */}
-         </form>
-     </div>
- );
+      </form>
+    </div>
+  );
 }
 
 export default InventoryRegister

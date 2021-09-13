@@ -3,6 +3,8 @@ import { DataGrid } from '@material-ui/data-grid';
 import { Link } from "react-router-dom";
 import DeleteSweepOutlinedIcon from '@material-ui/icons/DeleteSweepOutlined';
 
+export default function InventoryList() {
+
 const hoveredStyle = {
   cursor: 'pointer'
 };
@@ -76,7 +78,7 @@ const rows = [
   { id: 9, item_name: 'Penicilin', supplier_name: 'Harvey', supplier_email: 'harvey@yahoo.com',type_medicine: 'Capsule'},
 ];
 
-export default function InventoryList() {
+
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
