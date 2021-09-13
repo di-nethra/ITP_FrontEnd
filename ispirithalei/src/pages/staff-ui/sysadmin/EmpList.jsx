@@ -8,6 +8,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import ActionBtn from './ActionBtn';
+import empFormService from "../../../services/empForm.service";
+import {useEffect, useState} from 'react';
+import {Link, useParams} from "react-router-dom";
 
 const useStyles = makeStyles({
   table: {
@@ -20,13 +23,45 @@ function createData(firstname, lastname, email, mobile, address) {
 }
 
 const rows = [
-  createData('John', 'Doe', 'john32@gmail.com', '0767644126', 'No 10 west coast, california'),
-  createData('Anthony', 'Joshua', 'john32@gmail.com', '0767644126', 'No 10 west coast, california'),
-  createData('Emilia', 'clark', 'john32@gmail.com','0767644126', 'No 10 west coast, california'),
+  createData('John', 'Doe', 'john32@gmail.com', '0767644126', 'doctor'),
+  createData('Anthony', 'Joshua', 'john32@gmail.com', '0767644126', 'doctor'),
+  createData('Emilia', 'clark', 'john32@gmail.com','0767644126', 'doctor'),
 ];
 
 function EmpList() {
   const classes = useStyles();
+
+  const [details, setDetails] = useState([]);
+  let {id} = useParams();
+  useEffect(() => {
+      getDetailsByID(id);
+  }, [id]);
+
+  const getDetailsByID = (id) => {
+    empFormService.get(id)
+          .then(response => {
+            setDetails(response.data)
+              console.log(response.data)
+          })
+          .catch(err => {
+                  console.log(err);
+              }
+          )
+  }
+
+  const row = [];
+  for (const detail of details) {
+    rows.push(
+          {
+            role: detail.role,
+            firstname:detail.firstname, 
+            lastname:detail.lastname, 
+            email:detail.email,
+            mobile:detail.mobile, 
+            address:detail.address,
+          }
+      )
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -37,7 +72,7 @@ function EmpList() {
             <TableCell align="left">Last Name</TableCell>
             <TableCell align="left">Email</TableCell>
             <TableCell align="left">Mobile</TableCell>
-            <TableCell align="left">Adress</TableCell>
+            <TableCell align="left">Role</TableCell>
             <TableCell align="left">Action</TableCell>
           </TableRow>
         </TableHead>
@@ -47,6 +82,8 @@ function EmpList() {
               <TableCell component="th" scope="row">
                 {row.firstname}
               </TableCell>
+              
+
               <TableCell align="left">{row.lastname}</TableCell>
               <TableCell align="left">{row.email}</TableCell>
               <TableCell align="left">{row.mobile}</TableCell>
