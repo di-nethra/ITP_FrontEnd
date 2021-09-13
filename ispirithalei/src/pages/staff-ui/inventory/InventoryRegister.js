@@ -89,8 +89,7 @@ function InventoryRegister() {
 
 
   return (
-    <div className="formCard"
-    >
+    <div className="formCard">
       <form style={{ marginLeft: '250px' }}>
         <h3>Register a new Item</h3><br />
 
