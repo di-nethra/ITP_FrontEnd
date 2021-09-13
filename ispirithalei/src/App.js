@@ -69,13 +69,13 @@ const App = () => (
           </Switch>
         </Route>
 
-        <Route exact path={["/payments", "/patient/newappointment", "/about", "/"]}>
+        <Route path={["/payments", "/patient/newappointment", "/about", "/"]}>
           <Header />
           <Switch>
             <Route path="/about" component={About} />
 
             <Route path="/patient/newappointment" component={EForm} />
-            <Route exact path="/payments">
+            <Route path="/payments">
               <PaymentNavigation />
               <Switch>
                 <Route path="/payments/info">

@@ -84,3 +84,10 @@
     font-weight: 600;
     color: rgb(61, 61, 61);
   }
+  .input:invalid {
+    border: 2px dashed red;
+  }
+  
+  .input:valid {
+    border: 2px solid black;
+  }
