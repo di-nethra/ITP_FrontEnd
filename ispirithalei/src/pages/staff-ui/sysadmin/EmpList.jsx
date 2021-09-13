@@ -18,27 +18,26 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(firstname, lastname, email, mobile, address) {
-  return { firstname, lastname, email, mobile, address };
-}
+// function createData(rows) {
+//   return rows;
+// }
 
-const rows = [
-  createData('John', 'Doe', 'john32@gmail.com', '0767644126', 'doctor'),
-  createData('Anthony', 'Joshua', 'john32@gmail.com', '0767644126', 'doctor'),
-  createData('Emilia', 'clark', 'john32@gmail.com','0767644126', 'doctor'),
-];
+// const rows = [
+//   createData('John', 'Doe', 'john32@gmail.com', '0767644126', 'doctor'),
+//   createData('Anthony', 'Joshua', 'john32@gmail.com', '0767644126', 'doctor'),
+//   createData('Emilia', 'clark', 'john32@gmail.com','0767644126', 'doctor'),
+// ];
 
 function EmpList() {
   const classes = useStyles();
 
   const [details, setDetails] = useState([]);
-  let {id} = useParams();
   useEffect(() => {
-      getDetailsByID(id);
-  }, [id]);
+      getDetails();
+  }, );
 
-  const getDetailsByID = (id) => {
-    empFormService.get(id)
+  const getDetails = () => {
+    empFormService.getAll()
           .then(response => {
             setDetails(response.data)
               console.log(response.data)
@@ -49,7 +48,9 @@ function EmpList() {
           )
   }
 
-  const row = [];
+  const rows = [ "role", "firstname", 
+    // createData()
+  ];
   for (const detail of details) {
     rows.push(
           {
