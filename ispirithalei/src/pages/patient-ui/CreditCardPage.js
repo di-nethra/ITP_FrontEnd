@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import logo from "../../assets/images/infoPageLogo.svg";
-import {withStyles} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import PayCredit from "../../assets/images/PayWithCreditCard.svg";
@@ -86,7 +86,7 @@ export class CreditCardPage extends Component {
     const { values, handleChange } = this.props;
 
     console.log(values.email);
-    let data = [{ email: values.email }, { id: 2 }];
+
     return (
       <div>
         <Grid container direction="row" className={classes.root}>

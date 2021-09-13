@@ -22,13 +22,6 @@ const columns = [
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
   },
-  // {
-  //   id: 'size',
-  //   label: 'Size\u00a0(km\u00b2)',
-  //   minWidth: 170,
-  //   align: 'right',
-  //   format: (value) => value.toLocaleString('en-US'),
-  // },
   {
     id: 'r_level',
     label: 'Reorder-Level',
@@ -70,11 +63,6 @@ const useStyles = makeStyles({
   },
 });
 
-const b_useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
 
 export default function InventoryTable() {
   const classes = useStyles();
@@ -110,9 +98,9 @@ export default function InventoryTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row,index) => {
               return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (

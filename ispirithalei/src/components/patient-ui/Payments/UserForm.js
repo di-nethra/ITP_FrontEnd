@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Checkout from "../../../pages/patient-ui/Checkout";
 import CreditCardPage from "../../../pages/patient-ui/CreditCardPage";
 
@@ -61,6 +61,9 @@ export class UserForm extends Component {
             values={values}
           />
         );
+      }
+      default: {
+        console.log("deafult case");
       }
     }
   }

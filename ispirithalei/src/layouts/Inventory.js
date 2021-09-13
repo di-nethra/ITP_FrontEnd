@@ -1,23 +1,18 @@
 import React from "react";
 import Sidebar from "../components/staff-ui/sidebar/Sidebar";
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
-import DoneIcon from '@material-ui/icons/Done';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
-import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
-import TransformIcon from '@material-ui/icons/Transform';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 import ListOutlinedIcon from '@material-ui/icons/ListOutlined';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import "./layout.css"
 import InventoryHome from "../pages/staff-ui/inventory/InventoryHome";
 import InventoryRegister from "../pages/staff-ui/inventory/InventoryRegister";
-import InventoryTable from "../components/staff-ui/ad_inventory/InventoryTable";
 import InventoryList from "../pages/staff-ui/inventory/InventoryList";
 import Restock from "../pages/staff-ui/inventory/Restock";
 import InventoryItem from "../pages/staff-ui/inventory/InventoryItem";
 import InventoryReport from "../pages/staff-ui/inventory/InventoryReport";
-import InventoryReportTable from "../components/staff-ui/ad_inventory/InventoryReportTable";
 import {Switch, Route } from "react-router-dom";
 
 const Inventory = () => {
