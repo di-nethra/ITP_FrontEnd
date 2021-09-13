@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
 import FormDetails from './FormDetails';
 
+
+
 export class EmpForm extends Component{
     state ={
         step: 1,
+        role: '',
         firstName: '',
         lastName: '',
         email: '',
@@ -36,8 +39,8 @@ export class EmpForm extends Component{
 
     render(){
         const {step} = this.state;
-        const {firstName, lastName, email, mobile, address} = this.state;
-        const values = {firstName, lastName, email, mobile, address}
+        const {role, firstName, lastName, email, mobile, address} = this.state;
+        const values = {role, firstName, lastName, email, mobile, address}
 
         switch(step){
             case 1:

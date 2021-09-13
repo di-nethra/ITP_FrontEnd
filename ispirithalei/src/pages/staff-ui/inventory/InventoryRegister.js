@@ -64,6 +64,22 @@ function InventoryRegister(){
      >
          <form  style={{marginLeft:'250px'}}>
          <h3>Register a new Item</h3><br/>
+
+         <TextField
+          id="outlined-full-width"
+          label="Item ID"
+          style={{ margin: 8 }}
+          placeholder="Enter Item ID"
+          helperText=""
+          required
+          style={{width:600}}
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+        />
+
          <TextField
           id="outlined-full-width"
           label="Item Name"
@@ -99,6 +115,7 @@ function InventoryRegister(){
           style={{ margin: 8 }}
           placeholder="Enter Supplier Email"
           style={{width:600}}
+          required
           helperText=""
           fullWidth
           margin="normal"
@@ -115,6 +132,7 @@ function InventoryRegister(){
           placeholder="Enter supplier contact number"
           style={{width:600}}
           helperText=""
+          required
           fullWidth
           margin="normal"
           InputLabelProps={{

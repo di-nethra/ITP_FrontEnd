@@ -4,39 +4,56 @@ import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import { Button } from "@material-ui/core";
 import "./doctor.css"
+import NoteDataService from "../../../services/doctorNoteService";
 
-
-
-function DoctorAddNote() {
-    const [note, setNote] = useState({
+const DoctorAddNote = () => {
+    const initialNoteState = {
+        //id: null,
         pNoteId: "",
         pNoteName: "",
         pNoteMessage: ""
-    });
+    };
 
-    function handleNoteChange(event) {
+    const [note, setNote] = useState(initialNoteState);
+    const [submitted, setSubmitted] = useState(false);
+
+    const handleInputChange = event => {
         const { name, value } = event.target;
+        setNote({ ...note, [name]: value });
+    };
 
-        setNote(prevValue => {
-            return {
-                ...prevValue,
-                [name]: value
-            };
-        });
-    }
-    // console.log(note.pNoteId);
-    // console.log(note.pNoteName);
-    // console.log(note.pNoteMessage);
+    const saveNote = () => {
+        var data = {
+            pNoteId: note.pNoteId,
+            pNoteName: note.pNoteName,
+            pNoteMessage: note.pNoteMessage
+        };
 
-    const handleReset = (e) => {
-        e.preventDefault();
-        setNote(prevState => ({
-            ...prevState,
-            pNoteId: "",
-            pNoteName: "",
-            pNoteMessage: ""
-        }))
-    }
+        NoteDataService.create(data)
+            .then(response => {
+                setNote({
+                    //id: response.data.id,
+                    pNoteId: response.data.pNoteId,
+                    pNoteName: response.data.pNoteName,
+                    pNoteMessage: response.data.pNoteMessage
+                });
+                setSubmitted(true);
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
+
+    const newNote = () => {
+        setNote(initialNoteState);
+        setSubmitted(false);
+    };
+
+    //console.log(note.id);
+    console.log(note.pNoteId);
+    console.log(note.pNoteName);
+    console.log(note.pNoteMessage);
 
     return (
         <div style={{ marginBottom: 10 }}>
@@ -56,7 +73,7 @@ function DoctorAddNote() {
                             placeholder="Enter patient ID"
                             helperText="Please enter a number only"
                             variant="outlined"
-                            onChange={handleNoteChange}
+                            onChange={handleInputChange}
                             value={note.pNoteId}
                             required /><br /><br />
 
@@ -71,7 +88,7 @@ function DoctorAddNote() {
                             margin="normal"
                             InputLabelProps={{ shrink: true, }}
                             variant="outlined"
-                            onChange={handleNoteChange}
+                            onChange={handleInputChange}
                             value={note.pNoteName}
                             required /><br /><br />
 
@@ -88,13 +105,13 @@ function DoctorAddNote() {
                             rows={5}
                             InputLabelProps={{ shrink: true, }}
                             variant="outlined"
-                            onChange={handleNoteChange}
+                            onChange={handleInputChange}
                             value={note.pNoteMessage}
                             required /><br /><br />
 
                         <div className="buttonAlignRight">
-                            <Button size="medium" variant="contained" style={{ marginRight: 8 }} type="reset" onClick={handleReset}>Clear</Button>
-                            <Button size="medium" variant="contained" color="primary" type="submit">Send</Button>
+                            <Button size="medium" variant="contained" style={{ marginRight: 8 }} type="reset" onClick={newNote}>Clear</Button>
+                            <Button size="medium" variant="contained" color="primary" type="submit" onClick={saveNote}>Send</Button>
                         </div>
 
                     </form>
@@ -104,6 +121,6 @@ function DoctorAddNote() {
         </div>
     );
 
-}
+};
 
 export default DoctorAddNote;
