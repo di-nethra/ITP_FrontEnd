@@ -20,6 +20,7 @@ import PaymentInvoice from "./pages/patient-ui/PaymentInvoice";
 import PaymentOptionPage from "./pages/patient-ui/PaymentOptionPage";
 import MobileQrPay from "./pages/patient-ui/MobileQrPay";
 import QRpage from "./pages/patient-ui/QRpage";
+import PageNotFound from "./pages/PageNotFound";
 const theme = createTheme({
   palette: {
     primary: {
@@ -68,14 +69,13 @@ const App = () => (
           </Switch>
         </Route>
 
-        <Route path={["/payments", "/patient/newappointment", "/about", "/"]}>
+        <Route exact path={["/payments", "/patient/newappointment", "/about", "/"]}>
           <Header />
           <Switch>
-            <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
 
             <Route path="/patient/newappointment" component={EForm} />
-            <Route>
+            <Route exact path="/payments">
               <PaymentNavigation />
               <Switch>
                 <Route path="/payments/info">
@@ -99,7 +99,11 @@ const App = () => (
               </Switch>
             </Route>
           </Switch>
+          <Route exact path="/" component={Home} />
           <Footer />
+        </Route>
+        <Route path="*">
+          <PageNotFound />
         </Route>
       </Switch>
     </Router>
