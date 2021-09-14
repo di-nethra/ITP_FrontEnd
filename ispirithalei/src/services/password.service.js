@@ -1,34 +1,34 @@
-import http from "../http-common";
+// import http from "../http-common";
 
-const getAll = () => {
-  return http.get("/password");
-};
-
-// const get = (id) => {
-//   return http.get("/password" + id);
+// const getAll = () => {
+//   return http.get("/password");
 // };
 
-const create = (data) => {
-  return http.post("/password", data);
-};
+// // const get = (id) => {
+// //   return http.get("/password" + id);
+// // };
 
-// const update = (id, data) => {
-//   return http.put(`/password/${id}`, data);
+// const create = (data) => {
+//   return http.post("/password", data);
 // };
 
-// const remove = (id) => {
-//   return http.delete(`/password${id}`);
-// };
+// // const update = (id, data) => {
+// //   return http.put(`/password/${id}`, data);
+// // };
 
-// const removeAll = () => {
-//   return http.delete(`/password`);
-// };
-const passwordServices = {
-  getAll,
-  // get,
-  create,
-  // update,
-  // remove,
-  // removeAll,
-}
-export default passwordServices;
+// // const remove = (id) => {
+// //   return http.delete(`/password${id}`);
+// // };
+
+// // const removeAll = () => {
+// //   return http.delete(`/password`);
+// // };
+// const passwordServices = {
+//   getAll,
+//   // get,
+//   create,
+//   // update,
+//   // remove,
+//   // removeAll,
+// }
+// export default passwordServices;
