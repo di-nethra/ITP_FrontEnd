@@ -11,9 +11,11 @@ import { Typography } from "@material-ui/core";
 import DisplayCredit from "../components/staff-ui/DisplayCredit";
 
 const PaymentAdmin = () => {
+  let temp = sessionStorage.getItem("user");
+  let currentUser = JSON.parse(temp);
   const user = {
-    name: "Anjana Samarakoon",
-    role: "PaymentAdmin",
+    name : currentUser?.firstName + " " + currentUser?.lastName,
+    role: currentUser?.role,
 
     list: [
       {

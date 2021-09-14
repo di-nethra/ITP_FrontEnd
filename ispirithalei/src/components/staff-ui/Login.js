@@ -43,8 +43,9 @@ export default function Login() {
 
     login(data)
       .then((response) => {
-        // if (response.data.accessToken)
-          sessionStorage.setItem("user", response.data);
+        const data = response.data
+        if (response.data.accessToken)
+          sessionStorage.setItem("user", JSON.stringify(data));
         if (response.status === 200) {
           switch (response.data.role) {
             case "Doctor":
@@ -76,7 +77,7 @@ export default function Login() {
       })
       .catch((e) => {
         alert(e);
-        console.log("this is the error:" + e);
+        console.log("ERROR : " + e);
       });
   };
 
