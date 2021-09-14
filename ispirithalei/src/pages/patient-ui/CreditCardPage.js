@@ -57,7 +57,7 @@ export class CreditCardPage extends Component {
       date: currentDate,
       amount: tempPrice,
     };
-    if (data.email.includes("@", 0)) {
+    if (data.email.includes("@", 0) && data.email.includes(".com")) {
     } else {
       Swal.fire({
         icon: "error",
@@ -70,7 +70,7 @@ export class CreditCardPage extends Component {
 
     const temp = data.name;
 
-    if (temp[0] == temp[0].toUpperCase() || temp == undefined) {
+    if (temp[0] === temp[0].toUpperCase() || temp === undefined) {
     } else {
       Swal.fire({
         icon: "error",
