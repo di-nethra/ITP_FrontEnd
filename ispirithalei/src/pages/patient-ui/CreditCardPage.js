@@ -7,7 +7,7 @@ import PayCredit from "../../assets/images/PayWithCreditCard.svg";
 import Button from "@material-ui/core/Button";
 import DropDown from "../../components/patient-ui/Payments/DropDown";
 import paymentCreditService from "../../services/paymentCredit.service";
-
+import Swal from "sweetalert2";
 const styles = (theme) => ({
   infoLogo: {
     width: "500px",
@@ -57,9 +57,30 @@ export class CreditCardPage extends Component {
       date: currentDate,
       amount: tempPrice,
     };
-    console.log(this.props.values);
+    if (data.email.includes("@", 0)) {
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Email must be in valid format",
+      });
 
-    console.log(data.email);
+      return null;
+    }
+
+    const temp = data.name;
+
+    if (temp[0] == temp[0].toUpperCase() || temp == undefined) {
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Name on Card must be start with a capital letter",
+      });
+      return null;
+    }
+
+    console.log(" data meka" + data.email);
     paymentCreditService
       .create(data)
 
@@ -77,7 +98,11 @@ export class CreditCardPage extends Component {
         alert(e);
         console.log("this is the error:" + e);
       });
-
+    Swal.fire(
+      "Success",
+      "Your data is successfully saved for future use",
+      "success"
+    );
     this.props.nextStep();
   };
 
@@ -85,7 +110,7 @@ export class CreditCardPage extends Component {
     const { classes } = this.props;
     const { values, handleChange } = this.props;
 
-    console.log(values.email);
+    console.log("meka2" + values.email);
 
     return (
       <div>
@@ -102,6 +127,7 @@ export class CreditCardPage extends Component {
               <p className={classes.label}>email</p>
               <TextField
                 id="outlined-basic"
+                InputProps={{ inputProps: { min: 2, max: 3 } }}
                 variant="outlined"
                 fullWidth="true"
                 onChange={handleChange("email")}
