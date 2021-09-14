@@ -28,31 +28,41 @@ function EmpForm() {
       password: randomstring,
     };
 
-    empFormService
-        .create(data)
+    if(data.email.includes("@", 0)){
+      alert("email successfull")
+    }else{
+      console.log("fail");
+      alert("email should contain a @");
+      return null;
+    }
 
-        .then((response) => {
-          alert("success");
-          console.log("inside create" + response.data);
-          console.log("inside then" + response.data);
-        })
-        .catch((e) => {
-          // alert(e );
-          console.log("this is the error:" + e);
-        });
+    empFormService
+      .create(data)
+
+      .then((response) => {
+        alert("success");
+        window.location.reload();
+        console.log("inside create" + response.data);
+        console.log("inside then" + response.data);
+      })
+      .catch((e) => {
+        // alert(e );
+        console.log("this is the error:" + e);
+      });
 
     passwordService
-        .create(data)
+      .create(data)
 
-        .then((response) => {
-          alert("success");
-          console.log("inside create" + response.data);
-          console.log("inside then" + response.data);
-        })
-        .catch((e) => {
-          // alert(e );
-          console.log("this is the error:" + e);
-        });
+      .then((response) => {
+        alert("success");
+        window.location.reload();
+        console.log("inside create" + response.data);
+        console.log("inside then" + response.data);
+      })
+      .catch((e) => {
+        // alert(e );
+        console.log("this is the error:" + e);
+      });
   };
 
   const [selectedFirstName, setSelectedFirstName] = useState("");

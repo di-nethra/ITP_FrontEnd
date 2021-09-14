@@ -58,7 +58,22 @@ function InventoryRegister() {
       registered_date: inventory.registered_date,
       type_medicine: inventory.type_medicine
     };
+ 
 
+    if(data.supplier_email.includes(".com",0) && (data.supplier_email.includes("@",0))){
+      // alert("Email success");
+    }else{
+      alert("Email Error");
+      return null;
+    }
+
+    const temp = data.supplier_contact;
+    if(temp.length === 10){
+      // alert("Success");
+    }else{
+      alert("Error")
+      return null;
+    }
     InventoryDataService.create(data)
         .then(response => {
           setInventory({
