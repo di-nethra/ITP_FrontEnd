@@ -1,10 +1,7 @@
 import "./patientslist.css";
 import Swal from 'sweetalert2';
-import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
-import { patientRows } from "../../../dummyData";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import {DataGrid} from "@material-ui/data-grid";
+import {useEffect, useState} from 'react';
 import TestDataService from "../../../services/tests.service";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Button from '@material-ui/core/Button';
@@ -13,7 +10,7 @@ export default function PatientsLists() {
 
 
   const columns = [
-    { field: 'specimenid', headerName: 'Specimen ID', width: 140 },
+    {field: 'specimenid', headerName: 'Specimen ID', width: 140},
     {
       field: 'patientsname',
       headerName: 'Patient Name',
@@ -48,16 +45,16 @@ export default function PatientsLists() {
       width: 200,
       renderCell: (params) => {
         return (
-          <>
-            <Button
-              variant="contained"
-              color="secondary"
-              value={params.row.id}
-              onClick={deleteTest}
-            >
-              <DeleteIcon />
-            </Button>
-          </>
+            <>
+              <Button
+                  variant="contained"
+                  color="secondary"
+                  value={params.row.id}
+                  onClick={deleteTest}
+              >
+                <DeleteIcon/>
+              </Button>
+            </>
         );
       },
     }
@@ -71,12 +68,12 @@ export default function PatientsLists() {
       timer: 1500
     })
     TestDataService.remove(event.currentTarget.value)
-      .then(response => {
-        window.location.reload();
-      })
-      .catch(error => {
-        console.log(error);
-      })
+        .then(() => {
+          window.location.reload();
+        })
+        .catch(error => {
+          console.log(error);
+        })
   }
   const [tests, setTests] = useState([]);
   useEffect(() => {
@@ -85,41 +82,41 @@ export default function PatientsLists() {
 
   const retieveAllPatients = () => {
     TestDataService.getAll()
-      .then(response => {
-        setTests(response.data)
-      })
-      .catch(err => {
-        console.log("Error while getting data from database" + err);
-      }
-      )
+        .then(response => {
+          setTests(response.data)
+        })
+        .catch(err => {
+              console.log("Error while getting data from database" + err);
+            }
+        )
   };
 
   let rows = [];
   for (const test of tests) {
     rows.push(
-      {
-        id: test._id,
-        specimenid: test.specimenid,
-        subbmitteddate: test.subbmitteddate,
-        testtype: test.testtype,
-        patientsname: test.patientsname,
-        status: test.status,
-        contactnumber:test.contactnumber,
-        dateofbirth:test.dateofbirth
+        {
+          id: test._id,
+          specimenid: test.specimenid,
+          subbmitteddate: test.subbmitteddate,
+          testtype: test.testtype,
+          patientsname: test.patientsname,
+          status: test.status,
+          contactnumber: test.contactnumber,
+          dateofbirth: test.dateofbirth
 
-      }
+        }
     )
   }
 
   return (
-    <div style={{ height: 550, width: '100%' }} className="userList">
-      <DataGrid
-        rows={rows}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={8}
-        checkboxSelection
-      />
-    </div>
+      <div style={{height: 550, width: '100%'}} className="userList">
+        <DataGrid
+            rows={rows}
+            disableSelectionOnClick
+            columns={columns}
+            pageSize={8}
+            checkboxSelection
+        />
+      </div>
   );
 }

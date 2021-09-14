@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
-import { Button } from "@material-ui/core";
+import {Button} from "@material-ui/core";
 import "./doctor.css"
 import NoteDataService from "../../../services/doctorNoteService";
 
@@ -15,11 +15,11 @@ const DoctorAddNote = () => {
     };
 
     const [note, setNote] = useState(initialNoteState);
-    const [submitted, setSubmitted] = useState(false);
+    // const [submitted, setSubmitted] = useState(false);
 
     const handleInputChange = event => {
-        const { name, value } = event.target;
-        setNote({ ...note, [name]: value });
+        const {name, value} = event.target;
+        setNote({...note, [name]: value});
     };
 
     const saveNote = () => {
@@ -37,7 +37,7 @@ const DoctorAddNote = () => {
                     pNoteName: response.data.pNoteName,
                     pNoteMessage: response.data.pNoteMessage
                 });
-                setSubmitted(true);
+                // setSubmitted(true);
                 console.log(response.data);
             })
             .catch(err => {
@@ -47,7 +47,7 @@ const DoctorAddNote = () => {
 
     const newNote = () => {
         setNote(initialNoteState);
-        setSubmitted(false);
+        // setSubmitted(false);
     };
 
     //console.log(note.id);
@@ -56,62 +56,66 @@ const DoctorAddNote = () => {
     console.log(note.pNoteMessage);
 
     return (
-        <div style={{ marginBottom: 10 }}>
+        <div style={{marginBottom: 10}}>
             <Card>
                 <CardContent>
                     <h3>DOCTOR'S NOTE</h3>
-                    <br />
+                    <br/>
 
                     <form>
 
                         <TextField
+                            type="number"
                             id="pNoteId"
                             name="pNoteId"
                             label="PATIENT ID"
-                            style={{ margin: 0 }}
-                            InputLabelProps={{ shrink: true, }}
+                            style={{margin: 0}}
+                            InputLabelProps={{shrink: true,}}
                             placeholder="Enter patient ID"
-                            helperText="Please enter a number only"
+                            helperText="Please enter the 10 digit patient ID number"
                             variant="outlined"
                             onChange={handleInputChange}
                             value={note.pNoteId}
-                            required /><br /><br />
+                            InputProps={{inputProps: {min: 10, max: 10}}}
+                            required/><br/><br/>
 
                         <TextField
                             id="pNoteName"
                             name="pNoteName"
                             label="Patient Name"
-                            style={{ margin: 0 }}
+                            style={{margin: 0}}
                             placeholder="Enter patient name"
                             helperText="ex: Kamal Wanshaka"
                             fullWidth
                             margin="normal"
-                            InputLabelProps={{ shrink: true, }}
+                            InputLabelProps={{shrink: true,}}
                             variant="outlined"
                             onChange={handleInputChange}
                             value={note.pNoteName}
-                            required /><br /><br />
+                            required/><br/><br/>
 
                         <TextField
                             id="pNoteMessage"
                             name="pNoteMessage"
                             label="Message"
-                            style={{ margin: 0 }}
+                            style={{margin: 0}}
                             placeholder="Enter message"
                             helperText="ex: The patient is highly diabetic and prone to heart failure"
                             fullWidth
                             margin="normal"
                             multiline
                             rows={5}
-                            InputLabelProps={{ shrink: true, }}
+                            InputLabelProps={{shrink: true,}}
                             variant="outlined"
                             onChange={handleInputChange}
                             value={note.pNoteMessage}
-                            required /><br /><br />
+                            required/><br/><br/>
 
                         <div className="buttonAlignRight">
-                            <Button size="medium" variant="contained" style={{ marginRight: 8 }} type="reset" onClick={newNote}>Clear</Button>
-                            <Button size="medium" variant="contained" color="primary" type="submit" onClick={saveNote}>Send</Button>
+                            <Button size="medium" variant="contained" style={{marginRight: 8}} type="reset"
+                                    onClick={newNote}>Clear</Button>
+                            <Button size="medium" variant="contained" color="primary" type="submit"
+                                    onClick={saveNote}>Send</Button>
                         </div>
 
                     </form>
