@@ -65,18 +65,18 @@ const DoctorAddNote = () => {
                     <form>
 
                         <TextField
-                            type="number"
+                            type="text"
                             id="pNoteId"
                             name="pNoteId"
                             label="PATIENT ID"
                             style={{margin: 0}}
                             InputLabelProps={{shrink: true,}}
                             placeholder="Enter patient ID"
-                            helperText="Please enter the 10 digit patient ID number"
+                            helperText="Please enter the patient NIC number"
                             variant="outlined"
                             onChange={handleInputChange}
                             value={note.pNoteId}
-                            InputProps={{inputProps: {min: 10, max: 10}}}
+                            InputProps={{inputProps: {minlength: 10, maxlength: 10}}}
                             required/><br/><br/>
 
                         <TextField
