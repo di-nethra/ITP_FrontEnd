@@ -21,6 +21,7 @@ import MobileQrPay from "./pages/patient-ui/MobileQrPay";
 import QRpage from "./pages/patient-ui/QRpage";
 import PageNotFound from "./pages/PageNotFound";
 import PatientAppointment from "./layouts/PatientAppointment";
+import PrivateRoute from "./PrivateRoute";
 
 const theme = createTheme({
     palette: {
@@ -47,28 +48,27 @@ const App = () => (
     <ThemeProvider theme={theme}>
         <Router>
             <Switch>
+                <Route path="/login" component={Login}/>
+                <PrivateRoute path="/staff/">
                 <Route
                     path={[
                         "/staff/receptionist",
-                        "/login",
                         "/staff/doctor",
                         "/staff/sysadmin",
                         "/staff/labassistant",
                         "/staff/inventorymanager",
                         "/staff/paymentadmin",
-                    ]}
-                >
+                    ]}>
                     <Switch>
                         <Route path="/staff/inventorymanager" component={Inventory}/>
                         <Route path="/staff/receptionist" component={Receptionist}/>
-                        <Route path="/login" component={Login}/>
                         <Route path="/staff/labassistant" component={Labasisstant}/>
                         <Route path="/staff/doctor" component={Doctor}/>
                         <Route path="/staff/sysadmin" component={SysAdmin}/>
                         <Route path="/staff/paymentadmin" component={PaymentAdmin}/>
                     </Switch>
                 </Route>
-
+</PrivateRoute>
                 <Route path={["/payments", "/patient", "/about"]}>
                     <Header/>
                     <Switch>
