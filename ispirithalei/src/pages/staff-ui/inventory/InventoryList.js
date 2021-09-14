@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import DeleteSweepOutlinedIcon from '@material-ui/icons/DeleteSweepOutlined';
 import InventoryDataService from '../../../services/inventoryServices';
 import { useState, useEffect } from "react";
@@ -86,7 +86,7 @@ export default function InventoryList() {
     InventoryDataService.remove(event.currentTarget.value)
 
       .then(response => {
-        alert(response.statusText)
+        alert("Deleted Item")
         window.location.reload();
       })
       .catch(error => {
