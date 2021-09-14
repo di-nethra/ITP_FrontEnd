@@ -24,7 +24,6 @@ function ActionBtn(props) {
     empFormService.remove(event.currentTarget.value)
         .then(response => {
           alert("succefully deleted")
-            alert(response.statusText)
             window.location.reload();
         })
         .catch(error => {
