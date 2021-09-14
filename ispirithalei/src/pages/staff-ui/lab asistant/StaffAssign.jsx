@@ -1,9 +1,6 @@
 import "./staffassign.css"
 import 'date-fns';
 import React from 'react';
-import { useEffect, useState } from 'react';
-import TestDataService from "../../../services/tests.service";
-import Grid from '@material-ui/core/Grid';
 
 export default function StaffAssign() {
     /*const initialTestState = {
@@ -67,42 +64,42 @@ export default function StaffAssign() {
 
         <div className="newUser">
             <span className="newUserTitle">Specimen Staff Assigning Form</span>
-            <div class="detailsbock1">
+            <div className="detailsbock1">
                 <span className="newUserTitle1">Details</span>
-                <div class="detailsbock">
+                <div className="detailsbock">
                     <div className="newUserItem">
                         <label>Specimen ID</label>
-                        <input type="text" placeholder="10001" />
+                        <input type="text" placeholder="10001"/>
                     </div>
                     <div className="newUserItem">
                         <label>Patient Name</label>
-                        <input type="text" placeholder="Sudu Appo" />
+                        <input type="text" placeholder="Sudu Appo"/>
                     </div>
                     <div className="newUserItem">
                         <label>Phone No</label>
-                        <input type="text" placeholder="0774020028" />
+                        <input type="text" placeholder="0774020028"/>
                     </div>
                     <div className="newUserItem">
                         <label>Date of Birth</label>
-                        <input type="text" placeholder="09/09/1999" />
+                        <input type="text" placeholder="09/09/1999"/>
                     </div>
                     <div className="newUserItem">
                         <label>Test Type</label>
-                        <input type="text" placeholder="FSH" />
+                        <input type="text" placeholder="FSH"/>
                     </div>
                 </div>
             </div>
-            <div class="detailsbock1">
+            <div className="detailsbock1">
                 <span className="newUserTitle1">Staff Assigning</span>
-                <div class="detailsbock">
+                <div className="detailsbock">
                     <form className="newUserForm" /*onSubmit={updateTest}*/>
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant ID</label>
-                            <input type="text" placeholder="Insert a lab asistant ID" />
+                            <input type="text" placeholder="Insert a lab asistant ID"/>
                         </div>
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant Name</label>
-                            <input type="text" placeholder="Insert a lab asistant name" />
+                            <input type="text" placeholder="Insert a lab asistant name"/>
                         </div>
 
                         <button className="newUserButton">Assign Test(Update Test)</button>

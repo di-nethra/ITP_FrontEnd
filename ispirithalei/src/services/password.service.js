@@ -23,12 +23,12 @@ const create = (data) => {
 // const removeAll = () => {
 //   return http.delete(`/password`);
 // };
-
-export default {
+const passwordServices = {
   getAll,
   // get,
   create,
   // update,
   // remove,
   // removeAll,
-};
+}
+export default passwordServices;

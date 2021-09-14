@@ -1,10 +1,8 @@
 import "./sbbmittedtests.css";
 import Swal from 'sweetalert2';
-import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
-import { userRows } from "../../../dummyData";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import {DataGrid} from "@material-ui/data-grid";
+import {Link} from "react-router-dom";
+import {useEffect, useState} from 'react';
 import TestDataService from "../../../services/tests.service";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Button from '@material-ui/core/Button';
@@ -13,7 +11,7 @@ export default function SubbmittedTests() {
 
 
   const columns = [
-    { field: 'specimenid', headerName: 'Specimen ID', width: 140 },
+    {field: 'specimenid', headerName: 'Specimen ID', width: 140},
     {
       field: 'subbmitteddate',
       headerName: 'Date Subbmitted',
@@ -47,19 +45,19 @@ export default function SubbmittedTests() {
       width: 200,
       renderCell: (params) => {
         return (
-          <>
-            <Link to={"/staff/labassistant/submittedtest/" + params.row.id}>
-              <button className="userListEdit">Assign Staff</button>
-            </Link>
-            <Button
-              variant="contained"
-              color="secondary"
-              value={params.row.id}
-              onClick={deleteTest}
-            >
-              <DeleteIcon />
-            </Button>
-          </>
+            <>
+              <Link to={"/staff/labassistant/submittedtest/" + params.row.id}>
+                <button className="userListEdit">Assign Staff</button>
+              </Link>
+              <Button
+                  variant="contained"
+                  color="secondary"
+                  value={params.row.id}
+                  onClick={deleteTest}
+              >
+                <DeleteIcon/>
+              </Button>
+            </>
         );
       },
     }
@@ -72,12 +70,12 @@ export default function SubbmittedTests() {
       timer: 1500
     })
     TestDataService.remove(event.currentTarget.value)
-      .then(response => {
-        window.location.reload();
-      })
-      .catch(error => {
-        console.log(error);
-      })
+        .then(() => {
+          window.location.reload();
+        })
+        .catch(error => {
+          console.log(error);
+        })
   }
   const [tests, setTests] = useState([]);
   useEffect(() => {
@@ -86,43 +84,41 @@ export default function SubbmittedTests() {
 
   const retieveSubbmittedTests = () => {
     TestDataService.getAllSubbmited()
-      .then(response => {
-        setTests(response.data)
-      })
-      .catch(err => {
-        console.log("Error while getting data from database" + err);
-      }
-      )
+        .then(response => {
+          setTests(response.data)
+        })
+        .catch(err => {
+              console.log("Error while getting data from database" + err);
+            }
+        )
   };
 
   let rows = [];
   for (const test of tests) {
     rows.push(
-      {
-        id: test._id,
-        specimenid: test.specimenid,
-        subbmitteddate: test.subbmitteddate,
-        testtype: test.testtype,
-        patientsname: test.patientsname,
-        status: test.status
+        {
+          id: test._id,
+          specimenid: test.specimenid,
+          subbmitteddate: test.subbmitteddate,
+          testtype: test.testtype,
+          patientsname: test.patientsname,
+          status: test.status
 
-      }
+        }
     )
   }
 
 
-
-
   return (
-    <div style={{ height: 550, width: '100%' }} className="userList">
-      <DataGrid
-        rows={rows}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={8}
-        checkboxSelection
-      />
-    </div>
+      <div style={{height: 550, width: '100%'}} className="userList">
+        <DataGrid
+            rows={rows}
+            disableSelectionOnClick
+            columns={columns}
+            pageSize={8}
+            checkboxSelection
+        />
+      </div>
   );
 }
 

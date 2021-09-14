@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Calendar from 'react-calendar';
 
 const Calendar1 = () => {
@@ -7,7 +7,7 @@ const Calendar1 = () => {
     return (
         <div>
             <Calendar onChange={onChange}
-                value={value} />
+                      value={value}/>
         </div>
     );
 }

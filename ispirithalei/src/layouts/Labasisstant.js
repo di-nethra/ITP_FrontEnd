@@ -6,7 +6,6 @@ import StaffAssign from "../pages/staff-ui/lab asistant/StaffAssign"
 import NewTest from "../pages/staff-ui/lab asistant/NewTest"
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import DoneIcon from '@material-ui/icons/Done';
-import ClearAllIcon from '@material-ui/icons/ClearAll';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
@@ -14,7 +13,7 @@ import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
 import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
 import TransformIcon from '@material-ui/icons/Transform';
 import "./layout.css"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import InTransist from "../pages/staff-ui/lab asistant/InTransist";
 import TestReslt from "../pages/staff-ui/lab asistant/TestResult";
 import CompletedTest from '../pages/staff-ui/lab asistant/CompletedTest'
@@ -23,9 +22,9 @@ import LabHelp from "../pages/staff-ui/lab asistant/LabHelp";
 
 const Receptionist = () => {
   const user = {
-    name : 'Danushka Ranasinghe',
-    role : 'LabAssistant',
-    list : [
+    name: 'Danushka Ranasinghe',
+    role: 'LabAssistant',
+    list: [
       {
         path: "",
         exact: true,
@@ -70,50 +69,49 @@ const Receptionist = () => {
         id: 7
       },
 
-      
 
     ]
   }
-  
-  return(
-  <div >
-    <div className="container">
-      <Sidebar user={user}/>
-      <div className="others">
-          <Topbar page={user.list}/>
-        <Switch>
-          <Route exact path="/staff/labassistant/">
-            <LabassHome/>
-          </Route>
-          <Route exact path="/staff/labassistant/newtests">
-            <NewTest/>
-          </Route>
-          <Route path="/staff/labassistant/submittedtests">
-            <SubmittedTests/>
-          </Route>
-          <Route path="/staff/labassistant/submittedtest/:topicId">
-            <StaffAssign/>
-          </Route>
-          <Route path="/staff/labassistant/intrasisttests">
-            <InTransist/>
-          </Route>
-          <Route path="/staff/labassistant/intransisttests/:testId">
-            <TestReslt/>
-          </Route>
-          <Route path="/staff/labassistant/completedtests">
-            <CompletedTest/>
-          </Route>
-          <Route path="/staff/labassistant/patients">
-            <PatientsLists/>
-          </Route>
-          <Route path="/staff/labassistant/support">
-            <LabHelp/>
-          </Route>
-        </Switch>
+
+  return (
+      <div>
+        <div className="container">
+          <Sidebar user={user}/>
+          <div className="others">
+            <Topbar page={user.list}/>
+            <Switch>
+              <Route exact path="/staff/labassistant/">
+                <LabassHome/>
+              </Route>
+              <Route exact path="/staff/labassistant/newtests">
+                <NewTest/>
+              </Route>
+              <Route path="/staff/labassistant/submittedtests">
+                <SubmittedTests/>
+              </Route>
+              <Route path="/staff/labassistant/submittedtest/:topicId">
+                <StaffAssign/>
+              </Route>
+              <Route path="/staff/labassistant/intrasisttests">
+                <InTransist/>
+              </Route>
+              <Route path="/staff/labassistant/intransisttests/:testId">
+                <TestReslt/>
+              </Route>
+              <Route path="/staff/labassistant/completedtests">
+                <CompletedTest/>
+              </Route>
+              <Route path="/staff/labassistant/patients">
+                <PatientsLists/>
+              </Route>
+              <Route path="/staff/labassistant/support">
+                <LabHelp/>
+              </Route>
+            </Switch>
+          </div>
+
+        </div>
       </div>
-      
-    </div>
-  </div>
   )
 }
 

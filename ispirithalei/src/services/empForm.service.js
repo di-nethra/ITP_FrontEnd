@@ -24,11 +24,12 @@ const removeAll = () => {
   return http.delete(`/empform`);
 };
 
-export default {
+const empformServices = {
   getAll,
   get,
   create,
   update,
   remove,
   removeAll,
-};
+}
+export default empformServices;
