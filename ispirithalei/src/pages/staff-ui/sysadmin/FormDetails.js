@@ -28,7 +28,7 @@ function EmpForm() {
       password: randomstring,
     };
 
-    if(data.email.includes(".com", 0)){
+    if(data.email.includes("@", 0)){
       alert("email successfull")
     }else{
       console.log("fail");
