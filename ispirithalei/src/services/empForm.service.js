@@ -1,11 +1,16 @@
 import http from "../http-common";
 
+const getAllDoctors = () => {
+  return http.get("/empform/doctors");
+};
+
+
 const getAll = () => {
   return http.get("/empform");
 };
 
 const get = (id) => {
-  return http.get("/empform" + id);
+  return http.get("/empform/emp/" + id);
 };
 
 const create = (data) => {
@@ -25,6 +30,7 @@ const removeAll = () => {
 };
 
 const empformServices = {
+  getAllDoctors,
   getAll,
   get,
   create,

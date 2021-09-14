@@ -12,7 +12,6 @@ import Login from "./components/staff-ui/Login";
 import Doctor from "./layouts/Doctor";
 import Inventory from "./layouts/Inventory";
 import SysAdmin from "./layouts/SysAdmin";
-import EForm from "./pages/patient-ui/ChanellForm";
 import PaymentAdmin from "./layouts/PaymentAdmin";
 import UserForm from "./components/patient-ui/Payments/UserForm";
 import Checkout from "./pages/patient-ui/Checkout";
@@ -21,6 +20,7 @@ import PaymentOptionPage from "./pages/patient-ui/PaymentOptionPage";
 import MobileQrPay from "./pages/patient-ui/MobileQrPay";
 import QRpage from "./pages/patient-ui/QRpage";
 import PageNotFound from "./pages/PageNotFound";
+import PatientAppointment from "./layouts/PatientAppointment";
 
 const theme = createTheme({
     palette: {
@@ -70,12 +70,12 @@ const App = () => (
                     </Switch>
                 </Route>
 
-                <Route path={["/payments", "/patient/newappointment", "/about"]}>
+                <Route path={["/payments", "/patient", "/about"]}>
                     <Header/>
                     <Switch>
                         <Route path="/about" component={About}/>
 
-                        <Route path="/patient/newappointment" component={EForm}/>
+                        <Route path="/patient" component={PatientAppointment}/>
                         <Route path="/payments">
                             <PaymentNavigation/>
                             <Switch>
