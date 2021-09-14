@@ -11,8 +11,10 @@ import "./layout.css"
 
 
 const Receptionist = () => {
+  const currentUser = window.sessionStorage.getItem("user");
+  console.log(currentUser)
   const user = {
-    name : 'Amanulla Unais',
+    name : currentUser.firstName + " " + currentUser.lastName,
     role : 'Receptionist',
     list : [
       {

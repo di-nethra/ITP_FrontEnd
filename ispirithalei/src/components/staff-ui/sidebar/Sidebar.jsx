@@ -4,7 +4,6 @@ import {NavLink} from "react-router-dom";
 
 
 export default function Sidebar(props) {
-
     return (
         <div className="sidebar">
           <div className="sidebarWrapper">

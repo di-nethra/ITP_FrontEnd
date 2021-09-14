@@ -6,14 +6,15 @@ import CardContent from "@material-ui/core/CardContent";
 import SendIcon from "@material-ui/icons/Send";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import {Form,} from "../../../components/patient-ui/Echannelling/useForm";
-
 import MenuItem from "@material-ui/core/MenuItem";
+
 
 function EmpForm() {
   const handleSubmit = (e) => {
     console.log("submitted");
     //password generator
     var randomstring = Math.random().toString(36).slice(-8);
+    console.log(randomstring);
 
     e.preventDefault();
 
@@ -30,6 +31,7 @@ function EmpForm() {
     if(data.email.includes("@", 0)){
       alert("email successfull")
     }else{
+      console.log("fail");
       alert("email should contain a @");
       return null;
     }
@@ -40,9 +42,11 @@ function EmpForm() {
       .then((response) => {
         alert("success");
         window.location.reload();
+        console.log("inside create" + response.data);
+        console.log("inside then" + response.data);
       })
       .catch((e) => {
-        // alert(e );
+        alert(e );
         console.log("this is the error:" + e);
       });
 
