@@ -48,11 +48,20 @@ function EmpForm() {
       password: randomstring,
     };
 
+    if(data.email.includes(".com", 0)){
+      alert("email successfull")
+    }else{
+      console.log("fail");
+      alert("email should contain a @");
+      return null;
+    }
+
     empFormService
       .create(data)
 
       .then((response) => {
         alert("success");
+        window.location.reload();
         console.log("inside create" + response.data);
         console.log("inside then" + response.data);
       })
@@ -66,6 +75,7 @@ function EmpForm() {
 
       .then((response) => {
         alert("success");
+        window.location.reload();
         console.log("inside create" + response.data);
         console.log("inside then" + response.data);
       })
