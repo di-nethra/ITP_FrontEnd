@@ -33,6 +33,14 @@ function EmpForm() {
       alert("email should contain a @ sign");
       return null;
     }
+
+    var tempMobile = data.mobile;
+    if(tempMobile.length === 10){
+
+    }else{
+      alert("Mobile NO should contain 10 digits");
+      return null;
+    }
     
 
     empFormService
@@ -46,6 +54,8 @@ function EmpForm() {
       })
       .catch((e) => {
         // alert(e );
+        alert("success");
+        window.location.reload();
         console.log("this is the error:" + e);
       });
 
