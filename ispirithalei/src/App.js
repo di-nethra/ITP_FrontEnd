@@ -57,7 +57,6 @@ const App = () => (
             "/staff/doctor",
             "/staff/sysadmin",
             "/staff/labassistant",
-            "/staff/inventorymanager",
             "/staff/paymentadmin",
           ]}
         >
@@ -72,12 +71,12 @@ const App = () => (
           </Switch>
         </Route>
 
-        <Route path={["/payments", "/patient/newappointment", "/about"]}>
+        <Route path={["/payments", "/patient", "/about", "/labreports"]}>
           <Header />
           <Switch>
             <Route path="/about" component={About} />
-
-            <Route path="/patient/newappointment" component={EForm} />
+            <Route path="/labreports" component={LabReport} />
+            <Route path="/patient" component={PatientAppointment} />
             <Route path="/payments">
               <PaymentNavigation />
               <Switch>
