@@ -50,7 +50,6 @@ const App = () => (
             <Switch>
                 <Route
                     path={[
-                        "/staff/inventorymanager",
                         "/staff/receptionist",
                         "/login",
                         "/staff/doctor",
