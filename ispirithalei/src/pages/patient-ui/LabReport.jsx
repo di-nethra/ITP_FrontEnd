@@ -36,7 +36,7 @@ export default function LabReport() {
 
                         <button className="newUserButton11">Get Lab Reports</button>
                     </form>
-                    <img src={labreport} style={{ height: 400, width: 400 }} class="imglab"/>
+                    <img src={labreport} alt="labreports" style={{ height: 400, width: 400 }} class="imglab"/>
                 </div>
                 
             </div>

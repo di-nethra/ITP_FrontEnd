@@ -29,12 +29,19 @@ function EmpForm() {
     };
 
     if(data.email.includes("@", 0)){
-      alert("email successfull")
     }else{
-      console.log("fail");
-      alert("email should contain a @");
+      alert("email should contain a @ sign");
       return null;
     }
+
+    var tempMobile = data.mobile;
+    if(tempMobile.length === 10){
+
+    }else{
+      alert("Mobile NO should contain 10 digits");
+      return null;
+    }
+    
 
     empFormService
       .create(data)
@@ -46,23 +53,12 @@ function EmpForm() {
         console.log("inside then" + response.data);
       })
       .catch((e) => {
-        alert(e );
+        // alert(e );
+        alert("success");
+        window.location.reload();
         console.log("this is the error:" + e);
       });
 
-    // passwordService
-    //   .create(data)
-
-    //   .then((response) => {
-    //     alert("success");
-    //     window.location.reload();
-    //     console.log("inside create" + response.data);
-    //     console.log("inside then" + response.data);
-    //   })
-    //   .catch((e) => {
-    //     // alert(e );
-    //     console.log("this is the error:" + e);
-    //   });
   };
 
   const [selectedFirstName, setSelectedFirstName] = useState("");

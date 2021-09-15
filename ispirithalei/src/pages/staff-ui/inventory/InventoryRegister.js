@@ -58,7 +58,25 @@ function InventoryRegister() {
       registered_date: inventory.registered_date,
       type_medicine: inventory.type_medicine
     };
- 
+    
+    const tempid = data.item_id;
+    if(tempid.length === 0){
+      alert("Item ID is a required field");
+      return null;
+    }
+
+    const tempsupEmail = data.supplier_email;
+    if(tempsupEmail.length === 0){
+      alert("Supplier Email is a required field");
+      return null;
+    }
+
+    const tempsupContact = data.supplier_contact;
+    if(tempsupContact.length === 0){
+      alert("Supplier Contact is a required field");
+      return null;
+    }
+
 
     if(data.supplier_email.includes(".com",0) && (data.supplier_email.includes("@",0))){
       // alert("Email success");
@@ -71,7 +89,7 @@ function InventoryRegister() {
     if(temp.length === 10){
       // alert("Success");
     }else{
-      alert("Error")
+      alert("Invalid contact number")
       return null;
     }
     InventoryDataService.create(data)
