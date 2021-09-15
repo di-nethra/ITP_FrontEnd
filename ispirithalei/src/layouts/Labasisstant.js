@@ -20,7 +20,7 @@ import CompletedTest from '../pages/staff-ui/lab asistant/CompletedTest'
 import PatientsLists from "../pages/staff-ui/lab asistant/PatientsLists";
 import LabHelp from "../pages/staff-ui/lab asistant/LabHelp";
 
-const Receptionist = () => {
+const Labasisstant = () => {
   const user = {
     name: 'Danushka Ranasinghe',
     role: 'LabAssistant',
@@ -115,4 +115,4 @@ const Receptionist = () => {
   )
 }
 
-export default Receptionist;
+export default Labasisstant;

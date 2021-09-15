@@ -5,6 +5,7 @@ import {createTheme, ThemeProvider} from "@material-ui/core";
 import PaymentNavigation from "./components/patient-ui/Payments/PaymentNavigation";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import About from "./pages/patient-ui/About";
+import LabReport from "./pages/patient-ui/LabReport";
 import Labasisstant from "./layouts/Labasisstant";
 import Receptionist from "./layouts/Receptionist";
 import Footer from "./components/patient-ui/Footer/Footer";
@@ -70,11 +71,11 @@ const App = () => (
                     </Switch>
                 </Route>
 
-                <Route path={["/payments", "/patient", "/about"]}>
+                <Route path={["/payments", "/patient", "/about", "/labreports"]}>
                     <Header/>
                     <Switch>
                         <Route path="/about" component={About}/>
-
+                        <Route path="/labreports" component={LabReport}/>
                         <Route path="/patient" component={PatientAppointment}/>
                         <Route path="/payments">
                             <PaymentNavigation/>
