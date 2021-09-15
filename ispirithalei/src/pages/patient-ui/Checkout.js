@@ -23,8 +23,8 @@ function onPayhereCheckoutError(errorMsg) {
 }
 function checkout() {
   const customer = new Customer({
-    first_name: "Pavindu",
-    last_name: "Lakshan",
+    first_name: "Ispirithalei",
+    last_name: "WACYAMDA",
     phone: "+94771234567",
     email: "plumberhl@gmail.com",
     address: "No. 50, Highlevel Road",

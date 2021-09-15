@@ -47,7 +47,8 @@ const PaymentNavigation = (props) => {
             color="inherit"
             onClick={() => history.push("/payments/options")}
           >
-            <CreditCardIcon className={classes.icon} /> Payment Options
+            <CreditCardIcon className={classes.icon} />
+            Options & Refunds
           </Link>
           <Link
             color="inherit"
