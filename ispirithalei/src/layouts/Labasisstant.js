@@ -20,7 +20,7 @@ import CompletedTest from '../pages/staff-ui/lab asistant/CompletedTest'
 import PatientsLists from "../pages/staff-ui/lab asistant/PatientsLists";
 import LabHelp from "../pages/staff-ui/lab asistant/LabHelp";
 
-const Receptionist = () => {
+const Labasisstant = () => {
   let temp = sessionStorage.getItem("user");
   let currentUser = JSON.parse(temp);
   const user = {
@@ -117,4 +117,4 @@ const Receptionist = () => {
   )
 }
 
-export default Receptionist;
+export default Labasisstant;
