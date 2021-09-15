@@ -46,7 +46,6 @@ const theme = createTheme({
 });
 
 const App = () => (
-<<<<<<< HEAD
   <ThemeProvider theme={theme}>
     <Router>
       <Switch>
@@ -96,64 +95,6 @@ const App = () => (
                 </Route>
                 <Route path="/payments/qrcode">
                   <QRpage />
-=======
-    <ThemeProvider theme={theme}>
-        <Router>
-            <Switch>
-                <Route
-                    path={[
-                        "/staff/receptionist",
-                        "/login",
-                        "/staff/doctor",
-                        "/staff/sysadmin",
-                        "/staff/labassistant",
-                        "/staff/inventorymanager",
-                        "/staff/paymentadmin",
-                    ]}
-                >
-                    <Switch>
-                        <Route path="/staff/inventorymanager" component={Inventory}/>
-                        <Route path="/staff/receptionist" component={Receptionist}/>
-                        <Route path="/login" component={Login}/>
-                        <Route path="/staff/labassistant" component={Labasisstant}/>
-                        <Route path="/staff/doctor" component={Doctor}/>
-                        <Route path="/staff/sysadmin" component={SysAdmin}/>
-                        <Route path="/staff/paymentadmin" component={PaymentAdmin}/>
-                    </Switch>
-                </Route>
-
-                <Route path={["/payments", "/patient", "/about", "/labreports"]}>
-                    <Header/>
-                    <Switch>
-                        <Route path="/about" component={About}/>
-                        <Route path="/labreports" component={LabReport}/>
-                        <Route path="/patient" component={PatientAppointment}/>
-                        <Route path="/payments">
-                            <PaymentNavigation/>
-                            <Switch>
-                                <Route path="/payments/info">
-                                    <UserForm/>
-                                </Route>
-                                <Route path="/payments/checkout">
-                                    <Checkout/>
-                                </Route>
-                                <Route path="/payments/mobileqr">
-                                    <MobileQrPay/>
-                                </Route>
-                                <Route path="/payments/qrcode">
-                                    <QRpage/>
-                                </Route>
-                                <Route path="/payments/invoice">
-                                    <PaymentInvoice/>
-                                </Route>
-                                <Route path="/payments">
-                                    <PaymentOptionPage/>
-                                </Route>
-                            </Switch>
-                        </Route>
-                    </Switch>
-                    <Footer/>
->>>>>>> efed4826b83d7a83f0e10c8fa723c912f7d3adf6
                 </Route>
                 <Route path="/payments/invoice">
                   <PaymentInvoice />
