@@ -3,8 +3,9 @@ import Header from "./components/patient-ui/Header/Header";
 import Home from "./pages/patient-ui/Home";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import PaymentNavigation from "./components/patient-ui/Payments/PaymentNavigation";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import About from "./pages/patient-ui/About";
+import LabReport from "./pages/patient-ui/LabReport";
 import Labasisstant from "./layouts/Labasisstant";
 import Receptionist from "./layouts/Receptionist";
 import Footer from "./components/patient-ui/Footer/Footer";
@@ -12,7 +13,6 @@ import Login from "./components/staff-ui/Login";
 import Doctor from "./layouts/Doctor";
 import Inventory from "./layouts/Inventory";
 import SysAdmin from "./layouts/SysAdmin";
-import EForm from "./pages/patient-ui/ChanellForm";
 import PaymentAdmin from "./layouts/PaymentAdmin";
 import UserForm from "./components/patient-ui/Payments/UserForm";
 import Checkout from "./pages/patient-ui/Checkout";
@@ -20,7 +20,11 @@ import PaymentInvoice from "./pages/patient-ui/PaymentInvoice";
 import PaymentOptionPage from "./pages/patient-ui/PaymentOptionPage";
 import MobileQrPay from "./pages/patient-ui/MobileQrPay";
 import QRpage from "./pages/patient-ui/QRpage";
+import RefundPage from "./pages/patient-ui/RefundsPage";
 import PageNotFound from "./pages/PageNotFound";
+import PatientAppointment from "./layouts/PatientAppointment";
+import PrivateRoute from "./PrivateRoute";
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -46,40 +50,42 @@ const App = () => (
   <ThemeProvider theme={theme}>
     <Router>
       <Switch>
+        <Route path="/login" component={Login} />
+        <PrivateRoute path="/staff/">
         <Route
           path={[
             "/staff/inventorymanager",
             "/staff/receptionist",
-            "/login",
             "/staff/doctor",
             "/staff/sysadmin",
             "/staff/labassistant",
-            "/staff/inventorymanager",
             "/staff/paymentadmin",
           ]}
         >
           <Switch>
             <Route path="/staff/inventorymanager" component={Inventory} />
             <Route path="/staff/receptionist" component={Receptionist} />
-            <Route path="/login" component={Login} />
             <Route path="/staff/labassistant" component={Labasisstant} />
             <Route path="/staff/doctor" component={Doctor} />
             <Route path="/staff/sysadmin" component={SysAdmin} />
             <Route path="/staff/paymentadmin" component={PaymentAdmin} />
           </Switch>
         </Route>
-
-        <Route exact path={["/payments", "/patient/newappointment", "/about", "/"]}>
+        </PrivateRoute>
+        <Route path={["/payments", "/patient", "/about", "/labreports"]}>
           <Header />
           <Switch>
             <Route path="/about" component={About} />
-
-            <Route path="/patient/newappointment" component={EForm} />
-            <Route exact path="/payments">
+            <Route path="/labreports" component={LabReport} />
+            <Route path="/patient" component={PatientAppointment} />
+            <Route path="/payments">
               <PaymentNavigation />
               <Switch>
                 <Route path="/payments/info">
                   <UserForm />
+                </Route>
+                <Route path="/payments/refund">
+                  <RefundPage />
                 </Route>
                 <Route path="/payments/checkout">
                   <Checkout />
@@ -99,7 +105,11 @@ const App = () => (
               </Switch>
             </Route>
           </Switch>
-          <Route exact path="/" component={Home} />
+          <Footer />
+        </Route>
+        <Route exact path="/">
+          <Header />
+          <Home />
           <Footer />
         </Route>
         <Route path="*">

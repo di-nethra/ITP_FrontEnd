@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import PrescriptionDataService from "../../../services/doctorPrescriptionService";
 
 function DoctorPrescription() {
+    let temp = sessionStorage.getItem("user");
+    let currentUser = JSON.parse(temp);
     const [isDisabled, setIsDisabled] = useState(true);
 
     function changeCheck() {
@@ -16,7 +18,7 @@ function DoctorPrescription() {
 
     const initialPrescriptionState = {
         //id: null,
-        dId: "D001",
+        dId: currentUser?.id,
         dPName: "",
         dPDignosis: "",
         dMed1: "",
@@ -25,7 +27,7 @@ function DoctorPrescription() {
         dDose2: ""
     };
     const [prescription, setPrescription] = useState(initialPrescriptionState);
-    const [submitted, setSubmitted] = useState(false);
+    // const [submitted, setSubmitted] = useState(false);
 
     const handleInputChange = event => {
         const { name, value } = event.target;
@@ -55,7 +57,7 @@ function DoctorPrescription() {
                     dMed2: response.data.dMed2,
                     dDose2: response.data.dDose2
                 });
-                setSubmitted(true);
+                // setSubmitted(true);
                 console.log(response.data);
             })
             .catch(e => {
@@ -65,7 +67,7 @@ function DoctorPrescription() {
 
     const newPrescription = () => {
         setPrescription(initialPrescriptionState);
-        setSubmitted(false);
+        // setSubmitted(false);
     };
 
     return (

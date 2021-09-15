@@ -14,13 +14,15 @@ import DoctorEditPrescription from "../pages/staff-ui/doctor/DoctorEditPrescript
 import DoctorAddNote from "../pages/staff-ui/doctor/DoctorAddNote";
 import DoctorViewNotes from "../pages/staff-ui/doctor/DoctorViewNotes";
 import NewSession from '../pages/staff-ui/doctor/NewSession'
-import {Route, Switch} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import DoctorViewSessions from "../pages/staff-ui/doctor/DoctorViewSessions";
 
 const Doctor = () => {
+  let temp = sessionStorage.getItem("user");
+  let currentUser = JSON.parse(temp);
   const user = {
-    name: 'Asel Jayasooriya',
-    role: 'Doctor',
+    name: currentUser?.firstName + " " + currentUser?.lastName,
+    role: currentUser?.role,
     list: [
       {
         path: "",
@@ -36,7 +38,7 @@ const Doctor = () => {
         id: 2
       },
       {
-        path: "viewprescription/D001",
+        path: "viewprescription/" + currentUser.id,
         icon: <TransformIcon className="sidebarIcon" />,
         iconlabel: 'View Prescriptions',
         id: 3

@@ -1,12 +1,15 @@
 import React from 'react'
 import "./topbar.css"
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import {Route, Switch, useRouteMatch} from "react-router-dom";
-import {Typography} from "@material-ui/core";
+import {Route, Switch, useHistory, useRouteMatch} from "react-router-dom";
+import {Button, Typography} from "@material-ui/core";
 
 
 export default function Topbar(props) {
-    let { url } = useRouteMatch();
+    let {url} = useRouteMatch();
+    let history = useHistory();
+    let temp = sessionStorage.getItem("user");
+    let currentUser = JSON.parse(temp);
     return (
         <div className="topbar">
             <div className="topbarWrapper">
@@ -16,14 +19,14 @@ export default function Topbar(props) {
                     <div>
                         <Switch>
                             {props.page.map((route, index) => (
-                                <Route
-                                    key={index}
-                                    path={url + "/" + route.path}
-                                    exact={route.exact}
-                                    children={<Typography variant="h5">{route.iconlabel}</Typography>}
-                                />
+                                    <Route
+                                        key={index}
+                                        path={url + "/" + route.path}
+                                        exact={route.exact}
+                                        children={<Typography variant="h5">{route.iconlabel}</Typography>}
+                                    />
 
-                            )
+                                )
                             )
                             }
                         </Switch>
@@ -31,7 +34,14 @@ export default function Topbar(props) {
                 </div>
                 <div className="topRight">
                     <div className="topbarIconContainer">
-                        <AccountCircleIcon fontSize="large"/>
+                        {currentUser !== null ? <Button variant="outlined" color="primary" size={"large"} onClick={() => {
+                            sessionStorage.removeItem("user");
+                            history.push("/login")
+                        }
+                        }>
+                            LOGOUT
+                        </Button> : <AccountCircleIcon fontSize="large"/>}
+
                     </div>
                 </div>
             </div>

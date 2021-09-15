@@ -1,31 +1,13 @@
-import React from "react";
-import { Container, InputLabel } from "@material-ui/core";
-import { MuiThemeProvider } from "@material-ui/core";
+import React, {useState} from "react";
+import {Button, Card, Container, Select, TextField, Typography} from "@material-ui/core";
 import empFormService from "../../../services/empForm.service";
-import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
-import { Card } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
-import Controls from "../../../components/patient-ui/Echannelling/Controls";
-import {
-  Form,
-} from "../../../components/patient-ui/Echannelling/useForm";
-import { useState } from "react";
-import passwordService from "../../../services/password.service";
+import {Form,} from "../../../components/patient-ui/Echannelling/useForm";
 import MenuItem from "@material-ui/core/MenuItem";
-import { Select } from "@material-ui/core";
 
-const initialFValues = {
-  step: 1,
-  role: "",
-  firstName: "",
-  lastName: "",
-  email: "",
-  mobile: "",
-  address: "",
-};
 
 function EmpForm() {
   const handleSubmit = (e) => {
@@ -46,31 +28,37 @@ function EmpForm() {
       password: randomstring,
     };
 
+    if(data.email.includes("@", 0)){
+    }else{
+      alert("email should contain a @ sign");
+      return null;
+    }
+
+    var tempMobile = data.mobile;
+    if(tempMobile.length === 10){
+
+    }else{
+      alert("Mobile NO should contain 10 digits");
+      return null;
+    }
+    
+
     empFormService
       .create(data)
 
       .then((response) => {
         alert("success");
+        window.location.reload();
         console.log("inside create" + response.data);
         console.log("inside then" + response.data);
       })
       .catch((e) => {
         // alert(e );
-        console.log("this is the error:" + e);
-      });
-
-    passwordService
-      .create(data)
-
-      .then((response) => {
         alert("success");
-        console.log("inside create" + response.data);
-        console.log("inside then" + response.data);
-      })
-      .catch((e) => {
-        // alert(e );
+        window.location.reload();
         console.log("this is the error:" + e);
       });
+
   };
 
   const [selectedFirstName, setSelectedFirstName] = useState("");
@@ -102,19 +90,18 @@ function EmpForm() {
   };
 
   return (
-    <Container maxWidth="md">
-      <Form>
-        <container>
-          <div>
-            <MuiThemeProvider>
+      <Container maxWidth="md">
+        <Form>
+          <container>
+            <div>
               <React.Fragment>
                 <Card>
                   <CardContent>
                     <Typography variant="h6" gutterBottom>
                       Employee Form
                     </Typography>
-                    <br></br>
-                    <br></br>
+                    <br/><br/>
+                    <br/><br/>
 
                     <Grid container spacing={3}>
                       <Grid item xs={4}>
@@ -122,12 +109,12 @@ function EmpForm() {
                       </Grid>
                       <Grid item xs={5}>
                         <Select
-                          variant="outlined"
-                          style={styles.formControl}
-                          labelId="demo-simple-select-label"
-                          id="demo-simple-select"
-                          value={role}
-                          onChange={handleRoleChange}
+                            variant="outlined"
+                            style={styles.formControl}
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={role}
+                            onChange={handleRoleChange}
                         >
                           <MenuItem value="Doctor">Doctor</MenuItem>
                           <MenuItem value="InventoryManager">
@@ -145,14 +132,14 @@ function EmpForm() {
                         <p style={styles.label}>First Name</p>
                       </Grid>
                       <Grid item xs={5}>
-                        <Controls.Input
-                          name="firstName"
-                          label="First Name"
-                          variant="outlined"
-                          required
-                          fullWidth={true}
-                          onChange={handleFirstNameChange}
-                          defaultValue={selectedFirstName}
+                        <TextField
+                            name="firstName"
+                            label="First Name"
+                            variant="outlined"
+                            required
+                            fullWidth={true}
+                            onChange={handleFirstNameChange}
+                            defaultValue={selectedFirstName}
                         />
                       </Grid>
 
@@ -160,14 +147,14 @@ function EmpForm() {
                         <p style={styles.label}>Last Name</p>
                       </Grid>
                       <Grid item xs={5}>
-                        <Controls.Input
-                          name="lastName"
-                          label="Last Name"
-                          variant="outlined"
-                          required
-                          fullWidth={true}
-                          onChange={handleLastNameChange}
-                          defaultValue={selectedLastName}
+                        <TextField
+                            name="lastName"
+                            label="Last Name"
+                            variant="outlined"
+                            required
+                            fullWidth={true}
+                            onChange={handleLastNameChange}
+                            defaultValue={selectedLastName}
                         />
                       </Grid>
 
@@ -175,14 +162,14 @@ function EmpForm() {
                         <p style={styles.label}>Email</p>
                       </Grid>
                       <Grid item xs={5}>
-                        <Controls.Input
-                          name="email"
-                          label="Email"
-                          variant="outlined"
-                          required
-                          fullWidth={true}
-                          onChange={handleEmailChange}
-                          defaultValue={selectedEmail}
+                        <TextField
+                            name="email"
+                            label="Email"
+                            variant="outlined"
+                            required
+                            fullWidth={true}
+                            onChange={handleEmailChange}
+                            defaultValue={selectedEmail}
                         />
                       </Grid>
 
@@ -190,14 +177,16 @@ function EmpForm() {
                         <p style={styles.label}>Mobile</p>
                       </Grid>
                       <Grid item xs={5}>
-                        <Controls.Input
-                          name="mobile"
-                          label="Mobile"
-                          variant="outlined"
-                          required
-                          fullWidth={true}
-                          onChange={handleMobileChange}
-                          defaultValue={selectedMobile}
+                        <TextField
+                            type="number"
+                            name="mobile"
+                            label="Mobile"
+                            variant="outlined"
+                            required
+                            fullWidth={true}
+                            InputProps={{inputProps: {min: 10, max: 10}}}
+                            onChange={handleMobileChange}
+                            defaultValue={selectedMobile}
                         />
                       </Grid>
 
@@ -205,45 +194,44 @@ function EmpForm() {
                         <p style={styles.label}>Address</p>
                       </Grid>
                       <Grid item xs={5}>
-                        <Controls.Input
-                          name="address"
-                          label="Adress"
-                          variant="outlined"
-                          required
-                          fullWidth={true}
-                          onChange={handleAddressChange}
-                          defaultValue={selectedAddress}
+                        <TextField
+                            name="address"
+                            label="Adress"
+                            variant="outlined"
+                            required
+                            fullWidth={true}
+                            onChange={handleAddressChange}
+                            defaultValue={selectedAddress}
                         />
                       </Grid>
 
                       <Grid item xs={12}>
-                        <Controls.Button
-                          text="Reset"
-                          variant="contained"
-                          color="secondary"
-                          style={styles.button}
-                          startIcon={<AutorenewIcon />}
-                        />
+                        <Button
 
-                        <Controls.Button
-                          text="submit"
-                          type="submit"
-                          variant="contained"
-                          color="primary"
-                          style={styles.button}
-                          onClick={handleSubmit}
-                          startIcon={<SendIcon />}
-                        />
+                            variant="contained"
+                            color="secondary"
+                            style={styles.button}
+                            startIcon={<AutorenewIcon/>}
+                        >Reset</Button>
+
+                        <Button
+
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            style={styles.button}
+                            onClick={handleSubmit}
+                            startIcon={<SendIcon/>}
+                        >submit</Button>
                       </Grid>
                     </Grid>
                   </CardContent>
                 </Card>
               </React.Fragment>
-            </MuiThemeProvider>
-          </div>
-        </container>
-      </Form>
-    </Container>
+            </div>
+          </container>
+        </Form>
+      </Container>
   );
 }
 

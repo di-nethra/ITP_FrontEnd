@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import { Button } from "@material-ui/core";
 import "./doctor.css"
 import NoteDataService from "../../../services/doctorNoteService";
+import { Link } from "react-router-dom";
 
 const DoctorAddNote = () => {
     const initialNoteState = {
@@ -15,7 +16,7 @@ const DoctorAddNote = () => {
     };
 
     const [note, setNote] = useState(initialNoteState);
-    const [submitted, setSubmitted] = useState(false);
+    // const [submitted, setSubmitted] = useState(false);
 
     const handleInputChange = event => {
         const { name, value } = event.target;
@@ -37,7 +38,7 @@ const DoctorAddNote = () => {
                     pNoteName: response.data.pNoteName,
                     pNoteMessage: response.data.pNoteMessage
                 });
-                setSubmitted(true);
+                // setSubmitted(true);
                 console.log(response.data);
             })
             .catch(err => {
@@ -47,7 +48,7 @@ const DoctorAddNote = () => {
 
     const newNote = () => {
         setNote(initialNoteState);
-        setSubmitted(false);
+        // setSubmitted(false);
     };
 
     //console.log(note.id);
@@ -65,16 +66,18 @@ const DoctorAddNote = () => {
                     <form>
 
                         <TextField
+                            type="text"
                             id="pNoteId"
                             name="pNoteId"
                             label="PATIENT ID"
                             style={{ margin: 0 }}
                             InputLabelProps={{ shrink: true, }}
                             placeholder="Enter patient ID"
-                            helperText="Please enter a number only"
+                            helperText="Please enter the patient NIC number"
                             variant="outlined"
                             onChange={handleInputChange}
                             value={note.pNoteId}
+                            InputProps={{ inputProps: { minlength: 10, maxlength: 10 } }}
                             required /><br /><br />
 
                         <TextField
@@ -110,8 +113,13 @@ const DoctorAddNote = () => {
                             required /><br /><br />
 
                         <div className="buttonAlignRight">
-                            <Button size="medium" variant="contained" style={{ marginRight: 8 }} type="reset" onClick={newNote}>Clear</Button>
-                            <Button size="medium" variant="contained" color="primary" type="submit" onClick={saveNote}>Send</Button>
+                            <Link to="/staff/doctor/viewnote">
+                                <Button size="medium" variant="contained" style={{ marginRight: 8 }}>View Added Notes</Button>
+                            </Link>
+                            <Button size="medium" variant="contained" style={{ marginRight: 8 }} type="reset"
+                                onClick={newNote}>Clear</Button>
+                            <Button size="medium" variant="contained" color="primary" type="submit"
+                                onClick={saveNote}>Send</Button>
                         </div>
 
                     </form>
