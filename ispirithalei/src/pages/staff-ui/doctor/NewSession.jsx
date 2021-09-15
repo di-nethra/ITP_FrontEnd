@@ -6,6 +6,8 @@ import moment from 'moment';
 
 
 const NewSession = () => {
+    let temp = sessionStorage.getItem("user");
+    let currentUser = JSON.parse(temp);
     let date = new Date();
     date.setHours(date.getHours() + Math.ceil(date.getMinutes()/60));
     date.setMinutes(0, 0, 0);
@@ -31,7 +33,7 @@ const NewSession = () => {
     const saveSession = () => {
 
         let formData = {
-            doctorID: "D001",
+            doctorID: currentUser?.id,
             sessionDate: selectedDate,
             sessionTime: selectedTime,
             maxAppointments: value,
