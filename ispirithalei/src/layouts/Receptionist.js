@@ -11,9 +11,11 @@ import "./layout.css"
 
 
 const Receptionist = () => {
+  let temp = sessionStorage.getItem("user");
+  let currentUser = JSON.parse(temp);
   const user = {
-    name : 'Amanulla Unais',
-    role : 'Receptionist',
+    name : currentUser?.firstName + " " + currentUser?.lastName,
+    role: currentUser?.role,
     list : [
       {
         path: "",

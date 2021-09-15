@@ -6,8 +6,8 @@ import CardContent from "@material-ui/core/CardContent";
 import SendIcon from "@material-ui/icons/Send";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import {Form,} from "../../../components/patient-ui/Echannelling/useForm";
-import passwordService from "../../../services/password.service";
 import MenuItem from "@material-ui/core/MenuItem";
+
 
 function EmpForm() {
   const handleSubmit = (e) => {
@@ -46,23 +46,23 @@ function EmpForm() {
         console.log("inside then" + response.data);
       })
       .catch((e) => {
-        // alert(e );
+        alert(e );
         console.log("this is the error:" + e);
       });
 
-    passwordService
-      .create(data)
+    // passwordService
+    //   .create(data)
 
-      .then((response) => {
-        alert("success");
-        window.location.reload();
-        console.log("inside create" + response.data);
-        console.log("inside then" + response.data);
-      })
-      .catch((e) => {
-        // alert(e );
-        console.log("this is the error:" + e);
-      });
+    //   .then((response) => {
+    //     alert("success");
+    //     window.location.reload();
+    //     console.log("inside create" + response.data);
+    //     console.log("inside then" + response.data);
+    //   })
+    //   .catch((e) => {
+    //     // alert(e );
+    //     console.log("this is the error:" + e);
+    //   });
   };
 
   const [selectedFirstName, setSelectedFirstName] = useState("");

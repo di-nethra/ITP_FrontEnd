@@ -11,9 +11,11 @@ import './doctor.css';
 import { Link, useParams } from "react-router-dom";
 import { DeleteOutline } from "@material-ui/icons";
 import PrescriptionDataService from "../../../services/doctorPrescriptionService";
-import PrescriptionDataServices from '../../../services/doctorPrescriptionService';
+import Swal from "sweetalert2";
+import { useTheme } from "@material-ui/core";
 
 export default function DoctorViewPrescription() {
+    const theme = useTheme();
     const columns = [
         {
             field: 'id',
@@ -53,14 +55,31 @@ export default function DoctorViewPrescription() {
     ];
 
     const deletePrescription = event => {
-        PrescriptionDataServices.remove(event.currentTarget.value)
-            .then(response => {
-                alert(response.statusText)
-                window.location.reload();
-            })
-            .catch(error => {
-                console.log(error);
-            })
+        let id = event.currentTarget.value;
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: theme.palette.secondary.main,
+            cancelButtonColor: theme.palette.primary.main,
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                PrescriptionDataService.remove(id)
+                    .then(() => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Prescription has been deleted.',
+                            'success'
+                        )
+                        window.location.reload();
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
+        })
     }
 
     const [prescriptions, setPrescriptions] = useState([]);

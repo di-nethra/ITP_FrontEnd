@@ -18,9 +18,11 @@ import {Route, Switch} from "react-router-dom";
 import DoctorViewSessions from "../pages/staff-ui/doctor/DoctorViewSessions";
 
 const Doctor = () => {
+  let temp = sessionStorage.getItem("user");
+  let currentUser = JSON.parse(temp);
   const user = {
-    name: 'Asel Jayasooriya',
-    role: 'Doctor',
+    name : currentUser?.firstName + " " + currentUser?.lastName,
+    role: currentUser?.role,
     list: [
       {
         path: "",

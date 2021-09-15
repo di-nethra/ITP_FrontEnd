@@ -16,9 +16,11 @@ import InventoryReport from "../pages/staff-ui/inventory/InventoryReport";
 import {Switch, Route } from "react-router-dom";
 
 const Inventory = () => {
+  let temp = sessionStorage.getItem("user");
+  let currentUser = JSON.parse(temp);
   const user = {
-    name: 'Yomal Bandara',
-    role: 'InventoryManager',
+    name : currentUser?.firstName + " " + currentUser?.lastName,
+    role: currentUser?.role,
     list: [
       {
         path: "",

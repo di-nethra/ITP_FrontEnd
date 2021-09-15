@@ -11,7 +11,8 @@ const DisplaySessions = () => {
 const [sessions , setSessions] = useState([]);
 const [loading , setLoading] = useState(true)
 
-    let { id } = useParams();
+    const { doctorID } = useParams();
+    let id = doctorID;
     useEffect(() => {
         getSessionsByDoctorID(id);
     }, [id]);

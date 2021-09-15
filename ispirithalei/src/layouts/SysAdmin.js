@@ -14,9 +14,11 @@ import Payroll from "../pages/staff-ui/sysadmin/Payroll";
 
 
 const SysAdmin = () => {
+  let temp = sessionStorage.getItem("user");
+  let currentUser = JSON.parse(temp);
   const user = {
-    name: 'Chamod Gavindya',
-    role: 'SysAdmin',
+    name : currentUser?.firstName + " " + currentUser?.lastName,
+    role: currentUser?.role,
     list: [
       {
         path: "",

@@ -85,14 +85,14 @@ export default function InventoryList() {
         console.log(event.currentTarget.value)
         InventoryDataService.remove(event.currentTarget.value)
 
-            .then(response => {
-                alert(response.statusText)
-                window.location.reload();
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
+      .then(response => {
+        alert("Deleted Item")
+        window.location.reload();
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
 
     let rows = [];
     for (const inventoryy of inventory) {

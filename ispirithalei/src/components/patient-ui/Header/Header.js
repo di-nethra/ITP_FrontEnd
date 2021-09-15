@@ -6,35 +6,40 @@ import Navigation from "./Navigation";
 import ButtonOnNav from "./ButtonOnNav";
 import HistoryIcon from "@material-ui/icons/History";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import {Link} from "react-router-dom";
 
 
 function Header() {
     return (
         <Slide direction="down" in={true} timeout={500}>
-    <div className={styles.header}>
-        <Grid container spacing={1} justifyContent={"space-between"}>
-            <Grid item xl={3} lg={3} md={8} sm={7} xs={6}>
-                <Logo/>
-            </Grid>
-            <Hidden mdDown>
-                <Fade timeout={1500} in={true}>
-                <Grid item xl={6} lg={6}>
-                    <Navigation/>
+            <div className={styles.header}>
+                <Grid container spacing={1} justifyContent={"space-between"}>
+                    <Grid item xl={3} lg={3} md={8} sm={7} xs={6}>
+                        <Logo/>
+                    </Grid>
+                    <Hidden mdDown>
+                        <Fade timeout={1500} in={true}>
+                            <Grid item xl={6} lg={6}>
+                                <Navigation/>
+                            </Grid>
+                        </Fade>
+                    </Hidden>
+                    <Fade timeout={1500} in={true}>
+                        <Grid item xl={3} lg={3} md={4} sm={5} xs={6} className={styles.navBtnGrid}>
+                            <ButtonOnNav
+                                text={"History"}
+                                icon={<HistoryIcon/>}/>
+
+                            <Link to="/login" style={{textDecoration:"none"}}>
+                                <ButtonOnNav
+                                    text={"Login"}
+                                    icon={<ExitToAppIcon/>}
+                                />
+                            </Link>
+                        </Grid>
+                    </Fade>
                 </Grid>
-                </Fade>
-            </Hidden>
-            <Fade timeout={1500} in={true}>
-            <Grid item xl={3} lg={3} md={4} sm={5} xs={6} className={styles.navBtnGrid}>
-                <ButtonOnNav
-                    text={"History"}
-                    icon={<HistoryIcon/>}/>
-                <ButtonOnNav
-                    text={"Login"}
-                    icon={<ExitToAppIcon/>}/>
-            </Grid>
-            </Fade>
-        </Grid>
-    </div>
+            </div>
         </Slide>
     )
 }
