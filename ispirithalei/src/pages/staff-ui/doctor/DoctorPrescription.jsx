@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import PrescriptionDataService from "../../../services/doctorPrescriptionService";
 
 function DoctorPrescription() {
+    let temp = sessionStorage.getItem("user");
+    let currentUser = JSON.parse(temp);
     const [isDisabled, setIsDisabled] = useState(true);
 
     function changeCheck() {
@@ -16,7 +18,7 @@ function DoctorPrescription() {
 
     const initialPrescriptionState = {
         //id: null,
-        dId: "D001",
+        dId: currentUser?.id,
         dPName: "",
         dPDignosis: "",
         dMed1: "",
