@@ -95,11 +95,13 @@ export default function StaffAssign() {
                     <form className="newUserForm" /*onSubmit={updateTest}*/>
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant ID</label>
-                            <input type="text" placeholder="Insert a lab asistant ID"/>
+                            <input type="text" placeholder="Insert a lab asistant ID"
+                            required/>
                         </div>
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant Name</label>
-                            <input type="text" placeholder="Insert a lab asistant name"/>
+                            <input type="text" placeholder="Insert a lab asistant name"
+                            required/>
                         </div>
 
                         <button className="newUserButton">Assign Test(Update Test)</button>

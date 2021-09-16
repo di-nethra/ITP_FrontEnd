@@ -38,11 +38,11 @@ export default function TestReslt() {
                     <form className="newUserForm">
                         <div className="newUserItem">
                             <label>Specimen Property</label>
-                            <input type="text" placeholder="Insert Specimen property" />
+                            <input type="text" placeholder="Insert Specimen property" required/>
                         </div>
                         <div className="newUserItem">
                             <label>Specimen Property Result</label>
-                            <input type="text" placeholder="Insert specimen property reslt" />
+                            <input type="text" placeholder="Insert specimen property reslt" required />
                         </div>
                         <div className="newUserItem1">
                             <label>Before subbmit results please double check</label>
