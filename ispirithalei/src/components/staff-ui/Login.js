@@ -3,7 +3,6 @@ import {
   Button,
   Grid,
   Hidden,
-  Link,
   TextField,
   Typography,
 } from "@material-ui/core";
@@ -13,7 +12,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
 import logo from "../../assets/1.png";
 import login from "../../services/login.Service";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   button: {
@@ -143,7 +142,7 @@ export default function Login() {
       <Hidden smDown>
         <Grid item xl={8} lg={8} md={6}>
           <div className="rightside">
-            <img src={logo} className="loginLogo" alt="ispirithalei logo" />
+            <Link to=""><img src={logo} className="loginLogo" alt="ispirithalei logo" /></Link>
             <img src={login_bg} className="loginBgImage" alt="doctors" />
           </div>
         </Grid>

@@ -24,7 +24,6 @@ const styles = (theme) => ({
   },
 
   TextField: {
-    marginTop: "20px",
     textAlign: "right",
   },
   TextField1: {
@@ -85,7 +84,6 @@ export class CreditCardPage extends Component {
       .create(data)
 
       .then((response) => {
-        alert("success");
         console.log("inside create" + response.data);
 
         this.setState({
@@ -123,17 +121,17 @@ export class CreditCardPage extends Component {
               <img src={PayCredit} alt="70" />
             </Grid>
 
-            <form noValidate>
-              <p className={classes.label}>email</p>
+            <form Validate>
               <TextField
                 id="outlined-basic"
-                InputProps={{ inputProps: { min: 2, max: 3 } }}
+                label="Email"
                 variant="outlined"
                 fullWidth="true"
                 onChange={handleChange("email")}
                 defaultValue={values.email}
+                className={classes.TextField1}
               />
-              <p className={classes.label}>Card Number</p>
+
               <TextField
                 id="outlined-basic"
                 label="Card Number"
@@ -141,6 +139,7 @@ export class CreditCardPage extends Component {
                 fullWidth="true"
                 onChange={handleChange("cardNumber")}
                 defaultValue={values.cardNumber}
+                className={classes.TextField1}
               />
               <Grid item direction="row">
                 <Grid item className={classes.TextField1}>
@@ -151,16 +150,18 @@ export class CreditCardPage extends Component {
                     onChange={handleChange("yearMonth")}
                     defaultValue={values.yearMonth}
                   />
+
                   <TextField
                     id="outlined-basic"
                     label="CVC"
                     variant="outlined"
                     onChange={handleChange("CVC")}
                     defaultValue={values.CVC}
+                    className={classes.TextField1}
                   />
                 </Grid>
               </Grid>
-              <p className={classes.label}>Name on the Card</p>
+
               <TextField
                 id="outlined-basic"
                 label="Name on the Card"
@@ -168,8 +169,8 @@ export class CreditCardPage extends Component {
                 fullWidth="true"
                 onChange={handleChange("nameOnTheCard")}
                 defaultValue={values.nameOnTheCard}
+                className={classes.TextField1}
               />
-              <p className={classes.label}>Country</p>
 
               <DropDown onChange={handleChange("country")} />
             </form>
