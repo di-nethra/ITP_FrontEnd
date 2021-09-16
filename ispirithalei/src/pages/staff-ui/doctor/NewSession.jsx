@@ -6,6 +6,8 @@ import moment from 'moment';
 
 
 const NewSession = () => {
+    let temp = sessionStorage.getItem("user");
+    let currentUser = JSON.parse(temp);
     let date = new Date();
     date.setHours(date.getHours() + Math.ceil(date.getMinutes()/60));
     date.setMinutes(0, 0, 0);
@@ -31,7 +33,7 @@ const NewSession = () => {
     const saveSession = () => {
 
         let formData = {
-            doctorID: "D001",
+            doctorID: currentUser?.id,
             sessionDate: selectedDate,
             sessionTime: selectedTime,
             maxAppointments: value,
@@ -84,6 +86,7 @@ const NewSession = () => {
                     type="time"
                     helperText="Enter a time between 09:00 AM and 06:00 PM"
                     inputProps={{ min: "09:00", max:"18:00"}}
+                    { ...((selectedTime < "09:00" || selectedTime > "18:00") && {error:true}) }
                     value={selectedTime}
                     onChange={handleTimeChange}
                 />
@@ -102,6 +105,7 @@ const NewSession = () => {
                 variant="outlined"
                 value={value}
                 onChange={handleValueChange}
+                required={true}
                 { ...((value<10 || value>50) && {error:true}) }
             /> <br /><br/>
 
