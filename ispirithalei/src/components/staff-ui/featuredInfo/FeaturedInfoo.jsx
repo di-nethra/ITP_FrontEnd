@@ -8,7 +8,7 @@ export default function FeaturedInfoo() {
       <div className="featuredItem">
         <span className="featuredTitle">All Tests</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">32</span>
+          <span className="featuredMoney">15</span>
           <span className="featuredMoneyRate">
              <AllInclusiveOutlinedIcon  className="featuredIcon"/>
           </span>
@@ -18,7 +18,7 @@ export default function FeaturedInfoo() {
       <div className="featuredItem">
         <span className="featuredTitle">My patients</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">30</span>
+          <span className="featuredMoney">15</span>
           <span className="featuredMoneyRate">
             <AccountCircleOutlinedIcon className="featuredIcon"/>
           </span>

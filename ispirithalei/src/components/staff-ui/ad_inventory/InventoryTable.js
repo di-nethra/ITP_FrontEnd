@@ -13,24 +13,17 @@ import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import { Link } from "react-router-dom";
 
 const columns = [
-  { id: 'name', label: 'ID', minWidth: 170 },
-  { id: 'code', label: 'Item Name', minWidth: 100 },
+  { id: 'item_id', label: 'ID', minWidth: 170 },
+  { id: 'item_name', label: 'Item Name', minWidth: 100 },
   {
-    id: 'population',
+    id: 'quantity',
     label: 'Quantity',
     minWidth: 170,
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
   },
-  // {
-  //   id: 'size',
-  //   label: 'Size\u00a0(km\u00b2)',
-  //   minWidth: 170,
-  //   align: 'right',
-  //   format: (value) => value.toLocaleString('en-US'),
-  // },
   {
-    id: 'density',
+    id: 'r_level',
     label: 'Reorder-Level',
     minWidth: 170,
     align: 'right',
@@ -38,27 +31,27 @@ const columns = [
   },
 ];
 
-function createData(name, code, population, size) {
-  const density = population * 0.10;
-  return { name, code, population, size, density };
+function createData(item_name, item_id, quantity) {
+  const r_level = quantity * 0.10;
+  return { item_name, item_id, quantity, r_level };
 }
 
 const rows = [
-  createData('India', 'IN', 1324171354, 3287263),
-  createData('China', 'CN', 1403500365, 9596961),
-  createData('Italy', 'IT', 60483973, 301340),
-  createData('United States', 'US', 327167434, 9833520),
-  createData('Canada', 'CA', 37602103, 9984670),
-  createData('Australia', 'AU', 25475400, 7692024),
-  createData('Germany', 'DE', 83019200, 357578),
-  createData('Ireland', 'IE', 4857000, 70273),
-  createData('Mexico', 'MX', 126577691, 1972550),
-  createData('Japan', 'JP', 126317000, 377973),
-  createData('France', 'FR', 67022000, 640679),
-  createData('United Kingdom', 'GB', 67545757, 242495),
-  createData('Russia', 'RU', 146793744, 17098246),
-  createData('Nigeria', 'NG', 200962417, 923768),
-  createData('Brazil', 'BR', 210147125, 8515767),
+  createData('Panadol', 'IN001', 10000, ),
+  createData('Piriton', 'IN002', 5000),
+  createData('Brufen', 'IN003', 7500),
+  createData('Vitamin C', 'IN004', 3000),
+  createData('Voltaren', 'IN005', 4000),
+  createData('Candid B', 'IN006', 2000),
+  createData('Zaart', 'IN007', 6000),
+  createData('Roparc', 'IN008', 7000),
+  createData('Penicilin', 'IN009', 12000),
+  createData('Pfizer', 'IN010', 50000),
+  createData('Sinopharm', 'IN011', 60000),
+  createData('Sputnik-V', 'IN012', 70000),
+  createData('Moderna', 'IN013', 40000),
+  createData('CoviShield', 'IN014', 50000),
+  createData('DSyrup', 'IN015', 80000),
 ];
 
 const useStyles = makeStyles({
@@ -70,11 +63,6 @@ const useStyles = makeStyles({
   },
 });
 
-const b_useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
 
 export default function InventoryTable() {
   const classes = useStyles();
@@ -110,9 +98,9 @@ export default function InventoryTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row,index) => {
               return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (

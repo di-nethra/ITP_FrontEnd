@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import { useState } from "react";
 import logo from "../../assets/images/infoPageLogo.svg";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import PayCredit from "../../assets/images/PayWithCreditCard.svg";
-import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import DropDown from "../../components/patient-ui/Payments/DropDown";
 import paymentCreditService from "../../services/paymentCredit.service";
-
+import Swal from "sweetalert2";
 const styles = (theme) => ({
   infoLogo: {
     width: "500px",
@@ -26,7 +24,6 @@ const styles = (theme) => ({
   },
 
   TextField: {
-    marginTop: "20px",
     textAlign: "right",
   },
   TextField1: {
@@ -51,7 +48,7 @@ export class CreditCardPage extends Component {
     const ranNum = "CPAY" + Math.floor(1000 + Math.random() * 9000);
     const currentDate = new Date().toDateString();
 
-    const tempPrice = 5650.0;
+    const tempPrice = "RS.5650.00";
     const data = {
       paymentid: ranNum,
       name: this.props.values.nameOnTheCard,
@@ -59,14 +56,34 @@ export class CreditCardPage extends Component {
       date: currentDate,
       amount: tempPrice,
     };
-    console.log(this.props.values);
+    if (data.email.includes("@", 0) && data.email.includes(".com")) {
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Email must be in valid format",
+      });
 
-    console.log(data.email);
+      return null;
+    }
+
+    const temp = data.name;
+
+    if (temp[0] === temp[0].toUpperCase() || temp === undefined) {
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Name on Card must be start with a capital letter",
+      });
+      return null;
+    }
+
+    console.log(" data meka" + data.email);
     paymentCreditService
       .create(data)
 
       .then((response) => {
-        alert("success");
         console.log("inside create" + response.data);
 
         this.setState({
@@ -79,7 +96,11 @@ export class CreditCardPage extends Component {
         alert(e);
         console.log("this is the error:" + e);
       });
-
+    Swal.fire(
+      "Success",
+      "Your data is successfully saved for future use",
+      "success"
+    );
     this.props.nextStep();
   };
 
@@ -87,8 +108,8 @@ export class CreditCardPage extends Component {
     const { classes } = this.props;
     const { values, handleChange } = this.props;
 
-    console.log(values.email);
-    let data = [{ email: values.email }, { id: 2 }];
+    console.log("meka2" + values.email);
+
     return (
       <div>
         <Grid container direction="row" className={classes.root}>
@@ -100,16 +121,17 @@ export class CreditCardPage extends Component {
               <img src={PayCredit} alt="70" />
             </Grid>
 
-            <form noValidate>
-              <p className={classes.label}>email</p>
+            <form Validate>
               <TextField
                 id="outlined-basic"
+                label="Email"
                 variant="outlined"
                 fullWidth="true"
                 onChange={handleChange("email")}
                 defaultValue={values.email}
+                className={classes.TextField1}
               />
-              <p className={classes.label}>Card Number</p>
+
               <TextField
                 id="outlined-basic"
                 label="Card Number"
@@ -117,6 +139,7 @@ export class CreditCardPage extends Component {
                 fullWidth="true"
                 onChange={handleChange("cardNumber")}
                 defaultValue={values.cardNumber}
+                className={classes.TextField1}
               />
               <Grid item direction="row">
                 <Grid item className={classes.TextField1}>
@@ -127,16 +150,18 @@ export class CreditCardPage extends Component {
                     onChange={handleChange("yearMonth")}
                     defaultValue={values.yearMonth}
                   />
+
                   <TextField
                     id="outlined-basic"
                     label="CVC"
                     variant="outlined"
                     onChange={handleChange("CVC")}
                     defaultValue={values.CVC}
+                    className={classes.TextField1}
                   />
                 </Grid>
               </Grid>
-              <p className={classes.label}>Name on the Card</p>
+
               <TextField
                 id="outlined-basic"
                 label="Name on the Card"
@@ -144,8 +169,8 @@ export class CreditCardPage extends Component {
                 fullWidth="true"
                 onChange={handleChange("nameOnTheCard")}
                 defaultValue={values.nameOnTheCard}
+                className={classes.TextField1}
               />
-              <p className={classes.label}>Country</p>
 
               <DropDown onChange={handleChange("country")} />
             </form>

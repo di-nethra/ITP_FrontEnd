@@ -6,36 +6,57 @@ import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 import { Link } from "react-router-dom";
-
-const columns = [
-    { field: 'id', headerName: 'PATIENT ID', width: 150 },
-    {
-        field: 'pNName',
-        headerName: 'PATIENT NAME',
-        width: 310,
-        editable: false,
-    },
-    {
-        field: 'pMessage',
-        headerName: 'MESSAGE',
-        width: 550,
-        editable: false,
-    },
-];
-
-const rows = [
-    { id: 1, pNName: 'Praveen Dias', pMessage: 'Terminal illness stop unnessasary treatments', },
-    { id: 2, pNName: 'Nipuna Dias', pMessage: 'Lung cancer patient', },
-    { id: 3, pNName: 'Nalaka Silva', pMessage: 'Prolonged radiation exposure and cancer', },
-    { id: 4, pNName: 'Ananda Silva', pMessage: 'Extreme paranoia', },
-    { id: 5, pNName: 'Darley Samararathne', pMessage: 'Terminal illness stop unnessasary treatments', },
-    { id: 6, pNName: 'Dudley Alvis', pMessage: 'Chronic heart failure', },
-    { id: 7, pNName: 'Janaka Dias', pMessage: 'Unmanaged diabetes', },
-];
+import { useState, useEffect } from "react";
+import NoteDataService from "../../../services/doctorNoteService";
 
 export default function DoctorViewNotes() {
+    const [notes, setNotes] = useState([]);
+  
+    useEffect(() => {
+      retrieveNotes();
+    }, []);
+  
+    const retrieveNotes = () => {
+        NoteDataService.getAll()
+        .then(response => {
+          setNotes(response.data);
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    };
+
+    const columns = [
+        { field: 'id', headerName: 'PATIENT ID', width: 150 },
+        {
+            field: 'pNName',
+            headerName: 'PATIENT NAME',
+            width: 310,
+            editable: false,
+        },
+        {
+            field: 'pMessage',
+            headerName: 'MESSAGE',
+            width: 550,
+            editable: false,
+        },
+    ];
+
+    let rows = [];
+    for (const note of notes) {
+        rows.push(
+            {
+                id: note.pNoteId,
+                pNName: note.pNoteName,
+                pMessage: note.pNoteMessage,
+            }
+        )
+    }
+
+
     return (
-        <div>
+        <div style={{ marginBottom: 10 }} >
             <Card>
                 <CardContent>
                     <h3>DOCTOR NOTES LIST</h3>

@@ -11,6 +11,7 @@ export default function Input(props) {
             name={name}
             value={value}
             onChange={onChange}
+            required
             {...(error && {error:true,helperText:error})}
         />
     )

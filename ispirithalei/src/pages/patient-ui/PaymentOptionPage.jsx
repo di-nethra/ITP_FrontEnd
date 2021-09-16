@@ -5,15 +5,11 @@ import StripePay from "../../assets/images/StripePayLogo.svg";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-<<<<<<< HEAD
 
-=======
->>>>>>> eaf61f78aa32eadfa25a6a7b9054d2e700c1c5c7
 const useStyles = makeStyles({
   logo: {
     marginTop: "100px",
     paddingLeft: "100px",
-    marginBottom: "1000px",
   },
   option: {
     "&:hover": {
@@ -29,34 +25,28 @@ function PaymentOptionPage() {
     <div>
       <Grid container className={classes.logo}>
         <Grid item xs={12} md={4}>
-          <a href="#">
-            <img
-              src={CreditCard}
-              alt="60"
-              className={classes.option}
-              onClick={() => history.push("/payments/info")}
-            />
-          </a>
+          <img
+            src={CreditCard}
+            alt="60"
+            className={classes.option}
+            onClick={() => history.push("/payments/info")}
+          />
         </Grid>
         <Grid item xs={12} md={4}>
-          <a href="#">
-            <img
-              src={MobilePay}
-              alt="60"
-              className={classes.option}
-              onClick={() => history.push("/payments/info")}
-            />
-          </a>
+          <img
+            src={MobilePay}
+            alt="60"
+            className={classes.option}
+            onClick={() => history.push("/payments/mobileqr")}
+          />
         </Grid>
         <Grid item xs={12} md={4}>
-          <a href="#">
-            <img
-              src={StripePay}
-              alt="60"
-              className={classes.option}
-              onClick={() => history.push("/payments/refund")}
-            />
-          </a>
+          <img
+            src={StripePay}
+            alt="60"
+            className={classes.option}
+            onClick={() => history.push("/payments/refund")}
+          />
         </Grid>
       </Grid>
     </div>

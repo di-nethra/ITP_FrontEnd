@@ -4,8 +4,6 @@ import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
 import TransformIcon from '@material-ui/icons/Transform';
 import DoneIcon from '@material-ui/icons/Done';
-import ClearAllIcon from '@material-ui/icons/ClearAll';
-import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
 import "./layout.css"
@@ -16,12 +14,15 @@ import DoctorEditPrescription from "../pages/staff-ui/doctor/DoctorEditPrescript
 import DoctorAddNote from "../pages/staff-ui/doctor/DoctorAddNote";
 import DoctorViewNotes from "../pages/staff-ui/doctor/DoctorViewNotes";
 import NewSession from '../pages/staff-ui/doctor/NewSession'
-import {Switch, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import DoctorViewSessions from "../pages/staff-ui/doctor/DoctorViewSessions";
 
 const Doctor = () => {
+  let temp = sessionStorage.getItem("user");
+  let currentUser = JSON.parse(temp);
   const user = {
-    name: 'Asel Jayasooriya',
-    role: 'Doctor',
+    name: currentUser?.firstName + " " + currentUser?.lastName,
+    role: currentUser?.role,
     list: [
       {
         path: "",
@@ -37,13 +38,13 @@ const Doctor = () => {
         id: 2
       },
       {
-        path: "viewprescription",
+        path: "viewprescription/" + currentUser.id,
         icon: <TransformIcon className="sidebarIcon" />,
         iconlabel: 'View Prescriptions',
         id: 3
       },
       {
-        path: "doctorschedule",
+        path: "doctorschedule/" + currentUser?.id,
         icon: <DoneIcon className="sidebarIcon" />,
         iconlabel: 'Doctor Schedule',
         id: 4
@@ -54,9 +55,6 @@ const Doctor = () => {
         iconlabel: 'Support',
         id: 5
       },
-
-
-
     ]
   }
 
@@ -76,17 +74,17 @@ const Doctor = () => {
               <DoctorPrescription />
             </Route>
 
-            <Route path="/staff/doctor/viewprescription">
+            <Route path="/staff/doctor/viewprescription/:id">
               <DoctorViewPrecription />
             </Route>
 
-            <Route path="/staff/doctor/doctorschedule">
-              <NewSession />
+            <Route path="/staff/doctor/doctorschedule/:id">
+              <DoctorViewSessions />
             </Route>
 
-            {/* <Route path="/staff/doctor/support">
-              <InventoryReport />
-            </Route> */}
+            <Route path="/staff/doctor/newsession">
+              <NewSession />
+            </Route>
 
             <Route path="/staff/doctor/addnote">
               <DoctorAddNote />
@@ -96,10 +94,9 @@ const Doctor = () => {
               <DoctorViewNotes />
             </Route>
 
-            <Route path="/staff/doctor/addprescription">
-              <DoctorViewNotes />
+            <Route path="/staff/doctor/editprescription">
+              <DoctorEditPrescription />
             </Route>
-
           </Switch>
         </div>
       </div>

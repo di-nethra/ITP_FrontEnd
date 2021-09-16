@@ -9,11 +9,15 @@ import Mobile from "@material-ui/icons/MobileFriendly";
 import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 import { Typography } from "@material-ui/core";
 import DisplayCredit from "../components/staff-ui/DisplayCredit";
+import PaymentDashbord from "../pages/staff-ui/paymenentAdmin/PaymentDashbord";
+import PaymentSamapleData from "../pages/staff-ui/paymenentAdmin/PaymentSamapleData";
 
 const PaymentAdmin = () => {
+  let temp = sessionStorage.getItem("user");
+  let currentUser = JSON.parse(temp);
   const user = {
-    name: "Anjana Samarakoon",
-    role: "PaymentAdmin",
+    name: currentUser?.firstName + " " + currentUser?.lastName,
+    role: currentUser?.role,
 
     list: [
       {
@@ -66,17 +70,17 @@ const PaymentAdmin = () => {
         <div className="others">
           <Topbar style={{}} page={user.list} />
           <Switch>
-            <Route path="/staff/PaymentAdmin/creditCard">
+            <Route path="/staff/Paymentadmin/creditCard">
               <DisplayCredit />
             </Route>
-            <Route path="/staff/PaymentAdmin/mobilePay">
-              <h1>Hello Mobile</h1>
+            <Route path="/staff/Paymentadmin/mobilePay">
+              <PaymentSamapleData />
             </Route>
-            <Route path="/staff/PaymentAdmin/refunds">
-              <h1>Hello Refunds</h1>
+            <Route path="/staff/Paymentadmin/refunds">
+              <PaymentSamapleData />
             </Route>
-            <Route path="/staff/PaymentAdmin/">
-              <h1>Hello kollo</h1>
+            <Route path="/staff/Paymentadmin/">
+              <PaymentDashbord />
             </Route>
           </Switch>
         </div>

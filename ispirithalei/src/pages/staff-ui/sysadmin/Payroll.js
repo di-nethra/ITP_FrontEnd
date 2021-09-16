@@ -75,10 +75,11 @@ function Payroll() {
             </Table>
           </TableContainer>
         );
-    case 2:
+    default:
       return(
         <Payslip />
       );
+
   }
 }
 

@@ -4,7 +4,6 @@ import {NavLink} from "react-router-dom";
 
 
 export default function Sidebar(props) {
-
     return (
         <div className="sidebar">
           <div className="sidebarWrapper">
@@ -45,11 +44,9 @@ const Content = (props) => {
   
 }
 const List = (props) =>{
-  console.log(props.icon)
-  
-  return(
+return(
     <>
-      <NavLink to={"/staff/" + props.role.toLowerCase() + "/" + props.path} exact={props.exact} className="sidebarListItem" replace>
+      <NavLink to={"/staff/" + props.role?.toLowerCase() + "/" + props.path} exact={props.exact} className="sidebarListItem" replace>
         {props.icon}
         {props.iconlabel}
       </NavLink>

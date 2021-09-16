@@ -2,12 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import DirectionsRunOutlinedIcon from '@material-ui/icons/DirectionsRunOutlined';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import "../inventory/page.css"
 
 
@@ -23,12 +21,6 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-  const b_useStyles = makeStyles((theme) => ({
-    button: {
-      margin: theme.spacing(1),
-      
-    },
-  }));
 
   const f_useStyles = makeStyles((theme) => ({
     formControl: {
@@ -41,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function InventoryItem(){
-    const classes = useStyles()
     const b_classes = useStyles();
     const f_classes = f_useStyles();
 
@@ -63,13 +54,12 @@ function InventoryItem(){
      <div className="formCard"
      >
          <form  style={{marginLeft:'250px'}}>
+         <h3>Edit Details of an Item</h3>
          <TextField
           id="outlined-full-width"
           label="Item Name"
-          style={{ margin: 8 }}
+          style={{ margin: 8,width:600 }}
           placeholder="Enter Item Name"
-          helperText=""
-          style={{width:600}}
           margin="normal"
           InputLabelProps={{
             shrink: true,
@@ -80,10 +70,8 @@ function InventoryItem(){
         <TextField
           id="outlined-full-width"
           label="Supplier Name"
-          style={{ margin: 8 }}
+          style={{ margin: 8,width:600 }}
           placeholder="Enter Supplier Name"
-          style={{width:600}}
-          helperText=""
           fullWidth
           margin="normal"
           InputLabelProps={{
@@ -95,10 +83,8 @@ function InventoryItem(){
 <TextField
           id="outlined-full-width"
           label="Supplier Email"
-          style={{ margin: 8 }}
+          style={{ margin: 8,width:600 }}
           placeholder="Enter Supplier Email"
-          style={{width:600}}
-          helperText=""
           fullWidth
           margin="normal"
           InputLabelProps={{
@@ -110,10 +96,8 @@ function InventoryItem(){
         <TextField
           id="outlined-full-width"
           label="Supplier Contact Number"
-          style={{ margin: 8 }}
+          style={{ margin: 8 , width:600}}
           placeholder="Enter supplier contact number"
-          style={{width:600}}
-          helperText=""
           fullWidth
           margin="normal"
           InputLabelProps={{
@@ -126,10 +110,8 @@ function InventoryItem(){
         <TextField
           id="outlined-full-width1"
           label="Purchase Price"
-          style={{ margin: 8 }}
+          style={{ margin: 8 , width:300}}
           placeholder="Enter Purchase Price"
-          style={{width:300}}
-          helperText=""
           fullWidth
           margin="normal"
           InputLabelProps={{
@@ -141,12 +123,9 @@ function InventoryItem(){
          <TextField
           id="outlined-full-width"
           label="Registered Date"
-          style={{ margin: 8 }}
           placeholder="Enter the date"
-          style={{width:200,marginLeft:100}}
-          helperText=""
+          style={{width:200,marginLeft:100, margin: 8}}
           fullWidth
-          defaultValue={new Date().getDate()+"-"+(new Date().getMonth()+1)+"-"+new Date().getFullYear()}
           margin="normal"
           InputLabelProps={{
             shrink: true,
@@ -175,20 +154,7 @@ function InventoryItem(){
       </FormControl>
 
         <br /><br />
-             {/* <input name = "name" type="text" placeholder = "Enter name" /><br/>
-             <input name = "supplier" type="text" placeholder = "Enter Supplier Name" required/><br/>
-             <input name = "supplierEmail" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder = "Enter Supplier Email" required/><br/>
-             <input name = "supplierContact" type="text" pattern="[0-9]{10}" required/> <br />
-             <input name = "price" type="text" placeholder = "Enter purchase price" /><br/>
-             <input name = "date" type = "text" value={new Date().getDate()+"-"+(new Date().getMonth()+1)+"-"+new Date().getFullYear()} /><br/> */}
-             {/* <select name="type" id="drugType">
-                <option value="liquid">Liquid</option>
-                <option value="tablet">Tablet</option>
-                <option value="capsules">Capsules</option>
-                <option value="inhalers">Inhaler</option>
-                <option value="injections">Injection</option>
-                <option value="other">Other</option>
-            </select><br /> */}
+             
 
             <Button
             variant="contained"
@@ -200,7 +166,7 @@ function InventoryItem(){
             Update
             </Button> 
           
-            <Button
+            {/* <Button
             variant="contained"
             color="primary"
             className={b_classes.button}
@@ -208,20 +174,9 @@ function InventoryItem(){
             endIcon={<DeleteOutlineOutlinedIcon />}
             >
             Delete
-            </Button> 
+            </Button>  */}
 
-            {/* <Button
-            variant="contained"
-            color="primary"
-            className={b_classes.button}
-            style={{marginLeft:'20px'}}
-            endIcon={<DirectionsRunOutlinedIcon />}
-          >
-           Demo
-          </Button> */}
-
-            {/* <button >Register</button><br />
-            <button>Demo</button> */}
+            
          </form>
      </div>
  );

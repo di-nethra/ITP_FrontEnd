@@ -1,81 +1,122 @@
 import * as React from 'react';
-import { DataGrid } from '@material-ui/data-grid';
-import { Link } from "react-router-dom";
-
-const columns = [
-  { field: 'id', headerName: 'ID', width: 90 },
-  {
-    field: 'firstName',
-    headerName: 'First name',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'lastName',
-    headerName: 'Last name',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 110,
-    editable: true,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.getValue(params.id, 'firstName') || ''} ${
-        params.getValue(params.id, 'lastName') || ''
-      }`,
-  },
-  {
-    field: "action",
-    headerName: "Action",
-    width: 200,
-    align: 'center',
-    renderCell: (params) => {
-      return (
-        <>
-          <Link to={"/staff/inventorymanager/viewregistereditem/" + params.row.id}>
-          
-          <button className="userListEdit" >Edit</button>
-            </Link>
-            
-  
-        </>
-      );
-    },
-  }
-];
-
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
+import {useEffect, useState} from 'react';
+import {DataGrid} from '@material-ui/data-grid';
+import {Link} from "react-router-dom";
+import DeleteSweepOutlinedIcon from '@material-ui/icons/DeleteSweepOutlined';
+import InventoryDataService from '../../../services/inventoryServices';
+import Button from '@material-ui/core/Button';
 
 export default function InventoryList() {
-  return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        checkboxSelection
-        disableSelectionOnClick
-      />
-    </div>
-  );
+    const [inventory, setInventory] = useState([]);
+
+    useEffect(() => {
+        retrieveInventory();
+    }, []);
+
+    const retrieveInventory = () => {
+        InventoryDataService.getAll()
+            .then(response => {
+                setInventory(response.data);
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
+
+    const hoveredStyle = {
+        cursor: 'pointer'
+    };
+
+    const columns = [
+        {field: 'id', headerName: 'Item ID', width: 127},
+        {
+            field: 'item_name',
+            headerName: 'Item Name',
+            width: 160,
+            editable: true,
+        },
+        {
+            field: 'supplier_name',
+            headerName: 'Supplier Name',
+            width: 195,
+            editable: true,
+        },
+        {
+            field: 'supplier_email',
+            headerName: 'Supplier Email',
+            type: 'String',
+            width: 180,
+            editable: true,
+        },
+        {
+            field: 'type_medicine',
+            headerName: 'Type of Medicine',
+            type: 'String',
+            sortable: false,
+            editable: true,
+            width: 180,
+        },
+        {
+            field: "action",
+            headerName: "Action",
+            width: 180,
+            align: 'center',
+            renderCell: (params) => {
+                return (
+                    <>
+                        <Link to={"/staff/inventorymanager/viewregistereditem/" + params.row.id}>
+
+                            <button className="userListEdit">Edit</button>
+                        </Link>
+                        <Button size="small" color="secondary" variant="contained" value={params.row.id}
+                                onClick={deleteInventory}><DeleteSweepOutlinedIcon
+                            color="primary"
+                            style={hoveredStyle}/></Button>
+
+
+                    </>
+                );
+            },
+        }
+    ];
+
+    const deleteInventory = event => {
+        console.log(event.currentTarget.value)
+        InventoryDataService.remove(event.currentTarget.value)
+
+      .then(response => {
+        alert("Deleted Item")
+        window.location.reload();
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+    let rows = [];
+    for (const inventoryy of inventory) {
+        rows.push(
+            {
+                id: inventoryy._id,
+                item_name: inventoryy.item_name,
+                supplier_name: inventoryy.supplier_name,
+                supplier_email: inventoryy.supplier_email,
+                type_medicine: inventoryy.type_medicine
+
+            }
+        )
+    }
+
+    return (
+        <div style={{height: 400, width: '100%'}}>
+            <DataGrid
+                rows={rows}
+                columns={columns}
+                pageSize={5}
+                checkboxSelection
+                disableSelectionOnClick
+            />
+        </div>
+    );
 }

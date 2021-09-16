@@ -32,7 +32,7 @@ function WelcomeMessage() {
   return (
     <div className={classes.root}>
       <Grid container>
-        <Slide direction="up" in="true" timeout={1000}>
+        <Slide direction="up" in={true} timeout={1000}>
           <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
             <Typography className={classes.heading} variant="h4">
               CHANNEL THE BEST IN THE COUNTRY
@@ -43,7 +43,7 @@ function WelcomeMessage() {
               appointment now and get yourself ahead of the queue
             </Typography>
 
-            <Link to="patient/newappointment">
+            <Link to="patient">
               <Button
                 className={classes.button}
                 variant={"contained"}
@@ -56,7 +56,7 @@ function WelcomeMessage() {
 
           </Grid>
         </Slide>
-        <Slide in="true" direction="up" timeout={1000}>
+        <Slide in={true} direction="up" timeout={1000}>
           <Grid
             item
             xl={6}

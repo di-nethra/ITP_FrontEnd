@@ -1,6 +1,5 @@
 import React from "react";
 import paymentCreditService from "../../../services/paymentCredit.service";
-import { useState } from "react";
 
 function CreditCardPayments() {
   // const value = paymentCreditService.getAll().then((response) => {

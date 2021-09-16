@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import SessionDataService from "../../services/doctorSession.service";
+import SessionDataService from "../../../services/doctorSession.service";
 import {useParams} from "react-router-dom";
 import SessionCard from "./SessionCard";
 import {Skeleton} from '@material-ui/lab';
@@ -11,7 +11,8 @@ const DisplaySessions = () => {
 const [sessions , setSessions] = useState([]);
 const [loading , setLoading] = useState(true)
 
-    let { id } = useParams();
+    const { doctorID } = useParams();
+    let id = doctorID;
     useEffect(() => {
         getSessionsByDoctorID(id);
     }, [id]);

@@ -1,18 +1,12 @@
 import React from "react";
-import { Breadcrumbs, Typography, Link, Grid } from "@material-ui/core";
-import { Route, Switch } from "react-router-dom";
+import { Breadcrumbs, Link, Grid } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-import PaymentOptionPage from "../../../pages/patient-ui/PaymentOptionPage";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import ListIcon from "@material-ui/icons/List";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import DescriptionIcon from "@material-ui/icons/Description";
-import UserForm from "./UserForm";
-import { Checkout } from "../../../pages/patient-ui/Checkout";
-import PaymentInvoice from "../../../pages/patient-ui/PaymentInvoice";
 
 const useStyles = makeStyles((theme) => ({
   navigation: {
@@ -45,7 +39,6 @@ const PaymentNavigation = (props) => {
   const history = useHistory();
   const classes = useStyles();
   return (
-      
     <div>
       <Grid container className={classes.navigation}>
         <Breadcrumbs>
@@ -54,7 +47,8 @@ const PaymentNavigation = (props) => {
             color="inherit"
             onClick={() => history.push("/payments/options")}
           >
-            <CreditCardIcon className={classes.icon} /> Payment Options
+            <CreditCardIcon className={classes.icon} />
+            Options & Refunds
           </Link>
           <Link
             color="inherit"
@@ -81,11 +75,7 @@ const PaymentNavigation = (props) => {
           </Link>
         </Breadcrumbs>
       </Grid>
-
-   
-
     </div>
-    
   );
 };
 

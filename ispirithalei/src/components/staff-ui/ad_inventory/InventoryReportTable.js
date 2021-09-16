@@ -90,11 +90,7 @@ const useStyles = makeStyles({
   },
 });
 
-const b_useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+
 
 export default function InventoryReportTable() {
   const classes = useStyles();

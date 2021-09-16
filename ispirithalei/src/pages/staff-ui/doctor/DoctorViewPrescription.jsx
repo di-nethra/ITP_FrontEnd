@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -7,48 +8,110 @@ import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import './doctor.css';
-import { Link } from "react-router-dom";
-
-const columns = [
-    { field: 'id', headerName: 'ID', width: 100 },
-    {
-        field: 'patientName',
-        headerName: 'Patient Name',
-        width: 300,
-        editable: false,
-    },
-    {
-        field: 'diagnosis',
-        headerName: 'Diagnosis',
-        width: 475,
-        editable: false,
-    },
-    {
-        field: 'action',
-        headerName: 'Action',
-        width: 200,
-        sortable: false,
-        editable: false,
-    },
-];
-
-const rows = [
-    { id: 1, patientName: 'Praveen Dias', diagnosis: 'Common Cold', action: 35 },
-    { id: 2, patientName: 'David Perera', diagnosis: 'Head ache and Cough', action: 35 },
-    { id: 3, patientName: 'Kamal Jayantha', diagnosis: 'Chest Pain', action: 35 },
-    { id: 4, patientName: 'Namal Ranawaka', diagnosis: 'Cough', action: 35 },
-    { id: 5, patientName: 'Amali Priyawansa', diagnosis: 'Heart burns', action: 35 },
-    { id: 6, patientName: 'Kamal Gunawansa', diagnosis: 'Heart attack', action: 35 },
-    { id: 7, patientName: 'Janaka Sampath', diagnosis: 'Headache', action: 35 },
-    { id: 8, patientName: 'Supun Shantha', diagnosis: 'Covid-19', action: 35 },
-    { id: 9, patientName: 'Shantha Sanath', diagnosis: 'Cold', action: 35 },
-    { id: 10, patientName: 'Janaka Jayasinghe', diagnosis: 'Cough', action: 35 },
-];
+import { Link, useParams } from "react-router-dom";
+import { DeleteOutline } from "@material-ui/icons";
+import PrescriptionDataService from "../../../services/doctorPrescriptionService";
+import Swal from "sweetalert2";
+import { useTheme } from "@material-ui/core";
 
 export default function DoctorViewPrescription() {
+    const theme = useTheme();
+    const columns = [
+        {
+            field: 'id',
+            headerName: 'ID',
+            width: 100
+        },
+        {
+            field: 'patientName',
+            headerName: 'Patient Name',
+            width: 300,
+            editable: false,
+        },
+        {
+            field: 'diagnosis',
+            headerName: 'Diagnosis',
+            width: 475,
+            editable: false,
+        },
+        {
+            field: 'action',
+            headerName: 'Action',
+            width: 200,
+            sortable: false,
+            editable: false,
+            renderCell: (params) => {
+                return (
+                    <>
+                        <Link to={"/staff/doctor/editprescription" /*+ params.row.id*/}>
+                            <Button size="small" color="primary" variant="contained" style={{ marginRight: 5 }}>Edit</Button>
+                        </Link>
+                        <Button size="small" color="secondary" variant="contained" value={params.row.id}
+                            onClick={deletePrescription}><DeleteOutline /></Button>
+                    </>
+                );
+            },
+        },
+    ];
+
+    const deletePrescription = event => {
+        let id = event.currentTarget.value;
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: theme.palette.secondary.main,
+            cancelButtonColor: theme.palette.primary.main,
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                PrescriptionDataService.remove(id)
+                    .then(() => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Prescription has been deleted.',
+                            'success'
+                        )
+                        window.location.reload();
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
+        })
+    }
+
+    const [prescriptions, setPrescriptions] = useState([]);
+    let { id } = useParams();
+    useEffect(() => {
+        getPrescriptionsByDoctorID(id);
+    }, [id]);
+
+    const getPrescriptionsByDoctorID = (id) => {
+        PrescriptionDataService.get(id)
+            .then(response => {
+                setPrescriptions(response.data)
+            })
+            .catch(err => {
+                console.log("Error while getting data from database" + err);
+            }
+            )
+    }
+
+    let rows = [];
+    for (const prescription of prescriptions) {
+        rows.push(
+            {
+                id: prescription._id,
+                patientName: prescription.dPName,
+                diagnosis: prescription.dPDignosis,
+            }
+        )
+    }
 
     return (
-        <div>
+        <div style={{ marginBottom: 10 }}>
             <Card>
                 <CardContent>
                     <h3>PATIENT PRESCRIPTIONS</h3>
