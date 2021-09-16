@@ -44,7 +44,7 @@ const Doctor = () => {
         id: 3
       },
       {
-        path: "doctorschedule",
+        path: "doctorschedule/" + currentUser?.id,
         icon: <DoneIcon className="sidebarIcon" />,
         iconlabel: 'Doctor Schedule',
         id: 4
