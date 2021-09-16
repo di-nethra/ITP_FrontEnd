@@ -59,7 +59,7 @@ function DoctorSelect() {
                                 >
                                     {doctors.length ? doctors.map(eachDoctor => (
                                         <MenuItem key={eachDoctor._id} value={eachDoctor._id}>
-                                            <em>{eachDoctor.firstName + eachDoctor.lastName}</em>
+                                            <p>{eachDoctor.firstName +" "+ eachDoctor.lastName}</p>
                                         </MenuItem>
                                     )) : <MenuItem value={"null"} disabled>
                                         <em>No Doctors</em>

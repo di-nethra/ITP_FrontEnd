@@ -5,18 +5,31 @@ import SendIcon from "@material-ui/icons/Send";
 import { useState, useEffect } from "react";
 import inquiryServices from "../../services/inquiry.Service";
 import { useStyles } from "@material-ui/pickers/views/Calendar/SlideTransition";
-import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
 import inquriyServices from "../../services/inquiry.Service";
 import { DeleteOutline } from "@material-ui/icons";
 import Swal from "sweetalert2";
 import {useTheme} from "@material-ui/core";
+import * as Yup from 'yup';
+import { Formik } from 'formik';
+import TextField from "../../components/patient-ui/Echannelling/TextFeild";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-// const initialFieldValues = {
-//   title: "",
-//   message: "",
-// };
+
+
+const INITIAL_FORM_STATE= {
+  title: "",
+  message: "",
+};
+const FORM_VALIDATION = Yup.object().shape({
+
+  title: Yup.string()
+    .required('Please enter a heading for your inquiry'),
+   message: Yup.string()
+    .required('Please enter your inquiry in the above box'),
+});
 
 // const styles = {
 //   button: {
@@ -41,6 +54,7 @@ import {useTheme} from "@material-ui/core";
 // };
 
 function PostMessageForm() {
+
   useEffect(() => {
     getInqruiy();
   }, []);
@@ -146,6 +160,12 @@ function PostMessageForm() {
         // alert("success");
         console.log("inside create" + response.data);
         console.log("inside then" + response.data);
+        toast.success("Sucesfully Submitted the inquiry",{
+          className:"error-toast",
+          draggable:true,
+          position:toast.POSITION.TOP_RIGHT,
+          autoClose:false,
+        });
         window.location.reload();
       })
       .catch((e) => {
@@ -172,10 +192,17 @@ function PostMessageForm() {
           <h3>Inquiry</h3>
           <h4>Make your Inquiry using the below form</h4>
           <br />
+          <Formik
+              initialValues={{
+                ...INITIAL_FORM_STATE
+              }}
+              validationSchema={FORM_VALIDATION}
+              
+            >
 
           <form
             autoComplete="off"
-            noValidate
+            
             className={`${classes.root} ${classes.form}`}
             onSubmit={handleSubmit}
           >
@@ -187,7 +214,8 @@ function PostMessageForm() {
               onChange={handletitleChange}
               style={{ margin: 10 }}
               fullWidth
-              required
+              
+              
             />
             <br></br>
             <TextField
@@ -200,7 +228,7 @@ function PostMessageForm() {
               value={message}
               onChange={handlmessageChange}
               style={{ margin: 10 }}
-              required
+              
             />
             <Button
               style={{ backgroundColor: "#005792", borderRadius: "10px" }}
@@ -210,10 +238,13 @@ function PostMessageForm() {
               type="submit"
               className={classes.postBtn}
               startIcon={<SendIcon />}
+              
             >
               Inquiry
             </Button>
+            <ToastContainer />
           </form>
+          </Formik>
         </CardContent>
       </Card>
 
