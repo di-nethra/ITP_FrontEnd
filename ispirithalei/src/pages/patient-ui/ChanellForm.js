@@ -1,14 +1,11 @@
 import { Container } from "@material-ui/core";
 import React from "react";
 import Controls from "../../components/patient-ui/Echannelling/Controls";
-import {
-  
-  Form,
-} from "../../components/patient-ui/Echannelling/useForm";
+import { Form } from "../../components/patient-ui/Echannelling/useForm";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import channellServices from "../../services/echannelling.Service";
-
+import { useHistory } from "react-router";
 // const genderItems = [
 //   { id: "male", title: "Male" },
 //   { id: "female", title: "Female" },
@@ -27,6 +24,7 @@ import channellServices from "../../services/echannelling.Service";
 // };
 
 export default function EForm() {
+  const history = useHistory();
   const handleSubmit = (e) => {
     console.log("submitted");
 
@@ -40,22 +38,21 @@ export default function EForm() {
       age: age,
     };
 
-    if(data.email.includes("@", 0)){
+    if (data.email.includes("@", 0)) {
       // alert("email successfull");
-    }else{
+    } else {
       console.log("fail");
       alert("email should contain a @");
       return null;
     }
-    
-    var tempMobile=data.mobile;
-    if(tempMobile.length === 10){
+
+    var tempMobile = data.mobile;
+    if (tempMobile.length === 10) {
       // alert("number sucessfull");
-    }else{
+    } else {
       alert("number must contain 10 digits");
       return null;
     }
-
 
     channellServices
       .create(data)
@@ -64,8 +61,8 @@ export default function EForm() {
         // alert("success");
         console.log("inside create" + response.data);
         console.log("inside then" + response.data);
+        history.push("/payments");
         window.location.reload();
-        
       })
       .catch((e) => {
         // alert(e );
@@ -179,7 +176,7 @@ export default function EForm() {
               type="submit"
               text="Channel"
             />
-            
+
             <Link to="/patient/inquiry">
               <Controls.Button text="Inquiry" />
             </Link>

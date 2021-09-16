@@ -7,7 +7,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
-import SummaryBackground from "../../assets/images/SummaryBackground.svg";
+import SummaryBackground from "../../assets/images/summary.gif";
 import PaymentSummaryText from "../../assets/images/PaymentSummary.svg";
 import { Link } from "react-router-dom";
 import { Payhere, AccountCategory } from "payhere-js-sdk";
@@ -37,7 +37,7 @@ function checkout() {
     cancelUrl: "http://localhost:3000/cancel",
     notifyUrl: "http://localhost:8080/notify",
     order_id: "112233",
-    itemTitle: "Demo Item",
+    itemTitle: "ispirithalei",
     currency: CurrencyType.LKR,
     amount: 100,
   });
@@ -47,7 +47,7 @@ function checkout() {
     checkoutData,
     onPayhereCheckoutError
   );
-  var win = window.open("/page", "title");
+  var win = window.open("/payments/invoice", "title");
   checkout.start();
   win();
 }
@@ -63,7 +63,7 @@ const styles = (theme) => ({
   SummaryText: {
     width: "500px",
     marginLeft: "200px",
-    marginTop: "15px",
+
     "&:hover": {
       color: "black",
       backgroundColor: "#D9FAFF",
@@ -86,6 +86,11 @@ const styles = (theme) => ({
     marginTop: "10px",
     textAlign: "left",
   },
+  summurayCard: {
+    height: "400px",
+    marginLeft: "200px",
+  },
+
   Paybutton: {
     marginTop: "20px",
     width: "400px",
@@ -134,11 +139,13 @@ export class Checkout extends Component {
               alt="70"
               className={classes.infoLogo}
             />
+
             <img
               src={SummaryBackground}
               alt="40"
-              className={classes.SummaryText}
+              className={classes.summurayCard}
             />
+
             <Card className={classes.SummaryText}>
               <CardContent>
                 <Typography variant="h8" component="h3">
