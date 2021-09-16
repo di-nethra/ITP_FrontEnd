@@ -28,11 +28,7 @@ import { useHistory } from "react-router";
 // };
 
 export default function EForm() {
-
   const history = useHistory();
- 
-
-
   const handleSubmit = (e) => {
     console.log("submitted");
 
@@ -145,7 +141,6 @@ export default function EForm() {
         console.log("inside then" + response.data);
         history.push("/payments");
         window.location.reload();
-        
       })
       .catch((e) => {
         // alert(e );

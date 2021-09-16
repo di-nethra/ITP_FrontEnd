@@ -55,11 +55,10 @@ function DoctorSelect() {
                                     value={doctor}
                                     onChange={handleChange}
                                     label="Doctor Name"
-                                    required
                                 >
                                     {doctors.length ? doctors.map(eachDoctor => (
                                         <MenuItem key={eachDoctor._id} value={eachDoctor._id}>
-                                            <p>{eachDoctor.firstName +" "+ eachDoctor.lastName}</p>
+                                            <p>{eachDoctor.firstName + " " + eachDoctor.lastName}</p>
                                         </MenuItem>
                                     )) : <MenuItem value={"null"} disabled>
                                         <em>No Doctors</em>

@@ -19,7 +19,7 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">In Transist Tests</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">12</span>
+          <span className="featuredMoney">4</span>
           <span className="featuredMoneyRate">
             <TransformOutlinedIcon className="featuredIcon"/>
           </span>
@@ -29,7 +29,7 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">Completed Tests</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">15</span>
+          <span className="featuredMoney">4</span>
           <span className="featuredMoneyRate">
             <DoneOutlinedIcon className="featuredIcon"/>
           </span>
