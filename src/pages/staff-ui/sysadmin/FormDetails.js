@@ -7,23 +7,8 @@ import SendIcon from "@material-ui/icons/Send";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import {Form,} from "../../../components/patient-ui/Echannelling/useForm";
 import MenuItem from "@material-ui/core/MenuItem";
-import emailjs from 'emailjs-com';
-
 
 function EmpForm() {
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm('gmail', 'template_hif4rzh', e.target, 'user_eEPjwPxTjApVbEiB3FlEp')
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
-
-  };
-
 
   const handleSubmit = (e) => {
     console.log("submitted");
@@ -106,7 +91,7 @@ function EmpForm() {
 
   return (
       <Container maxWidth="md">
-        <Form onSubmit={sendEmail}>
+        <Form >
           <container>
             <div>
               <React.Fragment>
