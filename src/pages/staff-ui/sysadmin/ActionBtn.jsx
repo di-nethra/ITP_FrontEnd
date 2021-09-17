@@ -6,6 +6,9 @@ import { Button } from '@material-ui/core';
 import empFormService from "../../../services/empForm.service";
 import Swal from "sweetalert2";
 import {useTheme} from "@material-ui/core";
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+import { GridRow } from '@material-ui/data-grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,17 +25,7 @@ function ActionBtn(props) {
   const theme = useTheme();
   const classes = useStyles();
 
-//   const deleteDetails = event => {
-//     console.log("clicked")
-//     empFormService.remove(event.currentTarget.value)
-//         .then(response => {
-//           alert("succefully deleted")
-//             window.location.reload();
-//         })
-//         .catch(error => {
-//             console.log(error);
-//         })
-// }
+
 
 const deleteDetails = event => {
   let id = event.currentTarget.value;
@@ -64,6 +57,7 @@ const deleteDetails = event => {
 
   return (
     <div className={classes.root}>
+      
       <Button 
       color="secondary"
       aria-label="delete"
@@ -72,9 +66,12 @@ const deleteDetails = event => {
       >
         <DeleteIcon />
       </Button>
+
+      <Link to={"/staff/sysadmin/empedit/" + props.data}>
       <Button color="primary" aria-label="edit">
         <EditIcon />
       </Button>
+      </Link>
     </div>
   );
 }
