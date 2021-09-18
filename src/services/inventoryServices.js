@@ -12,11 +12,21 @@ const remove = id => {
     return http.delete("/inventories/" + id);
 };
 
+const update = (id, data) => {
+  return http.put(`/inventories/${id}`, data);
+};
+
+const getOneInventory = (id) => {
+  return http.get("/inventories/" + id);
+};
+
 
   const inventoryServices = {
     getAll,
     create,
-    remove
+    remove,
+    update,
+    getOneInventory
   }
   
   export default inventoryServices
