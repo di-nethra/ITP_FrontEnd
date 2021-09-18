@@ -5,6 +5,7 @@ import {useEffect, useState} from 'react';
 import TestDataService from "../../../services/tests.service";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Button from '@material-ui/core/Button';
+import {Link} from "react-router-dom";
 
 export default function PatientsLists() {
 
@@ -21,7 +22,7 @@ export default function PatientsLists() {
     {
       field: 'contactnumber',
       headerName: 'Contact No',
-      width: 200,
+      width: 160,
       type: 'text',
       editable: true,
     },
@@ -29,23 +30,26 @@ export default function PatientsLists() {
       field: 'dateofbirth',
       headerName: 'Age',
       type: 'date',
-      width: 160,
+      width: 130,
       editable: true,
     },
     {
       field: 'testtype',
       headerName: 'Test Type',
       type: 'text',
-      width: 150,
+      width: 130,
       editable: true,
     },
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 230,
       renderCell: (params) => {
         return (
             <>
+              <Link to={"/staff/labassistant/patientupdate/" + params.row.id}>
+                <button className="userListEdit">Update Details</button>
+              </Link>
               <Button
                   variant="contained"
                   color="secondary"
