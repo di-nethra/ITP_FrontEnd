@@ -56,7 +56,7 @@ export default function CheckedIn() {
                         color="secondary"
                         value={params.row.id}
                         onClick={undoCheckInPatient(params.row)}
-                        { ...params.row.date === "Deleted" && {disabled:true}}
+                        {...params.row.date === "Deleted" && {disabled: true}}
                     >
                         Cancel CheckIn
                     </Button>
@@ -91,6 +91,7 @@ export default function CheckedIn() {
     }
 
     const [appointments, setAppointments] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         getAppointmentsByStatus();
     },);
@@ -99,6 +100,7 @@ export default function CheckedIn() {
         channellServices.getByStatus("CheckedIn")
             .then(response => {
                 setAppointments(response.data)
+                setLoading(false)
             })
             .catch(err => {
                     alert("Error while getting data from database" + err);
@@ -128,23 +130,14 @@ export default function CheckedIn() {
                     <h3>CheckedIn Appointments</h3>
                     <br/>
 
-                    <div style={{height: 400}}>
-                        <DataGrid
-                            rows={rows}
-                            columns={columns}
-                            pageSize={5}
+                    <DataGrid
+                        rows={rows}
+                        columns={columns}
+                        pageSize={10}
+                        autoHeight={true}
+                        loading={loading}
+                    />
 
-                        />
-                    </div>
-                    {/*<div style={{marginTop: 15}} className="buttonAlignRight">*/}
-                    {/*    /!*<Link to="/staff/doctor/newsession">*!/*/}
-                    {/*        <Tooltip title="Create New Session" placement="bottom" aria-label="add">*/}
-                    {/*            <Fab color="primary">*/}
-                    {/*                <AddIcon fontSize="large"/>*/}
-                    {/*            </Fab>*/}
-                    {/*        </Tooltip>*/}
-                    {/*    /!*</Link>*!/*/}
-                    {/*</div>*/}
                 </CardContent>
             </Card>
         </div>

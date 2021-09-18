@@ -2,13 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {DataGrid} from '@material-ui/data-grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Swal from "sweetalert2";
-import {useTheme} from "@material-ui/core";
 import channellServices from "../../../services/echannelling.Service";
+import PDF from "../../../components/PDF";
 
-export default function Pending() {
-    const theme = useTheme();
+export default function AllAppointments() {
     const columns = [
         {
             field: 'date',
@@ -40,65 +37,20 @@ export default function Pending() {
         {
             field: 'mobile',
             headerName: 'Mobile Number',
-            width: 180,
+            width: 200,
             editable: false,
         },
-
-        {
-            field: 'action',
-            headerName: 'Action',
-            type: "number",
-            width: 180,
-            renderCell: (params) => {
-                let sessionDate = new Date(params.row.date).getDate()
-                return (
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        value={params.row.id}
-                        onClick={checkInPatient(params.row)}
-                        {...sessionDate !== new Date().getDate() ? {disabled: true} : {disabled: false}}
-                    >
-                        Check In
-                    </Button>
-                )
-            },
-        },
     ];
-    const checkInPatient = (params) => () => {
-        let id = params.id;
-        Swal.fire({
-            title: 'Checkin ' + params.patientName + "?",
-            icon: '',
-            showCancelButton: true,
-            confirmButtonColor: theme.palette.primary.main,
-            cancelButtonColor: theme.palette.secondary.main,
-            confirmButtonText: 'Yes, Mark as Checked In!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                channellServices.updateStatus(id, "AllAppointments")
-                    .then(() => {
-                        Swal.fire(
-                            'Updated',
-                            'Patient was successfully checked in.',
-                            'success'
-                        )
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    })
-            }
-        })
-    }
 
     const [appointments, setAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        getPendingAppointments();
-    }, []);
 
-    const getPendingAppointments = () => {
-        channellServices.getByStatus("Pending")
+    useEffect(() => {
+        getAllAppointments();
+    },);
+
+    const getAllAppointments = () => {
+        channellServices.getAll()
             .then(response => {
                 setAppointments(response.data)
                 setLoading(false)
@@ -122,15 +74,42 @@ export default function Pending() {
             }
         )
     }
-    console.log(rows)
+    for (const appointment of appointments) {
+        rows.push(
+            {
+                id: appointment._id,
+                date: appointment.dSession?.date || "Deleted",
+                time: appointment.dSession?.time || "Deleted",
+                patientName: appointment.fullname,
+                patientNIC: appointment.nic,
+                mobile: appointment.mobile,
+            }
+        )
+    }
+    for (const appointment of appointments) {
+        rows.push(
+            {
+                id: appointment._id,
+                date: appointment.dSession?.date || "Deleted",
+                time: appointment.dSession?.time || "Deleted",
+                patientName: appointment.fullname,
+                patientNIC: appointment.nic,
+                mobile: appointment.mobile,
+            }
+        )
+    }
+
+    const headers = ["ID", "Date", "Time", "Name", "NIC", "Mobile Number"]
 
 
     return (
         <div>
             <Card>
+                <PDF data={rows} headers={headers} title="Appointments Report" />
                 <CardContent>
-                    <h3>Pending Appointments</h3>
+                    <h3>All Appointments</h3>
                     <br/>
+
                     <DataGrid
                         rows={rows}
                         columns={columns}
@@ -138,6 +117,7 @@ export default function Pending() {
                         autoHeight={true}
                         loading={loading}
                     />
+
                 </CardContent>
             </Card>
         </div>

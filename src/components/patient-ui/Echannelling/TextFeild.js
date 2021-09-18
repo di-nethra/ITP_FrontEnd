@@ -15,10 +15,10 @@ const TextfieldWrapper = ({
     variant: 'outlined'
   };
 
-  if (mata && mata.touched && mata.error) {
-    configTextfield.error = true;
-    configTextfield.helperText = mata.error;
-  }
+  // if (mata && mata.touched && mata.error) {
+  //   configTextfield.error = true;
+  //   configTextfield.helperText = mata.error;
+  // }
 
   return (
     <TextField {...configTextfield} />
