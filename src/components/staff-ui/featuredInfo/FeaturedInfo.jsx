@@ -24,6 +24,23 @@ export default function FeaturedInfo() {
   };
   const subbmitted = subb.length;
 
+  const [start, setStart] = useState([]);
+  useEffect(() => {
+    retieveStartedTests();
+  }, []);
+
+  const retieveStartedTests = () => {
+    TestDataService.getAllStarted()
+        .then(response => {
+          setStart(response.data)
+        })
+        .catch(err => {
+              console.log("Error while getting data from database" + err);
+            }
+        )
+  };
+  const started = start.length;
+
   return (
     <div className="featured">
       <div className="featuredItem">
@@ -39,7 +56,7 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">In Transist Tests</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">4</span>
+          <span className="featuredMoney">{started}</span>
           <span className="featuredMoneyRate">
             <TransformOutlinedIcon className="featuredIcon"/>
           </span>
