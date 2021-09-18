@@ -12,9 +12,9 @@ const create = (data) => {
   return http.post("/payments", data);
 };
 
-// const update = (id, data) => {
-//   return http.put(`/payments/info/${id}`, data);
-// };
+const update = (id, data) => {
+  return http.put(`/payments/${id}`, data);
+};
 
 const remove = (id) => {
   return http.delete(`/payments/${id}`);
@@ -28,7 +28,7 @@ const CreditServices = {
   getAll,
   get,
   create,
-  // update,
+  update,
   remove,
   // removeAll,
 };

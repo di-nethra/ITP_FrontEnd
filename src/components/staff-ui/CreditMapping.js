@@ -3,6 +3,7 @@ import {
   Card,
   CardActionArea,
   Grid,
+  TextField,
   Typography,
   Button,
 } from "@material-ui/core";
@@ -69,10 +70,39 @@ export default function CreditMapping(props) {
       }
     });
 
-    console.log(event.target.value);
+    console.log(event.currentTarget.value);
   }
+
+  function editRecord(event) {
+    var id = event.currentTarget.value;
+    Swal.fire({
+      title: "Enter the updated amount",
+      input: "text",
+      inputAttributes: {
+        autocapitalize: "off",
+      },
+      showCancelButton: true,
+      confirmButtonText: "Update",
+      showLoaderOnConfirm: true,
+      preConfirm: (updatedAmount) => {
+        var updatedAmount = {
+          amount: updatedAmount,
+        };
+        paymentCreditService
+          .update(id, updatedAmount)
+          .then(() => {
+            window.location.reload();
+          })
+          .catch((e) => {
+            alert("error in update " + e);
+          });
+        console.log(updatedAmount);
+      },
+    });
+  }
+
   const classes = useStyles();
-  console.log(props.creditCards);
+
   return (
     <Grid container spacing={1}>
       {props.creditCards.length ? (
@@ -115,7 +145,11 @@ export default function CreditMapping(props) {
                   </Grid>
                   <Grid container item xs={2} className={classes.rows}>
                     <Grid item>
-                      <Button className={classes.hover}>
+                      <Button
+                        className={classes.hover}
+                        value={creditCard._id}
+                        onClick={editRecord}
+                      >
                         <EditIcon className={classes.editIcon} />
                       </Button>
                     </Grid>
