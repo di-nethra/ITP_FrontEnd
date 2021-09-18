@@ -13,6 +13,7 @@ import CardContent from "@material-ui/core/CardContent";
 import SendIcon from "@material-ui/icons/Send";
 import { Form } from "../../../components/patient-ui/Echannelling/useForm";
 import MenuItem from "@material-ui/core/MenuItem";
+import Swal from "sweetalert2";
 
 function EmpForm() {
   const handleSubmit = (e) => {
@@ -49,15 +50,21 @@ function EmpForm() {
       .create(data)
 
       .then((response) => {
+
         alert("success");
         window.location.reload();
         console.log("inside create" + response.data);
         console.log("inside then" + response.data);
+
       })
       .catch((e) => {
         // alert(e );
-        alert("success");
-        window.location.reload();
+        Swal.fire(
+          "Submited Successfully",
+          "You have successfully submited a employee",
+          "success"
+        );
+        window.location.reload(10);
         console.log("this is the error:" + e);
       });
   };

@@ -50,6 +50,19 @@ function Updateform() {
   //update employee
   const UpdateEmployee = (event) => {
     event.preventDefault();
+    if (employee.email.includes("@", 0)) {
+    } else {
+      alert("Invalid email address ( @ sign missing )");
+      return null;
+    }
+
+    var tempMobile = employee.mobile;
+    if (tempMobile.length === 10) {
+    } else {
+      alert("Invalid Mobile number (should contain 10 digits)");
+      return null;
+    }
+
     empformServices
       .update(employee._id, employee)
       .then((response) => {
@@ -62,10 +75,8 @@ function Updateform() {
       })
       .catch((e) => {
         console.log(e);
-        
       });
   };
-
 
   const handleInputChange = (e) => {
     console.log(e);
