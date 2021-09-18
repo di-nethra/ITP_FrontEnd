@@ -45,14 +45,14 @@ export default function NewTest() {
         };
         TestDataService.create(data)
             .then(response => {
-                setValues({
+                /*setValues({
                     specimenid: response.data.specimenid,
                     patientsname: response.data.patientsname,
                     contactnumber: response.data.contactnumber,
                     dateofbirth: response.data.dateofbirth,
                     testtype: response.data.testtype,
                     collectedperson: response.data.collectedperson,
-                });
+                });*/
                 console.log(response.data);
             })
             .catch(e => {
