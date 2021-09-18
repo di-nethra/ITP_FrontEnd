@@ -8,7 +8,7 @@ import { useParams } from "react-router";
 
 export default function TestReslt() {
     const id = useParams();
-    //console.log(id.topicId);
+    console.log(id.testId);
     const initialTestState = {
         specimenid: "",
         subbmitteddate: "",
@@ -20,24 +20,26 @@ export default function TestReslt() {
         inchargelabass: "",
         inchargelabassid: "",
         starteddate: "",
+        specimenproperty: '',
+        specimenpropertyresult: '',
+
 
     };
     const initialValues = {
 
-        inchargelabass: "",
-        inchargelabassid: "",
+        specimenproperty: '',
+        specimenpropertyresult: '',
 
     };
     const [CurrentTest, setCurrentTest] = useState(initialTestState);
     const [message, setMessage] = useState("");
-    const [values, setValues] = useState(initialValues)
 
     const handleInputChange = (e) => {
-        console.log(e)
+        //console.log(e)
         const { name, value } = e.target;
 
-        setValues({
-            ...values,
+        setCurrentTest({
+            ...CurrentTest,
             [name]: value,
         });
     };
@@ -55,21 +57,21 @@ export default function TestReslt() {
 
     useEffect(() => {
 
-        getTest(id.topicId);
-    }, [id.topicId]);
+        getTest(id.testId);
+    }, [id.testId]);
 
 
 
 
     const updateTest = (event) => {
         event.preventDefault()
-        console.log(CurrentTest._id, "gdfghxdf")
-        console.log(values.inchargelabassid, "gdfghxdf")
+        //console.log(CurrentTest._id, "gdfghxdf")
+        //console.log(CurrentTest.inchargelabassid, "gdfghxdf")
         var data = {
-            status: "started",
-            starteddate: new Date(),
-            inchargelabass: values.inchargelabass,
-            inchargelabassid: values.inchargelabassid,
+            status: "completed",
+            completeddate: new Date(),
+            specimenproperty: CurrentTest.specimenproperty,
+            specimenpropertyresult: CurrentTest.specimenpropertyresult,
         };
         console.log(data)
         TestDataService.update(CurrentTest._id, data)
@@ -85,7 +87,7 @@ export default function TestReslt() {
             .catch(e => {
                 console.log(e);
             });
-        setValues(initialValues)
+        setCurrentTest(initialValues)
     };
     return (
 
@@ -139,20 +141,35 @@ export default function TestReslt() {
             <div class="detailsbock1">
                 <span className="newUserTitle1">Insert Test Results</span>
                 <div class="detailsbock">
-                    <form className="newUserForm">
+                    <form className="newUserForm" onSubmit={updateTest}>
                         <div className="newUserItem">
                             <label>Specimen Property</label>
-                            <input type="text" placeholder="Insert Specimen property" required />
+                            <input
+                                type="text"
+                                id="specimenproperty"
+                                required
+                                name="specimenproperty"
+                                value={CurrentTest.specimenproperty}
+                                onChange={handleInputChange}
+                            />
                         </div>
                         <div className="newUserItem">
                             <label>Specimen Property Result</label>
-                            <input type="text" placeholder="Insert specimen property reslt" required />
+                            <input
+                                type="text"
+                                id="specimenpropertyresult"
+                                required
+                                name="specimenpropertyresult"
+                                value={CurrentTest.specimenpropertyresult}
+                                onChange={handleInputChange}
+                            />
                         </div>
                         <div className="newUserItem1">
                             <label>Before subbmit results please double check</label>
                         </div>
 
                         <button className="newUserButton">Submit test reults</button>
+                        <p>{message}</p>
                     </form>
                 </div>
             </div>
