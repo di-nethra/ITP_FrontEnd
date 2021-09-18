@@ -17,21 +17,33 @@ import { useTheme } from "@material-ui/core";
 export default function DoctorViewPrescription() {
     const theme = useTheme();
     const columns = [
-        {
-            field: 'id',
-            headerName: 'ID',
-            width: 100
-        },
+        // {
+        //     field: 'id',
+        //     headerName: 'ID',
+        //     width: 100
+        // },
         {
             field: 'patientName',
             headerName: 'Patient Name',
-            width: 300,
+            width: 250,
             editable: false,
         },
         {
             field: 'diagnosis',
             headerName: 'Diagnosis',
-            width: 475,
+            width: 275,
+            editable: false,
+        },
+        {
+            field: 'med1',
+            headerName: 'Medicine',
+            width: 200,
+            editable: false,
+        },
+        {
+            field: 'dose1',
+            headerName: 'Dosage',
+            width: 150,
             editable: false,
         },
         {
@@ -106,6 +118,8 @@ export default function DoctorViewPrescription() {
                 id: prescription._id,
                 patientName: prescription.dPName,
                 diagnosis: prescription.dPDignosis,
+                med1: prescription.dMed1,
+                dose1: prescription.dDose1
             }
         )
     }
