@@ -11,6 +11,7 @@ import "./layout.css"
 import {Route, Switch} from "react-router-dom";
 import Pending from "../pages/staff-ui/receptionist/Pending";
 import CheckedIn from "../pages/staff-ui/receptionist/CheckedIn";
+import Dashboard from "../pages/staff-ui/receptionist/Dashboard";
 
 
 const Receptionist = () => {
@@ -71,9 +72,9 @@ const Receptionist = () => {
       <div className="others">
           <Topbar page={user.list}/>
         <Switch>
-          {/*<Route exact path="/staff/doctor/">*/}
-          {/*  <DoctorHome />*/}
-          {/*</Route>*/}
+          <Route exact path="/staff/receptionist/">
+            <Dashboard />
+          </Route>
 
 
           <Route path="/staff/receptionist/pendingappointments">

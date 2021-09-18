@@ -53,12 +53,14 @@ export default function Pending() {
             type: "number",
             width: 180,
             renderCell: (params) => {
+                let sessionDate = new Date(params.row.date).getDate()
                 return (
                     <Button
                         variant="contained"
                         color="primary"
                         value={params.row.id}
                         onClick={checkInPatient(params.row)}
+                        { ...sessionDate !== new Date().getDate()? {disabled:true}:{disabled:false}}
                     >
                         Check In
                     </Button>
@@ -94,10 +96,10 @@ export default function Pending() {
 
     const [appointments, setAppointments] = useState([]);
     useEffect(() => {
-        getAppointmentsByStatus();
-    },);
+        getPendingAppointments();
+    },[]);
 
-    const getAppointmentsByStatus = () => {
+    const getPendingAppointments = () => {
         channellServices.getByStatus("Pending")
             .then(response => {
                 setAppointments(response.data)
@@ -113,8 +115,8 @@ export default function Pending() {
         rows.push(
             {
                 id: appointment._id,
-                date: appointment.dSession.date,
-                time: appointment.dSession.time,
+                date: appointment.dSession?.date || "Deleted",
+                time: appointment.dSession?.time || "Deleted",
                 patientName: appointment.fullname,
                 patientNIC: appointment.nic,
                 mobile: appointment.mobile,

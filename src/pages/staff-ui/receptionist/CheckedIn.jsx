@@ -56,6 +56,7 @@ export default function CheckedIn() {
                         color="secondary"
                         value={params.row.id}
                         onClick={undoCheckInPatient(params.row)}
+                        { ...params.row.date === "Deleted" && {disabled:true}}
                     >
                         Cancel CheckIn
                     </Button>
@@ -110,8 +111,8 @@ export default function CheckedIn() {
         rows.push(
             {
                 id: appointment._id,
-                date: appointment.dSession.date,
-                time: appointment.dSession.time,
+                date: appointment.dSession?.date || "Deleted",
+                time: appointment.dSession?.time || "Deleted",
                 patientName: appointment.fullname,
                 patientNIC: appointment.nic,
                 mobile: appointment.mobile,

@@ -3,8 +3,17 @@ import http from "../http-common";
 const create = (data) => {
   return http.post("/channell/add", data);
 };
+
 const getByStatus = status => {
   return http.get("/channell/bystatus/"+ status);
+};
+
+const getAll = () => {
+  return http.get("/channell/all/");
+};
+
+const getCount = () => {
+  return http.get("/channell/count/");
 };
 
 const updateStatus = (id,status) => {
@@ -14,6 +23,8 @@ const updateStatus = (id,status) => {
 const channellServices = {
   create,
   getByStatus,
-  updateStatus
+  updateStatus,
+  getAll,
+  getCount
 };
 export default channellServices;
