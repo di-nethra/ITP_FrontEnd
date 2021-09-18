@@ -131,10 +131,6 @@ export default function Login() {
               >
                 Sign In
               </Button>
-
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
             </form>
           </div>
         </div>
@@ -142,7 +138,7 @@ export default function Login() {
       <Hidden smDown>
         <Grid item xl={8} lg={8} md={6}>
           <div className="rightside">
-            <Link to=""><img src={logo} className="loginLogo" alt="ispirithalei logo" /></Link>
+            <Link to=""><img src={logo} className="loginLogo" alt="ispirithalei logo" style={{zIndex: "99", padding:"20px 0"}} /></Link>
             <img src={login_bg} className="loginBgImage" alt="doctors" />
           </div>
         </Grid>

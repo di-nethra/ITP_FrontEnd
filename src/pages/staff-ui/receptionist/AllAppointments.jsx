@@ -2,13 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {DataGrid} from '@material-ui/data-grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Swal from "sweetalert2";
-import {useTheme} from "@material-ui/core";
 import channellServices from "../../../services/echannelling.Service";
 
-export default function CheckedIn() {
-    const theme = useTheme();
+export default function AllAppointments() {
     const columns = [
         {
             field: 'date',
@@ -43,61 +39,17 @@ export default function CheckedIn() {
             width: 200,
             editable: false,
         },
-
-        {
-            field: 'action',
-            headerName: 'Action',
-            type: "number",
-            width: 200,
-            renderCell: (params) => {
-                return (
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        value={params.row.id}
-                        onClick={undoCheckInPatient(params.row)}
-                        {...params.row.date === "Deleted" && {disabled: true}}
-                    >
-                        Cancel CheckIn
-                    </Button>
-                )
-            },
-        },
     ];
-    const undoCheckInPatient = (params) => () => {
-        let id = params.id;
-        Swal.fire({
-            title: 'Checkin ' + params.patientName + "?",
-            icon: '',
-            showCancelButton: true,
-            confirmButtonColor: theme.palette.secondary.main,
-            cancelButtonColor: theme.palette.primary.main,
-            confirmButtonText: 'Yes, Undo Check In!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                channellServices.updateStatus(id, "Pending")
-                    .then(() => {
-                        Swal.fire(
-                            'Updated',
-                            'Appointment status set to Pending.',
-                            'success'
-                        )
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    })
-            }
-        })
-    }
 
     const [appointments, setAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
+
     useEffect(() => {
-        getAppointmentsByStatus();
+        getAllAppointments();
     },);
 
-    const getAppointmentsByStatus = () => {
-        channellServices.getByStatus("CheckedIn")
+    const getAllAppointments = () => {
+        channellServices.getAll()
             .then(response => {
                 setAppointments(response.data)
                 setLoading(false)
@@ -127,7 +79,7 @@ export default function CheckedIn() {
         <div>
             <Card>
                 <CardContent>
-                    <h3>CheckedIn Appointments</h3>
+                    <h3>All Appointments</h3>
                     <br/>
 
                     <DataGrid
