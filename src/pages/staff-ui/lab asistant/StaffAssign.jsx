@@ -36,8 +36,8 @@ export default function StaffAssign() {
         console.log(e)
         const { name, value } = e.target;
 
-        setValues({
-            ...values,
+        setCurrentTest({
+            ...CurrentTest,
             [name]: value,
         });
     };
@@ -144,13 +144,13 @@ export default function StaffAssign() {
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant ID</label>
                             <input
-                                type="number"
+                                type="text"
                                 id="inchargelabassid"
                                 required
-                                min="1"
-                                max="20"
+                                minLength="5"
+                                maxLength="5"
                                 name="inchargelabassid"
-                                value={values.inchargelabassid}
+                                value={CurrentTest.inchargelabassid}
                                 onChange={handleInputChange}
                             />
                         </div>
@@ -161,7 +161,7 @@ export default function StaffAssign() {
                                 id="inchargelabass"
                                 required
                                 name="inchargelabass"
-                                value={values.inchargelabass}
+                                value={CurrentTest.inchargelabass}
                                 onChange={handleInputChange}
                             />
                         </div>
