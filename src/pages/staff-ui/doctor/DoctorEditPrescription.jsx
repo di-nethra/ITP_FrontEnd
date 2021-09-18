@@ -128,7 +128,7 @@ function DoctorPrescription() {
                             &ensp;Check to confirm the edited prescription submission.</p>
 
                         <div className="buttonAlignRight">
-                            <Link to="/staff/doctor/viewprescription">
+                            <Link to={"/staff/doctor/viewprescription/"+prescription.dId}>
                                 <Button size="large" variant="contained" style={{ marginRight: 8 }}>Cancel</Button>
                             </Link>
                             <Button size="large" variant="contained" color="primary" type="submit"
