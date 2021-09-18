@@ -23,7 +23,6 @@ const getOneTest = id => {
 const getAllSubbmited = () => {
     return http.get("/tests/subbmitted");
 };
-
 const getAllStarted = () => {
     return http.get("/tests/started");
 };
