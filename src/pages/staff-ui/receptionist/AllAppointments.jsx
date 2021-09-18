@@ -3,6 +3,7 @@ import {DataGrid} from '@material-ui/data-grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import channellServices from "../../../services/echannelling.Service";
+import PDF from "../../../components/PDF";
 
 export default function AllAppointments() {
     const columns = [
@@ -73,11 +74,38 @@ export default function AllAppointments() {
             }
         )
     }
+    for (const appointment of appointments) {
+        rows.push(
+            {
+                id: appointment._id,
+                date: appointment.dSession?.date || "Deleted",
+                time: appointment.dSession?.time || "Deleted",
+                patientName: appointment.fullname,
+                patientNIC: appointment.nic,
+                mobile: appointment.mobile,
+            }
+        )
+    }
+    for (const appointment of appointments) {
+        rows.push(
+            {
+                id: appointment._id,
+                date: appointment.dSession?.date || "Deleted",
+                time: appointment.dSession?.time || "Deleted",
+                patientName: appointment.fullname,
+                patientNIC: appointment.nic,
+                mobile: appointment.mobile,
+            }
+        )
+    }
+
+    const headers = ["ID", "Date", "Time", "Name", "NIC", "Mobile Number"]
 
 
     return (
         <div>
             <Card>
+                <PDF data={rows} headers={headers} title="Appointments Report" />
                 <CardContent>
                     <h3>All Appointments</h3>
                     <br/>

@@ -26,7 +26,7 @@ const [loading, setLoading] = useState(true);
     })
     useEffect(() => {
         getAppointmentCount();
-    }, []);
+    }, );
 
     const getAppointmentCount = () => {
         channellServices.getCount()
