@@ -3,7 +3,7 @@ import {Button, FormControl, InputLabel, MenuItem, Select} from "@material-ui/co
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import {makeStyles} from "@material-ui/core/styles";
-import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import empformServices from "../../services/empForm.service"
 
 const useStyles = makeStyles((theme) => ({
@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 function DoctorSelect() {
 
+    let history = useHistory();
     useEffect(() => {
         empformServices.getAllDoctors()
             .then(response => {
@@ -31,7 +32,7 @@ function DoctorSelect() {
 
     const classes = useStyles();
 
-    const [doctor, setDoctor] = React.useState("null");
+    const [doctor, setDoctor] = React.useState("");
     const [doctors, setDoctors] = React.useState([]);
 
     const handleChange = (event) => {
@@ -48,32 +49,41 @@ function DoctorSelect() {
                     <form>
                         <div>
                             <FormControl variant="outlined" className={classes.formControl}>
-                                <InputLabel id="doctor-name">Doctor Name</InputLabel>
+                                <InputLabel id="doctor-name-label">Doctor Name</InputLabel>
                                 <Select
-                                    labelId="doctor-name"
+                                    labelId="doctor-name-label"
+                                    placeholder="Doctor Name"
                                     id="doctor-name"
                                     value={doctor}
                                     onChange={handleChange}
                                     label="Doctor Name"
+                                    required
+                                    autoFocus={false}
                                 >
+                                    <MenuItem value="" disabled>
+                                        <p>Doctor Name</p>
+                                    </MenuItem>
                                     {doctors.length ? doctors.map(eachDoctor => (
                                         <MenuItem key={eachDoctor._id} value={eachDoctor._id}>
                                             <p>{eachDoctor.firstName + " " + eachDoctor.lastName}</p>
                                         </MenuItem>
-                                    )) : <MenuItem value={"null"} disabled>
-                                        <em>No Doctors</em>
-                                    </MenuItem>
+                                    )) : null
                                     }
                                 </Select>
                             </FormControl>
                         </div>
                         <div>
-                            <Link to={ doctor !== "null"? ("/patient/" + doctor): ""}>
+
                             <Button className={classes.button} variant="contained" color="primary" size={"large"}
-                                    type="submit">
-                                Submit
+                                    type="submit"
+                                    {...(doctor === "") && {disabled: true} }
+                                    onClick={() => {
+                                        history.push("/patient/" + doctor)
+                                    }}
+                            >
+                                Next
                             </Button>
-                            </Link>
+
                         </div>
                     </form>
                 </CardContent>

@@ -16,6 +16,7 @@ import DoctorViewNotes from "../pages/staff-ui/doctor/DoctorViewNotes";
 import NewSession from '../pages/staff-ui/doctor/NewSession'
 import { Route, Switch } from "react-router-dom";
 import DoctorViewSessions from "../pages/staff-ui/doctor/DoctorViewSessions";
+import DoctorSupport from "../pages/staff-ui/doctor/DoctorSupport";
 
 const Doctor = () => {
   let temp = sessionStorage.getItem("user");
@@ -86,6 +87,10 @@ const Doctor = () => {
               <NewSession />
             </Route>
 
+            <Route path="/staff/doctor/support">
+              <DoctorSupport />
+            </Route>
+
             <Route path="/staff/doctor/addnote">
               <DoctorAddNote />
             </Route>
@@ -94,7 +99,7 @@ const Doctor = () => {
               <DoctorViewNotes />
             </Route>
 
-            <Route path="/staff/doctor/editprescription">
+            <Route path="/staff/doctor/editprescription/:id">
               <DoctorEditPrescription />
             </Route>
           </Switch>

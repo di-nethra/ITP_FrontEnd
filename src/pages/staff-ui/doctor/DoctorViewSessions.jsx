@@ -1,7 +1,4 @@
-// noinspection DuplicatedCode
-
-import * as React from 'react';
-import {useEffect, useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import {DataGrid} from '@material-ui/data-grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -53,20 +50,24 @@ export default function DoctorViewSessions() {
             headerName: 'Action',
             type: "number",
             width: 180,
-            renderCell: (params) => (
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    value={params.row.id}
-                    onClick={deleteSession}
-                >
-                    <DeleteIcon/>
-                </Button>
-            ),
+            renderCell: (params) => {
+                if (params.row.currentAppointments === 0)
+                    return (
+                        <Button
+                        variant="contained"
+                        color="secondary"
+                        value={params.row.id}
+                        onClick={deleteSession(params.row)}
+                    >
+                        <DeleteIcon/>
+                    </Button>
+                    )
+            },
         },
     ];
-    const deleteSession = event => {
-        let id = event.currentTarget.value;
+    const deleteSession = (params) => () => {
+        console.log(params.id)
+        let id= params.id;
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",

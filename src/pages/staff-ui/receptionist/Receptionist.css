@@ -1,0 +1,11 @@
+.flowCard {
+    padding: 20px;
+    text-align: center;
+}
+.countSkeleton {
+    display: block;
+    margin: auto;
+}
+.flowCard h3 {
+    padding: 5px;
+}
