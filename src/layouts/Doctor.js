@@ -99,7 +99,7 @@ const Doctor = () => {
               <DoctorViewNotes />
             </Route>
 
-            <Route path="/staff/doctor/editprescription">
+            <Route path="/staff/doctor/editprescription/:id">
               <DoctorEditPrescription />
             </Route>
           </Switch>

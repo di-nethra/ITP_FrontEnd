@@ -43,7 +43,7 @@ export default function DoctorViewPrescription() {
             renderCell: (params) => {
                 return (
                     <>
-                        <Link to={"/staff/doctor/editprescription" /*+ params.row.id*/}>
+                        <Link to={"/staff/doctor/editprescription/" + params.row.id}>
                             <Button size="small" color="primary" variant="contained" style={{ marginRight: 5 }}>Edit</Button>
                         </Link>
                         <Button size="small" color="secondary" variant="contained" value={params.row.id}
