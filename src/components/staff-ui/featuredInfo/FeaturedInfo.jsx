@@ -41,6 +41,23 @@ export default function FeaturedInfo() {
   };
   const started = start.length;
 
+  const [complete, setComplete] = useState([]);
+  useEffect(() => {
+    retieveCompletedTests();
+  }, []);
+
+  const retieveCompletedTests = () => {
+    TestDataService.getAllCompleted()
+        .then(response => {
+          setComplete(response.data)
+        })
+        .catch(err => {
+              console.log("Error while getting data from database" + err);
+            }
+        )
+  };
+  const completed = complete.length;
+
   return (
     <div className="featured">
       <div className="featuredItem">
@@ -66,7 +83,7 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">Completed Tests</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">4</span>
+          <span className="featuredMoney">{completed}</span>
           <span className="featuredMoneyRate">
             <DoneOutlinedIcon className="featuredIcon"/>
           </span>
