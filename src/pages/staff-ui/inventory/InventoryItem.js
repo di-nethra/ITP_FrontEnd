@@ -6,9 +6,7 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import "../inventory/page.css"
 import { useParams } from 'react-router';
 import inventoryServices from '../../../services/inventoryServices'
-import HardwareLaptopWindows from 'material-ui/svg-icons/hardware/laptop-windows';
-import laptopWindows from 'material-ui/svg-icons/hardware/laptop-windows';
-
+import Swal from 'sweetalert2'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -81,8 +79,12 @@ function InventoryItem(){
     .update(inventory._id,inventory)
     .then((response) => {
       console.log(response.inventory);
-      alert("Successfully Updated");
-      window.location.reload();
+      Swal.fire(
+        "Update Successfull",
+        "You have successfully updated the inventory item",
+        "success"
+      );
+      //window.location.reload();
     })
   }
 

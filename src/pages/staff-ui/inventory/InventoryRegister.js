@@ -6,6 +6,7 @@ import ArrowForwardIosOutlinedIcon from '@material-ui/icons/ArrowForwardIosOutli
 import DirectionsRunOutlinedIcon from '@material-ui/icons/DirectionsRunOutlined';
 import "../inventory/page.css"
 import InventoryDataService from '../../../services/inventoryServices';
+import Swal from 'sweetalert2'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -107,6 +108,11 @@ function InventoryRegister() {
           });
           // setSubmitted(true);
           console.log(response.data);
+          Swal.fire(
+            "Registration Successfull",
+            "You have successfully registered the inventory item",
+            "success"
+          );
           window.location.reload();
         })
         .catch(e => {
