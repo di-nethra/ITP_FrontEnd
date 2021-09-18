@@ -30,7 +30,6 @@ export default function StaffAssign() {
     };
     const [CurrentTest, setCurrentTest] = useState(initialTestState);
     const [message, setMessage] = useState("");
-    const [values, setValues] = useState(initialValues)
 
     const handleInputChange = (e) => {
         console.log(e)
@@ -64,12 +63,12 @@ export default function StaffAssign() {
     const updateTest = (event) => {
         event.preventDefault()
         console.log(CurrentTest._id, "gdfghxdf")
-        console.log(values.inchargelabassid, "gdfghxdf")
+        console.log(CurrentTest.inchargelabassid, "gdfghxdf")
         var data = {
             status: "started",
             starteddate: new Date(),
-            inchargelabass: values.inchargelabass,
-            inchargelabassid: values.inchargelabassid,
+            inchargelabass: CurrentTest.inchargelabass,
+            inchargelabassid: CurrentTest.inchargelabassid,
         };
         console.log(data)
         TestDataService.update(CurrentTest._id, data)
@@ -85,7 +84,7 @@ export default function StaffAssign() {
             .catch(e => {
                 console.log(e);
             });
-            setValues(initialValues)
+            setCurrentTest(initialValues)
     };
 
     return (
