@@ -8,6 +8,10 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
 import "./layout.css"
+import {Route, Switch} from "react-router-dom";
+import Pending from "../pages/staff-ui/receptionist/Pending";
+import CheckedIn from "../pages/staff-ui/receptionist/CheckedIn";
+import Dashboard from "../pages/staff-ui/receptionist/Dashboard";
 
 
 const Receptionist = () => {
@@ -67,7 +71,43 @@ const Receptionist = () => {
       <Sidebar user={user}/>
       <div className="others">
           <Topbar page={user.list}/>
-       
+        <Switch>
+          <Route exact path="/staff/receptionist/">
+            <Dashboard />
+          </Route>
+
+
+          <Route path="/staff/receptionist/pendingappointments">
+            <Pending />
+          </Route>
+          <Route path="/staff/receptionist/checkedinappointments">
+            <CheckedIn />
+          </Route>
+
+          {/*<Route path="/staff/doctor/viewprescription/:id">*/}
+          {/*  <DoctorViewPrecription />*/}
+          {/*</Route>*/}
+
+          {/*<Route path="/staff/doctor/doctorschedule/:id">*/}
+          {/*  <DoctorViewSessions />*/}
+          {/*</Route>*/}
+
+          {/*<Route path="/staff/doctor/newsession">*/}
+          {/*  <NewSession />*/}
+          {/*</Route>*/}
+
+          {/*<Route path="/staff/doctor/addnote">*/}
+          {/*  <DoctorAddNote />*/}
+          {/*</Route>*/}
+
+          {/*<Route path="/staff/doctor/viewnote">*/}
+          {/*  <DoctorViewNotes />*/}
+          {/*</Route>*/}
+
+          {/*<Route path="/staff/doctor/editprescription">*/}
+          {/*  <DoctorEditPrescription />*/}
+          {/*</Route>*/}
+        </Switch>
       </div>
     </div>
   </div>

@@ -43,7 +43,7 @@ function WelcomeMessage() {
               appointment now and get yourself ahead of the queue
             </Typography>
 
-            <Link to="patient">
+            <Link to="patient" style={{ textDecoration: "none" }} >
               <Button
                 className={classes.button}
                 variant={"contained"}
