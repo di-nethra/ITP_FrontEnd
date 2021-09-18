@@ -42,6 +42,39 @@ export default function EForm() {
       age: age,
     };
 
+ 
+     if(data.fullname.includes(" "||"a"||"b"||"c"||"d"||"e"||"f"||"g"||"h"||"i"||"j"||"k"||"l"||"m"||"n"||"o"||"p"||"q"||"r"||"s"||"t"||"u"||"v"||"w"||"x"||"y"||"z"||"A"||"B"||"C"||"D"||"E"||"F"||"G"||"H"||"I"||"J"||"K"||"L"||"M"||"N"||"O"||"P"||"Q"||"R"||"S"||"T"||"U"||"V"||"W"||"X"||"Y"||"Z",0)){
+
+    }else{
+      toast.error("Please ONLY enter characters to the name feild ",{
+        className:"error-toast",
+        draggable:true,
+        position:toast.POSITION.TOP_RIGHT,
+        autoClose:false});
+
+      return null;
+    }
+
+    // let letters=['a','b','c','d','e','f','g','g','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+
+    // if(data.fullname.includes(letters,0)){
+        
+    // }else{
+
+    //   toast.error("Please ONLY enter Characters to the Name feild",{
+    //     className:"error-toast",
+    //     draggable:true,
+    //     position:toast.POSITION.TOP_RIGHT,
+    //     autoClose:false
+    //   }); 
+
+    //   return null;
+
+    // }
+
+
+
+
     if(data.email.includes("@"&&".com", 0)){
       // alert("email successfull");
     }else{
@@ -57,36 +90,11 @@ export default function EForm() {
     }
 
 
-    if(data.mobile.includes("0"&&"1"&&"2"&&"3"&&"4"&&"5"&&"6"&&"7"&&"8"&&"9",0)){
-        
-    }else{
-
-      toast.error("Please ONLY enter numbers to the mobile number feild",{
-        className:"error-toast",
-        draggable:true,
-        position:toast.POSITION.TOP_RIGHT,
-        autoClose:false
-      }); 
-
-      return null;
-
-    }
 
     
 
 
-    if(data.fullname.includes("a"||"b"||"c"||"d"||"e"||"f"||"g"||"h"||"i"||"j"||"k"||"l"||"m"||"o"||"p"||"q"||"r"||"s"||"t"||"u"||"v"||"w"||"x"||"y"||"z",0)){
-
-    }else{
-      toast.error("Please ONLY enter characters to the name feild",{
-        className:"error-toast",
-        draggable:true,
-        position:toast.POSITION.TOP_RIGHT,
-        autoClose:false});
-
-      return null;
-    }
-
+   
     var tempNic=data.nic;
     if(tempNic.length===10){
 
@@ -99,6 +107,23 @@ export default function EForm() {
       });
 
       return null;
+    }
+
+
+    
+    if(data.mobile.includes("0"||"1"||"2"||"3"||"4"||"5"||"6"||"7"||"8"||"9",0)){
+        
+    }else{
+
+      toast.error("Please ONLY enter numbers to the mobile number feild",{
+        className:"error-toast",
+        draggable:true,
+        position:toast.POSITION.TOP_RIGHT,
+        autoClose:false
+      }); 
+
+      return null;
+
     }
 
     
@@ -115,6 +140,11 @@ export default function EForm() {
       // alert("number must contain 10 digits");
       return null;
     }
+
+
+
+
+
 
     var tempAge=data.age;
     if(tempAge.length===2){
@@ -189,7 +219,7 @@ export default function EForm() {
             label="Full Name"
             value={fullname}
             onChange={handlenameChange}
-            required
+                        required
           />
           {/* <Controls.RadioGroup
                         name="gender"
