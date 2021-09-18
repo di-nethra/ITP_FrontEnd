@@ -16,7 +16,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 
 function EmpForm() {
   const handleSubmit = (e) => {
-    console.log("submitted");
     //password generator
     var randomstring = Math.random().toString(36).slice(-8);
     console.log(randomstring);
