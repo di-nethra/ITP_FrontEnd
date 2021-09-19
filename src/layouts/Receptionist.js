@@ -12,6 +12,7 @@ import Pending from "../pages/staff-ui/receptionist/Pending";
 import CheckedIn from "../pages/staff-ui/receptionist/CheckedIn";
 import Dashboard from "../pages/staff-ui/receptionist/Dashboard";
 import AllAppointments from "../pages/staff-ui/receptionist/AllAppointments";
+import Support from "../pages/staff-ui/receptionist/Support";
 
 
 const Receptionist = () => {
@@ -59,7 +60,6 @@ const Receptionist = () => {
   return (
       <div>
         <div className="container">
-
           <Sidebar user={user}/>
           <div className="others">
             <Topbar page={user.list}/>
@@ -75,6 +75,9 @@ const Receptionist = () => {
               </Route>
               <Route path="/staff/receptionist/checkedinappointments">
                 <CheckedIn/>
+              </Route>
+              <Route path="/staff/receptionist/support">
+                <Support/>
               </Route>
             </Switch>
           </div>

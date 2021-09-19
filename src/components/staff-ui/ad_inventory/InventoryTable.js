@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -11,10 +11,19 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import { Link } from "react-router-dom";
+import InventoryDataService from '../../../services/inventoryServices';
 
 const columns = [
-  { id: 'item_id', label: 'ID', minWidth: 170 },
-  { id: 'item_name', label: 'Item Name', minWidth: 100 },
+  { 
+    id: 'item_id',
+     label: 'ID', 
+     minWidth: 170 
+  },
+  { 
+    id: 'item_name', 
+    label: 'Item Name', 
+    minWidth: 100 
+  },
   {
     id: 'quantity',
     label: 'Quantity',
@@ -23,36 +32,20 @@ const columns = [
     format: (value) => value.toLocaleString('en-US'),
   },
   {
-    id: 'r_level',
+    id: 'reorder_level',
     label: 'Reorder-Level',
     minWidth: 170,
     align: 'right',
-    format: (value) => value.toFixed(2),
+    format: (value) => value.toLocaleString('en-US'),
   },
 ];
 
-function createData(item_name, item_id, quantity) {
-  const r_level = quantity * 0.10;
-  return { item_name, item_id, quantity, r_level };
-}
+// function createData(item_name, item_id, quantity) {
+//   const r_level = quantity * 0.10;
+//   return { item_name, item_id, quantity, r_level };
+// }
 
-const rows = [
-  createData('Panadol', 'IN001', 10000, ),
-  createData('Piriton', 'IN002', 5000),
-  createData('Brufen', 'IN003', 7500),
-  createData('Vitamin C', 'IN004', 3000),
-  createData('Voltaren', 'IN005', 4000),
-  createData('Candid B', 'IN006', 2000),
-  createData('Zaart', 'IN007', 6000),
-  createData('Roparc', 'IN008', 7000),
-  createData('Penicilin', 'IN009', 12000),
-  createData('Pfizer', 'IN010', 50000),
-  createData('Sinopharm', 'IN011', 60000),
-  createData('Sputnik-V', 'IN012', 70000),
-  createData('Moderna', 'IN013', 40000),
-  createData('CoviShield', 'IN014', 50000),
-  createData('DSyrup', 'IN015', 80000),
-];
+// const  = [];
 
 const useStyles = makeStyles({
   root: {
@@ -64,7 +57,7 @@ const useStyles = makeStyles({
 });
 
 
-export default function InventoryTable() {
+ function InventoryTable() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -78,6 +71,35 @@ export default function InventoryTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  const [inventory, setInventory] = useState([]);
+
+  useEffect(() => {
+    retrieveInventory();
+}, []);
+
+const retrieveInventory = () => {
+  InventoryDataService.getAll()
+      .then(response => {
+          setInventory(response.data);
+          console.log(response.data);
+      })
+      .catch(e => {
+          console.log(e);
+      });
+};
+
+let rows = [];
+    for (const inventoryy of inventory) {
+        rows.push(
+            {
+                item_id: inventoryy.item_id,
+                item_name: inventoryy.item_name,
+                quantity: inventoryy.quantity,
+                reorder_level: inventoryy.reorder_level
+            }
+        )
+    }
 
   return (
     <div>
@@ -140,3 +162,4 @@ export default function InventoryTable() {
           
   );
 }
+export default InventoryTable

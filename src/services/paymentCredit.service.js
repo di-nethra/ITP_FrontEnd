@@ -5,7 +5,7 @@ const getAll = () => {
 };
 
 const get = (id) => {
-  return http.get("/payments/info" + id);
+  return http.get(`/payments/${id}`);
 };
 
 const create = (data) => {
