@@ -19,14 +19,6 @@ function InventoryReport(){
     <div>
     <h1>Generation of Reports</h1><br/><br/>
     <InventoryReportTable /><br/><br/>
-    <Button
-            variant="contained"
-            color="primary"
-            className={b_classes.button}
-            endIcon={<AssignmentOutlinedIcon />}
-          >
-           Generate
-          </Button>
     </div>
     );
 }
