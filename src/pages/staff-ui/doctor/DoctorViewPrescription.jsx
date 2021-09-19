@@ -25,13 +25,13 @@ export default function DoctorViewPrescription() {
         {
             field: 'patientName',
             headerName: 'Patient Name',
-            width: 250,
+            width: 245,
             editable: false,
         },
         {
             field: 'diagnosis',
             headerName: 'Diagnosis',
-            width: 275,
+            width: 260,
             editable: false,
         },
         {
@@ -49,12 +49,15 @@ export default function DoctorViewPrescription() {
         {
             field: 'action',
             headerName: 'Action',
-            width: 200,
+            width: 220,
             sortable: false,
             editable: false,
             renderCell: (params) => {
                 return (
                     <>
+                        <Link to={"/staff/doctor/printprescription/" + params.row.id}>
+                            <Button size="small" color="primary" variant="contained" style={{ marginRight: 5 }}>E</Button>
+                        </Link>
                         <Link to={"/staff/doctor/editprescription/" + params.row.id}>
                             <Button size="small" color="primary" variant="contained" style={{ marginRight: 5 }}>Edit</Button>
                         </Link>
