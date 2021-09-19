@@ -13,6 +13,8 @@ import { DeleteOutline } from "@material-ui/icons";
 import PrescriptionDataService from "../../../services/doctorPrescriptionService";
 import Swal from "sweetalert2";
 import { useTheme } from "@material-ui/core";
+import PrintOutlinedIcon from '@material-ui/icons/PrintOutlined';
+import PDF from "../../../components/PDF";
 
 export default function DoctorViewPrescription() {
     const theme = useTheme();
@@ -56,7 +58,7 @@ export default function DoctorViewPrescription() {
                 return (
                     <>
                         <Link to={"/staff/doctor/printprescription/" + params.row.id}>
-                            <Button size="small" color="primary" variant="contained" style={{ marginRight: 5 }}>E</Button>
+                            <Button size="small" color="primary" variant="contained" style={{ marginRight: 5 }}><PrintOutlinedIcon /></Button>
                         </Link>
                         <Link to={"/staff/doctor/editprescription/" + params.row.id}>
                             <Button size="small" color="primary" variant="contained" style={{ marginRight: 5 }}>Edit</Button>
@@ -122,10 +124,14 @@ export default function DoctorViewPrescription() {
                 patientName: prescription.dPName,
                 diagnosis: prescription.dPDignosis,
                 med1: prescription.dMed1,
-                dose1: prescription.dDose1
+                dose1: prescription.dDose1,
+                med2:prescription.dMed2,
+                dose2:prescription.dDose2
             }
         )
     }
+
+    const headers = ["ID", "Patient Name", "Diagnosis", "Medicine_1", "Dosage", "Medicine_1", "Dosage"]
 
     return (
         <div style={{ marginBottom: 10 }}>
@@ -162,7 +168,8 @@ export default function DoctorViewPrescription() {
                         for your use only. We make it our obligation to protect patient privacy.
                     </p>
                     <div className="buttonAlignRight">
-                        <Button size="medium" color="primary" variant="contained" style={{ marginTop: 10 }}>Create Report</Button>
+                        {/* <Button size="medium" color="primary" variant="contained" style={{ marginTop: 10 }}>Create Report</Button> */}
+                        <PDF data={rows} headers={headers} title="Total Prescription Report" />
                     </div>
                 </CardContent>
             </Card>

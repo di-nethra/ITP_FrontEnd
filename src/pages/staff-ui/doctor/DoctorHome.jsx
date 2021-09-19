@@ -59,8 +59,8 @@ export default function DoctorHome(props) {
 
     let rows = [];
     for (const appointment of appointments) {
-        console.log("CUser:" + props.user)
-        console.log("DSession:" + appointment.dSession)
+        // console.log("CUser:" + props.user)
+        // console.log("DSession:" + appointment.dSession?.doctor_id)
         if (appointment.dSession?.doctor_id == props.user) {
             rows.push(
                 {
@@ -98,6 +98,7 @@ export default function DoctorHome(props) {
                         <DataGrid
                             rows={rows}
                             columns={columns}
+                            loading={loading}
                             pageSize={5}
                             checkboxSelection
                             disableSelectionOnClick
