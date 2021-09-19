@@ -14,6 +14,7 @@ import Restock from "../pages/staff-ui/inventory/Restock";
 import InventoryItem from "../pages/staff-ui/inventory/InventoryItem";
 import InventoryReport from "../pages/staff-ui/inventory/InventoryReport";
 import {Switch, Route } from "react-router-dom";
+import InventorySupport from "../pages/staff-ui/inventory/InventorySupport";
 
 const Inventory = () => {
   let temp = sessionStorage.getItem("user");
@@ -86,9 +87,9 @@ const Inventory = () => {
                 <Restock />
               </Route>
 
-              {/* <Route path="/staff/inventorymanager/support">
-                <InventoryReport />
-              </Route> */}
+               <Route path="/staff/inventorymanager/support">
+                <InventorySupport />
+              </Route> 
 
               <Route path="/staff/inventorymanager/viewregistereditem/:topicId">
             <InventoryItem />
