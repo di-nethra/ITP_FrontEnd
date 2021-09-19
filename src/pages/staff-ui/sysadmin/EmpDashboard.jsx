@@ -7,31 +7,37 @@ const columns = [
   { 
     field: "role", 
     headerName: "Role", 
-    width: 150 
+    width: 175 
 },
   {
     field: "firstName",
     headerName: "First name",
-    width: 155,
+    width: 175,
     editable: true,
   },
   {
     field: "lastName",
     headerName: "Last name",
-    width: 155,
+    width: 175,
+    editable: true,
+  },
+  {
+    field: "email",
+    headerName: "Email",
+    width: 175,
     editable: true,
   },
   {
     field: "mobile",
     headerName: "Mobile",
-    type: "number",
-    width: 140,
+    // type: "number",
+    width: 175,
     editable: true,
   },
   {
     field: "address",
     headerName: "Address",
-    width: 155,
+    width: 175,
     editable: true,
   },
 

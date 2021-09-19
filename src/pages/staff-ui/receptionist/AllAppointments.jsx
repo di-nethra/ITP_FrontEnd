@@ -74,30 +74,6 @@ export default function AllAppointments() {
             }
         )
     }
-    for (const appointment of appointments) {
-        rows.push(
-            {
-                id: appointment._id,
-                date: appointment.dSession?.date || "Deleted",
-                time: appointment.dSession?.time || "Deleted",
-                patientName: appointment.fullname,
-                patientNIC: appointment.nic,
-                mobile: appointment.mobile,
-            }
-        )
-    }
-    for (const appointment of appointments) {
-        rows.push(
-            {
-                id: appointment._id,
-                date: appointment.dSession?.date || "Deleted",
-                time: appointment.dSession?.time || "Deleted",
-                patientName: appointment.fullname,
-                patientNIC: appointment.nic,
-                mobile: appointment.mobile,
-            }
-        )
-    }
 
     const headers = ["ID", "Date", "Time", "Name", "NIC", "Mobile Number"]
 

@@ -76,7 +76,7 @@ export default function Pending() {
             confirmButtonText: 'Yes, Mark as Checked In!'
         }).then((result) => {
             if (result.isConfirmed) {
-                channellServices.updateStatus(id, "AllAppointments")
+                channellServices.updateStatus(id, "CheckedIn")
                     .then(() => {
                         Swal.fire(
                             'Updated',
