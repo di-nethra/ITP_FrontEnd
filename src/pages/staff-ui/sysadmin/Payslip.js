@@ -6,9 +6,10 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import CardContent from "@material-ui/core/CardContent";
 import { Card } from "@material-ui/core";
-import ISPIRITHALEI from "../../../assets/1.png";
+import ISPIRITHALEI from "../../../assets/2.png";
 import "../../../components/staff-ui/sidebar/sidebar.css";
 import Pdf from "react-to-pdf";
+import Button from "@material-ui/core/Button";
 
 const ref = React.createRef();
 
@@ -35,14 +36,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//date generation
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, "0");
+var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+var yyyy = today.getFullYear();
+
+today = dd + "/" + mm + "/" + yyyy + " payslip";
+
 const Payslip = (props) => {
   const classes = useStyles();
 
   return (
     <>
-      <div ref={ref}>
-        <React.Fragment>
-          <Card >
+      <React.Fragment>
+        <Card style={{ width: "70%", margin: "auto" }}>
+          <div ref={ref}>
             <CardContent>
               <div className="logo">
                 <a className="logo1" href="/">
@@ -70,7 +79,7 @@ const Payslip = (props) => {
               <p>Earnings</p>
               <List disablePadding>
                 {earnings.map((earning) => (
-                  <ListItem  key={earning.name}>
+                  <ListItem key={earning.name}>
                     <ListItemText primary={earning.name} />
                     <Typography variant="body2">{earning.price}</Typography>
                   </ListItem>
@@ -78,26 +87,37 @@ const Payslip = (props) => {
                 <br></br>
                 <p>Deductions &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; test </p>
                 {deductions.map((deduction) => (
-                  <ListItem  key={deduction.name}>
+                  <ListItem key={deduction.name}>
                     <ListItemText primary={deduction.name} />
                     <Typography variant="body2">{deduction.price}</Typography>
                   </ListItem>
                 ))}
                 <br></br>
-                <ListItem >
+                <ListItem>
                   <ListItemText primary="Total" />
-                  <Typography variant="subtitle1" >
-                    $34.06
-                  </Typography>
+                  <Typography variant="subtitle1">$34.06</Typography>
                 </ListItem>
               </List>
             </CardContent>
-          </Card>
-        </React.Fragment>
+          </div>
+        </Card>
+      </React.Fragment>
+
+      <div style={{ marginTop: 20, textAlign: "center", marginBottom: 10 }}>
+        <Pdf targetRef={ref} filename={today}>
+          {({ toPdf }) => (
+            <Button
+              size="large"
+              variant="contained"
+              color="primary"
+              type="submit"
+              onClick={toPdf}
+            >
+              Generate Pay Slip
+            </Button>
+          )}
+        </Pdf>
       </div>
-      <Pdf targetRef={ref} filename="past.pdf">
-        {({ toPdf }) => <button onClick={toPdf}> Download </button>}
-      </Pdf>
     </>
   );
 };
