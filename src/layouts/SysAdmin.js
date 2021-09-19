@@ -12,7 +12,7 @@ import AddIcon from '@material-ui/icons/Add';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import Payroll from "../pages/staff-ui/sysadmin/Payroll";
 import UpdateForm from "../pages/staff-ui/sysadmin/UpdateForm";
-
+import AssignmentIcon from '@material-ui/icons/Assignment';
 
 const SysAdmin = () => {
   let temp = sessionStorage.getItem("user");
@@ -45,6 +45,12 @@ const SysAdmin = () => {
         icon: <MonetizationOnIcon className="sidebarIcon"/>,
         iconlabel: 'Payroll',
         id: 4
+      },
+      {
+        path: "inquaries",
+        icon: <AssignmentIcon className="sidebarIcon"/>,
+        iconlabel: 'Inquaries',
+        id: 5
       },
 
 
