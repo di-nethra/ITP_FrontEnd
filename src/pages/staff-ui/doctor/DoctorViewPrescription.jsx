@@ -131,7 +131,7 @@ export default function DoctorViewPrescription() {
         )
     }
 
-    const headers = ["ID", "Patient Name", "Diagnosis", "Medicine_1", "Dosage", "Medicine_1", "Dosage"]
+    const headers = ["ID", "Patient Name", "Diagnosis", "Medicine 1", "Dosage", "Medicine 2", "Dosage"]
 
     return (
         <div style={{ marginBottom: 10 }}>
