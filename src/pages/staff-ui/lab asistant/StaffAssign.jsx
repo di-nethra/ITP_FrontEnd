@@ -30,14 +30,13 @@ export default function StaffAssign() {
     };
     const [CurrentTest, setCurrentTest] = useState(initialTestState);
     const [message, setMessage] = useState("");
-    const [values, setValues] = useState(initialValues)
 
     const handleInputChange = (e) => {
         console.log(e)
         const { name, value } = e.target;
 
-        setValues({
-            ...values,
+        setCurrentTest({
+            ...CurrentTest,
             [name]: value,
         });
     };
@@ -64,12 +63,12 @@ export default function StaffAssign() {
     const updateTest = (event) => {
         event.preventDefault()
         console.log(CurrentTest._id, "gdfghxdf")
-        console.log(values.inchargelabassid, "gdfghxdf")
+        console.log(CurrentTest.inchargelabassid, "gdfghxdf")
         var data = {
             status: "started",
             starteddate: new Date(),
-            inchargelabass: values.inchargelabass,
-            inchargelabassid: values.inchargelabassid,
+            inchargelabass: CurrentTest.inchargelabass,
+            inchargelabassid: CurrentTest.inchargelabassid,
         };
         console.log(data)
         TestDataService.update(CurrentTest._id, data)
@@ -85,7 +84,7 @@ export default function StaffAssign() {
             .catch(e => {
                 console.log(e);
             });
-            setValues(initialValues)
+            setCurrentTest(initialValues)
     };
 
     return (
@@ -144,13 +143,13 @@ export default function StaffAssign() {
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant ID</label>
                             <input
-                                type="number"
+                                type="text"
                                 id="inchargelabassid"
                                 required
-                                min="1"
-                                max="20"
+                                minLength="5"
+                                maxLength="5"
                                 name="inchargelabassid"
-                                value={values.inchargelabassid}
+                                value={CurrentTest.inchargelabassid}
                                 onChange={handleInputChange}
                             />
                         </div>
@@ -161,7 +160,7 @@ export default function StaffAssign() {
                                 id="inchargelabass"
                                 required
                                 name="inchargelabass"
-                                value={values.inchargelabass}
+                                value={CurrentTest.inchargelabass}
                                 onChange={handleInputChange}
                             />
                         </div>

@@ -1,14 +1,34 @@
 import "./featuredInfo.css";
 import AllInclusiveOutlinedIcon from '@material-ui/icons/AllInclusiveOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import {useEffect, useState} from 'react';
+import TestDataService from "../../../services/tests.service";
 
 export default function FeaturedInfoo() {
+
+  const [all, setAll] = useState([]);
+  useEffect(() => {
+    retieveAllTests();
+  }, []);
+
+  const retieveAllTests = () => {
+    TestDataService.getAll()
+        .then(response => {
+          setAll(response.data)
+        })
+        .catch(err => {
+              console.log("Error while getting data from database" + err);
+            }
+        )
+  };
+  const alltest = all.length;
+
   return (
     <div className="featured">
       <div className="featuredItem">
         <span className="featuredTitle">All Tests</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">15</span>
+          <span className="featuredMoney">{alltest}</span>
           <span className="featuredMoneyRate">
              <AllInclusiveOutlinedIcon  className="featuredIcon"/>
           </span>
@@ -18,7 +38,7 @@ export default function FeaturedInfoo() {
       <div className="featuredItem">
         <span className="featuredTitle">My patients</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">15</span>
+          <span className="featuredMoney">{alltest}</span>
           <span className="featuredMoneyRate">
             <AccountCircleOutlinedIcon className="featuredIcon"/>
           </span>
