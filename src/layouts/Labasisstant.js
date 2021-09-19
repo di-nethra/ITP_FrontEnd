@@ -20,6 +20,7 @@ import CompletedTest from '../pages/staff-ui/lab asistant/CompletedTest'
 import PatientsLists from "../pages/staff-ui/lab asistant/PatientsLists";
 import LabHelp from "../pages/staff-ui/lab asistant/LabHelp";
 import PatientUpdate from "../pages/staff-ui/lab asistant/PatientUpdate";
+import LabPrintTest from "../pages/staff-ui/lab asistant/LabPrintTest";
 
 const Labasisstant = () => {
   let temp = sessionStorage.getItem("user");
@@ -109,6 +110,9 @@ const Labasisstant = () => {
               </Route>
               <Route path="/staff/labassistant/patients">
                 <PatientsLists/>
+              </Route>
+              <Route path="/staff/labassistant/downloadform/:id">
+                <LabPrintTest/>
               </Route>
               <Route path="/staff/labassistant/support">
                 <LabHelp/>

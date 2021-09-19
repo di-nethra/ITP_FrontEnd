@@ -9,7 +9,6 @@ import Button from '@material-ui/core/Button';
 
 export default function SubbmittedTests() {
 
-  const [report, setReport] = useState([]);
   const columns = [
     { field: 'specimenid', headerName: 'Specimen ID', width: 140 },
     {
@@ -47,8 +46,9 @@ export default function SubbmittedTests() {
       renderCell: (params) => {
         return (
           <>
-
-            <button className="userListEdit2" onClick={() => ReportDownload(params.row.id)}>Report Download</button>
+            <Link to={"/staff/labassistant/downloadform/" + params.row.id}>
+              <button className="userListEdit2">Report Download</button>
+            </Link>
             <Button
               variant="contained"
               color="secondary"
@@ -63,7 +63,7 @@ export default function SubbmittedTests() {
     }
   ];
 
-  
+
   const deleteTest = event => {
     Swal.fire({
       icon: 'success',
@@ -109,23 +109,6 @@ export default function SubbmittedTests() {
 
       }
     )
-  }
-
-  function ReportDownload(id) {
-    alert(`id, ${id}`);
-  
-    const getRpeortData = id => {
-      TestDataService.getOneTest(id)
-        .then(response => {
-          setReport(response.data)
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    };
-    getRpeortData(id);
-    console.log(report.specimenid);
   }
 
   return (
