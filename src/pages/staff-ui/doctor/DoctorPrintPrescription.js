@@ -41,40 +41,42 @@ function DoctorPrintPrescription() {
     today = dd + '/' + mm + '/' + yyyy;
 
     return (
-        <div style={{ marginBottom: 10}}>
-            <Card style={{ width: "70%"}}>
+        <div style={{ marginBottom: 10 }}>
+            <Card>
                 <CardContent>
-                    <Card>
+                    <Card style={{ width: "70%", margin: "auto" }}>
                         <CardContent>
                             <div style={{ textAlign: "center" }}>
                                 <img src={ISPIRITHALEI} />
-                                <p style={{ fontSize: 15 }} >647, Utuwakanda,Mawanella<br />TEL : +9411 2696 696 / +9411 269 696 <br />FAX : +9411 2696 969<br />EMAIL : reception@ispirithalei.lk</p>
+                                <p style={{ fontSize: 15 }} >647, Utuwakanda, Mawanella.<br />TEL : +9411 2696 696 / +9411 269 696 <br />FAX : +9411 2696 969<br />EMAIL : reception@ispirithalei.lk</p>
                             </div>
                             <br />
 
-                            <p style={{float:"right", fontSize: 15}}>Issued Doctor ID : {prescription.dId}</p>
-                            <p style={{ fontSize: 15 }}>Date of issue : {today}</p>
+                            <p style={{ float: "right", fontSize: 15 }}><strong>Issued Doctor ID : </strong>{prescription.dId}</p>
+                            <p style={{ fontSize: 15 }}><strong>Date of issue : </strong>{today}</p>
 
-                            <hr/>
+                            <hr />
                             <br />
 
                             <p style={{ textAlign: "center" }}><strong>Patient Name : </strong>{prescription.dPName}
-                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                            <strong>Diagnosis : </strong>{prescription.dPDignosis}</p>
-                            <br /><br />
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                <strong>Diagnosis : </strong>{prescription.dPDignosis}</p>
+                            <br />
+                            <hr style={{ width: "80%", margin:"auto" }} />
+                            <br />
 
-                            <p style={{ textAlign: "center" }}><strong>Medicine 1 : </strong>{prescription.dMed1} 
-                            &emsp;&emsp;&emsp;
-                            <strong>Dose : </strong>{prescription.dDose1}</p>
+                            <p style={{ textAlign: "center" }}><strong>Medicine 1 : </strong>{prescription.dMed1}
+                                &emsp;&emsp;&emsp;
+                                <strong>Dose : </strong>{prescription.dDose1}</p>
                             <br />
 
                             <p style={{ textAlign: "center" }}><strong>Medicine 2 : </strong>{prescription.dMed2}
-                            &emsp;&emsp;&emsp; 
-                            <strong>Dose : </strong>{prescription.dDose2}</p>
+                                &emsp;&emsp;&emsp;
+                                <strong>Dose : </strong>{prescription.dDose2}</p>
                             <br />
                         </CardContent>
                     </Card>
-                    <div className="buttonAlignRight" style={{ marginTop: 10 }}>
+                    <div className="buttonAlignMiddle" style={{ marginTop: 10 }}>
                         <Link to={"/staff/doctor/viewprescription/" + prescription.dId}>
                             <Button size="large" variant="contained" style={{ marginRight: 8 }}>Cancel</Button>
                         </Link>
