@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Checkout from "../../../pages/patient-ui/Checkout";
 import CreditCardPage from "../../../pages/patient-ui/CreditCardPage";
-
+import NewInvoice from "../../../pages/patient-ui/NewInvoice";
 export class UserForm extends Component {
   state = {
     step: 1,
@@ -62,6 +62,16 @@ export class UserForm extends Component {
           />
         );
       }
+      case 3: {
+        return (
+          <NewInvoice
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            values={values}
+          />
+        );
+      }
+
       default: {
         console.log("deafult case");
       }

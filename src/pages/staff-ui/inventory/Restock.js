@@ -1,10 +1,13 @@
-import React from 'react';
+import React,{ useState,useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import DirectionsRunOutlinedIcon from '@material-ui/icons/DirectionsRunOutlined';
 import "../inventory/page.css"
+import { useParams } from 'react-router';
+import inventoryServices from '../../../services/inventoryServices'
+import Swal from 'sweetalert2'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,9 +27,81 @@ const b_useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function Restock() {
+ function Restock() {
   const classes = useStyles();
   const b_classes = b_useStyles();
+
+  const id = useParams();
+    console.log(id.topicId);
+
+  const initialRestock = {
+    item_id:"",
+    item_name:"",
+    quantity:"",
+    reorder_level:""
+  }
+
+  const [inventory, setInventory] = useState(initialRestock);
+
+    //get inventory details by id
+    const getInventory = (id) => {
+      inventoryServices
+        .getOneInventory(id)
+        .then((response) => {
+          setInventory(response.data);
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      console.log("name print", inventory.item_name);
+    };
+  
+    useEffect(() => {
+      getInventory(id.topicId);
+    }, [id.topicId]);
+
+      //Restock Inventory
+  const restockInventory = (event) => {
+    event.preventDefault();
+    if(inventory.item_id.length === 0){
+      alert("ItemID is a required field");
+      return null;
+    }
+
+    if(inventory.quantity.length === 0){
+      alert("Quantity is a required field");
+      return null;
+    }
+
+    if(inventory.reorder_level.length === 0){
+      alert("Reorder Level is a required field");
+      return null;
+    }
+
+    inventoryServices
+    .update(inventory._id,inventory)
+    .then((response) => {
+      console.log(response.inventory);
+      Swal.fire(
+        "Restock Successfull",
+        "You have successfully restocked the inventory item",
+        "success"
+      );
+      //window.location.reload();
+    })
+  }
+
+  const handleInputChange = (e) => {
+    console.log(e);
+    const { name, value } = e.target;
+
+    setInventory({
+      ...inventory,
+      [name]: value,
+    });
+  };  
+
     return(
       <div style = {{paddingLeft:"30%"}}>
         <div className="formCard">
@@ -35,9 +110,11 @@ export default function Restock() {
             <TextField
               label="Item ID"
               id="outlined-margin-none"
-              defaultValue=""
+              name = "item_id"
+              value={inventory.item_id}
+              onChange={handleInputChange}
               className={classes.textField}
-              helperText=""
+              helperText="ID of the item"
               variant="outlined"
               required
             /> <br/><br/>
@@ -45,18 +122,22 @@ export default function Restock() {
             <TextField
               label="Item Name"
               id="outlined-margin-none"
-              defaultValue=""
+              name = "item_name"
+              value={inventory.item_name}
+              onChange={handleInputChange}
               className={classes.textField}
-              helperText=""
+              helperText="Name of the item"
               variant="outlined"
             /><br/><br/>
 
             <TextField
               label="Quantity"
               id="outlined-margin-none"
-              defaultValue=""
+              name = "quantity"
+              value={inventory.quantity}
+              onChange={handleInputChange}
               className={classes.textField}
-              helperText=""
+              helperText="Enter the new quantity"
               required
               variant="outlined"
             /><br/><br/>
@@ -64,10 +145,12 @@ export default function Restock() {
             <TextField
               label="Reorder Level"
               id="outlined-margin-none"
-              defaultValue=""
+              name = "reorder_level"
+              value={inventory.reorder_level}
+              onChange={handleInputChange}
               className={classes.textField}
               style={{margin:8}}
-              helperText=""
+              helperText="Enter the new Reorder Level"
               required
               variant="outlined"
             /><br/><br/>
@@ -77,6 +160,7 @@ export default function Restock() {
                 color="primary"
                 className={b_classes.button}
                 endIcon={<AddCircleOutlineIcon />}
+                onClick={restockInventory}
               >
               Restock
               </Button>
@@ -95,3 +179,4 @@ export default function Restock() {
       </div>
     );
 }
+export default Restock
