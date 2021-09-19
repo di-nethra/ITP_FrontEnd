@@ -3,7 +3,6 @@ import Pdf from "react-to-pdf";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
 import invoice from "../../assets/images/invoice.svg";
