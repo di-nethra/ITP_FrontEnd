@@ -1,6 +1,4 @@
 import "./completedtest.css";
-import jsPDF from "jspdf";
-import Logo from '../../../assets/2.png'
 import Swal from 'sweetalert2';
 import { DataGrid } from "@material-ui/data-grid";
 import { Link } from "react-router-dom";
@@ -48,8 +46,9 @@ export default function SubbmittedTests() {
       renderCell: (params) => {
         return (
           <>
-            <button className="userListEdit2" value={params.row.id} onClick={reportDownload}>Report Download</button>
-            {/*<LabPDF onClick={() => ReportDownload(params.row.id)}/>*/}
+            <Link to={"/staff/labassistant/downloadform/" + params.row.id}>
+              <button className="userListEdit2">Report Download</button>
+            </Link>
             <Button
               variant="contained"
               color="secondary"
@@ -81,7 +80,6 @@ export default function SubbmittedTests() {
       })
   }
   const [tests, setTests] = useState([]);
-  const [report, setReport] = useState([]);
   useEffect(() => {
     retrieveCompletedTests();
   }, []);
@@ -112,94 +110,6 @@ export default function SubbmittedTests() {
       }
     )
   }
-
-  const reportDownload = event => {
-    TestDataService.getOneTest(event.currentTarget.value)
-      .then(response => {
-        setReport(response.data)
-      })
-      .catch(error => {
-        console.log(error);
-      })
-    const specimenid = report.specimenid;
-    const subbmitteddate = report.subbmitteddate;
-    const starteddate = report.starteddate;
-    const completeddate = report.completeddate;
-    const contactnumber = report.contactnumber;
-    const age = report.dateofbirth;
-    const inchargelabass = report.inchargelabass;
-    const inchargelabassid = report.inchargelabassid;
-    const patientsname = report.patientsname.toString();
-    const specimenproperty = report.specimenproperty;
-    const specimenpropertyresult = report.specimenpropertyresult;
-    const testtype = report.testtype;
-
-    const unit = "px";
-    const size = "A4"; // Use A1, A2, A3 or A4
-    const orientation = "portrait"; // portrait or landscape
-    const doc = new jsPDF(orientation, unit, size);
-    doc.setFontSize(15)
-    doc.addImage(Logo, "PNG", 40, 40, 0, 0)
-    doc.text("TEST REPORT.", 185.23, 120)
-    doc.setLineWidth(0.5)
-    doc.line(40, 125, 406.46, 125)
-    doc.text("Specimen ID:", 40, 165)
-    doc.text("Patient Name:", 40, 185)
-    doc.text("Test Type:", 240, 165)
-    doc.text("Contact Number:", 240, 185)
-    //doc.text(patientsname, 40, 285)
-    //doc.text(contactnumber, 290, 185)
-    doc.save('test.pdf')
-
-  }
-  /*function reportDownload(id) {
-    <LabPDF id={id}/>
-    const getRpeortData = id => {
-      TestDataService.getOneTest(id)
-        .then(response => {
-          setReport(response.data)
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    };
-    getRpeortData(id);
-    
-      const specimenid= report.specimenid;
-      const subbmitteddate= report.subbmitteddate;
-      const starteddate= report.starteddate;
-      const completeddate= report.completeddate;
-      const contactnumber= report.contactnumber;
-      const age= report.dateofbirth;
-      const inchargelabass= report.inchargelabass;
-      const inchargelabassid= report.inchargelabassid;
-      const patientsname= report.patientsname;
-      const specimenproperty= report.specimenproperty;
-      const specimenpropertyresult= report.specimenpropertyresult;
-      const testtype= report.testtype;
-    
-    const unit = "px";
-    const size = "A4"; // Use A1, A2, A3 or A4
-    const orientation = "portrait"; // portrait or landscape
-    const doc = new jsPDF(orientation, unit, size);
-    doc.setFontSize(15);
-    doc.addImage(Logo, "PNG", 40, 40, 0, 0);
-    doc.text("TEST REPORT.", 185.23, 120);
-    doc.setLineWidth(0.5);
-    doc.line(40, 125, 406.46, 125);
-    doc.text("Specimen ID:", 40, 165);
-    doc.text("Patient Name:", 40, 185);
-    doc.text("Test Type:", 240, 165);
-    doc.text("Contact Number:", 240, 185);
-
-    
-    doc.text(patientsname, 120, 185);
-    doc.text(specimenid, 120, 165);
-    //doc.text(testdata.testtype, 290, 165);
-    //doc.text(testdata.contactnumber, 290, 185);
-    doc.save('test.pdf');
-  }*/
 
   return (
     <div style={{ height: 550, width: '100%' }} className="userList">
