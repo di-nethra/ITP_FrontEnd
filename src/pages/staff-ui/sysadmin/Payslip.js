@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
@@ -10,7 +10,8 @@ import ISPIRITHALEI from "../../../assets/2.png";
 import "../../../components/staff-ui/sidebar/sidebar.css";
 import Pdf from "react-to-pdf";
 import Button from "@material-ui/core/Button";
-
+import empformServices from "../../../services/empForm.service";
+import { useParams} from "react-router-dom";
 const ref = React.createRef();
 
 const earnings = [
@@ -46,6 +47,36 @@ today = dd + "/" + mm + "/" + yyyy + " payslip";
 
 const Payslip = (props) => {
   const classes = useStyles();
+  const id = useParams();
+
+  const initialEmployee = {
+    role: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    mobile: "",
+    address: "",
+  };
+
+  const [employee, setEmployee] = useState(initialEmployee);
+
+  //get employee details by id
+  const getEmployee = (id) => {
+    empformServices
+      .getOneEmployee(id)
+      .then((response) => {
+        setEmployee(response.data);
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    console.log("name print", employee.firstName);
+  };
+
+  useEffect(() => {
+    getEmployee(id.id);
+  }, [id.id]);
 
   return (
     <>

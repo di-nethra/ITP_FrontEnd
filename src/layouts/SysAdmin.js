@@ -13,6 +13,7 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import Payroll from "../pages/staff-ui/sysadmin/Payroll";
 import UpdateForm from "../pages/staff-ui/sysadmin/UpdateForm";
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import Payslip from "../pages/staff-ui/sysadmin/Payslip";
 
 const SysAdmin = () => {
   let temp = sessionStorage.getItem("user");
@@ -71,6 +72,7 @@ const SysAdmin = () => {
               <Route path="/staff/sysadmin/empform" component={EmpForm}/>
               <Route path="/staff/sysadmin/payroll" component={Payroll}/>]
               <Route path="/staff/sysadmin/empedit/:id" component={UpdateForm}/>
+              <Route path="/staff/sysadmin/payslip/:id" component={Payslip}/>
 
             </Switch>
           </div>
