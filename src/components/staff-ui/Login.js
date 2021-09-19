@@ -12,7 +12,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import {makeStyles} from "@material-ui/core/styles";
 import logo from "../../assets/1.png";
 import login from "../../services/login.Service";
-import {useHistory, Link} from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const useStyles = makeStyles({
     button: {
@@ -78,7 +79,12 @@ export default function Login() {
             )
             .
                 catch((e) => {
-                    alert(e);
+                    Swal.fire(
+                        "Access Denied",
+                        "Please use valid user credentials",
+                        "error"
+                      );
+                    // alert(e);
                     console.log("ERROR : " + e);
                 });
             };
