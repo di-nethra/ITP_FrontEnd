@@ -58,7 +58,7 @@ function DoctorPrescription() {
                     dDose2: response.data.dDose2
                 });
                 // setSubmitted(true);
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch(e => {
                 console.log(e);
