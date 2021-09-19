@@ -60,7 +60,9 @@ function ActionBtn(props) {
       </Button>
 
       <Link to={"/staff/sysadmin/empedit/" + props.data}>
-        <Button color="primary" aria-label="edit">
+        <Button 
+        color="primary" 
+        aria-label="edit">
           <EditIcon />
         </Button>
       </Link>

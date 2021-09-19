@@ -2,6 +2,7 @@ import * as React from 'react';
 import {DataGrid} from '@material-ui/data-grid';
 import {useEffect, useState} from 'react';
 import InventoryDataService from '../../../services/inventoryServices';
+import PDF from "../../PDF";
 
 export default function InventoryReportTable(){
   const [inventory, setInventory] = useState([]);
@@ -75,7 +76,8 @@ export default function InventoryReportTable(){
         width: 180,
       },
     ];
-
+    
+    
     let rows = [];
     for (const inventoryy of inventory) {
         rows.push(
@@ -92,7 +94,10 @@ export default function InventoryReportTable(){
         )
     }
 
+    const headers = ["Item ID","Item Name","Supplier Name", "Supplier Email","Supplier Contact","Purchase Price","Registered Date","Type of Medicine"];
+
     return (
+    <div>
         <div style={{height: 400, width: '100%'}}>
             <DataGrid
                 rows={rows}
@@ -101,7 +106,9 @@ export default function InventoryReportTable(){
                 checkboxSelection
                 disableSelectionOnClick
             />
-        </div>
+        </div><br/>
+        <PDF data={rows} headers={headers} title="Inventory Report" />
+    </div>
     );
 
 }

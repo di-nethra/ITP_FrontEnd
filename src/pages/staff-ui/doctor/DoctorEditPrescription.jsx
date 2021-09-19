@@ -18,7 +18,7 @@ function DoctorPrescription() {
     }
 
     const { id } = useParams();
-    console.log(id);
+    //console.log(id);
 
     const initialPrescription = {
         dPName: "",
@@ -37,7 +37,7 @@ function DoctorPrescription() {
             .getOnePrescription(id)
             .then((response) => {
                 setPrescription(response.data);
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch((e) => {
                 console.log(e);
@@ -54,7 +54,7 @@ function DoctorPrescription() {
         PrescriptionDataService
             .update(prescription._id, prescription)
             .then((response) => {
-                console.log(response.prescription);
+                //console.log(response.prescription);
                 Swal.fire(
                     "Update Successfull",
                     "You have successfully updated the prescription",
@@ -67,7 +67,7 @@ function DoctorPrescription() {
     };
 
     const handleInputChange = (e) => {
-        console.log(e);
+        //console.log(e);
         const { name, value } = e.target;
 
         setPrescription({
@@ -128,7 +128,7 @@ function DoctorPrescription() {
                             &ensp;Check to confirm the edited prescription submission.</p>
 
                         <div className="buttonAlignRight">
-                            <Link to="/staff/doctor/viewprescription">
+                            <Link to={"/staff/doctor/viewprescription/"+prescription.dId}>
                                 <Button size="large" variant="contained" style={{ marginRight: 8 }}>Cancel</Button>
                             </Link>
                             <Button size="large" variant="contained" color="primary" type="submit"

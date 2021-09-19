@@ -3,11 +3,12 @@ import React from "react";
 import Controls from "../../components/patient-ui/Echannelling/Controls";
 import {Form} from "../../components/patient-ui/Echannelling/useForm";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import channellServices from "../../services/echannelling.Service";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from "react-router";
+import sessionServices from "../../services/doctorSession.service";
 
 
 // const genderItems = [
@@ -28,6 +29,7 @@ import { useHistory } from "react-router";
 // };
 
 export default function EForm() {
+  let { sessionID } = useParams();
   const history = useHistory();
   const handleSubmit = (e) => {
     console.log("submitted");
@@ -35,6 +37,7 @@ export default function EForm() {
     e.preventDefault();
 
     const data = {
+      session: sessionID,
       fullname: fullname,
       nic: nic,
       email: email,
@@ -164,17 +167,17 @@ export default function EForm() {
 
     channellServices
       .create(data)
-
-      .then((response) => {
-        // alert("success");
-        console.log("inside create" + response.data);
-        console.log("inside then" + response.data);
-        history.push("/payments");
-        window.location.reload();
+        .then(() => {
+          sessionServices.increaseAppointmentCount(sessionID)
+              .then(() => {
+                  history.push("/payments");
+              })
+              .catch(error => {
+                alert("couldn't update session : " + error )
+              })
       })
       .catch((e) => {
-        // alert(e );
-        console.log("this is the error:" + e);
+        alert("this is the error:" + e);
       });
   };
 

@@ -10,11 +10,11 @@ import Paper from "@material-ui/core/Paper";
 import ActionBtn from "./ActionBtn";
 import empFormService from "../../../services/empForm.service";
 import { useEffect, useState } from "react";
-
+import PDF from "../../../components/PDF";
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    minWidth: 700,
   },
 });
 
@@ -24,9 +24,7 @@ function EmpList() {
   const [details, setDetails] = useState([]);
   useEffect(() => {
     getDetails();
-  },[]);
-
-
+  }, []);
 
   const getDetails = () => {
     empFormService
@@ -43,7 +41,7 @@ function EmpList() {
   let rows = [];
   for (const detail of details) {
     rows.push({
-      id:detail._id,
+      id: detail._id,
       role: detail.role,
       firstName: detail.firstName,
       lastName: detail.lastName,
@@ -52,9 +50,20 @@ function EmpList() {
       address: detail.address,
     });
   }
-  
+
+  const headers = [
+    "ID",
+    "Role",
+    "First Name",
+    "Last Name",
+    "Email",
+    "Mobile",
+    "Address",
+  ];
+
   console.log(rows);
   return (
+    <div>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -64,7 +73,6 @@ function EmpList() {
             <TableCell align="left">Last Name</TableCell>
             <TableCell align="left">Email</TableCell>
             <TableCell align="left">Mobile</TableCell>
-
             <TableCell align="left">Action</TableCell>
           </TableRow>
         </TableHead>
@@ -78,16 +86,20 @@ function EmpList() {
               <TableCell align="left">{row.lastName}</TableCell>
               <TableCell align="left">{row.email}</TableCell>
               <TableCell align="left">{row.mobile}</TableCell>
-
               <TableCell align="left">
-                <ActionBtn data={row.id}/>
+                <ActionBtn data={row.id} />
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    <div style={{float: "right", marginTop: 20, marginBottom: 10}}>
+    <PDF data={rows} headers={headers} title="Employee Report" />
+    </div>
+    </div>
   );
+
 }
 
 export default EmpList;
