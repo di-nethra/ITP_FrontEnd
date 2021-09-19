@@ -16,8 +16,9 @@ import { Formik } from 'formik';
 import TextField from "../../components/patient-ui/Echannelling/TextFeild";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
+import { Link } from "react-router-dom";
+import EditIcon from "@material-ui/icons/Edit";
+import { propTypes } from "qrcode.react";
  
 const INITIAL_FORM_STATE= {
   title: "",
@@ -61,6 +62,7 @@ function PostMessageForm() {
   }, []);
 
   const [inquiries, setInquiries] = useState([]);
+  
 
   const columns = [
     // { field: "id", headerName: "id", width: 0,  },
@@ -74,22 +76,41 @@ function PostMessageForm() {
     {
       field: "action",
       headerName: "Action",
-      width: 300,
+      width: 180,
       sortable: false,
       editable: false,
       renderCell: (params) => {
         return (
           <>
+
+
+          <Link to={"/patient/inquiry/editinquiry/"+params.row.id}>
+          <Button
+          size="small"
+          color="primary" 
+          variant="contained"
+          style= {{width:"50%" }}
+         
+          >
+            <EditIcon />
+           </Button>
+
+           </Link>
+          
             <Button
               size="small"
               color="secondary"
               variant="contained"
               value={params.row.id}
               onClick={deleteInquiry}
-              style= {{width:"50%" }}
+              style= {{width:"20%" }}
+               marginLeft="100px"
+              
             >
               <DeleteOutline />
             </Button>
+
+      
           </>
         );
       },
@@ -178,6 +199,7 @@ function PostMessageForm() {
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
 
+
   const handletitleChange = (event) => {
     setTitle(event.target.value);
   };
@@ -185,6 +207,8 @@ function PostMessageForm() {
     setMessage(event.target.value);
   };
   const classes = useStyles();
+
+ 
 
   return (
     <div style={{ margin: 100 }}>
@@ -206,6 +230,8 @@ function PostMessageForm() {
             
             className={`${classes.root} ${classes.form}`}
             onSubmit={handleSubmit}
+            
+          
           >
             <TextField
               name="title"
@@ -216,6 +242,7 @@ function PostMessageForm() {
               style={{ margin: 10 }}
               fullWidth
               required
+              
              
               
             />
@@ -250,6 +277,8 @@ function PostMessageForm() {
           </Formik>
         </CardContent>
       </Card>
+              <br/>
+  
 
       <div style={{ marginTop: 20 }}>
         <Card >

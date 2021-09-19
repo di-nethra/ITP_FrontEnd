@@ -63,7 +63,7 @@ const SysAdmin = () => {
               <Route exact path="/staff/sysadmin" component={EmpDashboard}/>
               <Route path="/staff/sysadmin/emplist" component={EmpList}/>
               <Route path="/staff/sysadmin/empform" component={EmpForm}/>
-              <Route path="/staff/sysadmin/payroll" component={Payroll}/>]
+              <Route path="/staff/sysadmin/payroll" component={Payroll}/>
               <Route path="/staff/sysadmin/empedit/:id" component={UpdateForm}/>
 
             </Switch>
