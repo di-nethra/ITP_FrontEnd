@@ -122,8 +122,6 @@ export default function Pending() {
             }
         )
     }
-    console.log(rows)
-
 
     return (
         <div>
