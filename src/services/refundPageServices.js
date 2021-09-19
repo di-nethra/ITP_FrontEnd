@@ -9,7 +9,7 @@ const get = (id) => {
 };
 
 const create = (data) => {
-  return http.post("/payments", data);
+  return http.post("/refund", data);
 };
 
 const update = (id, data) => {
@@ -24,7 +24,7 @@ const remove = (id) => {
 //   return http.delete(`/payments/info`);
 // };
 
-const CreditServices = {
+const RefundServices = {
   getAll,
   get,
   create,
@@ -33,4 +33,4 @@ const CreditServices = {
   // removeAll,
 };
 
-export default CreditServices;
+export default RefundServices;

@@ -1,14 +1,17 @@
 import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
+import Swal from "sweetalert2";
 import TextField from "@material-ui/core/TextField";
-import { useHistory } from "react-router-dom";
+import { useState } from "react";
+import { useHistory,Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { Card } from "@material-ui/core";
 import MobileFriendlyIcon from "@material-ui/icons/MobileFriendly";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import PayQr from "../../assets/images/MobileQr.svg";
+import MobileServices from "../../services/MobilePay.service";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +46,43 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MobileQrPay() {
+  function mobilePayCreate(e) {
+    e.preventDefault();
+   
+    
+    const data = {
+      name: Name,
+      phonenumber: PhoneNumber,
+    };
+    
+   MobileServices.create(data).then(()=>{
+     
+   }).catch((e)=>{
+     alert("mobile error"+e)
+   })
+
+     Swal.fire(
+       "Success",
+       "Your data is successfully saved for future use",
+       "success"
+     );
+
+   history.push("/payments/qrcode");
+
+  }
+
+  const [PhoneNumber, setPhoneNumber] = useState("");
+  const [Name, setName] = useState("");
+
+  function handleName(e) {
+    console.log(e.target.value);
+    setName(e.target.value);
+  }
+  function handleNumber(e) {
+    console.log(e.target.value);
+    setPhoneNumber(e.target.value);
+  }
+
   const classes = useStyles();
   const history = useHistory();
   return (
@@ -65,6 +105,8 @@ export default function MobileQrPay() {
                 margin="normal"
                 required
                 fullWidth
+                value={Name}
+                onChange={handleName}
                 label="Full name"
                 name="full name"
                 autoFocus
@@ -74,19 +116,23 @@ export default function MobileQrPay() {
                 margin="normal"
                 required
                 fullWidth
+                value={PhoneNumber}
+                onChange={handleNumber}
                 name="PhoneNumber"
                 label="Phone Number"
               />
-
-              <Button
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-                onClick={() => history.push("/payments/qrcode")}
-              >
-                Proceed to checkout
-              </Button>
+       
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  onClick={mobilePayCreate}
+                  
+                >
+                  Proceed to checkout
+                </Button>
+       
             </form>
           </div>
         </Card>

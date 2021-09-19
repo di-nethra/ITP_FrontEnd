@@ -1,0 +1,38 @@
+.infoLogo {
+  width: "500px";
+  margin-left: "200px";
+}
+
+.card {
+  color: "black";
+}
+
+.blueispirithale {
+  width: "150px";
+  padding-left: "300px";
+}
+
+.invoiceText {
+  padding-bottom: "500px";
+  color: red;
+}
+
+.price {
+  margin-left: "300px";
+}
+
+.text {
+  text-align: center;
+}
+.Paybutton {
+  margin-top: "40px";
+  width: "400px";
+  height: "50px";
+  background: "#3C4257";
+}
+
+.bill {
+  /* margin-left: 100px;
+  margin-bottom: 1000px;
+  width: 500px; */
+}

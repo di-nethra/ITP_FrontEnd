@@ -60,7 +60,7 @@ export default function InventoryList() {
         {
             field: "action",
             headerName: "Action",
-            width: 180,
+            width: 220,
             align: 'center',
             renderCell: (params) => {
                 return (
@@ -69,10 +69,17 @@ export default function InventoryList() {
 
                             <button className="userListEdit">Edit</button>
                         </Link>
+
+                        <Link to={"/staff/inventorymanager/restockitems/" + params.row.id}>
+                            <button className="userListEdit" style={{backgroundColor:"green"}}>Restock</button>
+                        </Link>
+
                         <Button size="small" color="secondary" variant="contained" value={params.row.id}
                                 onClick={deleteInventory}><DeleteSweepOutlinedIcon
                             color="primary"
                             style={hoveredStyle}/></Button>
+
+                            
 
 
                     </>

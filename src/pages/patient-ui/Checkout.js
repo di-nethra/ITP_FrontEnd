@@ -9,50 +9,8 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import SummaryBackground from "../../assets/images/summary.gif";
 import PaymentSummaryText from "../../assets/images/PaymentSummary.svg";
-import { Link } from "react-router-dom";
-import { Payhere, AccountCategory } from "payhere-js-sdk";
-import {
-  Customer,
-  CurrencyType,
-  PayhereCheckout,
-  CheckoutParams,
-} from "payhere-js-sdk";
-Payhere.init("1218569", AccountCategory.SANDBOX);
-function onPayhereCheckoutError(errorMsg) {
-  alert(errorMsg);
-}
-function checkout() {
-  const customer = new Customer({
-    first_name: "Ispirithalei",
-    last_name: "WACYAMDA",
-    phone: "+94771234567",
-    email: "plumberhl@gmail.com",
-    address: "No. 50, Highlevel Road",
-    city: "Panadura",
-    country: "Sri Lanka",
-  });
 
-  const checkoutData = new CheckoutParams({
-    returnUrl: "http://localhost:3000/return",
-    cancelUrl: "http://localhost:3000/cancel",
-    notifyUrl: "http://localhost:8080/notify",
-    order_id: "112233",
-    itemTitle: "ispirithalei",
-    currency: CurrencyType.LKR,
-    amount: 100,
-  });
-
-  const checkout = new PayhereCheckout(
-    customer,
-    checkoutData,
-    onPayhereCheckoutError
-  );
-  var win = window.open("/payments/invoice", "title");
-  checkout.start();
-  win();
-}
-
-const styles = (theme) => ({
+const styles = (thgiteme) => ({
   infoLogo: {
     width: "500px",
     marginLeft: "200px",
@@ -108,28 +66,16 @@ const styles = (theme) => ({
 // });
 
 export class Checkout extends Component {
-  //  paymentCreditService
-  //     .create(data)
-
-  //     .then((response) => {
-  //       alert("success");
-  //       console.log("inside create" + response.data);
-
-  //       this.setState({
-  //         name: response.data.nameOnTheCard,
-  //         email: response.data.email,
-  //       });
-  //       console.log("inside then" + response.data);
-  //     })
-  //     .catch((e) => {
-  //       alert(e);
-  //       console.log("this is the error:" + e);
-  //     });
-
+  continue = (e) => {
+    e.preventDefault();
+    this.props.nextStep();
+  };
   render() {
     const { classes } = this.props;
-
-    // console.log(this.props.values);
+    const passsingData = {
+      name: "chamara",
+    };
+    console.log("checkout:" + this.props.values.email);
     return (
       <div>
         <Grid container direction="row">
@@ -206,16 +152,14 @@ export class Checkout extends Component {
                 className={classes.label}
               />
 
-              <Link to="/payments/invoice">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.Paybutton}
-                  onClick={checkout}
-                >
-                  Pay Rs.0.00
-                </Button>
-              </Link>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.Paybutton}
+                onClick={this.continue}
+              >
+                Download Report
+              </Button>
             </form>
           </Grid>
         </Grid>

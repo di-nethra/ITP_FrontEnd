@@ -122,7 +122,6 @@ export default function CheckedIn() {
         )
     }
 
-
     return (
         <div>
             <Card>
