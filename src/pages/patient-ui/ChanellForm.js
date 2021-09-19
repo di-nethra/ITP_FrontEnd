@@ -3,7 +3,7 @@ import React from "react";
 import Controls from "../../components/patient-ui/Echannelling/Controls";
 import {Form} from "../../components/patient-ui/Echannelling/useForm";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import channellServices from "../../services/echannelling.Service";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,6 +28,7 @@ import { useHistory } from "react-router";
 // };
 
 export default function EForm() {
+  let { sessionID } = useParams();
   const history = useHistory();
   const handleSubmit = (e) => {
     console.log("submitted");
@@ -35,6 +36,7 @@ export default function EForm() {
     e.preventDefault();
 
     const data = {
+      session: sessionID,
       fullname: fullname,
       nic: nic,
       email: email,
