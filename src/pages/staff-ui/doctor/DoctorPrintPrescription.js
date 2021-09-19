@@ -7,7 +7,9 @@ import ISPIRITHALEI from "../../../assets/2.png";
 import { Link } from "react-router-dom";
 import "./doctor.css"
 import PrescriptionDataService from "../../../services/doctorPrescriptionService";
-import { date } from "yup";
+import Pdf from "react-to-pdf";
+
+const ref = React.createRef();
 
 function DoctorPrintPrescription() {
     const { id } = useParams();
@@ -44,44 +46,51 @@ function DoctorPrintPrescription() {
         <div style={{ marginBottom: 10 }}>
             <Card>
                 <CardContent>
-                    <Card style={{ width: "70%", margin: "auto" }}>
-                        <CardContent>
-                            <div style={{ textAlign: "center" }}>
-                                <img src={ISPIRITHALEI} />
-                                <p style={{ fontSize: 15 }} >647, Utuwakanda, Mawanella.<br />TEL : +9411 2696 696 / +9411 269 696 <br />FAX : +9411 2696 969<br />EMAIL : reception@ispirithalei.lk</p>
+                    <>
+                        <Card style={{ width: "70%", margin: "auto" }}>
+                            <div ref={ref}>
+                                <CardContent>
+                                    <div style={{ textAlign: "center" }}>
+                                        <img src={ISPIRITHALEI} />
+                                        <p style={{ fontSize: 15 }} >647, Utuwakanda, Mawanella.<br />TEL : +9411 2696 696 / +9411 269 696 <br />FAX : +9411 2696 969<br />EMAIL : reception@ispirithalei.lk</p>
+                                    </div>
+                                    <br />
+
+                                    <p style={{ float: "right", fontSize: 15 }}><strong>Issued Doctor ID : </strong>{prescription.dId}</p>
+                                    <p style={{ fontSize: 15 }}><strong>Date of issue : </strong>{today}</p>
+
+                                    <hr />
+                                    <br />
+
+                                    <p style={{ textAlign: "center" }}><strong>Patient Name : </strong>{prescription.dPName}
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                        <strong>Diagnosis : </strong>{prescription.dPDignosis}</p>
+                                    <br />
+                                    <hr style={{ width: "80%", margin: "auto" }} />
+                                    <br />
+
+                                    <p style={{ textAlign: "center" }}><strong>Medicine 1 : </strong>{prescription.dMed1}
+                                        &emsp;&emsp;&emsp;
+                                        <strong>Dose : </strong>{prescription.dDose1}</p>
+                                    <br />
+
+                                    <p style={{ textAlign: "center" }}><strong>Medicine 2 : </strong>{prescription.dMed2}
+                                        &emsp;&emsp;&emsp;
+                                        <strong>Dose : </strong>{prescription.dDose2}</p>
+                                    <br />
+                                </CardContent>
                             </div>
-                            <br />
+                        </Card>
 
-                            <p style={{ float: "right", fontSize: 15 }}><strong>Issued Doctor ID : </strong>{prescription.dId}</p>
-                            <p style={{ fontSize: 15 }}><strong>Date of issue : </strong>{today}</p>
-
-                            <hr />
-                            <br />
-
-                            <p style={{ textAlign: "center" }}><strong>Patient Name : </strong>{prescription.dPName}
-                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                                <strong>Diagnosis : </strong>{prescription.dPDignosis}</p>
-                            <br />
-                            <hr style={{ width: "80%", margin:"auto" }} />
-                            <br />
-
-                            <p style={{ textAlign: "center" }}><strong>Medicine 1 : </strong>{prescription.dMed1}
-                                &emsp;&emsp;&emsp;
-                                <strong>Dose : </strong>{prescription.dDose1}</p>
-                            <br />
-
-                            <p style={{ textAlign: "center" }}><strong>Medicine 2 : </strong>{prescription.dMed2}
-                                &emsp;&emsp;&emsp;
-                                <strong>Dose : </strong>{prescription.dDose2}</p>
-                            <br />
-                        </CardContent>
-                    </Card>
-                    <div className="buttonAlignMiddle" style={{ marginTop: 10 }}>
-                        <Link to={"/staff/doctor/viewprescription/" + prescription.dId}>
-                            <Button size="large" variant="contained" style={{ marginRight: 8 }}>Cancel</Button>
-                        </Link>
-                        <Button size="large" variant="contained" color="primary" type="submit">Generate PDF</Button>
-                    </div>
+                        <div className="buttonAlignMiddle" style={{ marginTop: 10 }}>
+                            <Link to={"/staff/doctor/viewprescription/" + prescription.dId}>
+                                <Button size="large" variant="contained" style={{ marginRight: 8 }}>Cancel</Button>
+                            </Link>
+                            <Pdf targetRef={ref} filename={prescription.dPName}>
+                                {({ toPdf }) => <Button size="large" variant="contained" color="primary" type="submit" onClick={toPdf}>Generate PDF</Button>}
+                            </Pdf>
+                        </div>
+                    </>
                 </CardContent>
             </Card>
         </div>
