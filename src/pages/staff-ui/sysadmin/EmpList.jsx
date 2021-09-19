@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    minWidth: 700,
   },
 });
 
@@ -64,7 +64,6 @@ function EmpList() {
             <TableCell align="left">Last Name</TableCell>
             <TableCell align="left">Email</TableCell>
             <TableCell align="left">Mobile</TableCell>
-
             <TableCell align="left">Action</TableCell>
           </TableRow>
         </TableHead>
@@ -78,7 +77,6 @@ function EmpList() {
               <TableCell align="left">{row.lastName}</TableCell>
               <TableCell align="left">{row.email}</TableCell>
               <TableCell align="left">{row.mobile}</TableCell>
-
               <TableCell align="left">
                 <ActionBtn data={row.id}/>
               </TableCell>
