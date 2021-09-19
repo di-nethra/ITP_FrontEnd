@@ -19,7 +19,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 import EditIcon from "@material-ui/icons/Edit";
 import { propTypes } from "qrcode.react";
- 
+import { Assessment } from "@material-ui/icons";
+import PDF from "../../components/PDF";
 const INITIAL_FORM_STATE= {
   title: "",
   message: "",
@@ -66,11 +67,11 @@ function PostMessageForm() {
 
   const columns = [
     // { field: "id", headerName: "id", width: 0,  },
-    { field: "title", headerName: "Title", width: 500 },
+    { field: "title", headerName: "Title", width: 250 },
     {
       field: "message",
       headerName: "Message",
-      width: 700,
+      width: 850,
       editable: false,
     },
     {
@@ -208,7 +209,7 @@ function PostMessageForm() {
   };
   const classes = useStyles();
 
- 
+  const headers = ["ID", "Title", "Message"]
 
   return (
     <div style={{ margin: 100 }}>
@@ -296,6 +297,9 @@ function PostMessageForm() {
             </div>
           </CardContent>
         </Card>
+
+              <br/>
+              <PDF data={rows} headers={headers} title="Monthly Inquiry Reoport" />
       </div>
     </div>
   );
