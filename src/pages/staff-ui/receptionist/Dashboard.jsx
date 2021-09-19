@@ -40,7 +40,7 @@ function Dashboard() {
                                         <CardContent style={{paddingTop:"0"}}>
                                             {!loading ? <h1>{value.number}</h1> :
                                                 <Skeleton variant="text" className="countSkeleton" width={32}
-                                                          height={64} component={"h1"}/>}
+                                                          height={64} />}
                                         </CardContent>
                                     </Card>
                                 </Link>
