@@ -3,8 +3,7 @@ import styles from "../patientUI.module.css";
 import Logo from "./Logo.js"
 import {Fade, Grid, Hidden, Slide} from "@material-ui/core";
 import Navigation from "./Navigation";
-import ButtonOnNav from "./ButtonOnNav";
-import HistoryIcon from "@material-ui/icons/History";
+import ButtonOnNav from "./ButtonOnNav";import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {Link} from "react-router-dom";
 
@@ -26,10 +25,11 @@ function Header() {
                     </Hidden>
                     <Fade timeout={1500} in={true}>
                         <Grid item xl={3} lg={3} md={4} sm={5} xs={6} className={styles.navBtnGrid}>
+                            <Link to="/patient/inquiry" style={{textDecoration:"none"}}>
                             <ButtonOnNav
-                                text={"History"}
-                                icon={<HistoryIcon/>}/>
-
+                                text={"FAQ"}
+                                icon={<LiveHelpIcon/>}/>
+                            </Link>
                             <Link to="/login" style={{textDecoration:"none"}}>
                                 <ButtonOnNav
                                     text={"Login"}
