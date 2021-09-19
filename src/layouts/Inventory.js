@@ -86,9 +86,9 @@ const Inventory = () => {
                 <Restock />
               </Route>
 
-              <Route path="/staff/inventorymanager/support">
+              {/* <Route path="/staff/inventorymanager/support">
                 <InventoryReport />
-              </Route>
+              </Route> */}
 
               <Route path="/staff/inventorymanager/viewregistereditem/:topicId">
             <InventoryItem />
