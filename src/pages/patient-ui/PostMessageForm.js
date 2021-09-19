@@ -18,11 +18,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
+ 
 const INITIAL_FORM_STATE= {
   title: "",
   message: "",
 };
+ 
 const FORM_VALIDATION = Yup.object().shape({
 
   title: Yup.string()
@@ -149,8 +150,8 @@ function PostMessageForm() {
     e.preventDefault();
 
     const data = {
-      Title: title,
-      Message: message,
+      title: title,
+      message: message,
     };
 
     inquiryServices
@@ -197,7 +198,7 @@ function PostMessageForm() {
                 ...INITIAL_FORM_STATE
               }}
               validationSchema={FORM_VALIDATION}
-              
+             onSubmit={handleSubmit}
             >
 
           <form
@@ -214,7 +215,8 @@ function PostMessageForm() {
               onChange={handletitleChange}
               style={{ margin: 10 }}
               fullWidth
-              
+              required
+             
               
             />
             <br></br>
@@ -228,6 +230,7 @@ function PostMessageForm() {
               value={message}
               onChange={handlmessageChange}
               style={{ margin: 10 }}
+              required
               
             />
             <Button
