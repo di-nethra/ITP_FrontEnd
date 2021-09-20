@@ -3,7 +3,7 @@ import React from "react";
 import Controls from "../../components/patient-ui/Echannelling/Controls";
 import {Form} from "../../components/patient-ui/Echannelling/useForm";
 import { useState } from "react";
-import {Link, useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
 import channellServices from "../../services/echannelling.Service";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -46,7 +46,10 @@ export default function EForm() {
     };
 
  
-     if(data.fullname.includes(" "||"a"||"b"||"c"||"d"||"e"||"f"||"g"||"h"||"i"||"j"||"k"||"l"||"m"||"o"||"p"||"q"||"r"||"s"||"t"||"u"||"v"||"w"||"x"||"y"||"z"||"A"||"B"||"C"||"D"||"E"||"F"||"G"||"H"||"I"||"J"||"K"||"L"||"M"||"O"||"P"||"Q"||"R"||"S"||"T"||"U"||"V"||"W"||"X"||"Y"||"Z",0)){
+  
+
+
+    if(data.fullname.includes(" "||"a"||"b"||"c"||"d"||"e"||"f"||"g"||"h"||"i"||"j"||"k"||"l"||"m"||"o"||"p"||"q"||"r"||"s"||"t"||"u"||"v"||"w"||"x"||"y"||"z"||"A"||"B"||"C"||"D"||"E"||"F"||"G"||"H"||"I"||"J"||"K"||"L"||"M"||"O"||"P"||"Q"||"R"||"S"||"T"||"U"||"V"||"W"||"X"||"Y"||"Z"||" ",0)){
 
     }else{
       toast.error("Please ONLY enter characters to the name feild ",{
@@ -57,24 +60,6 @@ export default function EForm() {
 
       return null;
     }
-
-    // let letters=['a','b','c','d','e','f','g','g','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-
-    // if(data.fullname.includes(letters,0)){
-        
-    // }else{
-
-    //   toast.error("Please ONLY enter Characters to the Name feild",{
-    //     className:"error-toast",
-    //     draggable:true,
-    //     position:toast.POSITION.TOP_RIGHT,
-    //     autoClose:false
-    //   }); 
-
-    //   return null;
-
-    // }
-
 
 
 
@@ -290,9 +275,9 @@ export default function EForm() {
             />
             <ToastContainer />
             
-            <Link to="/patient/inquiry">
+            {/* <Link to="/patient/inquiry">
               <Controls.Button text="Inquiry" />
-            </Link>
+            </Link> */}
           </div>
         </container>
       </Form>

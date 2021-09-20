@@ -71,11 +71,11 @@ export default function RefundPage() {
   const [Paragraph, setParagraph] = useState("");
 
   function handlePaymentId(e) {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setPaymetId(e.target.value);
   }
   function handleParagraph(e) {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setParagraph(e.target.value);
   }
 

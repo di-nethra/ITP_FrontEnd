@@ -14,7 +14,7 @@ export class Example extends React.PureComponent {
       name: this.props.values.email,
     };
     // console.log("download eka:" + state);
-    console.log("props value tika " + this.props.values.email);
+    // console.log("props value tika " + this.props.values.email);
     const email = this.props.values.email;
 
     return (
