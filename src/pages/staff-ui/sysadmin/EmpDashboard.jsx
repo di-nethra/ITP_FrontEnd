@@ -31,13 +31,13 @@ const columns = [
     field: "mobile",
     headerName: "Mobile",
     // type: "number",
-    width: 175,
+    width: 150,
     editable: true,
   },
   {
     field: "address",
     headerName: "Address",
-    width: 175,
+    width: 350,
     editable: true,
   },
 

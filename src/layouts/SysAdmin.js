@@ -14,6 +14,7 @@ import Payroll from "../pages/staff-ui/sysadmin/Payroll";
 import UpdateForm from "../pages/staff-ui/sysadmin/UpdateForm";
 import Inquiries from "../pages/staff-ui/sysadmin/Inquiries";
 import { Help } from "@material-ui/icons";
+import Payslip from "../pages/staff-ui/sysadmin/Payslip";
 
 const SysAdmin = () => {
   let temp = sessionStorage.getItem("user");
@@ -73,6 +74,7 @@ const SysAdmin = () => {
               <Route path="/staff/sysadmin/payroll" component={Payroll}/>
               <Route path="/staff/sysadmin/empedit/:id" component={UpdateForm}/>
               <Route path="/staff/sysadmin/Inquirires" component={Inquiries} />
+              <Route path="/staff/sysadmin/payslip/:id" component={Payslip}/>
 
             </Switch>
           </div>
