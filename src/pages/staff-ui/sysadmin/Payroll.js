@@ -58,25 +58,25 @@ function Payroll() {
   const checkRole = (rows) => {
     let salary ="default";
 
-    if(rows.role == "Doctor"){
+    if(rows.role === "Doctor"){
        salary = "$2500"
     }
-    else if(rows.role == "InventoryManager"){
+    else if(rows.role === "InventoryManager"){
        salary = "$800"
     }
-    else if(rows.role == "Labassistant"){
+    else if(rows.role === "Labassistant"){
        salary = "$600"
     }
-    else if(rows.role == "Pharmasist"){
+    else if(rows.role === "Pharmasist"){
        salary = "$1000"
     }
-    else if(rows.role == "PaymentAdmin"){
+    else if(rows.role === "PaymentAdmin"){
        salary = "$700"
     }
-    else if(rows.role == "Receptionist"){
+    else if(rows.role === "Receptionist"){
       salary = "$300"
    }
-   else if(rows.role == "SysAdmin"){
+   else if(rows.role === "SysAdmin"){
     salary = "$1100"
  }
     return salary;
