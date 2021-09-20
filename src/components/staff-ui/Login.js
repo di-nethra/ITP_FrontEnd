@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
     Button,
     Grid,
@@ -9,7 +9,7 @@ import {
 import "./login.css";
 import login_bg from "../../assets/images/login_bg.svg";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import logo from "../../assets/1.png";
 import login from "../../services/login.Service";
 import { useHistory, Link } from "react-router-dom";
@@ -75,84 +75,83 @@ export default function Login() {
                         }
                     }
                 }
-                }
+            }
             )
-            .
-                catch((e) => {
-                    Swal.fire(
-                        "Access Denied",
-                        "Please use valid user credentials",
-                        "error"
-                      );
-                    // alert(e);
-                    console.log("ERROR : " + e);
-                });
-            };
+            .catch((e) => {
+                Swal.fire(
+                    "Access Denied",
+                    "Please use valid user credentials",
+                    "error"
+                );
+                // alert(e);
+                console.log("ERROR : " + e);
+            });
+    };
 
-        const classes = useStyles();
+    const classes = useStyles();
 
-        return (
-            <Grid container>
-                <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
-                    <div className="formContainer">
-                        <div>
-                            <Typography variant="h1" align="center">
-                                <LockOutlinedIcon style={{fontSize: "5rem"}}/>
-                            </Typography>
-                            <Typography variant="h4" align="center">
-                                STAFF LOGIN
-                            </Typography>
-                            <form noValidate method="post">
-                                <TextField
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    id="email"
-                                    label="email"
-                                    name="email"
-                                    value={email}
-                                    onChange={handleEmailChange}
-                                    autoComplete="email"
-                                    autoFocus
-                                />
-                                <TextField
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    name="password"
-                                    value={password}
-                                    label="Password"
-                                    onChange={handlePasswordChange}
-                                    type="password"
-                                    id="password"
-                                    autoComplete="current-password"
-                                />
+    return (
+        <Grid container>
+            <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
+                <div className="formContainer">
+                    <div>
+                        <Typography variant="h1" align="center">
+                            <LockOutlinedIcon style={{ fontSize: "5rem" }} />
+                        </Typography>
+                        <Typography variant="h4" align="center">
+                            STAFF LOGIN
+                        </Typography>
+                        <form noValidate method="post">
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="email"
+                                name="email"
+                                value={email}
+                                onChange={handleEmailChange}
+                                autoComplete="email"
+                                autoFocus
+                            />
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                value={password}
+                                label="Password"
+                                onChange={handlePasswordChange}
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                            />
 
-                                <Button
-                                    type="submit"
-                                    fullWidth
-                                    variant="contained"
-                                    color="primary"
-                                    className={classes.button}
-                                    onClick={handleSubmit}
-                                >
-                                    Sign In
-                                </Button>
-                            </form>
-                        </div>
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                className={classes.button}
+                                onClick={handleSubmit}
+                            >
+                                Sign In
+                            </Button>
+                        </form>
+                    </div>
+                </div>
+            </Grid>
+            <Hidden smDown>
+                <Grid item xl={8} lg={8} md={6}>
+                    <div className="rightside">
+                        <Link to=""><img src={logo} className="loginLogo" alt="ispirithalei logo"
+                            style={{ zIndex: "99", padding: "20px 0" }} /></Link>
+                        <img src={login_bg} className="loginBgImage" alt="doctors" />
                     </div>
                 </Grid>
-                <Hidden smDown>
-                    <Grid item xl={8} lg={8} md={6}>
-                        <div className="rightside">
-                            <Link to=""><img src={logo} className="loginLogo" alt="ispirithalei logo"
-                                             style={{zIndex: "99", padding: "20px 0"}}/></Link>
-                            <img src={login_bg} className="loginBgImage" alt="doctors"/>
-                        </div>
-                    </Grid>
-                </Hidden>
-            </Grid>
-        );
-    }
+            </Hidden>
+        </Grid>
+    );
+}

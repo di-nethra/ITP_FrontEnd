@@ -2,7 +2,6 @@ import React from 'react'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import DocSupport from "../../../assets/images/docSupport.gif";
-import ImageBrightness3 from 'material-ui/svg-icons/image/brightness-3';
 
 export default function DoctorSupport() {
     return (
@@ -12,7 +11,7 @@ export default function DoctorSupport() {
                     <p style={{ textAlign: "center", fontSize: 24 }}> Doctor Account Help and Support</p>
                     <br />
                     <div>
-                        <img src={DocSupport} style={{ height: 300, width: "100%", opacity: 1 }} />
+                        <img src={DocSupport} style={{ height: 300, width: "100%", opacity: 1 }} alt="Support" />
                     </div>
                     <br />
                     <p style={{ fontSize: 16 }}>If you face any difficulties in using the functions provided by our system or if you face any other dificulty please contact our system admin via the following contact options.</p>

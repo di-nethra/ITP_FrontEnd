@@ -11,7 +11,7 @@ export default function InventorySupport() {
                     <p style={{ textAlign: "center", fontSize: 24 }}> Inventory Help & Support Page</p>
                     <br />
                     <div>
-                        <img src={DocSupport} style={{ height: 300, width: "100%", opacity: 1 }} />
+                        <img src={DocSupport} style={{ height: 300, width: "100%", opacity: 1 }} alt="Support" />
                     </div>
                     <br />
                     <p style={{ fontSize: 16 }}>If you face any difficulties in using the functions provided by our system or if you face any other dificulty please contact our system admin via the following contact options.</p>

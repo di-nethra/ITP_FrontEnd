@@ -50,7 +50,7 @@ function ClientLabReport() {
                             <div ref={ref}>
                                 <CardContent>
                                     <div style={{ textAlign: "center" }}>
-                                        <img src={ISPIRITHALEI} />
+                                        <img src={ISPIRITHALEI} alt="Ispirithalei logo" />
                                         <p style={{ fontSize: 15 }} >647, Utuwakanda, Mawanella.<br />TEL : +9411 2696 696 / +9411 269 696 <br />FAX : +9411 2696 969<br />EMAIL : reception@ispirithalei.lk</p>
                                     </div>
                                     <br />

@@ -8,7 +8,7 @@ function Support() {
         <div style={{marginBottom: 10}}>
             <Card>
                 <CardContent>
-                    <p style={{textAlign: "center", fontSize: 24}}> Doctor Account Help and Support</p>
+                    <p style={{textAlign: "center", fontSize: 24}}> Receptionist Account Help and Support</p>
                     <br/>
                     <div>
                         <img alt="support" src={DocSupport} style={{height: 300, width: "100%", opacity: 1}}/>

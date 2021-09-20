@@ -61,7 +61,7 @@ export default function DoctorHome(props) {
     for (const appointment of appointments) {
         // console.log("CUser:" + props.user)
         // console.log("DSession:" + appointment.dSession?.doctor_id)
-        if (appointment.dSession?.doctor_id == props.user) {
+        if (appointment.dSession?.doctor_id === props.user) {
             rows.push(
                 {
                     id: appointment._id,
