@@ -6,7 +6,7 @@ const TextfieldWrapper = ({
   name,
   ...otherProps
 }) => {
-  const [field, mata] = useField(name);
+  const [field] = useField(name);
 
   const configTextfield = {
     ...field,
