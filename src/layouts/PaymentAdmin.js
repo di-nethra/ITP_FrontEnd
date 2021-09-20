@@ -10,7 +10,8 @@ import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 import { Typography } from "@material-ui/core";
 import DisplayCredit from "../components/staff-ui/DisplayCredit";
 import PaymentDashbord from "../pages/staff-ui/paymenentAdmin/PaymentDashbord";
-import PaymentSamapleData from "../pages/staff-ui/paymenentAdmin/PaymentSamapleData";
+import MobilePayPayments from "../pages/staff-ui/paymenentAdmin/mobilePayData";
+import RefundData from "../pages/staff-ui/paymenentAdmin/RefundData";
 
 const PaymentAdmin = () => {
   let temp = sessionStorage.getItem("user");
@@ -74,10 +75,10 @@ const PaymentAdmin = () => {
               <DisplayCredit />
             </Route>
             <Route path="/staff/Paymentadmin/mobilePay">
-              <PaymentSamapleData />
+              <MobilePayPayments />
             </Route>
             <Route path="/staff/Paymentadmin/refunds">
-              <PaymentSamapleData />
+              <RefundData />
             </Route>
             <Route path="/staff/Paymentadmin/">
               <PaymentDashbord />

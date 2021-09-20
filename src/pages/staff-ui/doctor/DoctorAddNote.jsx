@@ -39,7 +39,7 @@ const DoctorAddNote = () => {
                     pNoteMessage: response.data.pNoteMessage
                 });
                 // setSubmitted(true);
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch(err => {
                 console.log(err);
@@ -52,9 +52,9 @@ const DoctorAddNote = () => {
     };
 
     //console.log(note.id);
-    console.log(note.pNoteId);
-    console.log(note.pNoteName);
-    console.log(note.pNoteMessage);
+    //console.log(note.pNoteId);
+    //console.log(note.pNoteName);
+    //console.log(note.pNoteMessage);
 
     return (
         <div style={{ marginBottom: 10 }}>

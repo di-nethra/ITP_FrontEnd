@@ -17,7 +17,6 @@ export default function InventoryList() {
         InventoryDataService.getAll()
             .then(response => {
                 setInventory(response.data);
-                console.log(response.data);
             })
             .catch(e => {
                 console.log(e);
@@ -60,7 +59,7 @@ export default function InventoryList() {
         {
             field: "action",
             headerName: "Action",
-            width: 180,
+            width: 220,
             align: 'center',
             renderCell: (params) => {
                 return (
@@ -69,10 +68,17 @@ export default function InventoryList() {
 
                             <button className="userListEdit">Edit</button>
                         </Link>
+
+                        <Link to={"/staff/inventorymanager/restockitems/" + params.row.id}>
+                            <button className="userListEdit" style={{backgroundColor:"green"}}>Restock</button>
+                        </Link>
+
                         <Button size="small" color="secondary" variant="contained" value={params.row.id}
                                 onClick={deleteInventory}><DeleteSweepOutlinedIcon
                             color="primary"
                             style={hoveredStyle}/></Button>
+
+                            
 
 
                     </>
@@ -82,7 +88,6 @@ export default function InventoryList() {
     ];
 
     const deleteInventory = event => {
-        console.log(event.currentTarget.value)
         InventoryDataService.remove(event.currentTarget.value)
 
       .then(response => {

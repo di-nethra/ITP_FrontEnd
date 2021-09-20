@@ -8,36 +8,36 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import Button from '@material-ui/core/Button';
 
 export default function SubbmittedTests() {
-  
+
   const columns = [
     { field: 'specimenid', headerName: 'Specimen ID', width: 140 },
     {
-        field: 'starteddate',
-        headerName: 'Date Started',
-        width: 200,
-        type:'date',
-        editable: true,
+      field: 'starteddate',
+      headerName: 'Date Started',
+      width: 200,
+      type: 'date',
+      editable: true,
     },
     {
-        field: 'completeddate',
-        headerName: 'Date Finished',
-        width: 200,
-        type:'date',
-        editable: true,
+      field: 'completeddate',
+      headerName: 'Date Finished',
+      width: 200,
+      type: 'date',
+      editable: true,
     },
     {
-        field: 'testtype',
-        headerName: 'Specimen Type',
-        type: 'text',
-        width: 130,
-        editable: true,
+      field: 'testtype',
+      headerName: 'Specimen Type',
+      type: 'text',
+      width: 130,
+      editable: true,
     },
     {
-        field: 'status',
-        headerName: 'Status',
-        type: 'text',
-        width: 130,
-        editable: true,
+      field: 'status',
+      headerName: 'Status',
+      type: 'text',
+      width: 130,
+      editable: true,
     },
     {
       field: "action",
@@ -62,6 +62,7 @@ export default function SubbmittedTests() {
       },
     }
   ];
+
 
   const deleteTest = event => {
     Swal.fire({
@@ -122,3 +123,4 @@ export default function SubbmittedTests() {
     </div>
   );
 }
+

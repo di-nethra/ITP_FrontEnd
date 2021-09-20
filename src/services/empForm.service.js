@@ -9,8 +9,8 @@ const getAll = () => {
   return http.get("/empform");
 };
 
-const get = (id) => {
-  return http.get("/empform/emp/" + id);
+const getOneEmployee = (id) => {
+  return http.get("/empform/" + id);
 };
 
 const create = (data) => {
@@ -32,7 +32,7 @@ const removeAll = () => {
 const empformServices = {
   getAllDoctors,
   getAll,
-  get,
+  getOneEmployee,
   create,
   update,
   remove,

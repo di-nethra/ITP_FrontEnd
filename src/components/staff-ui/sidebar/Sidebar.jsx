@@ -9,7 +9,7 @@ export default function Sidebar(props) {
           <div className="sidebarWrapper">
             <div className="sidebarMenu">
               <div className="logo">
-                  <a className="logo1" href="/">
+                  <a className="logo1" href={"/staff/"+props.user.role.toLowerCase()}>
                     <img src={ISPIRITHALEI} alt="brandLogo" className="img-logo" />
                   </a>
               </div>

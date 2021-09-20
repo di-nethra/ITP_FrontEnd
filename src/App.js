@@ -15,8 +15,6 @@ import Inventory from "./layouts/Inventory";
 import SysAdmin from "./layouts/SysAdmin";
 import PaymentAdmin from "./layouts/PaymentAdmin";
 import UserForm from "./components/patient-ui/Payments/UserForm";
-import Checkout from "./pages/patient-ui/Checkout";
-import PaymentInvoice from "./pages/patient-ui/PaymentInvoice";
 import PaymentOptionPage from "./pages/patient-ui/PaymentOptionPage";
 import MobileQrPay from "./pages/patient-ui/MobileQrPay";
 import QRpage from "./pages/patient-ui/QRpage";
@@ -24,8 +22,7 @@ import RefundPage from "./pages/patient-ui/RefundsPage";
 import PageNotFound from "./pages/PageNotFound";
 import PatientAppointment from "./layouts/PatientAppointment";
 import PrivateRoute from "./PrivateRoute";
-
-
+import ClientLabReport from "./pages/patient-ui/ClientLabReport";
 const theme = createTheme({
   palette: {
     primary: {
@@ -73,18 +70,12 @@ const App = () => (
             </Switch>
           </Route>
         </PrivateRoute>
-        <Route
-          path={[
-            "/payments",
-            "/patient",
-            "/about",
-            "/labreports",
-          ]}
-        >
+        <Route path={["/payments", "/patient", "/about", "/labreports","/labreport/download/:id"]}>
           <Header />
           <Switch>
             <Route path="/about" component={About} />
             <Route path="/labreports" component={LabReport} />
+            <Route path="/labreport/download/:id" component={ClientLabReport} />
             <Route path="/patient" component={PatientAppointment} />
             <Route path="/payments">
               <PaymentNavigation />
@@ -96,7 +87,7 @@ const App = () => (
                   <RefundPage />
                 </Route>
                 <Route path="/payments/checkout">
-                  <Checkout />
+                  <UserForm />
                 </Route>
                 <Route path="/payments/mobileqr">
                   <MobileQrPay />
@@ -105,7 +96,7 @@ const App = () => (
                   <QRpage />
                 </Route>
                 <Route path="/payments/invoice">
-                  <PaymentInvoice />
+                  <UserForm />
                 </Route>
                 <Route path="/payments">
                   <PaymentOptionPage />
