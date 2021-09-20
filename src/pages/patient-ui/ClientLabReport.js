@@ -43,10 +43,10 @@ function ClientLabReport() {
 
     return (
         <div style={{ marginBottom: 10 }}>
-            <Card>
+            <Card style={{ width: "70%", margin: "auto" }}>
                 <CardContent>
                     <>
-                        <Card style={{ width: "80%", margin: "auto" }}>
+                        <Card style={{ width: "70%", margin: "auto" }}>
                             <div ref={ref}>
                                 <CardContent>
                                     <div style={{ textAlign: "center" }}>
