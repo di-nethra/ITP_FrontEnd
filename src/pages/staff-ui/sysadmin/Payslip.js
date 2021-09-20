@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import CardContent from "@material-ui/core/CardContent";
 import { Card } from "@material-ui/core";
 import ISPIRITHALEI from "../../../assets/2.png";
@@ -16,31 +13,51 @@ import Grid from "@material-ui/core/Grid";
 
 const ref = React.createRef();
 
-const earnings = [
-  { name: "Basic Salary", price: "$9.99" },
-  { name: "House Rent Allowence", price: "$3.45" },
-  { name: "Gas Allowence", price: "$6.51" },
-];
-
-const deductions = [
-  { name: "Professional Tax", price: "$9.99" },
-  { name: "VAT", price: "$3.45" },
-];
-
 //date generation
 var today = new Date();
-var dd = String(today.getDate()).padStart(2, "0");
-var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-var yyyy = today.getFullYear();
+// var dd = String(today.getDate()).padStart(2, "0");
+// var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+// var yyyy = today.getFullYear();
 
-today = dd + "/" + mm + "/" + yyyy + " payslip";
+let longMonth = today.toLocaleString("en-us", { month: "long" }); /* June */
 
-const Payslip = () => {
+
+
+function Payslip() {
   const id = useParams();
   console.log(id.id);
 
+  //salary calculation
+  function total(){
+    let total = checkRole1() + 6.52
+    return total;
+  }
+
+  //salary check
+  function checkRole1() {
+    let salary = "";
+
+    if (employee.role == "Doctor") {
+      salary = "$2500";
+    } else if (employee.role == "InventoryManager") {
+      salary = "$800";
+    } else if (employee.role == "Labassistant") {
+      salary = "$600";
+    } else if (employee.role == "Pharmasist") {
+      salary = "$1000";
+    } else if (employee.role == "PaymentAdmin") {
+      salary = "$700";
+    } else if (employee.role == "Receptionist") {
+      salary = "$300";
+    } else if (employee.role == "SysAdmin") {
+      salary = "$1100";
+    }
+    console.log(salary);
+    return salary;
+  }
+
   const initialEmployee = {
-    id:"",
+    id: "",
     role: "",
     firstName: "",
     lastName: "",
@@ -62,7 +79,7 @@ const Payslip = () => {
       .catch((e) => {
         console.log(e);
       });
-    console.log("name print", employee.firstName);
+    console.log("name print" + employee.firstName);
   };
 
   useEffect(() => {
@@ -94,43 +111,74 @@ const Payslip = () => {
                     <p>Tel: &nbsp; +9411 2696 696/ +9411 269 696</p>
                   </Grid>
                   <Grid item xs={12}>
-                    <p></p>
-                    <p>Email: Ispirithalei@outlook.com</p>
-                    <p>Tel : +9411 2696 696/ +9411 269 696</p>
+                    <p>{employee.role}</p>
+                    <p>
+                      {employee.firstName}
+                      {employee.lastName}
+                    </p>
+                    <p>{employee.email}</p>
+                    <p>{employee.address}</p>
                   </Grid>
-
                   <Grid item xs={12}>
-                    <p>Payslip for month September</p>
+                    <Typography
+                      style={{ textAlign: "center", marginTop: "40px" }}
+                    >
+                      Payslip for {longMonth}
+                    </Typography>
                   </Grid>
-
-                  <p>Earnings</p>
-                  <Grid item xs={12}>
-                    <List disablePadding>
-                      {earnings.map((earning) => (
-                        <ListItem key={earning.name}>
-                          <ListItemText primary={earning.name} />
-                          <Typography variant="body2">
-                            {earning.price}
-                          </Typography>
-                        </ListItem>
-                      ))}
-
-                      <br></br>
-                      <p>Deductions &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </p>
-                      {deductions.map((deduction) => (
-                        <ListItem key={deduction.name}>
-                          <ListItemText primary={deduction.name} />
-                          <Typography variant="body2">
-                            {deduction.price}
-                          </Typography>
-                        </ListItem>
-                      ))}
-                      <br></br>
-                      <ListItem>
-                        <ListItemText primary="Total" />
-                        <Typography variant="subtitle1">$34.06</Typography>
-                      </ListItem>
-                    </List>
+                  <Typography style={{ marginTop: "10px" }}>
+                    Earnings
+                  </Typography>
+                  <Grid container style={{ marginTop: "10px" }}>
+                    <Grid item xs={10}>
+                      <p>Basic Salary</p>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <p>{checkRole1()}</p>
+                    </Grid>
+                  </Grid>
+                  <Grid container style={{ marginTop: "2px" }}>
+                    <Grid item xs={10}>
+                      <p>House Rent Allowence</p>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <p>$9.45</p>
+                    </Grid>
+                  </Grid>
+                  <Grid container style={{ marginTop: "2px" }}>
+                    <Grid item xs={10}>
+                      <p>Gas Allowence</p>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <p>$6.51</p>
+                    </Grid>
+                  </Grid>
+                  <Typography style={{ marginTop: "20px" }}>
+                    Deductions
+                  </Typography>
+                  <Grid container style={{ marginTop: "10px" }}>
+                    <Grid item xs={10}>
+                      <p>Professional Tax</p>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <p>$5.99</p>
+                    </Grid>
+                  </Grid>
+                  <Grid container style={{ marginTop: "2px" }}>
+                    <Grid item xs={10}>
+                      <p>VAT</p>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <p>$3.45</p>
+                    </Grid>
+                  </Grid>
+                  <Grid container style={{ marginTop: "30px" }}>
+                    <Grid item xs={10}>
+                      <Typography>Total</Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <p>{total()}</p>
+                    </Grid>
                   </Grid>
                 </Grid>
               </CardContent>
@@ -139,7 +187,7 @@ const Payslip = () => {
         </React.Fragment>
       </Container>
       <div style={{ marginTop: 20, textAlign: "center", marginBottom: 10 }}>
-        <Pdf targetRef={ref} filename={today}>
+        <Pdf targetRef={ref} filename={longMonth}>
           {({ toPdf }) => (
             <Button
               size="large"
@@ -155,6 +203,6 @@ const Payslip = () => {
       </div>
     </>
   );
-};
+}
 
 export default Payslip;

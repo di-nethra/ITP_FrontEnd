@@ -20,7 +20,8 @@ const useStyles = makeStyles({
   },
 });
 
-function Payroll(props) {
+function Payroll() {
+  
   const classes = useStyles();
 
   const [details, setDetails] = useState([]);
@@ -104,7 +105,7 @@ function Payroll(props) {
               <TableCell align="left">{row.lastName}</TableCell>
               <TableCell align="left">{checkRole(row)}</TableCell>
               <TableCell align="left">
-                <Link to={"/staff/sysadmin/payslip/" + props.data}>
+                <Link to={"/staff/sysadmin/payslip/"+ row.id}>
                   <Button
                     variant="contained"
                     color="primary"
