@@ -34,7 +34,7 @@ function checkout() {
     order_id: "112233",
     itemTitle: "ispirithalei",
     currency: CurrencyType.LKR,
-    amount: 2000,
+    amount: 2500,
   });
 
   const checkout = new PayhereCheckout(
@@ -49,7 +49,7 @@ function checkout() {
 }
 
 const ref = React.createRef();
-const tempPrice = "RS.5650.00";
+const tempPrice = "RS.2500.00";
 const currentDate = new Date().toDateString();
 
 const CreditPdf = (props) => {
@@ -58,9 +58,9 @@ const CreditPdf = (props) => {
       <Grid container justifyContent="center">
         <div className="Post" ref={ref}>
           <div>
-            <Grid container direction="row" justifyContent="center">
+            <Grid container direction="row">
               <Grid item md={8} style={{ marginTop: "30px" }}>
-                <Card style={{ border: "solid", marginLeft: "30px" }}>
+                <Card style={{ border: "solid", marginLeft: "70px" }}>
                   <CardContent>
                     <img src={IspirithaleBlueLogo} alt="70" />
                     <h3>
@@ -101,7 +101,13 @@ const CreditPdf = (props) => {
                       </Grid>
                     </Grid>
 
-                    <Card style={{ marginTop: "250px", border: "solid" }}>
+                    <Card
+                      style={{
+                        marginTop: "250px",
+                        border: "solid",
+                        textAlign: "right",
+                      }}
+                    >
                       <CardContent>
                         <h1>{tempPrice}</h1>
                       </CardContent>

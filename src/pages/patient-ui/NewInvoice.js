@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import CreditPdf from "./CreditPdf";
 
 export class NewInvoice extends React.PureComponent {
   render() {
-    console.log(this.props.values);
+    // console.log(this.props.values);
     // const emai = this.props.values.email;
     // console.log("checkout:" + emai);
 

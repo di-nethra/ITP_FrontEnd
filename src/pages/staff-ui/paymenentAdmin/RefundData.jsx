@@ -33,7 +33,7 @@ function RefundData() {
     RefundServices.getAll()
       .then((response) => {
         setDetails(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
