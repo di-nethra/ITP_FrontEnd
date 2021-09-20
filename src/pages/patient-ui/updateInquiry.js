@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
-import AutorenewIcon from "@material-ui/icons/Autorenew";
 import { Form } from "../../components/patient-ui/Echannelling/useForm";
 import {
   Button,
@@ -13,29 +12,23 @@ import {
 } from "@material-ui/core";
 import Swal from "sweetalert2";
 import inquriyServices from "../../services/inquiry.Service";
-
-
-
-
-
-
+import { useHistory } from "react-router";
+import { Update } from "@material-ui/icons";
 
 function UpdateInquiry() {
-
-
+  let history = useHistory();
   const id = useParams();
-  console.log(id.id);
+  // console.log(id.id);
 
-  const initialEmployee = {
-    title: "",
-   message: "",
-   
-  };
+  // const initialEmployee = {
+  //   title: "",
+  //  message: "",
 
+  // };
 
   const [inquiries, setInquiries] = useState([]);
 
-   //get Inquiry details by id
+  //get Inquiry details by id
   const getInqruiy = (id) => {
     inquriyServices
       .getOneInquiry(id)
@@ -51,22 +44,23 @@ function UpdateInquiry() {
 
   useEffect(() => {
     getInqruiy(id.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id.id]);
 
   //update inquiry
   const UpdateInquiry = (event) => {
     event.preventDefault();
-    
 
     inquriyServices
       .update(inquiries._id, inquiries)
       .then((response) => {
-        console.log(response.inquiries);
+        // console.log(response.inquiries);
         Swal.fire(
           "Update Successfull",
           "You have successfully updated the inquiries",
           "success"
         );
+        history.push("/staff/sysadmin/Inquirires");
       })
       .catch((e) => {
         console.log(e);
@@ -88,6 +82,7 @@ function UpdateInquiry() {
       <Form>
         <container>
           <div>
+            <br />
             <React.Fragment>
               <Card>
                 <CardContent>
@@ -109,7 +104,8 @@ function UpdateInquiry() {
                         label="title"
                         variant="outlined"
                         required
-                        fullWidth={true}
+                        // fullWidth={true}
+                        style={{ width: 300 }}
                         value={inquiries.title}
                         onChange={handleInputChange}
                       />
@@ -124,20 +120,20 @@ function UpdateInquiry() {
                         label="message"
                         variant="outlined"
                         required
-                        fullWidth={true}
+                        multiline
+                        // fullWidth={true}
+                        style={{ width: 580 }}
                         onChange={handleInputChange}
                         value={inquiries.message}
                       />
                     </Grid>
-
-                    
 
                     <Grid item xs={12}>
                       <Button
                         variant="contained"
                         color="primary"
                         style={styles.button}
-                        startIcon={<AutorenewIcon />}
+                        startIcon={<Update />}
                         onClick={UpdateInquiry}
                       >
                         Update
@@ -169,4 +165,3 @@ const styles = {
 };
 
 export default UpdateInquiry;
-
