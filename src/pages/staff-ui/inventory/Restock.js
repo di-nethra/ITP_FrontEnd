@@ -32,7 +32,6 @@ const b_useStyles = makeStyles((theme) => ({
   const b_classes = b_useStyles();
 
   const id = useParams();
-    console.log(id.topicId);
 
   const initialRestock = {
     item_id:"",
@@ -54,7 +53,6 @@ const b_useStyles = makeStyles((theme) => ({
         .catch((e) => {
           console.log(e);
         });
-      console.log("name print", inventory.item_name);
     };
   
     useEffect(() => {
@@ -82,7 +80,6 @@ const b_useStyles = makeStyles((theme) => ({
     inventoryServices
     .update(inventory._id,inventory)
     .then((response) => {
-      console.log(response.inventory);
       Swal.fire(
         "Restock Successfull",
         "You have successfully restocked the inventory item",
@@ -93,7 +90,6 @@ const b_useStyles = makeStyles((theme) => ({
   }
 
   const handleInputChange = (e) => {
-    console.log(e);
     const { name, value } = e.target;
 
     setInventory({

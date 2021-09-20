@@ -23,33 +23,32 @@ let longMonth = today.toLocaleString("en-us", { month: "long" }); /* June */
 
 function Payslip() {
   const id = useParams();
-  console.log(id.id);
 
   //salary calculation
   function total() {
     let salary1 = checkRole1().substring(1);
     let totalSalary = Number(salary1) + 6.52;
-    console.log("$"+totalSalary);
-    return ("$"+totalSalary);
+
+    return "$" + totalSalary;
   }
 
   //salary check
   function checkRole1() {
     let salary = "";
 
-    if (employee.role == "Doctor") {
+    if (employee.role === "Doctor") {
       salary = "$2500";
-    } else if (employee.role == "InventoryManager") {
+    } else if (employee.role === "InventoryManager") {
       salary = "$800";
-    } else if (employee.role == "Labassistant") {
+    } else if (employee.role === "Labassistant") {
       salary = "$600";
-    } else if (employee.role == "Pharmasist") {
+    } else if (employee.role === "Pharmasist") {
       salary = "$1000";
-    } else if (employee.role == "PaymentAdmin") {
+    } else if (employee.role === "PaymentAdmin") {
       salary = "$700";
-    } else if (employee.role == "Receptionist") {
+    } else if (employee.role === "Receptionist") {
       salary = "$300";
-    } else if (employee.role == "SysAdmin") {
+    } else if (employee.role === "SysAdmin") {
       salary = "$1100";
     }
     return salary;
@@ -73,12 +72,10 @@ function Payslip() {
       .getOneEmployee(id)
       .then((response) => {
         setEmployee(response.data);
-        console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
       });
-    console.log("name print" + employee.firstName);
   };
 
   useEffect(() => {

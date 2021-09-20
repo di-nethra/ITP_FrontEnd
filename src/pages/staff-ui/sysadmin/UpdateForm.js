@@ -16,7 +16,7 @@ import Swal from "sweetalert2";
 
 function Updateform() {
   const id = useParams();
-  console.log(id.id);
+
 
   const initialEmployee = {
     role: "",
@@ -35,12 +35,12 @@ function Updateform() {
       .getOneEmployee(id)
       .then((response) => {
         setEmployee(response.data);
-        console.log(response.data);
+
       })
       .catch((e) => {
         console.log(e);
       });
-    console.log("name print", employee.firstName);
+
   };
 
   useEffect(() => {
@@ -91,7 +91,7 @@ function Updateform() {
   return (
     <Container maxWidth="md">
       <Form>
-        <container>
+        <Container>
           <div>
             <React.Fragment>
               <Card>
@@ -212,7 +212,7 @@ function Updateform() {
               </Card>
             </React.Fragment>
           </div>
-        </container>
+        </Container>
       </Form>
     </Container>
   );
