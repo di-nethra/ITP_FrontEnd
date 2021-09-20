@@ -47,12 +47,6 @@ const SysAdmin = () => {
         iconlabel: 'Payroll',
         id: 4
       },
-      {
-        path: "inquaries",
-        icon: <AssignmentIcon className="sidebarIcon"/>,
-        iconlabel: 'Inquaries',
-        id: 5
-      },
 
 
     ]
