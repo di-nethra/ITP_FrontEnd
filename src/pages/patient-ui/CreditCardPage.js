@@ -48,7 +48,7 @@ export class CreditCardPage extends Component {
     const ranNum = "CPAY" + Math.floor(1000 + Math.random() * 9000);
     const currentDate = new Date().toDateString();
 
-    const tempPrice = "RS.5650.00";
+    const tempPrice = "RS.2500.00";
     const data = {
       paymentid: ranNum,
       name: this.props.values.nameOnTheCard,
@@ -79,18 +79,18 @@ export class CreditCardPage extends Component {
       return null;
     }
 
-    console.log(" data meka" + data.email);
+    // console.log(" data meka" + data.email);
     paymentCreditService
       .create(data)
 
       .then((response) => {
-        console.log("inside create" + response.data);
+        // console.log("inside create" + response.data);
 
         this.setState({
           name: response.data.nameOnTheCard,
           email: response.data.email,
         });
-        console.log("inside then" + response.data);
+        // console.log("inside then" + response.data);
       })
       .catch((e) => {
         alert(e);
@@ -108,7 +108,7 @@ export class CreditCardPage extends Component {
     const { classes } = this.props;
     const { values, handleChange } = this.props;
 
-    console.log("meka2" + values.email);
+    // console.log("meka2" + values.email);
 
     return (
       <div>

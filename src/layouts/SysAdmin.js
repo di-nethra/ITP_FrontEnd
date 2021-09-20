@@ -12,7 +12,8 @@ import AddIcon from '@material-ui/icons/Add';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import Payroll from "../pages/staff-ui/sysadmin/Payroll";
 import UpdateForm from "../pages/staff-ui/sysadmin/UpdateForm";
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import Inquiries from "../pages/staff-ui/sysadmin/Inquiries";
+import { Help } from "@material-ui/icons";
 import Payslip from "../pages/staff-ui/sysadmin/Payslip";
 
 const SysAdmin = () => {
@@ -47,6 +48,12 @@ const SysAdmin = () => {
         iconlabel: 'Payroll',
         id: 4
       },
+      {
+        path: "Inquirires",
+        icon: <Help className="sidebarIcon"/>,
+        iconlabel: 'Inquiries',
+        id: 5
+      },
 
 
     ]
@@ -64,8 +71,9 @@ const SysAdmin = () => {
               <Route exact path="/staff/sysadmin" component={EmpDashboard}/>
               <Route path="/staff/sysadmin/emplist" component={EmpList}/>
               <Route path="/staff/sysadmin/empform" component={EmpForm}/>
-              <Route path="/staff/sysadmin/payroll" component={Payroll}/>]
+              <Route path="/staff/sysadmin/payroll" component={Payroll}/>
               <Route path="/staff/sysadmin/empedit/:id" component={UpdateForm}/>
+              <Route path="/staff/sysadmin/Inquirires" component={Inquiries} />
               <Route path="/staff/sysadmin/payslip/:id" component={Payslip}/>
 
             </Switch>

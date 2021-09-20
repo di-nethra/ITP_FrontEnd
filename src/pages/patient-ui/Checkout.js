@@ -10,7 +10,7 @@ import Grid from "@material-ui/core/Grid";
 import SummaryBackground from "../../assets/images/summary.gif";
 import PaymentSummaryText from "../../assets/images/PaymentSummary.svg";
 
-const styles = (thgiteme) => ({
+const styles = (withTheme) => ({
   infoLogo: {
     width: "500px",
     marginLeft: "200px",
@@ -72,10 +72,8 @@ export class Checkout extends Component {
   };
   render() {
     const { classes } = this.props;
-    const passsingData = {
-      name: "chamara",
-    };
-    console.log("checkout:" + this.props.values.email);
+
+    // console.log("checkout:" + this.props.values.email);
     return (
       <div>
         <Grid container direction="row">

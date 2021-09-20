@@ -17,7 +17,6 @@ export default function InventoryList() {
         InventoryDataService.getAll()
             .then(response => {
                 setInventory(response.data);
-                console.log(response.data);
             })
             .catch(e => {
                 console.log(e);
@@ -89,7 +88,6 @@ export default function InventoryList() {
     ];
 
     const deleteInventory = event => {
-        console.log(event.currentTarget.value)
         InventoryDataService.remove(event.currentTarget.value)
 
       .then(response => {

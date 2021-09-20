@@ -2,7 +2,6 @@ import React from 'react'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import DocSupport from "../../../assets/images/docSupport.gif";
-import ImageBrightness3 from 'material-ui/svg-icons/image/brightness-3';
 
 export default function InventorySupport() {
     return (

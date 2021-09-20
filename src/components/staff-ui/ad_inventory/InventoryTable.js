@@ -40,12 +40,6 @@ const columns = [
   },
 ];
 
-// function createData(item_name, item_id, quantity) {
-//   const r_level = quantity * 0.10;
-//   return { item_name, item_id, quantity, r_level };
-// }
-
-// const  = [];
 
 const useStyles = makeStyles({
   root: {
@@ -82,7 +76,6 @@ const retrieveInventory = () => {
   InventoryDataService.getAll()
       .then(response => {
           setInventory(response.data);
-          console.log(response.data);
       })
       .catch(e => {
           console.log(e);

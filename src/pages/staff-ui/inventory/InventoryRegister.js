@@ -24,10 +24,7 @@ const useStyles = makeStyles((theme) => ({
 function InventoryRegister() {
   const b_classes = useStyles();
 
-  // //date value
-  // const date = new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear();
-  // const dateString = date.toString();
-
+ 
   const initialInventoryState = {
     // id: null,
     item_id: "",
@@ -40,7 +37,6 @@ function InventoryRegister() {
     type_medicine: ""
   };
   const [inventory, setInventory] = useState(initialInventoryState);
-  // const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = event => {
     const {name, value} = event.target;
@@ -79,7 +75,6 @@ function InventoryRegister() {
 
 
     if(data.supplier_email.includes(".com",0) && (data.supplier_email.includes("@",0))){
-      // alert("Email success");
     }else{
       alert("Email Error");
       return null;
@@ -87,7 +82,6 @@ function InventoryRegister() {
 
     const temp = data.supplier_contact;
     if(temp.length === 10){
-      // alert("Success");
     }else{
       alert("Invalid contact number")
       return null;
@@ -105,8 +99,6 @@ function InventoryRegister() {
             registered_date: response.data.registered_date,
             type_medicine: response.data.type_medicine
           });
-          // setSubmitted(true);
-          console.log(response.data);
           window.location.reload();
         })
         .catch(e => {
@@ -116,7 +108,6 @@ function InventoryRegister() {
 
   const newInventory = () => {
     setInventory(initialInventoryState);
-    // setSubmitted(false);
   };
 
 
