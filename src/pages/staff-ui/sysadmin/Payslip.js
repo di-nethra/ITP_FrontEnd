@@ -21,16 +21,16 @@ var today = new Date();
 
 let longMonth = today.toLocaleString("en-us", { month: "long" }); /* June */
 
-
-
 function Payslip() {
   const id = useParams();
   console.log(id.id);
 
   //salary calculation
-  function total(){
-    let total = checkRole1() + 6.52
-    return total;
+  function total() {
+    let salary1 = checkRole1().substring(1);
+    let totalSalary = Number(salary1) + 6.52;
+    console.log("$"+totalSalary);
+    return ("$"+totalSalary);
   }
 
   //salary check
@@ -52,7 +52,6 @@ function Payslip() {
     } else if (employee.role == "SysAdmin") {
       salary = "$1100";
     }
-    console.log(salary);
     return salary;
   }
 
