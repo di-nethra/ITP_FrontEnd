@@ -63,18 +63,18 @@ export default function PatientUpdate() {
 
     const updateTest = (event) => {
         event.preventDefault()
-        console.log(CurrentTest._id, "gdfghxdf")
-        console.log(CurrentTest.inchargelabassid, "gdfghxdf")
+        //console.log(CurrentTest._id, "gdfghxdf")
+        //console.log(CurrentTest.inchargelabassid, "gdfghxdf")
         var data = {
             specimenid: CurrentTest.specimenid,
             contactnumber: CurrentTest.contactnumber,
             patientsname:CurrentTest.patientsname,
             dateofbirth: CurrentTest.dateofbirth,
         };
-        console.log(data)
+        //console.log(data)
         TestDataService.update(CurrentTest._id, data)
             .then(response => {
-                console.log(response.data,);
+                //console.log(response.data,);
                 Swal.fire(
                     'Patient Info Updated',
                     'You have updated the patient Information. Please see the patient page',

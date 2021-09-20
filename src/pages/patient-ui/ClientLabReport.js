@@ -12,7 +12,7 @@ const ref = React.createRef();
 
 function ClientLabReport() {
     const { id } = useParams();
-    console.log(id);
+    //console.log(id);
 
     const [test, setTest] = useState([]);
 

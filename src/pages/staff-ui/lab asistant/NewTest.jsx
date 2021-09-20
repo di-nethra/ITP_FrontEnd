@@ -23,7 +23,7 @@ export default function NewTest() {
     const handleInputChange = (e) => {
         //const name = e.target.name 
         //const value = e.target.value 
-        console.log(e)
+        //console.log(e)
         const { name, value } = e.target;
 
         setValues({
@@ -61,7 +61,7 @@ export default function NewTest() {
                     testtype: response.data.testtype,
                     collectedperson: response.data.collectedperson,
                 });*/
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch(e => {
                 console.log(e);

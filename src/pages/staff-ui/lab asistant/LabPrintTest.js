@@ -12,7 +12,7 @@ const ref = React.createRef();
 
 function LabPrintTest() {
     const { id } = useParams();
-    console.log(id);
+    //console.log(id);
 
     const [test, setTest] = useState([]);
 

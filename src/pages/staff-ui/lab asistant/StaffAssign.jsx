@@ -32,7 +32,7 @@ export default function StaffAssign() {
     const [message, setMessage] = useState("");
 
     const handleInputChange = (e) => {
-        console.log(e)
+        //console.log(e)
         const { name, value } = e.target;
 
         setCurrentTest({
@@ -62,18 +62,18 @@ export default function StaffAssign() {
 
     const updateTest = (event) => {
         event.preventDefault()
-        console.log(CurrentTest._id, "gdfghxdf")
-        console.log(CurrentTest.inchargelabassid, "gdfghxdf")
+        //console.log(CurrentTest._id, "gdfghxdf")
+        //console.log(CurrentTest.inchargelabassid, "gdfghxdf")
         var data = {
             status: "started",
             starteddate: new Date(),
             inchargelabass: CurrentTest.inchargelabass,
             inchargelabassid: CurrentTest.inchargelabassid,
         };
-        console.log(data)
+        //console.log(data)
         TestDataService.update(CurrentTest._id, data)
             .then(response => {
-                console.log(response.data,);
+                //console.log(response.data,);
                 Swal.fire(
                     'Test Updated!',
                     'You have updated the test! Please move in to Intransist test table',

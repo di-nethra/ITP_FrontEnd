@@ -8,7 +8,7 @@ import { useParams } from "react-router";
 
 export default function TestReslt() {
     const id = useParams();
-    console.log(id.testId);
+    //console.log(id.testId);
     const initialTestState = {
         specimenid: "",
         subbmitteddate: "",
@@ -73,10 +73,10 @@ export default function TestReslt() {
             specimenproperty: CurrentTest.specimenproperty,
             specimenpropertyresult: CurrentTest.specimenpropertyresult,
         };
-        console.log(data)
+        //console.log(data)
         TestDataService.update(CurrentTest._id, data)
             .then(response => {
-                console.log(response.data,);
+                //console.log(response.data,);
                 Swal.fire(
                     'Test Updated!',
                     'You have updated the test! Please move in to completed test table',
