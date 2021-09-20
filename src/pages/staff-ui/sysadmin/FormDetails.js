@@ -100,7 +100,7 @@ function EmpForm() {
   return (
     <Container maxWidth="md">
       <Form>
-        <container>
+        <Container>
           <div>
             <React.Fragment>
               <Card>
@@ -232,7 +232,7 @@ function EmpForm() {
               </Card>
             </React.Fragment>
           </div>
-        </container>
+        </Container>
       </Form>
     </Container>
   );

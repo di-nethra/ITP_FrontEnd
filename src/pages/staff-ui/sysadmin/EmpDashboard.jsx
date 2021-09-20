@@ -57,7 +57,6 @@ function EmpDashboard() {
       .getAll()
       .then((response) => {
         setDetails(response.data);
-        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);

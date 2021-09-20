@@ -31,7 +31,6 @@ function EmpList() {
       .getAll()
       .then((response) => {
         setDetails(response.data);
-        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -61,7 +60,7 @@ function EmpList() {
     "Address",
   ];
 
-  console.log(rows);
+ 
   return (
     <div>
     <TableContainer component={Paper}>

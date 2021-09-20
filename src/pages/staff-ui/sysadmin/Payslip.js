@@ -23,14 +23,13 @@ let longMonth = today.toLocaleString("en-us", { month: "long" }); /* June */
 
 function Payslip() {
   const id = useParams();
-  console.log(id.id);
 
   //salary calculation
   function total() {
     let salary1 = checkRole1().substring(1);
     let totalSalary = Number(salary1) + 6.52;
-    console.log("$"+totalSalary);
-    return ("$"+totalSalary);
+
+    return "$" + totalSalary;
   }
 
   //salary check
@@ -73,12 +72,10 @@ function Payslip() {
       .getOneEmployee(id)
       .then((response) => {
         setEmployee(response.data);
-        console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
       });
-    console.log("name print" + employee.firstName);
   };
 
   useEffect(() => {
