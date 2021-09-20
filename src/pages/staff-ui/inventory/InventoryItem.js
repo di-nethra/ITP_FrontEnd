@@ -26,7 +26,6 @@ function InventoryItem(){
     const b_classes = useStyles();
 
     const id = useParams();
-    console.log(id.topicId);
 
     const initialInventory = {
       item_name : "",
@@ -47,12 +46,10 @@ function InventoryItem(){
       .getOneInventory(id)
       .then((response) => {
         setInventory(response.data);
-        console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
       });
-    console.log("name print", inventory.item_name);
   };
 
   useEffect(() => {
@@ -78,7 +75,6 @@ function InventoryItem(){
     inventoryServices
     .update(inventory._id,inventory)
     .then((response) => {
-      console.log(response.inventory);
       Swal.fire(
         "Update Successfull",
         "You have successfully updated the inventory item",
