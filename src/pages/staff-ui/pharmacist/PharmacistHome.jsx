@@ -1,34 +1,3 @@
-// import * as React from 'react';
-// import { DataGrid } from '@mui/x-data-grid';
-
-// const columns = [
-//   { field: 'id', headerName: 'ID', width: 100 },
-//   { field: 'patientname', headerName: 'Patient Name', width: 280 },
-//   { field: 'diagnosis', headerName: 'Diagnosis', width: 280},
-//   { field: 'action', headerName: 'Action',type:'button', width: 180},
-// ];
-
-// // const rows = [
-// //  // { id: 1, patientname: 'Snow', diagnosis: 'Jon', action: 35 },
-// //  // { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-// //  // { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-// //  // { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-// // ];
-
-// export default function PharmacistHome() {
-//   return (
-//     <div style={ {marginTop: 20, marginLeft: 40 } }>
-//     <h3>PATIENT PRESCRIPTION</h3>
-//     <div style={{ height: 400, width: '80%', marginLeft: 80, marginTop: 40}}>
-//       <DataGrid
-//         rows={rows}
-//         columns={columns}
-//         pageSize={5}
-//       />
-//     </div>
-//     </div>
-//   );
-// }
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -88,9 +57,9 @@ function Row(props) {
         <TableCell align="right">{row.action}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box margin={1}>
+            <Box margin={2}>
               <Typography variant="h6" gutterBottom component="div">
                 Medicine List
               </Typography>
@@ -137,6 +106,7 @@ Row.propTypes = {
 const rows = [
   createData(123654, "Namal bandara", "Diabetic"),
   createData(124553, "Asanka", "Fever"),
+  createData(123654, "Namal bandara", "Diabetic"),
 ];
 
 export default function CollapsibleTable() {
@@ -145,12 +115,13 @@ export default function CollapsibleTable() {
     <h3 style={{marginLeft: 40, marginTop: 30}}>Patient Prescription</h3>
     <TableContainer style={{width:'80%', marginLeft: 60, marginTop: 40}} component={Paper}>
       <Table aria-label="collapsible table">
-        <TableHead>
+        <TableHead style={{backgroundColor:'#005792', width:'50%'}}>
           <TableRow>
             <TableCell />
             <TableCell>ID</TableCell>
             <TableCell align="right">Patient Name</TableCell>
             <TableCell align="right">Diagnosis</TableCell>
+            <TableCell />
           </TableRow>
         </TableHead>
         <TableBody>

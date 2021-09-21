@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function DrugDispense() {
+export default function DrugDispen() {
     return (
         <div>
             
