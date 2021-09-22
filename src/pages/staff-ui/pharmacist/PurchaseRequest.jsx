@@ -53,7 +53,7 @@ export default function BasicTextFields() {
   return (
     <div style={{marginLeft:120}}>
      
-        <form className={classes.root} noValidate autoComplete="off" style={{marginTop:0}}>
+        <form className={classes.root} noValidate autoComplete="off" style={{marginTop:0}} onSubmit={handleSubmit}>
             <TextField 
             id="drug_id" 
             label="Medicine ID" 
