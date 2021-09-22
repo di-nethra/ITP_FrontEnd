@@ -3,11 +3,12 @@ import React from "react";
 import Controls from "../../components/patient-ui/Echannelling/Controls";
 import {Form} from "../../components/patient-ui/Echannelling/useForm";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import channellServices from "../../services/echannelling.Service";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from "react-router";
+import sessionServices from "../../services/doctorSession.service";
 
 
 // const genderItems = [
@@ -28,6 +29,7 @@ import { useHistory } from "react-router";
 // };
 
 export default function EForm() {
+  let { sessionID } = useParams();
   const history = useHistory();
   const handleSubmit = (e) => {
     console.log("submitted");
@@ -35,12 +37,31 @@ export default function EForm() {
     e.preventDefault();
 
     const data = {
+      session: sessionID,
       fullname: fullname,
       nic: nic,
       email: email,
       mobile: mobile,
       age: age,
     };
+
+ 
+  
+
+
+    if(data.fullname.includes(" "||"a"||"b"||"c"||"d"||"e"||"f"||"g"||"h"||"i"||"j"||"k"||"l"||"m"||"o"||"p"||"q"||"r"||"s"||"t"||"u"||"v"||"w"||"x"||"y"||"z"||"A"||"B"||"C"||"D"||"E"||"F"||"G"||"H"||"I"||"J"||"K"||"L"||"M"||"O"||"P"||"Q"||"R"||"S"||"T"||"U"||"V"||"W"||"X"||"Y"||"Z"||" ",0)){
+
+    }else{
+      toast.error("Please ONLY enter characters to the name feild ",{
+        className:"error-toast",
+        draggable:true,
+        position:toast.POSITION.TOP_RIGHT,
+        autoClose:false});
+
+      return null;
+    }
+
+
 
     if(data.email.includes("@"&&".com", 0)){
       // alert("email successfull");
@@ -57,36 +78,11 @@ export default function EForm() {
     }
 
 
-    if(data.mobile.includes("0"&&"1"&&"2"&&"3"&&"4"&&"5"&&"6"&&"7"&&"8"&&"9",0)){
-        
-    }else{
-
-      toast.error("Please ONLY enter numbers to the mobile number feild",{
-        className:"error-toast",
-        draggable:true,
-        position:toast.POSITION.TOP_RIGHT,
-        autoClose:false
-      }); 
-
-      return null;
-
-    }
 
     
 
 
-    if(data.fullname.includes("a"||"b"||"c"||"d"||"e"||"f"||"g"||"h"||"i"||"j"||"k"||"l"||"m"||"o"||"p"||"q"||"r"||"s"||"t"||"u"||"v"||"w"||"x"||"y"||"z",0)){
-
-    }else{
-      toast.error("Please ONLY enter characters to the name feild",{
-        className:"error-toast",
-        draggable:true,
-        position:toast.POSITION.TOP_RIGHT,
-        autoClose:false});
-
-      return null;
-    }
-
+   
     var tempNic=data.nic;
     if(tempNic.length===10){
 
@@ -99,6 +95,23 @@ export default function EForm() {
       });
 
       return null;
+    }
+
+
+    
+    if(data.mobile.includes("0"||"1"||"2"||"3"||"4"||"5"||"6"||"7"||"8"||"9",0)){
+        
+    }else{
+
+      toast.error("Please ONLY enter numbers to the mobile number feild",{
+        className:"error-toast",
+        draggable:true,
+        position:toast.POSITION.TOP_RIGHT,
+        autoClose:false
+      }); 
+
+      return null;
+
     }
 
     
@@ -115,6 +128,11 @@ export default function EForm() {
       // alert("number must contain 10 digits");
       return null;
     }
+
+
+
+
+
 
     var tempAge=data.age;
     if(tempAge.length===2){
@@ -134,17 +152,17 @@ export default function EForm() {
 
     channellServices
       .create(data)
-
-      .then((response) => {
-        // alert("success");
-        console.log("inside create" + response.data);
-        console.log("inside then" + response.data);
-        history.push("/payments");
-        window.location.reload();
+        .then(() => {
+          sessionServices.increaseAppointmentCount(sessionID)
+              .then(() => {
+                  history.push("/payments");
+              })
+              .catch(error => {
+                alert("couldn't update session : " + error )
+              })
       })
       .catch((e) => {
-        // alert(e );
-        console.log("this is the error:" + e);
+        alert("this is the error:" + e);
       });
   };
 
@@ -189,7 +207,7 @@ export default function EForm() {
             label="Full Name"
             value={fullname}
             onChange={handlenameChange}
-            required
+                        required
           />
           {/* <Controls.RadioGroup
                         name="gender"
@@ -257,9 +275,9 @@ export default function EForm() {
             />
             <ToastContainer />
             
-            <Link to="/patient/inquiry">
+            {/* <Link to="/patient/inquiry">
               <Controls.Button text="Inquiry" />
-            </Link>
+            </Link> */}
           </div>
         </container>
       </Form>

@@ -1,0 +1,12 @@
+.flowCard {
+    padding: 0;
+    text-align: center;
+}
+.countSkeleton {
+    display: block;
+    margin: auto;
+}
+
+.appointmentChartTitle {
+    padding: 1rem 3rem;
+}

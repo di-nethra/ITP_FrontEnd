@@ -9,6 +9,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { white } from 'material-ui/styles/colors';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@material-ui/core/Button';
+import EditorFormatBold from 'material-ui/svg-icons/editor/format-bold';
 
 const columns = [
   { id: 'id', label: 'ID', minWidth: 170 },
@@ -27,13 +32,24 @@ const columns = [
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
   },
-  {
-    id: 'action',
-    label: 'Action',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toFixed(2),
-  },
+//   {
+//     id: 'action',
+//     label: 'Action',
+//     minWidth: 170,
+//     align: 'right',
+//     //format: (value) => value.toFixed(2),
+//     renderCell: (params) => {
+//         return (
+//             <>
+//                 <Link to={"/staff/pharmacist/PharmacistHelp" /*+ params.row.id*/}>
+//                     <Button size="small" color="primary" variant="contained" style={{ marginRight: 5 }}>Edit</Button>
+//                 </Link>
+//                 <Button size="small" color="secondary" variant="contained" value={params.row.id}
+//                     onClick={deletePrescription}><DeleteOutline /></Button>
+//             </>
+//         );
+//      }
+//   },
 ];
 
 function createData(id, name, quantity, reoderlevel) {
@@ -117,6 +133,15 @@ export default function AvailableDrugTable() {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
+    <div style={{marginLeft:740, marginTop:40, fontWeight:'bold'}}>
+    Send Request for New Stock
+
+    <Tooltip style={{marginLeft:20,}} title="Add request" aria-label="add">
+        <Fab color="primary" className={classes.fab}>
+        <AddIcon />
+        </Fab>
+    </Tooltip>
+    </div>
     </div>
   );
 }

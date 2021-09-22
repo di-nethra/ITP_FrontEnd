@@ -2,6 +2,7 @@ import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { Card, TextareaAutosize } from "@material-ui/core";
@@ -9,7 +10,8 @@ import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import PayQr from "../../assets/images/refundPage.svg";
-
+import RefundServices from "../../services/refundPageServices";
+import Swal from "sweetalert2";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
@@ -45,6 +47,38 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RefundPage() {
+  function RefundCreate(e) {
+    e.preventDefault();
+    const data = {
+      paymentid: PaymentId,
+      paragraph: Paragraph,
+    };
+    RefundServices.create(data)
+      .then(() => {})
+      .catch((e) => {
+        alert(e);
+      });
+    Swal.fire(
+      "Success",
+      "Your data is successfully saved for future use",
+      "success"
+    );
+
+    history.push("/payments");
+  }
+
+  const [PaymentId, setPaymetId] = useState("");
+  const [Paragraph, setParagraph] = useState("");
+
+  function handlePaymentId(e) {
+    // console.log(e.target.value);
+    setPaymetId(e.target.value);
+  }
+  function handleParagraph(e) {
+    // console.log(e.target.value);
+    setParagraph(e.target.value);
+  }
+
   const classes = useStyles();
   const history = useHistory();
   return (
@@ -67,6 +101,8 @@ export default function RefundPage() {
                 margin="normal"
                 required
                 fullWidth
+                onChange={handlePaymentId}
+                value={PaymentId}
                 label="Payment ID"
                 name="PaymentID"
                 autoFocus
@@ -74,6 +110,8 @@ export default function RefundPage() {
               <TextareaAutosize
                 maxRows={4}
                 aria-label="maximum height"
+                onChange={handleParagraph}
+                value={Paragraph}
                 placeholder="Refund Request"
                 defaultValue="Please enter your reason to to ask for a refund"
               />
@@ -83,7 +121,7 @@ export default function RefundPage() {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-                onClick={() => history.push("/payments")}
+                onClick={RefundCreate}
               >
                 Submit Refund Request
               </Button>

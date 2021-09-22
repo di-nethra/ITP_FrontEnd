@@ -1,20 +1,51 @@
 import "./staffassign.css"
 import 'date-fns';
-import React from 'react';
+import Swal from 'sweetalert2';
+import React, { useState, useEffect } from "react";
+import TestDataService from "../../../services/tests.service";
+import { useParams } from "react-router";
 
 export default function StaffAssign() {
-    /*const initialTestState = {
+
+    const id = useParams();
+    //console.log(id.topicId);
+    const initialTestState = {
         specimenid: "",
-        title: "",
-        description: "",
-        published: false
+        subbmitteddate: "",
+        testtype: "",
+        contactnumber: "",
+        patientsname: "",
+        status: "",
+        dateofbirth: '',
+        inchargelabass: "",
+        inchargelabassid: "",
+        starteddate: "",
+
+    };
+    const initialValues = {
+        
+        inchargelabass: "",
+        inchargelabassid: "",
+
     };
     const [CurrentTest, setCurrentTest] = useState(initialTestState);
+    const [message, setMessage] = useState("");
+
+    const handleInputChange = (e) => {
+        //console.log(e)
+        const { name, value } = e.target;
+
+        setCurrentTest({
+            ...CurrentTest,
+            [name]: value,
+        });
+    };
+
     const getTest = id => {
-        Tes.get(id)
+        TestDataService.getOneTest(id)
             .then(response => {
                 setCurrentTest(response.data);
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch(e => {
                 console.log(e);
@@ -22,43 +53,39 @@ export default function StaffAssign() {
     };
 
     useEffect(() => {
-        getTest(props.match.params.id);
-    }, [props.match.params.id]);
 
-    const handleInputChange = event => {
-        const { name, value } = event.target;
-        setCurrentTest({ ...CurrentTest, [name]: value });
-    };
+        getTest(id.topicId);
+    }, [id.topicId]);
 
-    const updatePublished = status => {
+    
+
+
+    const updateTest = (event) => {
+        event.preventDefault()
+        //console.log(CurrentTest._id, "gdfghxdf")
+        //console.log(CurrentTest.inchargelabassid, "gdfghxdf")
         var data = {
-            id: currentTutorial.id,
-            title: currentTutorial.title,
-            description: currentTutorial.description,
-            published: status
+            status: "started",
+            starteddate: new Date(),
+            inchargelabass: CurrentTest.inchargelabass,
+            inchargelabassid: CurrentTest.inchargelabassid,
         };
-
-        TutorialDataService.update(currentTutorial.id, data)
+        //console.log(data)
+        TestDataService.update(CurrentTest._id, data)
             .then(response => {
-                setCurrentTutorial({ ...currentTutorial, published: status });
-                console.log(response.data);
+                //console.log(response.data,);
+                Swal.fire(
+                    'Test Updated!',
+                    'You have updated the test! Please move in to Intransist test table',
+                    'success'
+                  )
+                setMessage("The test was updated successfully!");
             })
             .catch(e => {
                 console.log(e);
             });
+            setCurrentTest(initialValues)
     };
-
-    const updateTest = () => {
-
-        TutorialDataService.update(currentTutorial.id, currentTutorial)
-            .then(response => {
-                console.log(response.data);
-                setMessage("The tutorial was updated successfully!");
-            })
-            .catch(e => {
-                console.log(e);
-            });
-    };*/
 
     return (
 
@@ -69,42 +96,77 @@ export default function StaffAssign() {
                 <div className="detailsbock">
                     <div className="newUserItem">
                         <label>Specimen ID</label>
-                        <input type="text" placeholder="10001"/>
+                        <input type="text"
+                            id="specimenid"
+                            name="specimenid"
+                            value={CurrentTest.specimenid}
+                        />
                     </div>
                     <div className="newUserItem">
                         <label>Patient Name</label>
-                        <input type="text" placeholder="Sudu Appo"/>
+                        <input type="text"
+                            id="patientsname"
+                            name="patientsname"
+                            value={CurrentTest.patientsname}
+                        />
                     </div>
                     <div className="newUserItem">
                         <label>Phone No</label>
-                        <input type="text" placeholder="0774020028"/>
+                        <input type="text"
+                            id="contactnumber"
+                            name="contactnumber"
+                            value={CurrentTest.contactnumber}
+                        />
                     </div>
                     <div className="newUserItem">
-                        <label>Date of Birth</label>
-                        <input type="text" placeholder="09/09/1999"/>
+                        <label>Age of patient</label>
+                        <input type="text"
+                            id="dateofbirth"
+                            name="dateofbirth"
+                            value={CurrentTest.dateofbirth}
+                        />
                     </div>
                     <div className="newUserItem">
                         <label>Test Type</label>
-                        <input type="text" placeholder="FSH"/>
+                        <input type="text"
+                            id="testtype"
+                            name="testtype"
+                            value={CurrentTest.testtype}
+                        />
                     </div>
                 </div>
             </div>
             <div className="detailsbock1">
                 <span className="newUserTitle1">Staff Assigning</span>
                 <div className="detailsbock">
-                    <form className="newUserForm" /*onSubmit={updateTest}*/>
+                    <form className="newUserForm" onSubmit={updateTest}>
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant ID</label>
-                            <input type="text" placeholder="Insert a lab asistant ID"
-                            required/>
+                            <input
+                                type="text"
+                                id="inchargelabassid"
+                                required
+                                minLength="5"
+                                maxLength="5"
+                                name="inchargelabassid"
+                                value={CurrentTest.inchargelabassid}
+                                onChange={handleInputChange}
+                            />
                         </div>
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant Name</label>
-                            <input type="text" placeholder="Insert a lab asistant name"
-                            required/>
+                            <input
+                                type="text"
+                                id="inchargelabass"
+                                required
+                                name="inchargelabass"
+                                value={CurrentTest.inchargelabass}
+                                onChange={handleInputChange}
+                            />
                         </div>
 
                         <button className="newUserButton">Assign Test(Update Test)</button>
+                        <p>{message}</p>
                     </form>
                 </div>
             </div>

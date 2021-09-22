@@ -3,9 +3,12 @@ import {Button, Container, TextField, Typography} from "@material-ui/core";
 import style from "./newSession.css";
 import SessionDataService from "../../../services/doctorSession.service"
 import moment from 'moment';
+import Swal from "sweetalert2";
+import {useHistory} from "react-router-dom";
 
 
 const NewSession = () => {
+    let history = useHistory();
     let temp = sessionStorage.getItem("user");
     let currentUser = JSON.parse(temp);
     let date = new Date();
@@ -18,7 +21,6 @@ const NewSession = () => {
     const [selectedDate, setSelectedDate] = useState(fdate);
     const [selectedTime, setSelectedTime] = useState(time);
     const [value, setValue] = useState(10);
-    const [submitted, setSubmitted] = useState(false);
 
     const handleDateChange = event => {
         setSelectedDate(event.target.value);
@@ -44,22 +46,26 @@ const NewSession = () => {
                 setSelectedDate(response.data.sessionDate);
                 setSelectedTime(response.data.sessionTime);
                 setValue(response.data.maxAppointments);
-                setSubmitted(true);
+                Swal.fire(
+                    "Success",
+                    "Session Added Successfully",
+                    "success"
+                ).then(() => {
+                    history.push("/staff/doctor/doctorschedule/" + currentUser.id)
+                });
 
             })
             .catch(err => {
-                console.log(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: err,
+                })
             });
     };
 
     return (
         <Container>
-            {submitted ? (
-                    <div>
-                        <h4>You submitted successfully!</h4>
-                    </div>
-                ) : (
-                    <div>
             <Typography variant="h6"> New Session Form </Typography>
                         <TextField
                             id="doctorID"
@@ -117,8 +123,6 @@ const NewSession = () => {
                     { ...((selectedTime < "09:00" || selectedTime > "18:00" ||value<10 || value>50) && {disabled:true}) }>
                 Submit
             </Button>
-                    </div>
-                        )}
             </Container>
     );
 };

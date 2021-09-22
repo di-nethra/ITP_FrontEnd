@@ -12,9 +12,9 @@ const create = data => {
     return http.post("/sessions", data);
 };
 
-// const update = (id, data) => {
-//     return http.put(`/sessions/${id}`, data);
-// };
+const increaseAppointmentCount = (id) => {
+    return http.put(`/sessions/increment/${id}`);
+};
 
 const remove = id => {
     return http.delete("/sessions/" + id);
@@ -29,7 +29,7 @@ const sessionServices = {
     // getAll,
     get,
     create,
-    // update,
+    increaseAppointmentCount,
     remove,
     // removeAll,
 };
