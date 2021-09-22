@@ -1,57 +1,29 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import React from 'react'
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import DocSupport from "../../../assets/images/docSupport.gif";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-}));
-
-export default function BasicTextFields() {
-  const classes = useStyles();
-
-  return (
-    <div style={{marginLeft:120}}>
-     
-        <form className={classes.root} noValidate autoComplete="off" style={{marginTop:20}}>
-            <TextField 
-            id="drug_id" 
-            label="Medicine ID" 
-            variant="outlined"
-            placeholder="Input Medicine ID"
-            style={{marginLeft: 40, width: 600}} />
-
-            <TextField 
-            id="medicine_name" 
-            label="Medicine Name" 
-            variant="outlined" 
-            placeholder="Input Medicine Name"
-            style={{marginLeft: 40, width: 600}} />
-
-            <TextField 
-            id="mqty" 
-            label="Quantity" 
-            variant="outlined" 
-            placeholder="Input Quantity"
-            style={{marginLeft: 40, width: 600}} />
-
-            <div style={{marginLeft:540}}>
-                <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                style={{marginTop:30, width: 100}}
-                >
-                Send
-                </Button>
-            </div>
-
-        </form>
-    </div>
-  );
+export default function PharmacistSupport() {
+    return (
+        <div style={{ marginBottom: 10 }}>
+            <Card>
+                <CardContent>
+                    <p style={{ textAlign: "center", fontSize: 24 }}> Pharmacist Account Help and Support</p>
+                    <br />
+                    <div>
+                        <img src={DocSupport} style={{ height: 300, width: "100%", opacity: 1 }} alt="Support" />
+                    </div>
+                    <br />
+                    <p style={{ fontSize: 16 }}>If you face any difficulties in using the functions provided by our system or if you face any other dificulty please contact our system admin via the following contact options.</p>
+                    <br /><br />
+                    <ul style={{ fontSize: 16 }}>
+                        <li><p><strong>Contact No -</strong> (+94) 77 - 589 - 8963</p></li>
+                        <br />
+                        <li><p><strong>Email -</strong> <a href="https://outlook.live.com/owa/">support@ispirithalei.com</a></p></li>
+                        <br />
+                    </ul>
+                </CardContent>
+            </Card>
+        </div>
+    )
 }
