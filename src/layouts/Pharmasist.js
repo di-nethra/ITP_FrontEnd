@@ -11,6 +11,7 @@ import PharmacistHome from "../pages/staff-ui/pharmacist/PharmacistHome"
 import DrugDispense from "../pages/staff-ui/pharmacist/DrugDispense"
 import DrugStock from "../pages/staff-ui/pharmacist/DrugStock"
 import PharmacistHelp from "../pages/staff-ui/pharmacist/PharmacistHelp"
+import PurchaseRequest from "../pages/staff-ui/pharmacist/PurchaseRequest"
 
 
 
@@ -66,6 +67,9 @@ const Pharmasist = () => {
               </Route>
               <Route path="/staff/pharmasist/drugstock">
                 <DrugStock/>
+              </Route>
+              <Route path="/staff/pharmasist/purchaserequest">
+                <PurchaseRequest/>
               </Route>
               <Route path="/staff/pharmasist/support">
                 <PharmacistHelp/>

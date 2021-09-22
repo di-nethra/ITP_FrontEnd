@@ -13,6 +13,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
+import { Link, useParams } from "react-router-dom";
 import EditorFormatBold from 'material-ui/svg-icons/editor/format-bold';
 
 const columns = [
@@ -133,14 +134,28 @@ export default function AvailableDrugTable() {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
-    <div style={{marginLeft:740, marginTop:40, fontWeight:'bold'}}>
-    Send Request for New Stock
 
+    <div style={{marginLeft:60, marginTop:40, fontWeight:'bold'}} >
+        View Request List
+
+        <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            style={{width: 100, marginLeft: 20, marginRight:80}}
+            >
+            View
+        </Button>
+    
+   
+    Send Request for New Stock
+    <Link to="/staff/pharmasist/purchaserequest">
     <Tooltip style={{marginLeft:20,}} title="Add request" aria-label="add">
         <Fab color="primary" className={classes.fab}>
         <AddIcon />
         </Fab>
     </Tooltip>
+    </Link>
     </div>
     </div>
   );

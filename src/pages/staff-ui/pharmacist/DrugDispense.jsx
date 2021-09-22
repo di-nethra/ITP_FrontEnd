@@ -12,7 +12,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BasicTextFields() {
+const required = value => {
+    if (!value) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          This field is required!
+        </div>
+      );
+    }
+  };
+
+  
+
+export default function DrugDispense() {
   const classes = useStyles();
 
   return (
@@ -23,6 +35,7 @@ export default function BasicTextFields() {
             label="Patient Name" 
             variant="outlined"
             placeholder=""
+            validation={[required]}
             style={{marginLeft: 40, width: 650 }} />
 
             <TextField 
@@ -30,6 +43,7 @@ export default function BasicTextFields() {
             label="Diagnosis" 
             variant="outlined" 
             placeholder=""
+            validation={[required]}
             style={{marginLeft: 40, width: 650}} />
 
             <TextField 
@@ -37,6 +51,7 @@ export default function BasicTextFields() {
             label="Medicine 1" 
             variant="outlined" 
             placeholder=""
+            validation={[required]}
             style={{marginLeft: 40, width: 300}} />
 
             <TextField 
@@ -44,6 +59,7 @@ export default function BasicTextFields() {
             label="Medicine 2" 
             variant="outlined" 
             placeholder=""
+            validation={[required]}
             style={{marginLeft: 40, width: 300}} />
 
             <TextField 
@@ -51,6 +67,7 @@ export default function BasicTextFields() {
             label="Dosage" 
             variant="outlined" 
             placeholder=""
+            validation={[required]}
             style={{marginLeft: 40, width: 300}} />
 
             <TextField 
@@ -58,6 +75,7 @@ export default function BasicTextFields() {
             label="Dosage" 
             variant="outlined" 
             placeholder=""
+            validation={[required]}
             style={{marginLeft: 40, width: 300}} />
 
             <TextField 
@@ -65,6 +83,7 @@ export default function BasicTextFields() {
             label="Quantity" 
             variant="outlined" 
             placeholder=""
+            validation={[required]}
             style={{marginLeft: 40, width: 300}} />
 
             <TextField 
@@ -72,6 +91,7 @@ export default function BasicTextFields() {
             label="Quantity" 
             variant="outlined" 
             placeholder=""
+            validation={[required]}
             style={{marginLeft: 40, width: 300}} />
 
             <TextField 
@@ -79,6 +99,7 @@ export default function BasicTextFields() {
             label="Price" 
             variant="outlined" 
             placeholder=""
+            validation={[required]}
             style={{marginLeft: 40, width: 300}} />
 
             <TextField 
@@ -86,6 +107,7 @@ export default function BasicTextFields() {
             label="Price" 
             variant="outlined" 
             placeholder=""
+            validation={[required]}
             style={{marginLeft: 40, width: 300}} />
 
             <div style={{marginLeft:560}}>
