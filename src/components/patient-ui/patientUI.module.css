@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+body {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
 .header {
     padding-left: 5%;
     padding-right: 5%;
@@ -16,7 +20,7 @@
 .logo_bg {
     background: #D9FAFF;
     height: 70px;
-    width: 230px;
+    padding: 5px 10px;
     border-radius:20px;
     display: flex;
     align-items: center;
@@ -24,9 +28,8 @@
 }
 
 .logoPatient {
-    height: 30px;
-    width: 170px;
-    padding: 20px;
+    height: 35px;
+    padding: 10px 10px 5px;
 }
 
 .patientNavUl {
