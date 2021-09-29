@@ -7,7 +7,7 @@ import CovidCard from "../../components/patient-ui/Home/CovidCard";
 
 function Home() {
     return (
-        <Container>
+        <Container style={{overflowX:"hidden"}}>
             <WelcomeMessage />
             <ServicesCard />
             <CovidCard />

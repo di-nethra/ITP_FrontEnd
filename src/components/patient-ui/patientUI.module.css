@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-body {
-    box-sizing: border-box;
-    overflow-x: hidden;
-}
 .header {
     padding-left: 5%;
     padding-right: 5%;
