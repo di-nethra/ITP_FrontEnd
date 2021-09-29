@@ -26,6 +26,19 @@ function DoctorPrescription() {
         dMed2: "",
         dDose2: ""
     };
+
+    const prescriptionDemo = () => {
+        setPrescription({
+        dId: currentUser?.id,
+        dPName: "Asel Jayasooriya",
+        dPDignosis: "Common cold",
+        dMed1: "Vitamin C",
+        dDose1: "12 tabs",
+        dMed2: "Panadine",
+        dDose2: "3 tds"
+        });
+    }
+
     const [prescription, setPrescription] = useState(initialPrescriptionState);
     // const [submitted, setSubmitted] = useState(false);
 
@@ -121,8 +134,12 @@ function DoctorPrescription() {
                             &ensp;Check to confirm the prescription submission.</p>
 
                         <div>
-                            <Button size="large" variant="contained" style={{ marginRight: 8 }} type="reset" onClick={newPrescription}>Clear</Button>
-                            <Button size="large" variant="contained" color="primary" type="submit" disabled={isDisabled} onClick={savePrescription}>Add Prescription</Button>
+                            <Button size="large" variant="contained" style={{ marginRight: 8 }} type="reset" 
+                            onClick={newPrescription}>Clear</Button>
+                            <Button size="large" variant="contained" color="primary" type="submit" disabled={isDisabled} style={{ marginRight: 8 }}  
+                            onClick={savePrescription}>Add Prescription</Button>
+                            <Button size="large" variant="contained" color="secondary"
+                            onClick={prescriptionDemo}>DEMO</Button>
                         </div>
 
 
