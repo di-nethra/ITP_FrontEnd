@@ -56,7 +56,7 @@ function CovidCard() {
 
 
     let detailArr = [{
-        heading: "Total Cases",
+        heading: "Total",
         number: data.data.local_total_cases,
         icon: function icon() {
             return <FontAwesomeIcon icon={faHospitalUser} size='3x' color={theme.palette.warning.main}/>
@@ -64,7 +64,7 @@ function CovidCard() {
         color: theme.palette.warning.main,
     },
         {
-            heading: "Active Cases",
+            heading: "Active",
             number: data.data.local_total_number_of_individuals_in_hospitals,
             icon: function icon() {
                 return <FontAwesomeIcon icon={faProcedures} size='3x' color={theme.palette.error.main}/>
@@ -93,7 +93,7 @@ function CovidCard() {
     return (
         <Box className={style.box}>
             <div>
-                <div style={{position: "relative", top: '-10%'}}>
+                <div style={{position: "relative", top: '-10%', right: "-2%"}}>
                     <img src={Virus} className={style.virusImage} alt="Virus" />
                 </div>
                 <Typography className={style.heading} variant="h4">COVID-19 SRI LANKA</Typography>
