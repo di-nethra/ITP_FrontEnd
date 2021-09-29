@@ -16,6 +16,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Swal from "sweetalert2";
 
 function EmpForm() {
+  const demo = () => {
+
+  }
   const handleSubmit = (e) => {
     //password generator
     var randomstring = Math.random().toString(36).slice(-8);
@@ -196,7 +199,7 @@ function EmpForm() {
                         fullWidth={true}
                         InputProps={{ inputProps: { min: 10, max: 10 } }}
                         onChange={handleMobileChange}
-                        defaultValue={selectedMobile}
+                        defaultValue={demo}
                       />
                     </Grid>
 
@@ -225,6 +228,15 @@ function EmpForm() {
                         startIcon={<SendIcon />}
                       >
                         submit
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        style={styles.button}
+                        onClick={demo}
+                        startIcon={<SendIcon />}
+                      >
+                        Demo
                       </Button>
                     </Grid>
                   </Grid>
