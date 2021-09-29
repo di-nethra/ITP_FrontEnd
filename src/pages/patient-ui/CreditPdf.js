@@ -49,118 +49,163 @@ function checkout() {
 }
 
 const ref = React.createRef();
-const tempPrice = "RS.2500.00";
+const tempPrice = "RS.2750.00";
 const currentDate = new Date().toDateString();
 
 const CreditPdf = (props) => {
   return (
     <>
-      <Grid container justifyContent="center">
-        <div className="Post" ref={ref}>
-          <div>
-            <Grid container direction="row">
-              <Grid item md={8} style={{ marginTop: "30px" }}>
-                <Card style={{ border: "solid", marginLeft: "70px" }}>
-                  <CardContent>
-                    <img src={IspirithaleBlueLogo} alt="70" />
-                    <h3>
-                      Invoice
-                      <hr></hr>
-                    </h3>
-                    <Grid container style={{ marginTop: "30px" }}>
-                      <Grid
-                        item
-                        xs={12}
-                        style={{
-                          textAlignLast: "justify",
-                          marginTop: "50px",
-                          marginBottom: "20px",
-                        }}
-                      >
-                        <h4>Email: {props.email}</h4>
-                      </Grid>
-                      <Grid container>
-                        <Grid item xs={6}>
-                          <h4>Customer name:</h4>
-                        </Grid>
-                        <Grid item xs={6} style={{ textAlign: "right" }}>
-                          <h4> {props.name}</h4>
-                        </Grid>
-                      </Grid>
-                      <Grid container>
-                        <Grid item xs={6} style={{ marginTop: "20px" }}>
-                          <h4>Date of payment:</h4>
-                        </Grid>
-                        <Grid
-                          item
-                          xs={6}
-                          style={{ textAlign: "right", marginTop: "20px" }}
-                        >
-                          <h4> {currentDate}</h4>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-
-                    <Card
+      <Grid container xs={12}>
+        <div>
+          <Grid item md={6} style={{ marginTop: "50px", marginLeft: "310px" }}>
+            <div className="Post" ref={ref}>
+              <Card
+                style={{ border: "solid", marginLeft: "70px", height: "700px" }}
+              >
+                <CardContent>
+                  <img src={IspirithaleBlueLogo} alt="70" />
+                  <h3>
+                    Invoice
+                    <hr></hr>
+                  </h3>
+                  <Grid container style={{ marginTop: "30px" }}>
+                    <Grid
+                      item
+                      xs={12}
                       style={{
-                        marginTop: "250px",
-                        border: "solid",
-                        textAlign: "right",
+                        textAlignLast: "justify",
+                        marginTop: "50px",
+                        marginBottom: "20px",
                       }}
                     >
-                      <CardContent>
-                        <h1>{tempPrice}</h1>
-                      </CardContent>
-                    </Card>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
-          </div>
-        </div>
-        <Pdf targetRef={ref} filename="CreditPDF.pdf">
-          {({ toPdf }) => (
-            <div>
-              <Grid
-                direction="column"
-                md={12}
-                style={{ textAlign: "center", padding: "0px" }}
-              >
-                <form noValidate>
-                  <img src={invoice} alt="invoiceimage" />
-
-                  <Card>
-                    <CardContent>
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={toPdf}
+                      <h4>Email: {props.email}</h4>
+                    </Grid>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <h4>Customer name:</h4>
+                      </Grid>
+                      <Grid item xs={6} style={{ textAlign: "right" }}>
+                        <h4> {props.name}</h4>
+                      </Grid>
+                    </Grid>
+                    <Grid container>
+                      <Grid item xs={6} style={{ marginTop: "20px" }}>
+                        <h4>Date of payment:</h4>
+                      </Grid>
+                      <Grid
+                        item
+                        xs={6}
+                        style={{ textAlign: "right", marginTop: "20px" }}
                       >
-                        Download as PDF
-                      </Button>
-                      <Button variant="contained" color="primary">
-                        Download as JPG
-                      </Button>
-                    </CardContent>
-                  </Card>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={checkout}
+                        <h4> {currentDate}</h4>
+                      </Grid>
+                    </Grid>
+                    <Grid container>
+                      <Grid item xs={6} style={{ marginTop: "20px" }}>
+                        <h4>Chanelling Fee:</h4>
+                      </Grid>
+                      <Grid
+                        item
+                        xs={6}
+                        style={{ textAlign: "right", marginTop: "20px" }}
+                      >
+                        <h4>Rs.2000.00</h4>
+                      </Grid>
+                    </Grid>
+                    <Grid container>
+                      <Grid item xs={6} style={{ marginTop: "20px" }}>
+                        <h4>Hospital Fee:</h4>
+                      </Grid>
+                      <Grid
+                        item
+                        xs={6}
+                        style={{ textAlign: "right", marginTop: "20px" }}
+                      >
+                        <h4>Rs.500.00</h4>
+                      </Grid>
+                    </Grid>
+                    <Grid container>
+                      <Grid item xs={6} style={{ marginTop: "20px" }}>
+                        <h4>VAT:</h4>
+                      </Grid>
+                      <Grid
+                        item
+                        xs={6}
+                        style={{ textAlign: "right", marginTop: "20px" }}
+                      >
+                        <h4>Rs.250.00</h4>
+                      </Grid>
+                    </Grid>
+                    <Grid container>
+                      <Grid item xs={6} style={{ marginTop: "20px" }}>
+                        <h4>Total Bill:</h4>
+                      </Grid>
+                      <Grid
+                        item
+                        xs={6}
+                        style={{ textAlign: "right", marginTop: "20px" }}
+                      >
+                        <h4>{tempPrice}</h4>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+
+                  <Card
                     style={{
-                      marginTop: "50px",
-                      height: "50px",
-                      width: "500px",
+                      marginTop: "80px",
+                      border: "solid",
+                      textAlign: "right",
                     }}
                   >
-                    Pay with PayHere
-                  </Button>
-                </form>
-              </Grid>
+                    <CardContent>
+                      <h1>{tempPrice}</h1>
+                    </CardContent>
+                  </Card>
+                </CardContent>
+              </Card>
             </div>
-          )}
-        </Pdf>
+          </Grid>
+        </div>
       </Grid>
+
+      <Pdf targetRef={ref} filename="CreditPDF.pdf">
+        {({ toPdf }) => (
+          <div>
+            <Grid
+              direction="column"
+              md={12}
+              style={{ textAlign: "center", padding: "0px" }}
+            >
+              <form noValidate>
+                <img src={invoice} alt="invoiceimage" />
+
+                <Card>
+                  <CardContent>
+                    <Button variant="contained" color="primary" onClick={toPdf}>
+                      Download as PDF
+                    </Button>
+                    <Button variant="contained" color="primary">
+                      Download as JPG
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={checkout}
+                  style={{
+                    marginTop: "50px",
+                    height: "50px",
+                    width: "500px",
+                  }}
+                >
+                  Pay with PayHere
+                </Button>
+              </form>
+            </Grid>
+          </div>
+        )}
+      </Pdf>
     </>
   );
 };

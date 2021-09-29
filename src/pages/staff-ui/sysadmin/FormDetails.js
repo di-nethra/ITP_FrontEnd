@@ -16,6 +16,15 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Swal from "sweetalert2";
 
 function EmpForm() {
+  const Demo = () => {
+    setSelectedFirstName("asel");
+    setSelectedLastName("jaye");
+    setSelectedEmail("asel@gmail.com");
+    setSelectedMobile("0767655432");
+    setSelectedAddress("mawanalla");
+    setRole("Doctor");
+  };
+
   const handleSubmit = (e) => {
     //password generator
     var randomstring = Math.random().toString(36).slice(-8);
@@ -50,12 +59,10 @@ function EmpForm() {
       .create(data)
 
       .then((response) => {
-
         alert("success");
         window.location.reload();
         console.log("inside create" + response.data);
         console.log("inside then" + response.data);
-
       })
       .catch((e) => {
         // alert(e );
@@ -148,8 +155,9 @@ function EmpForm() {
                         variant="outlined"
                         required
                         fullWidth={true}
+                        value={selectedFirstName}
                         onChange={handleFirstNameChange}
-                        defaultValue={selectedFirstName}
+                        // defaultValue={selectedFirstName}
                       />
                     </Grid>
 
@@ -163,8 +171,9 @@ function EmpForm() {
                         variant="outlined"
                         required
                         fullWidth={true}
+                        value={selectedLastName}
                         onChange={handleLastNameChange}
-                        defaultValue={selectedLastName}
+                        // defaultValue={selectedLastName}
                       />
                     </Grid>
 
@@ -178,8 +187,9 @@ function EmpForm() {
                         variant="outlined"
                         required
                         fullWidth={true}
+                        value={selectedEmail}
                         onChange={handleEmailChange}
-                        defaultValue={selectedEmail}
+                        // defaultValue={selectedEmail}
                       />
                     </Grid>
 
@@ -194,9 +204,10 @@ function EmpForm() {
                         variant="outlined"
                         required
                         fullWidth={true}
+                        value={selectedMobile}
                         InputProps={{ inputProps: { min: 10, max: 10 } }}
                         onChange={handleMobileChange}
-                        defaultValue={selectedMobile}
+                        // defaultValue={selectedMobile}
                       />
                     </Grid>
 
@@ -210,8 +221,9 @@ function EmpForm() {
                         variant="outlined"
                         required
                         fullWidth={true}
+                        value={selectedAddress}
                         onChange={handleAddressChange}
-                        defaultValue={selectedAddress}
+                        // defaultValue={selectedAddress}
                       />
                     </Grid>
 
@@ -225,6 +237,15 @@ function EmpForm() {
                         startIcon={<SendIcon />}
                       >
                         submit
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        style={styles.button}
+                        onClick={Demo}
+                        startIcon={<SendIcon />}
+                      >
+                        Demo
                       </Button>
                     </Grid>
                   </Grid>

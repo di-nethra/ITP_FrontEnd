@@ -12,7 +12,6 @@ const styles = (theme) => ({
   infoLogo: {
     width: "500px",
     marginLeft: "200px",
-    marginBottom: "1000px",
   },
   text: {
     textAlign: "center",
@@ -31,7 +30,7 @@ const styles = (theme) => ({
     textAlign: "left",
   },
   Paybutton: {
-    marginTop: "20px",
+    marginTop: "40px",
     width: "400px",
     height: "50px",
     background: "#3C4257",
@@ -43,6 +42,10 @@ const styles = (theme) => ({
 });
 
 export class CreditCardPage extends Component {
+  // Demo = () => {
+  //   this.props.demo();
+  // };
+
   continue = (e) => {
     e.preventDefault();
     const ranNum = "CPAY" + Math.floor(1000 + Math.random() * 9000);
@@ -183,6 +186,14 @@ export class CreditCardPage extends Component {
             >
               Proceed to Checkout
             </Button>
+            {/* <Button
+              variant="contained"
+              color="primary"
+              className={classes.Paybutton}
+              onClick={this.Demo}
+            >
+              Demo
+            </Button> */}
           </Grid>
         </Grid>
       </div>

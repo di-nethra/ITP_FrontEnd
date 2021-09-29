@@ -81,7 +81,6 @@ export default function AllAppointments() {
     return (
         <div>
             <Card>
-                <PDF data={rows} headers={headers} title="Appointments Report" />
                 <CardContent>
                     <h3>All Appointments</h3>
                     <br/>
@@ -94,6 +93,17 @@ export default function AllAppointments() {
                         loading={loading}
                     />
 
+                </CardContent>
+            </Card>
+            <Card style={{ margin: "15px 0", backgroundColor: "#D9FAFF" }}>
+                <CardContent>
+                    <p>
+                        <strong>Disclaimer</strong> - You can produce a report of all the patient appointments. Please use them
+                        for your use only. We make it our obligation to protect patient privacy.
+                    </p>
+                    <div style={{ marginTop: "15px"}}>
+                        <PDF data={rows} headers={headers} title="Appointments Report" />
+                    </div>
                 </CardContent>
             </Card>
         </div>
