@@ -1,8 +1,8 @@
 import http from "../http-common";
 
-// const getAll = () => {
-//     return http.get("/prescriptions");
-// };
+const getAll = () => {
+    return http.get("/prescriptions");
+};
 
 const get = id => {
     return http.get("/prescriptions/" + id);
@@ -25,7 +25,7 @@ const getOnePrescription = id => {
 };
 
 const PrescriptionDataServices = {
-    // getAll,
+    getAll,
     get,
     create,
     update,

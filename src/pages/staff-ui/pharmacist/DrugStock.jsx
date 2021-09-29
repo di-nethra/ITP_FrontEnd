@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -13,34 +13,18 @@ import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
+import InventoryDataService from '../../../services/inventoryServices';
 import { Link, useParams } from "react-router-dom";
 
 const columns = [
-  { id: 'id', label: 'ID', minWidth: 170 },
-  { id: 'name', label: 'Drug Name', minWidth: 100 },
+  { id: 'item_id', label: 'ID', minWidth: 100 },
+  { id: 'item_name', label: 'Item Name', minWidth: 100 },
   {
     id: 'quantity',
     label: 'Quantity',
-    minWidth: 170,
-    align: 'right',
+    minWidth: 100,
+    //align: 'right',
   },
-  {
-    id: 'reoderlevel',
-    label: 'Reoder-Level',
-    minWidth: 170,
-    align: 'right',
-  },
-];
-
-function createData(id, name, quantity, reoderlevel) {
-  //const density = population / size;
-  return { id, name, quantity, reoderlevel };
-}
-
-const rows = [
-  createData(12541, 'IN', 1324171, 3287263),
-  createData(52364, 'CN', 1403500, 9596961),
-  createData(96582, 'IT', 6048397, 301340),
 ];
 
 const useStyles = makeStyles({
@@ -48,9 +32,15 @@ const useStyles = makeStyles({
     width: '100%',
   },
   container: {
-    maxHeight: 440,
+    maxHeight: 250,
   },
 });
+
+// function createData(id, name, quantity, reoderlevel) {
+//   //const density = population / size;
+//   return { id, name, quantity, reoderlevel };
+// }
+
 
 export default function AvailableDrugTable() {
   const classes = useStyles();
@@ -66,10 +56,39 @@ export default function AvailableDrugTable() {
     setPage(0);
   };
 
+  const [inventory, setInventory] = useState([]);
+
+  useEffect(() => {
+    retrieveInventory();
+    }, []);
+
+  const retrieveInventory = () => {
+  InventoryDataService.getAll()
+      .then(response => {
+          setInventory(response.data);
+      })
+      .catch(e => {
+          console.log(e);
+      });
+  };
+
+  let rows = [];
+    for (const inventoryy of inventory) {
+        rows.push(
+            {
+                item_id: inventoryy.item_id,
+                item_name: inventoryy.item_name,
+                quantity: inventoryy.quantity,
+                reorder_level: inventoryy.reorder_level
+            }
+        )
+    }
+
+
   return (
     <div>
     <h3>Available Drugs</h3>
-    <Paper style={{width:'90%', marginLeft:30, marginTop:60}} className={classes.root}>
+    <Paper style={{width:'80%', marginLeft:80, marginTop:60}} className={classes.root}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -114,7 +133,7 @@ export default function AvailableDrugTable() {
       />
     </Paper>
 
-    <div style={{marginLeft:60, marginTop:40, fontWeight:'bold'}} >
+    <div style={{marginLeft:80, marginTop:40, fontWeight:'bold'}} >
         View Request List
 
         <Button
@@ -122,6 +141,8 @@ export default function AvailableDrugTable() {
             color="primary"
             className={classes.button}
             style={{width: 100, marginLeft: 20, marginRight:80}}
+            component={Link}
+            to="/staff/pharmasist/purchaserequest"
             >
             View
         </Button>
