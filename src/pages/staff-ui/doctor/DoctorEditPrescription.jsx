@@ -50,6 +50,7 @@ function DoctorPrescription() {
     }, [id]);
 
     const updatePrescription = (event) => {
+
         event.preventDefault();
         PrescriptionDataService
             .update(prescription._id, prescription)
@@ -82,7 +83,7 @@ function DoctorPrescription() {
                 <CardContent>
                     <h3>EDIT PRESCRIPTION FORM</h3>
                     <br />
-                    <form>
+                    <form onSubmit={updatePrescription}>
                         <TextField id="dPName" name="dPName" label="PATIENT NAME" style={{ margin: 0 }}
                             placeholder="Enter patient name" helperText="ex: Asel Jayasooriya"
                             fullWidth margin="normal" InputLabelProps={{ shrink: true, }} variant="outlined"
@@ -128,14 +129,12 @@ function DoctorPrescription() {
                             &ensp;Check to confirm the edited prescription submission.</p>
 
                         <div className="buttonAlignRight">
-                            <Link to={"/staff/doctor/viewprescription/"+prescription.dId}>
+                            <Link to={"/staff/doctor/viewprescription/" + prescription.dId}>
                                 <Button size="large" variant="contained" style={{ marginRight: 8 }}>Cancel</Button>
                             </Link>
                             <Button size="large" variant="contained" color="primary" type="submit"
-                                disabled={isDisabled} onClick={updatePrescription} >Edit Prescription</Button>
+                                disabled={isDisabled}>Edit Prescription</Button>
                         </div>
-
-
                     </form>
                 </CardContent>
             </Card>

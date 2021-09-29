@@ -59,6 +59,13 @@ export default function TestReslt() {
 
         getTest(id.testId);
     }, [id.testId]);
+    const demoform = () => {
+        setCurrentTest({
+            ...CurrentTest,
+            specimenproperty: "Covid Staus",
+            specimenpropertyresult: "Negative"
+        });
+    };
 
 
 
@@ -172,6 +179,7 @@ export default function TestReslt() {
                         <p>{message}</p>
                     </form>
                 </div>
+                <button className="demobutton" onClick={demoform}>DEMO</button>
             </div>
         </div>
 

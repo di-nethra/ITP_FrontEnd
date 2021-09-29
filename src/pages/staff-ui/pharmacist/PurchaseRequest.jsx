@@ -140,13 +140,13 @@ function PurchaseRequestForm() {
 
     const tempname = data.medicinename;
     if(tempname.length === 0){
-      alert("Medicine ID is a required field");
+      alert("Medicine Name is a required field");
       return null;
     }
 
     const tempqt = data.mqty;
     if(tempqt.length === 0){
-      alert("Medicine ID is a required field");
+      alert("Medicine Quantity is a required field");
       return null;
     }
 

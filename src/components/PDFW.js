@@ -35,9 +35,10 @@ export default function PDF(props) {
                 // Header
                 if (img) {
                     doc.addImage(img, 'PNG', 150, 60, 0, 0)
-                }
+                }   
+                doc.line(0,135,500,135)
                 // doc.text('Report', data.settings.margin.left + 50, 22,)
-                var str = "Monthly inquiry report must be submitted to the MonthEnd progress meeting\n"+
+                var str ="Monthly inquiry report must be submitted to the MonthEnd progress meeting\n"+
                     "\n"+
                     "TEL : +9411 2696 696/ +9411 269 696\n" +
                     "\n" +
@@ -50,7 +51,9 @@ export default function PDF(props) {
                 var pageSize = doc.internal.pageSize
                 var pageHeight = pageSize.height ? pageSize.height : pageSize.getHeight()
                 doc.text(str, data.settings.margin.left, pageHeight - 60)
+                doc.line(0,pageHeight - 80,500,pageHeight - 80)
             },
+        
             margin: {top: 150, bottom: 80},
         };
 
