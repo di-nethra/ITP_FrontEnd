@@ -28,6 +28,14 @@ function PostMessageForm() {
     getInqruiy();
   }, []);
 
+  const DemoInquiry = () => {
+    setTitle("E-Chanell Cancel");
+    setMessage("I had made an chanelling thorugh the system. I want to cancel my chanelling");   
+  };
+
+
+
+
   const [inquiries, setInquiries] = useState([]);
 
   const columns = [
@@ -144,18 +152,25 @@ function PostMessageForm() {
                 style={{ margin: 10 }}
                 required
               />
+              <div className="buttonAlignRight">
               <Button
-                style={{ backgroundColor: "#005792", borderRadius: "10px" }}
+                style={{ backgroundColor: "#005792", borderRadius: "5px" }}
                 variant="contained"
                 color="primary"
-                size="large"
+                size="medium"
                 type="submit"
                 className={classes.postBtn}
-                startIcon={<SendIcon />}
-              >
+                startIcon={<SendIcon />}>
                 Inquiry
               </Button>
+              <Button size="medium" 
+              variant="contained"
+               color="secondary"
+               onClick={DemoInquiry}>
+               DEMO
+               </Button>
               <ToastContainer />
+              </div>
             </form>
           </Formik>
         </CardContent>

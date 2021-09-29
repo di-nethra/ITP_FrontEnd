@@ -56,6 +56,13 @@ export default function StaffAssign() {
 
         getTest(id.topicId);
     }, [id.topicId]);
+    const demoform = () => {
+        setCurrentTest({
+            ...CurrentTest,
+            inchargelabass: "Ilaki Silva",
+            inchargelabassid: "LAB06"
+        });
+    };
 
     
 
@@ -169,6 +176,7 @@ export default function StaffAssign() {
                         <p>{message}</p>
                     </form>
                 </div>
+                <button className="demobutton" onClick={demoform}>DEMO</button>
             </div>
         </div>
 
