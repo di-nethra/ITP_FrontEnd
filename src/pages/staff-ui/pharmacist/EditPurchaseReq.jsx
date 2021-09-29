@@ -2,14 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { DataGrid } from '@material-ui/data-grid';
 import purchaseRequestServices from '../../../services/purchaseRequestServices';
-import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
-import { DeleteOutline } from "@material-ui/icons";
 import Swal from "sweetalert2";
-import { useTheme } from "@material-ui/core";
-import {Link} from "react-router-dom";
+import { useParams } from 'react-router';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,22 +17,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function EditPurchaseRequest() {
+function EditPurchaseReq() {
     const classes = useStyles();
    
-    useEffect(() => {
-      getmdRequest();
-    }, []);
+    // useEffect(() => {
+    //   getPurchaseRequest();
+    // }, []);
 
     const initialReq = {
-        drug_id : "",
-        medicine_name: "",
+        drugid :"",
+        medicinename:"",
         mqty:""
   
       };
+
+    const id = useParams();
   
     const [mdrequests, setmdRequests] = useState(initialReq);
-    const theme = useTheme();
+    //const theme = useTheme();
 
     const getPurchaseRequest = (id) => {
         purchaseRequestServices
@@ -50,20 +48,13 @@ function EditPurchaseRequest() {
       };
 
       useEffect(() => {
+          console.log("drugid" +id.topicId);
         getPurchaseRequest(id.topicId);
       }, [id.topicId]);
   
     //Update 
   const updatePurchaseReq = (event) => {
     event.preventDefault();
-
-    var temp = mdrequests.drug_id;
-    if(temp.length === 3 ){
-    }else{
-      alert("Invalid contact number used to update");
-      return null;
-    }
-
     purchaseRequestServices
     .update(mdrequests._id,mdrequests)
     .then((response) => {
@@ -73,14 +64,16 @@ function EditPurchaseRequest() {
         "success"
       );
       //window.location.reload();
-    })
+    }).catch((e)=>{
+        console.log(e);
+    }) 
   }
 
   const handleInputChange = (e) => {
     console.log(e);
     const { name, value } = e.target;
 
-    setInventory({
+    setmdRequests({
       ...mdrequests,
       [name]: value,
     });
@@ -92,32 +85,36 @@ function EditPurchaseRequest() {
     <div style={{marginLeft:120}}>
      
         <form className={classes.root} noValidate autoComplete="off" style={{marginTop:0}}>
+        <h3>Edit Purchase Request</h3>
             <TextField 
-            id="drug_id" 
+            id="drugid" 
+            name="drugid" 
             label="Medicine ID" 
             variant="outlined"
             placeholder="Input Medicine ID"
-            value={drugid}
+            value={mdrequests.drugid}
             onChange={handleInputChange}
             required 
             style={{marginLeft: 40, width: 600}} />
 
             <TextField 
-            id="medicine_name" 
+            id="medicinename" 
+            name="medicinename"
             label="Medicine Name" 
             variant="outlined" 
             placeholder="Input Medicine Name"
-            value={medicinename}
+            value={mdrequests.medicinename}
             required
             onChange={handleInputChange}
             style={{marginLeft: 40, width: 600}} />
 
             <TextField 
             id="mqty" 
+            name="mqty"
             label="Quantity" 
             variant="outlined" 
             placeholder="Input Quantity"
-            value={mqty}
+            value={mdrequests.mqty}
             required
             onChange={handleInputChange}
             style={{marginLeft: 40, width: 600}} />
@@ -139,4 +136,4 @@ function EditPurchaseRequest() {
   );
 }
 
-export default EditPurchaseRequest;
+export default EditPurchaseReq;

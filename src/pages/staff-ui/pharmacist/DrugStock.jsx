@@ -14,7 +14,7 @@ import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import InventoryDataService from '../../../services/inventoryServices';
-import { Link, useParams } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const columns = [
   { id: 'item_id', label: 'ID', minWidth: 100 },

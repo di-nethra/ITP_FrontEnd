@@ -15,11 +15,15 @@ const create = data => {
 const remove = id => {
     return http.delete("/mdrequest/" + id);
 };
+const getOnePurchaseRequest = (id) => {
+    return http.get("/mdrequest/" + id);
+  };
 
 const purchaseRequestServices = {
     getAll,
     update,
     create,
     remove,
+    getOnePurchaseRequest,
 };
 export default purchaseRequestServices;

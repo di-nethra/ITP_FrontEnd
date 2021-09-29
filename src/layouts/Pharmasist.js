@@ -3,7 +3,6 @@ import Sidebar from "../components/staff-ui/sidebar/Sidebar";
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Topbar from "../components/staff-ui/topbar/Topbar";
-import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
 import PublishOutlinedIcon from '@material-ui/icons/PublishOutlined';
 import "./layout.css"
 import {Route, Switch} from "react-router-dom";
@@ -12,6 +11,8 @@ import DrugDispense from "../pages/staff-ui/pharmacist/DrugDispense"
 import DrugStock from "../pages/staff-ui/pharmacist/DrugStock"
 import PharmacistHelp from "../pages/staff-ui/pharmacist/PharmacistHelp"
 import PurchaseRequest from "../pages/staff-ui/pharmacist/PurchaseRequest"
+import EditPurchaseReq from "../pages/staff-ui/pharmacist/EditPurchaseReq";
+import Bill from "../pages/staff-ui/pharmacist/Bill";
 
 
 
@@ -30,22 +31,16 @@ const Pharmasist = () => {
         id: 1
       },
       {
-        path: "drugdispense",
-        icon: <AddBoxOutlinedIcon className="sidebarIcon"/>,
-        iconlabel: 'Drug Dispense',
-        id: 2
-      },
-      {
         path: "drugstock",
         icon: <PublishOutlinedIcon className="sidebarIcon"/>,
         iconlabel: 'Drug Stock',
-        id: 3
+        id: 2
       },
       {
         path: "support",
         icon: <HelpOutlineIcon className="sidebarIcon"/>,
         iconlabel: 'Support',
-        id: 4
+        id: 3
       },
 
 
@@ -62,14 +57,20 @@ const Pharmasist = () => {
               <Route exact path="/staff/pharmasist/">
                 <PharmacistHome/>
               </Route>
-              <Route exact path="/staff/pharmasist/drugdispense">
+              <Route exact path="/staff/pharmasist/drugdispense/:topicId">
                 <DrugDispense/>
               </Route>
               <Route path="/staff/pharmasist/drugstock">
                 <DrugStock/>
               </Route>
+              <Route path="/staff/pharmasist/downloadbill/:topicId">
+                <Bill/>
+              </Route>
               <Route path="/staff/pharmasist/purchaserequest">
                 <PurchaseRequest/>
+              </Route>
+              <Route path="/staff/pharmasist/editpurchasereq/:topicId">
+                <EditPurchaseReq/>
               </Route>
               <Route path="/staff/pharmasist/support">
                 <PharmacistHelp/>

@@ -3,6 +3,7 @@ import { DataGrid } from '@material-ui/data-grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PrescriptionDataService from "../../../services/doctorPrescriptionService";
 
 export default function ViewPrecription() {
@@ -34,9 +35,30 @@ export default function ViewPrecription() {
         {
             field: 'diagnosis',
             headerName: 'Diagnosis',
-            width: 340,
+            width: 240,
             editable: false,
         },
+        {
+            field: 'action',
+            headerName: 'Action',
+            width: 150,
+            sortable: false,
+            editable: false,
+            renderCell: (params) => {
+              return (
+                <>
+                    <Link to={"/staff/pharmasist/drugdispense/" + params.row.id} >
+                    <button
+                      style={{ marginLeft: 40 }}
+                      className="userListEdit">
+                      Bill
+                    </button>
+                    </Link>
+      
+                </>
+              );
+            },
+          },
     ];
 
     let rows = [];
