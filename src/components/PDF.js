@@ -11,7 +11,6 @@ export default function PDF(props) {
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
-
     today = dd + '/' + mm + '/' + yyyy;
 
     const exportPDF = () => {
@@ -61,7 +60,7 @@ export default function PDF(props) {
         doc.setTextColor(40)
         doc.text(title, marginLeft, 120);
         doc.autoTable(content);
-        doc.save(today + "-Report.pdf")
+        doc.save(props.title + " as at " + today + ".pdf")
     }
         return (
             <div>
