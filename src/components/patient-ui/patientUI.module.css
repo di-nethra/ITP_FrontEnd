@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-body {
-    box-sizing: border-box;
-    overflow-x: hidden;
-}
 .header {
     padding-left: 5%;
     padding-right: 5%;
@@ -20,8 +16,8 @@ body {
 .logo_bg {
     background: #D9FAFF;
     height: 70px;
-    min-width: 220.85px;
-    max-width: 287.3px;
+    min-width: 221px;
+    max-width: 287px;
     padding: 5px 10px;
     border-radius:20px;
     display: flex;
