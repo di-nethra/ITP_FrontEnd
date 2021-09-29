@@ -61,6 +61,14 @@ export default function DrugDispense() {
   const [price, setPrice] = useState([]);
   // const [submitted, setSubmitted] = useState(false);
 
+  const [price1, setPrice1] = useState("");
+  const [price2, setPrice2] = useState("");
+
+  const Demo = () => {
+    setPrice1(250.00);
+    setPrice2(350.00);
+  }
+
   const handleInputChange = event => {
     const { name, value } = event.target;
     setPrice({ ...price, [name]: value });
@@ -69,6 +77,7 @@ export default function DrugDispense() {
   return (
     <div style={{ marginLeft: 80 }}>
       <form className={classes.root} noValidate autoComplete="off" style={{ width: '80%' }}>
+      <h3>Patient Prescription</h3>
         <TextField
           id="patientname"
           // label="Patient Name" 
@@ -130,6 +139,7 @@ export default function DrugDispense() {
           name="price1"
           label="Price"
           variant="outlined"
+          value={price1}
           placeholder=""
           onChange={handleInputChange}
           validation={[required]}
@@ -140,6 +150,7 @@ export default function DrugDispense() {
           name="price2"
           label="Price"
           variant="outlined"
+          value={price2}
           placeholder=""
           onChange={handleInputChange}
           validation={[required]}
@@ -158,6 +169,16 @@ export default function DrugDispense() {
           </Button>
             </Link>
         </div>
+
+        <Button
+            variant="contained"
+            color="secondary"
+            className={classes.button}
+            onClick={Demo}
+            style={{ width: 100, marginLeft: 40 }}
+          >
+            Demo
+          </Button>
 
       </form>
     </div>

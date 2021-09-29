@@ -60,7 +60,7 @@ function EditPurchaseReq() {
     .then((response) => {
       Swal.fire(
         "Update Successfull",
-        "You have successfully updated the inventory item",
+        "You have successfully updated the Request",
         "success"
       );
       //window.location.reload();
