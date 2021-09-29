@@ -58,7 +58,7 @@ export default function Login() {
                                 history.push("/staff/labassistant");
                                 break;
                             case "Pharmasist":
-                                history.push("/staff/pharmacist");
+                                history.push("/staff/pharmasist");
                                 break;
                             case "PaymentAdmin":
                                 history.push("/staff/paymentadmin");

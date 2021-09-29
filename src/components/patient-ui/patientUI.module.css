@@ -16,7 +16,9 @@
 .logo_bg {
     background: #D9FAFF;
     height: 70px;
-    width: 230px;
+    min-width: 221px;
+    max-width: 287px;
+    padding: 5px 10px;
     border-radius:20px;
     display: flex;
     align-items: center;
@@ -24,9 +26,8 @@
 }
 
 .logoPatient {
-    height: 30px;
-    width: 170px;
-    padding: 20px;
+    height: 35px;
+    padding: 10px 10px 5px;
 }
 
 .patientNavUl {

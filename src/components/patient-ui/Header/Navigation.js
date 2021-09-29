@@ -13,9 +13,6 @@ function Navigation() {
                     <NavLink className={styles.patientNavA} to="/labreports" activeStyle={{color: '#D9FAFF'}}>LAB REPORTS</NavLink>
                 </li>
                 <li>
-                    <NavLink className={styles.patientNavA} to="/staff/receptionist/" activeStyle={{color: '#D9FAFF'}}>DRUGS</NavLink>
-                </li>
-                <li>
                     <NavLink className={styles.patientNavA} to="/about" activeStyle={{color: '#D9FAFF'}}>ABOUT US</NavLink>
                 </li>
                 <li>
