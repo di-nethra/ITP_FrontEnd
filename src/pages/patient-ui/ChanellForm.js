@@ -9,28 +9,22 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from "react-router";
 import sessionServices from "../../services/doctorSession.service";
-
-
-// const genderItems = [
-//   { id: "male", title: "Male" },
-//   { id: "female", title: "Female" },
-// ];
-
-// const initialFValues = {
-//   id: 0,
-//   fullname: "",
-//   email: "",
-//   mobile: "",
-//   age: "",
-//   nic: "",
-//   gender: "male",
-//   doctorId: "",
-//   bookDate: new Date(),
-// };
+import { Button } from "@material-ui/core";
 
 export default function EForm() {
   let { sessionID } = useParams();
   const history = useHistory();
+
+  const DemoChanell = () => {
+    setFullName("Wishwa Gayanath Rathnaweera");
+    setEmailAddress("wishwa5020@gmail.com");
+    setNICNumber("981662067V");
+    setMobileNumber("0767990025");
+    setAge("23");    
+  };
+
+
+
   const handleSubmit = (e) => {
     console.log("submitted");
 
@@ -47,8 +41,6 @@ export default function EForm() {
 
  
   
-
-
     if(data.fullname.includes(" "||"a"||"b"||"c"||"d"||"e"||"f"||"g"||"h"||"i"||"j"||"k"||"l"||"m"||"o"||"p"||"q"||"r"||"s"||"t"||"u"||"v"||"w"||"x"||"y"||"z"||"A"||"B"||"C"||"D"||"E"||"F"||"G"||"H"||"I"||"J"||"K"||"L"||"M"||"O"||"P"||"Q"||"R"||"S"||"T"||"U"||"V"||"W"||"X"||"Y"||"Z"||" ",0)){
 
     }else{
@@ -77,12 +69,6 @@ export default function EForm() {
       return null;
     }
 
-
-
-    
-
-
-   
     var tempNic=data.nic;
     if(tempNic.length===10){
 
@@ -97,8 +83,7 @@ export default function EForm() {
       return null;
     }
 
-
-    
+  
     if(data.mobile.includes("0"||"1"||"2"||"3"||"4"||"5"||"6"||"7"||"8"||"9",0)){
         
     }else{
@@ -129,12 +114,7 @@ export default function EForm() {
       return null;
     }
 
-
-
-
-
-
-    var tempAge=data.age;
+  var tempAge=data.age;
     if(tempAge.length===2){
 
     }else{
@@ -149,7 +129,7 @@ export default function EForm() {
     }
 
    
-
+//Create chanelling
     channellServices
       .create(data)
         .then(() => {
@@ -209,13 +189,7 @@ export default function EForm() {
             onChange={handlenameChange}
                         required
           />
-          {/* <Controls.RadioGroup
-                        name="gender"
-                        label="Gender"
-                        value={gender}
-                        onChange={handleInputChange}
-                        items={genderItems}
-                    /> */}
+         
           <Controls.Input
             label="National Identity Card Number (NIC)"
             name="nic"
@@ -247,37 +221,22 @@ export default function EForm() {
             required
           />
 
-          {/* <Controls.Select
-                        name="doctorId"
-                        label="Doctor"
-                        value={values.doctorId}
-                        onChange={handleInputChange}
-                        options={PaitientService.getDepartmentCollection()}
-                        error={errors.doctorId}
-                    />
-                    <Controls.DatePicker
-                        name="bookDate"
-                        label="Appointment Date"
-                        value={values.bookDate}
-                        onChange={handleInputChange}
-                    /> */}
           <Controls.Checkbox
             name="isConfirm"
             label="Confirming that all the above entered details are correct!"
             onChange={changeCheck}
           />
 
-          <div>
+          <div className="buttonAlignRight">
             <Controls.Button
               disabled={isDisabled}
               type="submit"
               text="Channel"
             />
+            <Button size="medium" variant="contained" color="secondary"
+                                onClick={DemoChanell}>DEMO</Button>
             <ToastContainer />
-            
-            {/* <Link to="/patient/inquiry">
-              <Controls.Button text="Inquiry" />
-            </Link> */}
+       
           </div>
         </container>
       </Form>
