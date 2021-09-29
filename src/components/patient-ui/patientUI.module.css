@@ -20,6 +20,8 @@ body {
 .logo_bg {
     background: #D9FAFF;
     height: 70px;
+    min-width: 220.85px;
+    max-width: 287.3px;
     padding: 5px 10px;
     border-radius:20px;
     display: flex;

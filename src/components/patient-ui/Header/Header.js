@@ -13,7 +13,7 @@ function Header() {
         <Slide direction="down" in={true} timeout={500}>
             <div className={styles.header}>
                 <Grid container spacing={1} justifyContent={"space-between"}>
-                    <Grid item xl={2} lg={2} md={8} sm={8} xs={8}>
+                    <Grid item xl={2} lg={2} md={7} sm={8} xs={8}>
                         <Logo/>
                     </Grid>
                     <Hidden mdDown>
