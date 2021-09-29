@@ -7,6 +7,12 @@ import Logo from "../assets/images/PDF_Header.png"
 export default function PDF(props) {
     var img = new Image();
     img.src = Logo;
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = dd + '/' + mm + '/' + yyyy;
 
     const exportPDF = () => {
         const unit = "px";
@@ -55,7 +61,7 @@ export default function PDF(props) {
         doc.setTextColor(40)
         doc.text(title, marginLeft, 120);
         doc.autoTable(content);
-        doc.save("report.pdf")
+        doc.save(today + "-Report.pdf")
     }
         return (
             <div>

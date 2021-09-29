@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     marginTop: "40px",
-    marginBottom: "80px",
+    marginBottom: "10px",
     height: "50px",
     background: "#3C4257",
     "&:hover": {
@@ -47,11 +47,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RefundPage() {
+  function Demo() {
+    setPaymetId("123ABC");
+    setParagraph("simple paragraph");
+  }
+
   function RefundCreate(e) {
     e.preventDefault();
     const data = {
       paymentid: PaymentId,
       paragraph: Paragraph,
+      image: Image,
     };
     RefundServices.create(data)
       .then(() => {})
@@ -69,6 +75,7 @@ export default function RefundPage() {
 
   const [PaymentId, setPaymetId] = useState("");
   const [Paragraph, setParagraph] = useState("");
+  const [Image, setImage] = useState("");
 
   function handlePaymentId(e) {
     // console.log(e.target.value);
@@ -77,6 +84,9 @@ export default function RefundPage() {
   function handleParagraph(e) {
     // console.log(e.target.value);
     setParagraph(e.target.value);
+  }
+  function handleInputFile(e) {
+    setImage(e.target.files[0]);
   }
 
   const classes = useStyles();
@@ -115,7 +125,15 @@ export default function RefundPage() {
                 placeholder="Refund Request"
                 defaultValue="Please enter your reason to to ask for a refund"
               />
-
+              <input type="file" onChange={handleInputFile} />
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Upload Image
+              </Button>
               <Button
                 fullWidth
                 variant="contained"
@@ -124,6 +142,15 @@ export default function RefundPage() {
                 onClick={RefundCreate}
               >
                 Submit Refund Request
+              </Button>
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={Demo}
+              >
+                Demo
               </Button>
             </form>
           </div>

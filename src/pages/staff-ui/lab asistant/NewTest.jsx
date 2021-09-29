@@ -16,6 +16,16 @@ const initialValues = {
     specimenpropertyresult: '',
 
 };
+const Demovalues = {
+
+    specimenid: '120',
+    patientsname: 'Shanya Kaluthota',
+    contactnumber: '0774020028',
+    dateofbirth: '21',
+    testtype: 'Covid-19',
+    collectedperson: 'Damien',
+
+};
 
 export default function NewTest() {
     const [values, setValues] = useState(initialValues)
@@ -67,6 +77,9 @@ export default function NewTest() {
                 console.log(e);
             });
         setValues(initialValues)
+    };
+    const demoform = () => {
+        setValues(Demovalues)
     };
 
 
@@ -191,6 +204,7 @@ export default function NewTest() {
                         <button className="newUserButton">Subbmit the Sample</button>
                     </form>
                 </div>
+                <button className="demobutton" onClick={demoform}>DEMO</button>
             </div>
         </div>
     )

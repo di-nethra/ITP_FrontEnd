@@ -35,6 +35,15 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     marginTop: "40px",
+
+    height: "50px",
+    background: "#3C4257",
+    "&:hover": {
+      color: "black",
+      backgroundColor: "#D9FAFF",
+    },
+  },
+  demo: {
     marginBottom: "80px",
     height: "50px",
     background: "#3C4257",
@@ -46,6 +55,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MobileQrPay() {
+  function Demo() {
+    setPhoneNumber("0765851400");
+    setName("Anjana Samarakoon");
+  }
+
   function mobilePayCreate(e) {
     e.preventDefault();
 
@@ -128,6 +142,15 @@ export default function MobileQrPay() {
                 onClick={mobilePayCreate}
               >
                 Proceed to checkout
+              </Button>
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.demo}
+                onClick={Demo}
+              >
+                Demo
               </Button>
             </form>
           </div>

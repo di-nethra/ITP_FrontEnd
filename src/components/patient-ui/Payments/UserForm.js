@@ -20,6 +20,14 @@ export class UserForm extends Component {
     });
   };
 
+  // demo = () => {
+  //   this.state.email = "anjana.dinethra@gmail.com";
+  //   this.state.cardNumber = "123456789456";
+  //   this.state.yearMonth = "22/11";
+  //   this.State.CVC = "4567";
+  //   this.state.nameOnTheCard = "Anjana Samarakoon";
+  // };
+
   prevStep = () => {
     const { step } = this.state;
     this.setState({

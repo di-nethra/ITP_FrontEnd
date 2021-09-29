@@ -15,6 +15,15 @@ const DoctorAddNote = () => {
         pNoteMessage: ""
     };
 
+    const noteDemo = () => {
+        setNote({
+            //id: null,
+            pNoteId: "991992787V",
+            pNoteName: "Asel Jayasooriya",
+            pNoteMessage: "Clinically genius"
+        });
+    };
+
     const [note, setNote] = useState(initialNoteState);
     // const [submitted, setSubmitted] = useState(false);
 
@@ -118,8 +127,10 @@ const DoctorAddNote = () => {
                             </Link>
                             <Button size="medium" variant="contained" style={{ marginRight: 8 }} type="reset"
                                 onClick={newNote}>Clear</Button>
-                            <Button size="medium" variant="contained" color="primary" type="submit"
+                            <Button size="medium" variant="contained" style={{ marginRight: 8 }} color="primary" type="submit"
                                 onClick={saveNote}>Send</Button>
+                            <Button size="medium" variant="contained" color="secondary"
+                                onClick={noteDemo}>DEMO</Button>
                         </div>
 
                     </form>

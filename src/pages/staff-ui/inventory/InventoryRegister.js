@@ -36,6 +36,19 @@ function InventoryRegister() {
     registered_date: "",
     type_medicine: ""
   };
+
+  const inventoryRegisterDemo = () =>{
+    setInventory({
+      item_id: "DG008",
+      item_name: "Brufen",
+      supplier_name: "Hemas Distributions",
+      supplier_email: "hemashealth@gmail.com",
+      supplier_contact: "0112893655",
+      purchase_price: "1500",
+      registered_date: "21/2/2020",
+      type_medicine: "Capsule"
+    })
+  }
   const [inventory, setInventory] = useState(initialInventoryState);
 
   const handleInputChange = event => {
@@ -106,9 +119,9 @@ function InventoryRegister() {
         });
   };
 
-  const newInventory = () => {
-    setInventory(initialInventoryState);
-  };
+  // const newInventory = () => {
+  //   setInventory(initialInventoryState);
+  // };
 
 
   return (
@@ -260,7 +273,7 @@ function InventoryRegister() {
               endIcon={<ArrowForwardIosOutlinedIcon/>}
 
           >
-            Proceed to Register
+             Register
           </Button>
 
 
@@ -268,7 +281,7 @@ function InventoryRegister() {
               variant="contained"
               color="primary"
               className={b_classes.button}
-              onClick={newInventory}
+              onClick={inventoryRegisterDemo}
               style={{marginLeft: '20px'}}
               endIcon={<DirectionsRunOutlinedIcon/>}
           >
