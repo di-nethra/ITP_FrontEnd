@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import DirectionsRunOutlinedIcon from '@material-ui/icons/DirectionsRunOutlined';
+// import DirectionsRunOutlinedIcon from '@material-ui/icons/DirectionsRunOutlined';
 import "../inventory/page.css"
 import { useParams } from 'react-router';
 import inventoryServices from '../../../services/inventoryServices'
@@ -89,6 +89,14 @@ const b_useStyles = makeStyles((theme) => ({
     })
   }
 
+  // const restockDemo = () =>{
+  //   setInventory({
+  //     // item_id:"",
+  //     // item_name:"",
+  //     quantity:"1000",
+  //   reorder_level:"100"
+  //   })
+  // }
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -161,14 +169,15 @@ const b_useStyles = makeStyles((theme) => ({
               Restock
               </Button>
 
-              <Button
+              {/* <Button
                 variant="contained"
                 color="primary"
                 className={b_classes.button}
+                // onClick={restockDemo}
                 endIcon={<DirectionsRunOutlinedIcon />}
               >
               Demo
-              </Button>
+              </Button> */}
 
             </div>
         </div>
