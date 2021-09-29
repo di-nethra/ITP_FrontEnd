@@ -22,6 +22,9 @@ import RefundPage from "./pages/patient-ui/RefundsPage";
 import PageNotFound from "./pages/PageNotFound";
 import PatientAppointment from "./layouts/PatientAppointment";
 import PrivateRoute from "./PrivateRoute";
+import Pharmasist from "./layouts/Pharmasist";
+
+
 import ClientLabReport from "./pages/patient-ui/ClientLabReport";
 const theme = createTheme({
   palette: {
@@ -58,6 +61,7 @@ const App = () => (
               "/staff/sysadmin",
               "/staff/labassistant",
               "/staff/paymentadmin",
+              "/staff/pharmasist",
             ]}
           >
             <Switch>
@@ -67,6 +71,7 @@ const App = () => (
               <Route path="/staff/doctor" component={Doctor} />
               <Route path="/staff/sysadmin" component={SysAdmin} />
               <Route path="/staff/paymentadmin" component={PaymentAdmin} />
+              <Route path="/staff/pharmasist" component={Pharmasist} />
             </Switch>
           </Route>
         </PrivateRoute>
