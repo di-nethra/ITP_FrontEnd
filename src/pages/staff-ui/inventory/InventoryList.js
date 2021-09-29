@@ -28,7 +28,7 @@ export default function InventoryList() {
     };
 
     const columns = [
-        {field: 'id', headerName: 'Item ID', width: 127},
+        {field: 'item_id', headerName: 'Item ID', width: 127},
         {
             field: 'item_name',
             headerName: 'Item Name',
@@ -91,7 +91,7 @@ export default function InventoryList() {
         InventoryDataService.remove(event.currentTarget.value)
 
       .then(response => {
-        alert("Deleted Item")
+        alert("Delete Item?")
         window.location.reload();
       })
       .catch(error => {
@@ -104,6 +104,7 @@ export default function InventoryList() {
         rows.push(
             {
                 id: inventoryy._id,
+                item_id:inventoryy.item_id,
                 item_name: inventoryy.item_name,
                 supplier_name: inventoryy.supplier_name,
                 supplier_email: inventoryy.supplier_email,
