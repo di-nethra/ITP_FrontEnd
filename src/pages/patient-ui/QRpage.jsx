@@ -32,8 +32,18 @@ const useStyles = makeStyles({
     textAlign: "center",
   },
   buttons: {
-    marginLeft: "1100px",
+    marginLeft: "950px",
     paddingRight: "100px",
+  },
+  videoButton: {
+    marginTop: "20px",
+    width: "200px",
+    marginBottom: "10px",
+    background: "#3C4257",
+    "&:hover": {
+      color: "black",
+      backgroundColor: "#D9FAFF",
+    },
   },
 });
 
@@ -61,15 +71,29 @@ function QRpage() {
         </Grid>
 
         <Grid item xs={6}>
-          <video ref={vidRef} className={classes.video}>
+          <video
+            ref={vidRef}
+            className={classes.video}
+            style={{ border: "solid" }}
+          >
             <source src={qrVideo} type="video/mp4" />
           </video>
         </Grid>
         <div className={classes.buttons}>
-          <Button variant="contained" color="primary" onClick={handlePlayVideo}>
+          <Button
+            variant="contained"
+            className={classes.videoButton}
+            color="primary"
+            onClick={handlePlayVideo}
+          >
             PLAY
           </Button>
-          <Button variant="contained" color="primary" onClick={handlestop}>
+          <Button
+            variant="contained"
+            className={classes.videoButton}
+            color="primary"
+            onClick={handlestop}
+          >
             Stop
           </Button>
         </div>

@@ -58,8 +58,8 @@ const NewSession = () => {
             .catch(err => {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Oops...',
-                    text: err,
+                    title: 'Oops... ' + err,
+                    text: "Note : You cannot have more than one session with the same date and time",
                 })
             });
     };

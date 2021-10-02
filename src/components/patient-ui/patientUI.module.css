@@ -69,12 +69,10 @@
 
 .footer {
 
-    padding: 15rem 10% 0;
+    padding: 15rem 10% 5rem;
     color: white;
-    height: 220px;
     background: url("../../assets/images/footer_wave.svg") no-repeat;
     background-size: cover;
     box-sizing: content-box;
-    overflow-x: hidden;
 
 }
