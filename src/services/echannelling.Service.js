@@ -20,8 +20,13 @@ const updateStatus = (id,status) => {
   return http.put(`/channell/status/${id}/${status}`);
 };
 
+const search = (query,status) => {
+  return http.get(`/channell/search/${query}/${status}`);
+};
+
 const channellServices = {
   create,
+  search,
   getByStatus,
   updateStatus,
   getAll,

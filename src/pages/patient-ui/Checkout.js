@@ -66,10 +66,21 @@ const styles = (withTheme) => ({
 // });
 
 export class Checkout extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isChecked: false,
+    };
+    this.onChange = this.onChange.bind(this);
+  }
+
   continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
   };
+  onChange() {
+    this.setState({ isChecked: true });
+  }
   render() {
     const { classes } = this.props;
 
@@ -99,6 +110,7 @@ export class Checkout extends Component {
                     size="medium"
                     color="primary"
                     inputProps={{ "aria-label": "secondary checkbox" }}
+                    onChange={this.onChange}
                   />
                 </Typography>
               </CardContent>
@@ -155,6 +167,7 @@ export class Checkout extends Component {
                 color="primary"
                 className={classes.Paybutton}
                 onClick={this.continue}
+                disabled={!this.state.isChecked}
               >
                 Download Report
               </Button>
