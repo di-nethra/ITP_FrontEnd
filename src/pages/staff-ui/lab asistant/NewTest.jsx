@@ -2,6 +2,7 @@ import './newtest.css'
 import Swal from 'sweetalert2'
 import { React, useState } from 'react';
 import TestDataService from '../../../services/tests.service';
+import { useHistory } from "react-router-dom";
 
 const initialValues = {
     specimenid: '',
@@ -28,6 +29,7 @@ const Demovalues = {
 };
 
 export default function NewTest() {
+    let history = useHistory();
     const [values, setValues] = useState(initialValues)
 
     const handleInputChange = (e) => {
@@ -72,11 +74,12 @@ export default function NewTest() {
                     collectedperson: response.data.collectedperson,
                 });*/
                 //console.log(response.data);
+                history.push("/staff/labassistant/submittedtests");
             })
             .catch(e => {
                 console.log(e);
             });
-        setValues(initialValues)
+        setValues(initialValues)    
     };
     const demoform = () => {
         setValues(Demovalues)

@@ -4,9 +4,10 @@ import Swal from 'sweetalert2';
 import React, { useState, useEffect } from "react";
 import TestDataService from "../../../services/tests.service";
 import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 
 export default function StaffAssign() {
-
+    let history = useHistory();
     const id = useParams();
     //console.log(id.topicId);
     const initialTestState = {
@@ -83,9 +84,10 @@ export default function StaffAssign() {
                 //console.log(response.data,);
                 Swal.fire(
                     'Test Updated!',
-                    'You have updated the test! Please move in to Intransist test table',
+                    'You have updated the test! See the test in Intransist test table',
                     'success'
                   )
+                history.push("/staff/labassistant/intrasisttests");
                 setMessage("The test was updated successfully!");
             })
             .catch(e => {
