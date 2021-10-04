@@ -106,6 +106,7 @@ export default function StaffAssign() {
                     <div className="newUserItem">
                         <label>Specimen ID</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="specimenid"
                             name="specimenid"
                             value={CurrentTest.specimenid}
@@ -114,6 +115,7 @@ export default function StaffAssign() {
                     <div className="newUserItem">
                         <label>Patient Name</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="patientsname"
                             name="patientsname"
                             value={CurrentTest.patientsname}
@@ -122,6 +124,7 @@ export default function StaffAssign() {
                     <div className="newUserItem">
                         <label>Phone No</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="contactnumber"
                             name="contactnumber"
                             value={CurrentTest.contactnumber}
@@ -130,6 +133,7 @@ export default function StaffAssign() {
                     <div className="newUserItem">
                         <label>Age of patient</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="dateofbirth"
                             name="dateofbirth"
                             value={CurrentTest.dateofbirth}
@@ -138,6 +142,7 @@ export default function StaffAssign() {
                     <div className="newUserItem">
                         <label>Test Type</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="testtype"
                             name="testtype"
                             value={CurrentTest.testtype}
@@ -152,6 +157,7 @@ export default function StaffAssign() {
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant ID</label>
                             <input
+                                style={{color:"black", borderRadius: "20px"}}
                                 type="text"
                                 id="inchargelabassid"
                                 required
@@ -165,6 +171,7 @@ export default function StaffAssign() {
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant Name</label>
                             <input
+                                style={{color:"black", borderRadius: "20px"}}
                                 type="text"
                                 id="inchargelabass"
                                 required
