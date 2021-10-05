@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PrescriptionDataService from "../../../services/doctorPrescriptionService";
+import "../../../components/staff-ui/ad_inventory/datecard.css"
 
 export default function ViewPrecription() {
     const [prescriptions, setPrescription] = useState([]);
