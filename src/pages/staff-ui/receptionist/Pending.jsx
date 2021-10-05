@@ -107,7 +107,7 @@ export default function Pending() {
 
     const handleSearchChange = (event) => {
         setQuery(event.target.value);
-        if (query !== '') {
+        if (event.target.value !== '') {
             setLoading(true);
             channellServices.search(event.target.value, "Pending")
                 .then(response => {
@@ -119,6 +119,8 @@ export default function Pending() {
                 )
             setLoading(false);
         }
+        else
+            getPendingAppointments();
 
     }
 
@@ -126,8 +128,7 @@ export default function Pending() {
         getPendingAppointments();
     }, []);
 
-    const getPendingAppointments = (event) => {
-        setQuery(event?.target.value);
+    const getPendingAppointments = () => {
         channellServices.getByStatus("Pending")
             .then(response => {
                 setAppointments(response.data)
@@ -168,12 +169,10 @@ export default function Pending() {
                                     id="search"
                                     type="text"
                                     value={query}
-                                    onChange={query ? handleSearchChange : getPendingAppointments}
+                                    onChange={handleSearchChange}
                                     endAdornment={
                                         <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                            >
+                                            <IconButton>
                                                 <SearchRounded/>
                                             </IconButton>
                                         </InputAdornment>

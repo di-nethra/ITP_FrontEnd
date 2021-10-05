@@ -58,7 +58,7 @@ export default function AllAppointments() {
 
     const handleSearchChange = (event) => {
         setQuery(event.target.value);
-        if (query !== '') {
+        if (event.target.value !== '') {
             setLoading(true);
             channellServices.search(event.target.value, "All")
                 .then(response => {
@@ -70,6 +70,8 @@ export default function AllAppointments() {
                 )
             setLoading(false);
         }
+        else
+            getAllAppointments();
 
     }
 
@@ -77,8 +79,7 @@ export default function AllAppointments() {
         getAllAppointments();
     }, []);
 
-    const getAllAppointments = (event) => {
-        setQuery(event?.target.value);
+    const getAllAppointments = () => {
         channellServices.getAll()
             .then(response => {
                 setAppointments(response.data)
@@ -122,12 +123,10 @@ export default function AllAppointments() {
                                     id="search"
                                     type="text"
                                     value={query}
-                                    onChange={query ? handleSearchChange : getAllAppointments}
+                                    onChange={handleSearchChange}
                                     endAdornment={
                                         <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                            >
+                                            <IconButton>
                                                 <SearchRounded/>
                                             </IconButton>
                                         </InputAdornment>

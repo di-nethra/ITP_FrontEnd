@@ -40,7 +40,6 @@ const NewSession = () => {
             sessionTime: selectedTime,
             maxAppointments: value,
         };
-        console.log(formData);
         SessionDataService.create(formData)
             .then(response => {
                 setSelectedDate(response.data.sessionDate);

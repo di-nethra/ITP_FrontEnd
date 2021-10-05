@@ -106,7 +106,7 @@ export default function CheckedIn() {
 
     const handleSearchChange = (event) => {
         setQuery(event.target.value);
-        if (query !== '') {
+        if (event.target.value !== '') {
             setLoading(true);
             channellServices.search(event.target.value, "CheckedIn")
                 .then(response => {
@@ -118,15 +118,16 @@ export default function CheckedIn() {
                 )
             setLoading(false);
         }
+        else
+            getCheckedInAppointments()
 
     }
 
     useEffect(() => {
-        getAppointmentsByStatus();
+        getCheckedInAppointments();
     }, []);
 
-    const getAppointmentsByStatus = (event) => {
-        setQuery(event?.target.value)
+    const getCheckedInAppointments = () => {
         channellServices.getByStatus("CheckedIn")
             .then(response => {
                 setAppointments(response.data)
@@ -167,12 +168,10 @@ export default function CheckedIn() {
                                     id="search"
                                     type="text"
                                     value={query}
-                                    onChange={query ? handleSearchChange : getAppointmentsByStatus}
+                                    onChange={handleSearchChange}
                                     endAdornment={
                                         <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                            >
+                                            <IconButton>
                                                 <SearchRounded/>
                                             </IconButton>
                                         </InputAdornment>
