@@ -18,14 +18,12 @@ import {SearchRounded} from "@material-ui/icons";
 
 export default function InventoryList() {
     const [inventory, setInventory] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [query, setQuery] = useState('');
 
     const handleSearchChange = (event) => {
         setQuery(event.target.value);
         if (event.target.value !== '') {
             console.log(query);
-            setLoading(true);
             InventoryDataService.search(event.target.value)
                 .then(response => {
                     setInventory(response.data)
@@ -34,7 +32,6 @@ export default function InventoryList() {
                         console.log(err);
                     }
                 )
-            setLoading(false);
         }
         else{
             retrieveInventory()
@@ -124,7 +121,7 @@ export default function InventoryList() {
     const deleteInventory = event => {
         InventoryDataService.remove(event.currentTarget.value)
 
-            .then(response => {
+            .then(() => {
                 alert("Delete Item?")
                 window.location.reload();
             })

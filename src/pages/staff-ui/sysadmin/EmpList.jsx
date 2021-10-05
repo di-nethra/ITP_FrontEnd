@@ -79,7 +79,7 @@ function EmpList() {
         onChange={(event) => {
           setSearchTerm(event.target.value);
         }}
-      ></input>
+      />
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
@@ -95,13 +95,13 @@ function EmpList() {
           <TableBody>
             {rows
               .filter((val) => {
+                let newVal;
                 if (searchTerm === "") {
-                  return val;
-                } else if (
-                  val.firstName.toLowerCase().includes(searchTerm.toLowerCase())
-                ) {
-                  return val;
+                  newVal = val;
+                } else if (val.firstName.toLowerCase().includes(searchTerm.toLowerCase())) {
+                  newVal = val;
                 }
+                return newVal
               })
               .map((row) => (
                 <TableRow key={row.id}>

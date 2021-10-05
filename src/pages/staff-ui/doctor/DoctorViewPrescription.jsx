@@ -107,8 +107,8 @@ export default function DoctorViewPrescription() {
 
     let { id } = useParams();
 
-    useEffect(() => {
-        getPrescriptionsByDoctorID();
+    useEffect( () => {
+        getPrescriptionsByDoctorID(); // eslint-disable-next-line
     }, []);
 
     const getPrescriptionsByDoctorID = () => {
