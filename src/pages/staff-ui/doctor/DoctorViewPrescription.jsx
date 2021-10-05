@@ -126,7 +126,6 @@ export default function DoctorViewPrescription() {
     const handleSearchChange = event => {
         setName(event.target.value);
         if (event.target.value !== "") {
-            console.log(event.target.value)
             setLoading(true);
             PrescriptionDataService.search(event.target.value, id)
                 .then(response => {

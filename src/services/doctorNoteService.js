@@ -8,9 +8,14 @@ const create = data => {
   return http.post("/notes", data);
 };
 
+const search = (query) => {
+  return http.get(`/notes/search/${query}`);
+};
+
 const NotesDataService = {
   getAll,
-  create
+  create,
+  search
 };
 
 export default NotesDataService;
