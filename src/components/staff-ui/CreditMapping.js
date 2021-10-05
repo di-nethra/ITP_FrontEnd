@@ -102,9 +102,10 @@ export default function CreditMapping(props) {
         paymentCreditService
           .remove(id)
           .then(() => {
-            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            // Swal.fire("Deleted!", "Your file has been deleted.", "success");
           })
-          .catch(() => {
+          .catch((e) => {
+            console.log("error in delete:" + e);
             alert("error Delete");
           });
       }

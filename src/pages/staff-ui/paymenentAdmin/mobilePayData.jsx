@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const columns = [
   {
     field: "id",
-    headerName: "Full Name",
+    headerName: "ID",
     width: 275,
   },
   {
