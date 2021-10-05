@@ -9,6 +9,7 @@ export default function PaymentSearch(props) {
         label="Enter Payment ID to Search"
         variant="outlined"
         type="search"
+        style={{ paddingLeft: "5px" }}
         onChange={props.handleChange}
       />
       <h1>{props.heading}</h1>
