@@ -25,6 +25,12 @@ const columns = [
     minWidth: 100,
     //align: 'right',
   },
+  {
+    id: 'reorder_level',
+    label: 'Reorder-Level',
+    minWidth: 100,
+    align: 'center'
+  },
 ];
 
 const useStyles = makeStyles({

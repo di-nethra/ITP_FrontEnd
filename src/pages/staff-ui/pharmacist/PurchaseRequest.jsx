@@ -20,6 +20,7 @@ import {
   OutlinedInput,
 } from "@material-ui/core";
 import {SearchRounded} from "@material-ui/icons";
+import PDF from "../../../components/PDF";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -114,6 +115,8 @@ function PurchaseRequestForm() {
       mqty: mdrequest.mqty,
     });
   }
+
+  const headers = ["Request ID","Drug ID","Medicine Name", "Quantity"];
 
   const getmdRequest = () => {
     purchaseRequestServices
@@ -318,6 +321,9 @@ function PurchaseRequestForm() {
           //disableSelectionOnClick
           />
         </div>
+        <br/>
+
+        <PDF data={rows} headers={headers} title="Purchase Request Report" />
 
       </form>
     </div>

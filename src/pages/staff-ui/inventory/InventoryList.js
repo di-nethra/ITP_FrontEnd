@@ -13,7 +13,6 @@ import {
     InputAdornment,
     InputLabel,
     OutlinedInput,
-    useTheme
 } from "@material-ui/core";
 import {SearchRounded} from "@material-ui/icons";
 
