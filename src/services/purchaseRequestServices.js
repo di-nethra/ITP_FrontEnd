@@ -6,7 +6,7 @@ const getAll = () => {
 
 const update = (id, data) => {
     return http.put(`/mdrequest/${id}`, data);
-  };
+};
 
 const create = data => {
     return http.post("/mdrequest/", data);
@@ -17,7 +17,11 @@ const remove = id => {
 };
 const getOnePurchaseRequest = (id) => {
     return http.get("/mdrequest/" + id);
-  };
+};
+
+const search = (query) => {
+    return http.get(`/mdrequest/search/${query}`);
+};
 
 const purchaseRequestServices = {
     getAll,
@@ -25,5 +29,6 @@ const purchaseRequestServices = {
     create,
     remove,
     getOnePurchaseRequest,
+    search
 };
 export default purchaseRequestServices;
