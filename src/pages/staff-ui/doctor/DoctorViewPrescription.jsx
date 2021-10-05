@@ -15,6 +15,8 @@ import Swal from "sweetalert2";
 import { useTheme } from "@material-ui/core";
 import PrintOutlinedIcon from '@material-ui/icons/PrintOutlined';
 import PDF from "../../../components/PDF";
+import { FormControl, FormHelperText, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@material-ui/core";
+import { SearchRounded } from "@material-ui/icons";
 
 export default function DoctorViewPrescription() {
     const theme = useTheme();
@@ -100,20 +102,43 @@ export default function DoctorViewPrescription() {
     }
 
     const [prescriptions, setPrescriptions] = useState([]);
-    let { id } = useParams();
-    useEffect(() => {
-        getPrescriptionsByDoctorID(id);
-    }, [id]);
+    const [loading, setLoading] = useState(true);
+    const [name, setName] = useState("");
 
-    const getPrescriptionsByDoctorID = (id) => {
+    let { id } = useParams();
+
+    useEffect( () => {
+        getPrescriptionsByDoctorID(); // eslint-disable-next-line
+    }, []);
+
+    const getPrescriptionsByDoctorID = () => {
         PrescriptionDataService.get(id)
             .then(response => {
                 setPrescriptions(response.data)
+                setLoading(false)
             })
             .catch(err => {
                 console.log("Error while getting data from database" + err);
             }
             )
+    }
+
+    const handleSearchChange = event => {
+        setName(event.target.value);
+        if (event.target.value !== "") {
+            setLoading(true);
+            PrescriptionDataService.search(event.target.value, id)
+                .then(response => {
+                    setPrescriptions(response.data)
+                })
+                .catch(err => {
+                    console.log(err);
+                }
+                )
+            setLoading(false);
+        } else {
+            getPrescriptionsByDoctorID();
+        }
     }
 
     let rows = [];
@@ -125,8 +150,8 @@ export default function DoctorViewPrescription() {
                 diagnosis: prescription.dPDignosis,
                 med1: prescription.dMed1,
                 dose1: prescription.dDose1,
-                med2:prescription.dMed2,
-                dose2:prescription.dDose2
+                med2: prescription.dMed2,
+                dose2: prescription.dDose2
             }
         )
     }
@@ -140,11 +165,36 @@ export default function DoctorViewPrescription() {
                     <h3>PATIENT PRESCRIPTIONS</h3>
                     <br />
 
+                    <Grid item xl={4} lg={4}>
+                        <FormControl variant="outlined">
+                            <InputLabel htmlFor="search">Search Prescription</InputLabel>
+                            <OutlinedInput
+                                id="search"
+                                name="search"
+                                type="text"
+                                value={name}
+                                onChange={handleSearchChange}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="search-icon">
+                                            <SearchRounded />
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                                labelWidth={180}
+                            />
+                            <FormHelperText id="search-helper-text">Search prescriptions by patient name</FormHelperText>
+                        </FormControl>
+                    </Grid>
+                    <br />
+
                     <div style={{ height: 400, width: '100%' }}>
                         <DataGrid
                             rows={rows}
                             columns={columns}
                             pageSize={5}
+                            loading={loading}
                         // checkboxSelection
                         // disableSelectionOnClick
                         />

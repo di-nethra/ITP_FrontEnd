@@ -4,8 +4,18 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Swal from "sweetalert2";
-import {useTheme} from "@material-ui/core";
+import {
+    FormControl,
+    FormHelperText,
+    Grid,
+    IconButton,
+    InputAdornment,
+    InputLabel,
+    OutlinedInput,
+    useTheme
+} from "@material-ui/core";
 import channellServices from "../../../services/echannelling.Service";
+import {SearchRounded} from "@material-ui/icons";
 
 export default function Pending() {
     const theme = useTheme();
@@ -93,6 +103,27 @@ export default function Pending() {
 
     const [appointments, setAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [query, setQuery] = useState('');
+
+    const handleSearchChange = (event) => {
+        setQuery(event.target.value);
+        if (event.target.value !== '') {
+            setLoading(true);
+            channellServices.search(event.target.value, "Pending")
+                .then(response => {
+                    setAppointments(response.data)
+                })
+                .catch(err => {
+                        console.log(err);
+                    }
+                )
+            setLoading(false);
+        }
+        else
+            getPendingAppointments();
+
+    }
+
     useEffect(() => {
         getPendingAppointments();
     }, []);
@@ -127,7 +158,33 @@ export default function Pending() {
         <div>
             <Card>
                 <CardContent>
-                    <h3>Pending Appointments</h3>
+                    <Grid container alignItems={"center"} justifyContent={"space-between"}>
+                        <Grid item xl={6} lg={6}>
+                            <h3>Pending Appointments</h3>
+                        </Grid>
+                        <Grid item xl={4} lg={4}>
+                            <FormControl variant="outlined">
+                                <InputLabel htmlFor="search">Search Appointments</InputLabel>
+                                <OutlinedInput
+                                    id="search"
+                                    type="text"
+                                    value={query}
+                                    onChange={handleSearchChange}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton>
+                                                <SearchRounded/>
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                    labelWidth={180}
+                                />
+                                <FormHelperText id="search-helper-text">Search Appointments by Patient NIC or
+                                    Name</FormHelperText>
+                            </FormControl>
+                        </Grid>
+                    </Grid>
+
                     <br/>
                     <DataGrid
                         rows={rows}

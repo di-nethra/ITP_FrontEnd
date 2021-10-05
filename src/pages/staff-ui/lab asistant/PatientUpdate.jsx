@@ -98,6 +98,7 @@ export default function PatientUpdate() {
                     <div className="newUserItem">
                         <label>Incharge Lab Assistant ID</label>
                         <input
+                            style={{color:"black", borderRadius: "20px"}}
                             id="inchargelabassid"
                             name="inchargelabassid"
                             value={CurrentTest.inchargelabassid}
@@ -107,6 +108,7 @@ export default function PatientUpdate() {
                     <div className="newUserItem">
                         <label>Incharge Lab Assistant Name</label>
                         <input
+                            style={{color:"black", borderRadius: "20px"}}
                             id="inchargelabass"
                             name="inchargelabass"
                             value={CurrentTest.inchargelabass}
@@ -115,6 +117,7 @@ export default function PatientUpdate() {
                     <div className="newUserItem">
                         <label>Specimen Property</label>
                         <input
+                            style={{color:"black", borderRadius: "20px"}}
                             id="specimenproperty"
                             name="specimenproperty"
                             value={CurrentTest.specimenproperty}
@@ -123,6 +126,7 @@ export default function PatientUpdate() {
                     <div className="newUserItem">
                         <label>Specimen Property Result</label>
                         <input
+                            style={{color:"black", borderRadius: "20px"}}
                             id="specimenpropertyresult"
                             name="specimenpropertyresult"
                             value={CurrentTest.specimenpropertyresult}
@@ -139,6 +143,7 @@ export default function PatientUpdate() {
                         <div className="newUserItem">
                             <label>Specimen ID</label>
                             <input
+                                style={{color:"black", borderRadius: "20px"}}
                                 id="specimenid"
                                 required
                                 type="number"
@@ -152,6 +157,7 @@ export default function PatientUpdate() {
                         <div className="newUserItem">
                             <label>Patient Name</label>
                             <input type="text"
+                                style={{color:"black", borderRadius: "20px"}}
                                 id="patientsname"
                                 name="patientsname"
                                 required
@@ -162,6 +168,7 @@ export default function PatientUpdate() {
                         <div className="newUserItem">
                             <label>Phone No</label>
                             <input type="text"
+                                style={{color:"black", borderRadius: "20px"}}
                                 id="contactnumber"
                                 name="contactnumber"
                                 required
@@ -174,6 +181,7 @@ export default function PatientUpdate() {
                         <div className="newUserItem">
                             <label>Age of patient</label>
                             <input type="text"
+                                style={{color:"black", borderRadius: "20px"}}
                                 id="dateofbirth"
                                 name="dateofbirth"
                                 required

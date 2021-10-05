@@ -16,9 +16,19 @@ const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
+  search: {
+    marginTop: 10,
+    marginBottom: 20,
+    height: 30,
+    width: 200,
+    borderRadius: 15,
+    borderColor: "#1976d2",
+    borderWidth: 3
+  },
 });
 
 function EmpList() {
+  const [searchTerm, setSearchTerm] = useState("");
   const classes = useStyles();
 
   const [details, setDetails] = useState([]);
@@ -60,45 +70,61 @@ function EmpList() {
     "Address",
   ];
 
- 
   return (
     <div>
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Role</TableCell>
-            <TableCell align="left">First Name</TableCell>
-            <TableCell align="left">Last Name</TableCell>
-            <TableCell align="left">Email</TableCell>
-            <TableCell align="left">Mobile</TableCell>
-            <TableCell align="left">Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell component="th" scope="row">
-                {row.role}
-              </TableCell>
-              <TableCell align="left">{row.firstName}</TableCell>
-              <TableCell align="left">{row.lastName}</TableCell>
-              <TableCell align="left">{row.email}</TableCell>
-              <TableCell align="left">{row.mobile}</TableCell>
-              <TableCell align="left">
-                <ActionBtn data={row.id} />
-              </TableCell>
+      <input
+        type="text"
+        placeholder=" Search"
+        className={classes.search}
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
+      />
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Role</TableCell>
+              <TableCell align="left">First Name</TableCell>
+              <TableCell align="left">Last Name</TableCell>
+              <TableCell align="left">Email</TableCell>
+              <TableCell align="left">Mobile</TableCell>
+              <TableCell align="left">Action</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-    <div style={{float: "right", marginTop: 20, marginBottom: 10}}>
-    <PDF data={rows} headers={headers} title="Employee Report" />
-    </div>
+          </TableHead>
+          <TableBody>
+            {rows
+              .filter((val) => {
+                let newVal;
+                if (searchTerm === "") {
+                  newVal = val;
+                } else if (val.firstName.toLowerCase().includes(searchTerm.toLowerCase())) {
+                  newVal = val;
+                }
+                return newVal
+              })
+              .map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell component="th" scope="row">
+                    {row.role}
+                  </TableCell>
+                  <TableCell align="left">{row.firstName}</TableCell>
+                  <TableCell align="left">{row.lastName}</TableCell>
+                  <TableCell align="left">{row.email}</TableCell>
+                  <TableCell align="left">{row.mobile}</TableCell>
+                  <TableCell align="left">
+                    <ActionBtn data={row.id} />
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <div style={{ float: "right", marginTop: 20, marginBottom: 10 }}>
+        <PDF data={rows} headers={headers} title="Employee Report" />
+      </div>
     </div>
   );
-
 }
 
 export default EmpList;

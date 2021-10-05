@@ -26,7 +26,8 @@ const NewSession = () => {
         setSelectedDate(event.target.value);
     }
     const handleTimeChange = event => {
-        setSelectedTime(event.target.value);
+        let selected = moment(new Date(selectedDate + " " + event.target.value)).format("HH:00");
+        setSelectedTime(selected);
     }
     const handleValueChange = event => {
         setValue(event.target.value);
@@ -40,28 +41,36 @@ const NewSession = () => {
             sessionTime: selectedTime,
             maxAppointments: value,
         };
-        console.log(formData);
-        SessionDataService.create(formData)
-            .then(response => {
-                setSelectedDate(response.data.sessionDate);
-                setSelectedTime(response.data.sessionTime);
-                setValue(response.data.maxAppointments);
-                Swal.fire(
-                    "Success",
-                    "Session Added Successfully",
-                    "success"
-                ).then(() => {
-                    history.push("/staff/doctor/doctorschedule/" + currentUser.id)
-                });
+        let date = new Date();
+        if(new Date(selectedDate + " " + selectedTime) > date) {
+            SessionDataService.create(formData)
+                .then(response => {
+                    setSelectedDate(response.data.sessionDate);
+                    setSelectedTime(response.data.sessionTime);
+                    setValue(response.data.maxAppointments);
+                    Swal.fire(
+                        "Success",
+                        "Session Added Successfully",
+                        "success"
+                    ).then(() => {
+                        history.push("/staff/doctor/doctorschedule/" + currentUser.id)
+                        window.location.reload();
+                    });
 
-            })
-            .catch(err => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops... ' + err,
-                    text: "Note : You cannot have more than one session with the same date and time",
                 })
-            });
+                .catch(err => {
+                    console.log(err.response)
+                    Swal.fire({
+                        icon: 'error',
+                        title: !err.response ? 'Oops... ' + err.message : 'Oops... ' + err.response.data.message,
+                        text: err.response && "Note : You cannot have more than one session with the same date and time",
+                    })
+                });
+        } else
+            Swal.fire({
+                icon: 'error',
+                text: "session date and time must be a future date and time",
+            })
     };
 
     return (
@@ -90,8 +99,8 @@ const NewSession = () => {
                     variant="outlined"
                     margin="normal"
                     type="time"
-                    helperText="Enter a time between 09:00 AM and 06:00 PM"
-                    inputProps={{ min: "09:00", max:"18:00"}}
+                    helperText="Enter a time between 09:00 AM and 06:00 PM. You can only select the hour"
+                    inputProps={{ step:3600,min: "09:00", max:"18:00"}}
                     { ...((selectedTime < "09:00" || selectedTime > "18:00") && {error:true}) }
                     value={selectedTime}
                     onChange={handleTimeChange}

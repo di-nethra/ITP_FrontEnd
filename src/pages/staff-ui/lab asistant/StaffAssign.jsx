@@ -4,9 +4,10 @@ import Swal from 'sweetalert2';
 import React, { useState, useEffect } from "react";
 import TestDataService from "../../../services/tests.service";
 import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 
 export default function StaffAssign() {
-
+    let history = useHistory();
     const id = useParams();
     //console.log(id.topicId);
     const initialTestState = {
@@ -83,9 +84,10 @@ export default function StaffAssign() {
                 //console.log(response.data,);
                 Swal.fire(
                     'Test Updated!',
-                    'You have updated the test! Please move in to Intransist test table',
+                    'You have updated the test! See the test in Intransist test table',
                     'success'
                   )
+                history.push("/staff/labassistant/intrasisttests");
                 setMessage("The test was updated successfully!");
             })
             .catch(e => {
@@ -104,6 +106,7 @@ export default function StaffAssign() {
                     <div className="newUserItem">
                         <label>Specimen ID</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="specimenid"
                             name="specimenid"
                             value={CurrentTest.specimenid}
@@ -112,6 +115,7 @@ export default function StaffAssign() {
                     <div className="newUserItem">
                         <label>Patient Name</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="patientsname"
                             name="patientsname"
                             value={CurrentTest.patientsname}
@@ -120,6 +124,7 @@ export default function StaffAssign() {
                     <div className="newUserItem">
                         <label>Phone No</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="contactnumber"
                             name="contactnumber"
                             value={CurrentTest.contactnumber}
@@ -128,6 +133,7 @@ export default function StaffAssign() {
                     <div className="newUserItem">
                         <label>Age of patient</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="dateofbirth"
                             name="dateofbirth"
                             value={CurrentTest.dateofbirth}
@@ -136,6 +142,7 @@ export default function StaffAssign() {
                     <div className="newUserItem">
                         <label>Test Type</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="testtype"
                             name="testtype"
                             value={CurrentTest.testtype}
@@ -150,6 +157,7 @@ export default function StaffAssign() {
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant ID</label>
                             <input
+                                style={{color:"black", borderRadius: "20px"}}
                                 type="text"
                                 id="inchargelabassid"
                                 required
@@ -163,6 +171,7 @@ export default function StaffAssign() {
                         <div className="newUserItem">
                             <label>Incharge Lab Assistant Name</label>
                             <input
+                                style={{color:"black", borderRadius: "20px"}}
                                 type="text"
                                 id="inchargelabass"
                                 required

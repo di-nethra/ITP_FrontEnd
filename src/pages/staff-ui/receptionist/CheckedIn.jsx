@@ -4,8 +4,18 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Swal from "sweetalert2";
-import {useTheme} from "@material-ui/core";
+import {
+    FormControl,
+    FormHelperText,
+    Grid,
+    IconButton,
+    InputAdornment,
+    InputLabel,
+    OutlinedInput,
+    useTheme
+} from "@material-ui/core";
 import channellServices from "../../../services/echannelling.Service";
+import {SearchRounded} from "@material-ui/icons";
 
 export default function CheckedIn() {
     const theme = useTheme();
@@ -92,11 +102,32 @@ export default function CheckedIn() {
 
     const [appointments, setAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        getAppointmentsByStatus();
-    },);
+    const [query, setQuery] = useState('');
 
-    const getAppointmentsByStatus = () => {
+    const handleSearchChange = (event) => {
+        setQuery(event.target.value);
+        if (event.target.value !== '') {
+            setLoading(true);
+            channellServices.search(event.target.value, "CheckedIn")
+                .then(response => {
+                    setAppointments(response.data)
+                })
+                .catch(err => {
+                        console.log(err);
+                    }
+                )
+            setLoading(false);
+        }
+        else
+            getCheckedInAppointments()
+
+    }
+
+    useEffect(() => {
+        getCheckedInAppointments();
+    }, []);
+
+    const getCheckedInAppointments = () => {
         channellServices.getByStatus("CheckedIn")
             .then(response => {
                 setAppointments(response.data)
@@ -126,9 +157,34 @@ export default function CheckedIn() {
         <div>
             <Card>
                 <CardContent>
-                    <h3>CheckedIn Appointments</h3>
-                    <br/>
+                    <Grid container alignItems={"center"} justifyContent={"space-between"}>
+                        <Grid item xl={6} lg={6}>
+                            <h3>Checked In Appointments</h3>
+                        </Grid>
+                        <Grid item xl={4} lg={4}>
+                            <FormControl variant="outlined">
+                                <InputLabel htmlFor="search">Search Appointments</InputLabel>
+                                <OutlinedInput
+                                    id="search"
+                                    type="text"
+                                    value={query}
+                                    onChange={handleSearchChange}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton>
+                                                <SearchRounded/>
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                    labelWidth={180}
+                                />
+                                <FormHelperText id="search-helper-text">Search Appointments by Patient NIC or
+                                    Name</FormHelperText>
+                            </FormControl>
+                        </Grid>
+                    </Grid>
 
+                    <br/>
                     <DataGrid
                         rows={rows}
                         columns={columns}

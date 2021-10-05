@@ -7,17 +7,17 @@ import { useEffect, useState } from "react";
 const columns = [
   {
     field: "id",
-    headerName: "Full Name",
+    headerName: "ID",
     width: 275,
   },
   {
     field: "paymentid",
-    headerName: "Full Name",
+    headerName: "Payment ID",
     width: 275,
   },
   {
     field: "paragraph",
-    headerName: "Mobile Number",
+    headerName: "Request",
     width: 275,
     editable: true,
   },
@@ -45,7 +45,7 @@ function RefundData() {
     rows.push({
       id: detail._id,
       paymentid: detail.paymentid,
-      paragraph: detail.paragraph
+      paragraph: detail.paragraph,
     });
   }
   return (
