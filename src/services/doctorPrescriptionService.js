@@ -24,13 +24,18 @@ const getOnePrescription = id => {
     return http.get("/prescriptions/edit/" + id);
 };
 
+const search = (name,id) => {
+    return http.get(`/prescriptions/search/${name}/${id}`);
+  };
+
 const PrescriptionDataServices = {
     getAll,
     get,
     create,
     update,
     getOnePrescription,
-    remove
+    remove,
+    search
 };
 
 export default PrescriptionDataServices;
