@@ -7,6 +7,7 @@ import PayCredit from "../../assets/images/PayWithCreditCard.svg";
 import Button from "@material-ui/core/Button";
 import DropDown from "../../components/patient-ui/Payments/DropDown";
 import paymentCreditService from "../../services/paymentCredit.service";
+import ReCAPTCHA from "react-google-recaptcha";
 import Swal from "sweetalert2";
 const styles = (theme) => ({
   infoLogo: {
@@ -45,6 +46,13 @@ export class CreditCardPage extends Component {
   // Demo = () => {
   //   this.props.demo();
   // };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isChecked: false,
+    };
+    this.onChange = this.onChange.bind(this);
+  }
 
   continue = (e) => {
     e.preventDefault();
@@ -106,7 +114,10 @@ export class CreditCardPage extends Component {
     );
     this.props.nextStep();
   };
-
+  onChange(value) {
+    console.log("Captcha value:", value);
+    this.setState({ isChecked: true });
+  }
   render() {
     const { classes } = this.props;
     const { values, handleChange } = this.props;
@@ -177,15 +188,21 @@ export class CreditCardPage extends Component {
 
               <DropDown onChange={handleChange("country")} />
             </form>
-
+            <ReCAPTCHA
+              className={classes.TextField1}
+              sitekey="6LeFcZ0cAAAAAJhWIR68y6ar57bkcnwBiSoQWWXG"
+              onChange={this.onChange}
+            />
             <Button
               variant="contained"
               color="primary"
+              disabled={!this.state.isChecked}
               className={classes.Paybutton}
               onClick={this.continue}
             >
               Proceed to Checkout
             </Button>
+
             {/* <Button
               variant="contained"
               color="primary"
