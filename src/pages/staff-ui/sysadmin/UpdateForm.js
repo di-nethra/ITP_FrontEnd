@@ -17,7 +17,6 @@ import Swal from "sweetalert2";
 function Updateform() {
   const id = useParams();
 
-
   const initialEmployee = {
     role: "",
     firstName: "",
@@ -35,31 +34,51 @@ function Updateform() {
       .getOneEmployee(id)
       .then((response) => {
         setEmployee(response.data);
-
       })
       .catch((e) => {
         console.log(e);
       });
-
   };
 
   useEffect(() => {
     getEmployee(id.id);
   }, [id.id]);
 
-  //update employee
+  //update employee function
   const UpdateEmployee = (event) => {
     event.preventDefault();
-    if (employee.email.includes("@", 0)) {
-    } else {
-      alert("Invalid email address ( @ sign missing )");
+
+    //validation for all the input fields
+
+    if (employee.role.length === 0) {
+      alert("Role required");
       return null;
     }
 
-    var tempMobile = employee.mobile;
-    if (tempMobile.length === 10) {
+    if (employee.firstName.length === 0) {
+      alert("First name is required");
+      return null;
+    }
+
+    if (employee.lastName.length === 0) {
+      alert("Last name is required");
+      return null;
+    }
+
+    if (employee.email.includes("@", 0)) {
     } else {
-      alert("Invalid Mobile number (should contain 10 digits)");
+      alert("email should contain a @ sign");
+      return null;
+    }
+
+    if (employee.mobile.length === 10) {
+    } else {
+      alert("Mobile Number should contain 10 digits");
+      return null;
+    }
+
+    if (employee.address.length === 0) {
+      alert("Last name is required");
       return null;
     }
 

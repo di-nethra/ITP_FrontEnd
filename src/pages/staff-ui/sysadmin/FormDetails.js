@@ -28,7 +28,6 @@ function EmpForm() {
   const handleSubmit = (e) => {
     //password generator
     var randomstring = Math.random().toString(36).slice(-8);
-    console.log(randomstring);
 
     e.preventDefault();
 
@@ -42,19 +41,41 @@ function EmpForm() {
       password: randomstring,
     };
 
+    //validation for all the input fields
+
+    if (data.role.length === 0) {
+      alert("Role required");
+      return null;
+    }
+
+    if (data.firstName.length === 0) {
+      alert("First name is required");
+      return null;
+    }
+
+    if (data.lastName.length === 0) {
+      alert("Last name is required");
+      return null;
+    }
+
     if (data.email.includes("@", 0)) {
     } else {
       alert("email should contain a @ sign");
       return null;
     }
 
-    var tempMobile = data.mobile;
-    if (tempMobile.length === 10) {
+    if (data.mobile.length === 10) {
     } else {
-      alert("Mobile NO should contain 10 digits");
+      alert("Mobile Number should contain 10 digits");
       return null;
     }
 
+    if (data.address.length === 0) {
+      alert("Last name is required");
+      return null;
+    }
+
+    //create function
     empFormService
       .create(data)
 
