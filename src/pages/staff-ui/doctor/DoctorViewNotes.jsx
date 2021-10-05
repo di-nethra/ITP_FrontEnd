@@ -8,23 +8,47 @@ import AddIcon from '@material-ui/icons/Add';
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NoteDataService from "../../../services/doctorNoteService";
+import { FormControl, FormHelperText, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@material-ui/core";
+import { SearchRounded } from "@material-ui/icons";
 
 export default function DoctorViewNotes() {
     const [notes, setNotes] = useState([]);
-  
+    const [loading, setLoading] = useState(true);
+    const [query, setQuery] = useState('');
+
+    const handleSearchChange = (event) => {
+        setQuery(event.target.value);
+        if (event.target.value !== '') {
+            setLoading(true);
+            NoteDataService.search(event.target.value)
+                .then(response => {
+                    setNotes(response.data)
+                })
+                .catch(err => {
+                    console.log(err);
+                }
+                )
+            setLoading(false);
+        }
+        else {
+            retrieveNotes()
+        }
+    }
+
     useEffect(() => {
-      retrieveNotes();
+        retrieveNotes();
     }, []);
-  
+
     const retrieveNotes = () => {
         NoteDataService.getAll()
-        .then(response => {
-          setNotes(response.data);
-          //console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+            .then(response => {
+                setNotes(response.data);
+                setLoading(false);
+                //console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
     };
 
     const columns = [
@@ -61,11 +85,37 @@ export default function DoctorViewNotes() {
                 <CardContent>
                     <h3>DOCTOR NOTES LIST</h3>
                     <br />
+
+                    <Grid item xl={4} lg={4}>
+                        <FormControl variant="outlined">
+                            <InputLabel htmlFor="search">Search Notes</InputLabel>
+                            <OutlinedInput
+                                id="search"
+                                name="search"
+                                type="text"
+                                value={query}
+                                onChange={handleSearchChange}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="search-icon">
+                                            <SearchRounded />
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                                labelWidth={180}
+                            />
+                            <FormHelperText id="search-helper-text">Search notes by patient NIC or patient name</FormHelperText>
+                        </FormControl>
+                    </Grid>
+                    <br />
+
                     <div style={{ height: 400, width: '100%' }}>
                         <DataGrid
                             rows={rows}
                             columns={columns}
                             pageSize={5}
+                            loading = {loading}
                             checkboxSelection
                             disableSelectionOnClick
                             style={{ backgroundColor: "#D9FAFF" }}

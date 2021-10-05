@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
   Button,
   Card,
@@ -10,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
 import paymentCreditService from "../../services/paymentCredit.service";
+import PaymentSearch from "./PaymentSearch";
 import Swal from "sweetalert2";
 
 const useStyles = makeStyles({
@@ -46,6 +48,45 @@ const useStyles = makeStyles({
 });
 
 export default function CreditMapping(props) {
+  // const history = useHistory();
+  const [search, setSearch] = useState(" ");
+  const [nameVal, setNameVal] = useState(" ");
+  const [payVal, setPayVal] = useState(" ");
+  const [emailVal, setEmailVal] = useState(" ");
+  const [amountVal, setAmountVal] = useState(" ");
+  const [dateVal, setDateVal] = useState(" ");
+
+  function getFilter(e) {
+    setSearch(e.target.value);
+  }
+  function searchRecord() {
+    paymentCreditService
+      .get(search)
+      .then((value) => {
+        console.log(value.data[0].name);
+
+        setNameVal("Client Name :" + value.data[0].name);
+        setEmailVal("Email:" + value.data[0].email);
+        setPayVal("Payment ID:" + value.data[0].payment_id);
+        setAmountVal("Amount:" + value.data[0].amount);
+        setDateVal("Date:" + value.data[0].date);
+
+        Swal.fire("Record Found", "Press Cancel to search Again", "success");
+      })
+      .catch((e) => {
+        Swal.fire(
+          "Record not Found!",
+          "Check the Payment ID and try again! ",
+          "error"
+        );
+      });
+  }
+  // console.log("value of search:" + search);
+
+  function cancelButton() {
+    window.location.reload();
+  }
+
   function deleteRecord(event) {
     var id = event.currentTarget.value;
     Swal.fire({
@@ -102,6 +143,70 @@ export default function CreditMapping(props) {
 
   return (
     <Grid container spacing={1}>
+      <PaymentSearch handleChange={getFilter} />
+
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={searchRecord}
+        style={{ marginLeft: "10px" }}
+      >
+        Search
+      </Button>
+      <Grid container style={{ marginTop: "20px", marginBottom: "10px" }}>
+        <Grid item xs={6}>
+          <Card>
+            <Grid container>
+              <Grid item></Grid>
+            </Grid>
+            <Typography
+              variant="h6"
+              style={{ marginTop: "15px", marginLeft: "20px" }}
+            >
+              {payVal}
+            </Typography>
+            <Typography
+              variant="h6"
+              style={{ marginTop: "15px", marginLeft: "20px" }}
+            >
+              {nameVal}
+            </Typography>
+            <Typography
+              variant="h6"
+              style={{ marginTop: "15px", marginLeft: "20px" }}
+            >
+              {emailVal}
+            </Typography>
+            <Typography
+              variant="h6"
+              style={{ marginTop: "15px", marginLeft: "20px" }}
+            >
+              {amountVal}
+            </Typography>
+            <Typography
+              variant="h6"
+              style={{ marginTop: "15px", marginLeft: "20px" }}
+            >
+              {dateVal}
+            </Typography>
+
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={cancelButton}
+              style={{
+                marginLeft: "400px",
+                marginBottom: "20px",
+                marginTop: "5px",
+              }}
+              disabled={payVal === " "}
+            >
+              Cancel
+            </Button>
+          </Card>
+        </Grid>
+      </Grid>
+
       {props.creditCards.length ? (
         props.creditCards.map((creditCard, index) => (
           <Grid className={classes.layout} item xl={12} lg={12} key={index}>

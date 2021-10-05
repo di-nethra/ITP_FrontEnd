@@ -183,7 +183,7 @@ function Payslip() {
         </React.Fragment>
       </Container>
       <div style={{ marginTop: 20, textAlign: "center", marginBottom: 10 }}>
-        <Pdf targetRef={ref} filename={longMonth}>
+        <Pdf targetRef={ref} filename={"Payslip for month of " + longMonth}>
           {({ toPdf }) => (
             <Button
               size="large"

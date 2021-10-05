@@ -20,13 +20,17 @@ const getOneInventory = (id) => {
   return http.get("/inventories/" + id);
 };
 
+const search = (query) => {
+  return http.get(`/inventories/search/${query}`);
+};
 
   const inventoryServices = {
     getAll,
     create,
     remove,
     update,
-    getOneInventory
+    getOneInventory,
+    search
   }
   
   export default inventoryServices

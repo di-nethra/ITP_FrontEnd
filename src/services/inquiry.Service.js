@@ -21,6 +21,10 @@ const getOneInquiry = (id) => {
     return http.get("/inquiry/" + id);
   };
 
+const search = (query) => {
+    return http.get(`/inquiry/search/${query}`);
+};
+
 // const removeAll = () => {
 //     return http.delete(`/sessions`);
 // };
@@ -32,6 +36,7 @@ const inquriyServices = {
     update,
     remove,
     getOneInquiry,
+    search,
     // removeAll,
 };
 export default inquriyServices;

@@ -3,10 +3,11 @@ import Swal from 'sweetalert2';
 import React, { useState, useEffect } from "react";
 import TestDataService from "../../../services/tests.service";
 import { useParams } from "react-router";
-
-
+import { useHistory } from "react-router-dom";
 
 export default function TestReslt() {
+
+    let history = useHistory();
     const id = useParams();
     //console.log(id.testId);
     const initialTestState = {
@@ -86,9 +87,10 @@ export default function TestReslt() {
                 //console.log(response.data,);
                 Swal.fire(
                     'Test Updated!',
-                    'You have updated the test! Please move in to completed test table',
+                    'You have updated the test! See the test in completed test table',
                     'success'
                 )
+                history.push("/staff/labassistant/completedtests");
                 setMessage("The test was updated successfully!");
             })
             .catch(e => {
@@ -106,6 +108,7 @@ export default function TestReslt() {
                     <div className="newUserItem">
                         <label>Specimen ID</label>
                         <input type="text"
+                             style={{color:"black", borderRadius: "20px"}}
                             id="specimenid"
                             name="specimenid"
                             value={CurrentTest.specimenid}
@@ -114,6 +117,7 @@ export default function TestReslt() {
                     <div className="newUserItem">
                         <label>Patient Name</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="patientsname"
                             name="patientsname"
                             value={CurrentTest.patientsname}
@@ -122,6 +126,7 @@ export default function TestReslt() {
                     <div className="newUserItem">
                         <label>Phone No</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="contactnumber"
                             name="contactnumber"
                             value={CurrentTest.contactnumber}
@@ -130,6 +135,7 @@ export default function TestReslt() {
                     <div className="newUserItem">
                         <label>Age of patient</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="dateofbirth"
                             name="dateofbirth"
                             value={CurrentTest.dateofbirth}
@@ -138,6 +144,7 @@ export default function TestReslt() {
                     <div className="newUserItem">
                         <label>Test Type</label>
                         <input type="text"
+                            style={{color:"black", borderRadius: "20px"}}
                             id="testtype"
                             name="testtype"
                             value={CurrentTest.testtype}
@@ -152,6 +159,7 @@ export default function TestReslt() {
                         <div className="newUserItem">
                             <label>Specimen Property</label>
                             <input
+                                style={{color:"black", borderRadius: "20px"}}
                                 type="text"
                                 id="specimenproperty"
                                 required
@@ -163,6 +171,7 @@ export default function TestReslt() {
                         <div className="newUserItem">
                             <label>Specimen Property Result</label>
                             <input
+                                style={{color:"black", borderRadius: "20px"}}
                                 type="text"
                                 id="specimenpropertyresult"
                                 required

@@ -12,6 +12,16 @@ import { Formik } from "formik";
 import TextField from "../../components/patient-ui/Echannelling/TextFeild";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  FormControl,
+  FormHelperText,
+  Grid,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+} from "@material-ui/core";
+import {SearchRounded} from "@material-ui/icons";
 
 const INITIAL_FORM_STATE = {
   title: "",
@@ -37,6 +47,30 @@ function PostMessageForm() {
 
 
   const [inquiries, setInquiries] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [loading, setLoading] = useState(true);
+    const [query, setQuery] = useState('');
+
+    const handleSearchChange = (event) => {
+        setQuery(event.target.value);
+        if (event.target.value !== '') {
+            console.log(query);
+            setLoading(true);
+            inquiryServices.search(event.target.value)
+                .then(response => {
+                    setInquiries(response.data)
+                })
+                .catch(err => {
+                        console.log(err);
+                    }
+                )
+            setLoading(false);
+        }
+        else{
+            getInqruiy()
+        }
+
+    }
 
   const columns = [
     // { field: "id", headerName: "id", width: 0,  },
@@ -183,6 +217,33 @@ function PostMessageForm() {
             <h3>Inquiries </h3>
             <br />
             <div style={{ height: 400, width: "100%" }}>
+
+            <Grid container alignItems={"center"} justifyContent={"space-between"}>
+                <Grid item xl={4} lg={4}>
+                    <FormControl variant="outlined"  style={{width:500}}>
+                        <InputLabel htmlFor="search">Search Inquiry</InputLabel>
+                        <OutlinedInput
+                            id="search"
+                            type="text"
+                            value={query}
+                            onChange={ handleSearchChange}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                    >
+                                        <SearchRounded />
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                            labelWidth={180}
+                        />
+                        <FormHelperText id="search-helper-text">Search Inquiry by title</FormHelperText>
+                    </FormControl>
+                </Grid>
+            </Grid>
+
+
               <DataGrid
                 rows={rows}
                 columns={columns}

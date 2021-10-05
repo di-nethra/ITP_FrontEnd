@@ -1,19 +1,53 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
-import {DataGrid} from '@material-ui/data-grid';
-import {Link} from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { DataGrid } from '@material-ui/data-grid';
+import { Link } from "react-router-dom";
 import DeleteSweepOutlinedIcon from '@material-ui/icons/DeleteSweepOutlined';
 import InventoryDataService from '../../../services/inventoryServices';
 import Button from '@material-ui/core/Button';
+import {
+    FormControl,
+    FormHelperText,
+    Grid,
+    IconButton,
+    InputAdornment,
+    InputLabel,
+    OutlinedInput,
+} from "@material-ui/core";
+import {SearchRounded} from "@material-ui/icons";
 
 export default function InventoryList() {
     const [inventory, setInventory] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [query, setQuery] = useState('');
+
+    const handleSearchChange = (event) => {
+        setQuery(event.target.value);
+        if (event.target.value !== '') {
+            console.log(query);
+            setLoading(true);
+            InventoryDataService.search(event.target.value)
+                .then(response => {
+                    setInventory(response.data)
+                })
+                .catch(err => {
+                        console.log(err);
+                    }
+                )
+            setLoading(false);
+        }
+        else{
+            retrieveInventory()
+        }
+
+    }
 
     useEffect(() => {
         retrieveInventory();
     }, []);
 
-    const retrieveInventory = () => {
+    const retrieveInventory = (event) => {
+        setQuery(event?.target.value)
         InventoryDataService.getAll()
             .then(response => {
                 setInventory(response.data);
@@ -28,7 +62,7 @@ export default function InventoryList() {
     };
 
     const columns = [
-        {field: 'item_id', headerName: 'Item ID', width: 127},
+        { field: 'item_id', headerName: 'Item ID', width: 127 },
         {
             field: 'item_name',
             headerName: 'Item Name',
@@ -70,15 +104,15 @@ export default function InventoryList() {
                         </Link>
 
                         <Link to={"/staff/inventorymanager/restockitems/" + params.row.id}>
-                            <button className="userListEdit" style={{backgroundColor:"green"}}>Restock</button>
+                            <button className="userListEdit" >Restock</button>
                         </Link>
 
                         <Button size="small" color="secondary" variant="contained" value={params.row.id}
-                                onClick={deleteInventory}><DeleteSweepOutlinedIcon
-                            color="primary"
-                            style={hoveredStyle}/></Button>
+                            onClick={deleteInventory}><DeleteSweepOutlinedIcon
+                                color="primary"
+                                style={hoveredStyle} /></Button>
 
-                            
+
 
 
                     </>
@@ -90,21 +124,21 @@ export default function InventoryList() {
     const deleteInventory = event => {
         InventoryDataService.remove(event.currentTarget.value)
 
-      .then(response => {
-        alert("Delete Item?")
-        window.location.reload();
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
+            .then(response => {
+                alert("Delete Item?")
+                window.location.reload();
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     let rows = [];
     for (const inventoryy of inventory) {
         rows.push(
             {
                 id: inventoryy._id,
-                item_id:inventoryy.item_id,
+                item_id: inventoryy.item_id,
                 item_name: inventoryy.item_name,
                 supplier_name: inventoryy.supplier_name,
                 supplier_email: inventoryy.supplier_email,
@@ -115,7 +149,35 @@ export default function InventoryList() {
     }
 
     return (
-        <div style={{height: 400, width: '100%'}}>
+        <div style={{ height: 400, width: '100%' }}>
+            <Grid container alignItems={"center"} justifyContent={"space-between"}>
+                {/* <Grid item xl={6} lg={6}>
+                    <h3>Registered Items</h3>
+                </Grid> */}
+                <Grid item xl={4} lg={4}>
+                    <FormControl variant="outlined">
+                        <InputLabel htmlFor="search">Search Supplier Name</InputLabel>
+                        <OutlinedInput
+                            id="search"
+                            type="text"
+                            value={query}
+                            onChange={ handleSearchChange}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                    >
+                                        <SearchRounded />
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                            labelWidth={180}
+                        />
+                        <FormHelperText id="search-helper-text">Search Items by the name of the Supplier provided</FormHelperText>
+                    </FormControl>
+                </Grid>
+            </Grid><br/>
+
             <DataGrid
                 rows={rows}
                 columns={columns}
