@@ -10,6 +10,16 @@ import { DeleteOutline } from "@material-ui/icons";
 import Swal from "sweetalert2";
 import { useTheme } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import {
+  FormControl,
+  FormHelperText,
+  Grid,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+} from "@material-ui/core";
+import {SearchRounded} from "@material-ui/icons";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,7 +39,31 @@ function PurchaseRequestForm() {
   }, []);
 
   const [mdrequests, setmdRequests] = useState([]);
+  const [loading, setLoading] = useState(true);
+    const [query, setQuery] = useState('');
+
+    const handleSearchChange = (event) => {
+        setQuery(event.target.value);
+        if (event.target.value !== '') {
+            console.log(query);
+            setLoading(true);
+            purchaseRequestServices.search(event.target.value)
+                .then(response => {
+                    setmdRequests(response.data)
+                })
+                .catch(err => {
+                        console.log(err);
+                    }
+                )
+            setLoading(false);
+        }
+        else{
+            getmdRequest()
+        }
+
+    }
   const theme = useTheme();
+
 
   const columns = [
     { field: 'drugid', headerName: 'ID', width: 150 },
@@ -249,6 +283,33 @@ function PurchaseRequestForm() {
 
 
         <div style={{ height: 400, width: '80%', marginTop: 40 }}>
+        <Grid container alignItems={"center"} justifyContent={"space-between"}>
+                {/* <Grid item xl={6} lg={6}>
+                    <h3>Registered Items</h3>
+                </Grid> */}
+                <Grid item xl={4} lg={4}>
+                    <FormControl variant="outlined"  style={{width:350}}>
+                        <InputLabel htmlFor="search">Search Requested Medicine</InputLabel>
+                        <OutlinedInput
+                            id="search"
+                            type="text"
+                            value={query}
+                            onChange={ handleSearchChange}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                    >
+                                        <SearchRounded />
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                            labelWidth={180}
+                        />
+                        <FormHelperText id="search-helper-text">Search Medicine by the name</FormHelperText>
+                    </FormControl>
+                </Grid>
+            </Grid><br/>
           <DataGrid
             rows={rows}
             columns={columns}
