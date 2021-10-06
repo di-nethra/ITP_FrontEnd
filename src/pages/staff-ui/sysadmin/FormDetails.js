@@ -17,11 +17,11 @@ import Swal from "sweetalert2";
 
 function EmpForm() {
   const Demo = () => {
-    setSelectedFirstName("asel");
-    setSelectedLastName("jaye");
-    setSelectedEmail("asel@gmail.com");
+    setSelectedFirstName("Mahinda");
+    setSelectedLastName("Rajapaksha");
+    setSelectedEmail("mahinda@gmail.com");
     setSelectedMobile("0767655432");
-    setSelectedAddress("mawanalla");
+    setSelectedAddress("N0 200 hora mawatha, temple trees");
     setRole("Doctor");
   };
 
