@@ -63,7 +63,7 @@ export default function FeaturedInfo() {
     <div className="featured">
       <div className="featuredItem">
         <Link to={"/staff/labassistant/submittedtests"} style={{ color: 'inherit', textDecoration: "none" }}>
-          <span className="featuredTitle">Subbmitted Tests</span>
+          <span className="featuredTitle">Submitted Tests</span>
           <div className="featuredMoneyContainer">
             <span className="featuredMoney">{subbmitted}</span>
             <span className="featuredMoneyRate">
