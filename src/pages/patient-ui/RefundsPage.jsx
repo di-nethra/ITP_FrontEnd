@@ -75,7 +75,7 @@ export default function RefundPage() {
 
   const [PaymentId, setPaymetId] = useState("");
   const [Paragraph, setParagraph] = useState("");
-  const [Image, setImage] = useState("");
+  // const [Image, setImage] = useState("");
 
   function handlePaymentId(e) {
     // console.log(e.target.value);
@@ -85,9 +85,9 @@ export default function RefundPage() {
     // console.log(e.target.value);
     setParagraph(e.target.value);
   }
-  function handleInputFile(e) {
-    setImage(e.target.files[0]);
-  }
+  // function handleInputFile(e) {
+  //   setImage(e.target.files[0]);
+  // }
 
   const classes = useStyles();
   const history = useHistory();
@@ -125,15 +125,8 @@ export default function RefundPage() {
                 placeholder="Refund Request"
                 defaultValue="Please enter your reason to to ask for a refund"
               />
-              <input type="file" onChange={handleInputFile} />
-              <Button
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Upload Image
-              </Button>
+              {/* <input type="file" onChange={handleInputFile} /> */}
+
               <Button
                 fullWidth
                 variant="contained"
