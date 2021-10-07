@@ -67,6 +67,22 @@ export default function MobileQrPay() {
       name: Name,
       phonenumber: PhoneNumber,
     };
+    if (data.name.length === 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Fields canot be empty",
+      });
+      return;
+    }
+    if (data.phonenumber.length === 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Fields canot be empty",
+      });
+      return;
+    }
 
     MobileServices.create(data)
       .then(() => {})

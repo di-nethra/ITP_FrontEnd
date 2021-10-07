@@ -168,7 +168,7 @@ const CreditPdf = (props) => {
         </div>
       </Grid>
 
-      <Pdf targetRef={ref} filename="CreditPDF.pdf">
+      <Pdf targetRef={ref} filename={props.name}>
         {({ toPdf }) => (
           <div>
             <Grid
