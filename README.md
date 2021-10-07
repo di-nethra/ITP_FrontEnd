@@ -98,7 +98,7 @@ This section shows the list of major technologies that we have used to  built ou
 
 * Modular Web Framework for Node.js : [Express.js](https://expressjs.com/)
 
-<p align="center"><a href="https://expressjs.com/" target="_blank"><img src="readmeImages/Express.png" width="100"></a></p>
+<p align="center"><a href="https://expressjs.com/" target="_blank"><img src="readmeImages/Expressjs.png" width="100"></a></p>
 
 * Database : [MongoDB](https://www.mongodb.com/)
 
