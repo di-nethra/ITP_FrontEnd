@@ -18,7 +18,7 @@ export default function EForm() {
   //demo button for the form
   const DemoChanell = () => {
     setFullName("Wishwa Gayanath Rathnaweera");
-    setEmailAddress("wishwa5020@gmail.com");
+    setEmailAddress("anjanadinethra@hotmail.com");
     setNICNumber("981662067V");
     setMobileNumber("0767990025");
     setAge("23");

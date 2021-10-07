@@ -225,7 +225,7 @@ function PostMessageForm() {
           <CardContent>
             <h3>Inquiries </h3>
             <br />
-            <div style={{ height: 400, width: "100%" }}>
+            <div style={{ height: 500, width: "100%" }}>
               <Grid
                 container
                 alignItems={"center"}
@@ -260,6 +260,7 @@ function PostMessageForm() {
                 columns={columns}
                 pageSize={5}
                 disableSelectionOnClick
+                autoHeight={true}
                 style={{ backgroundColor: "white" }}
               />
             </div>
