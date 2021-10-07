@@ -17,11 +17,11 @@ import Swal from "sweetalert2";
 
 function EmpForm() {
   const Demo = () => {
-    setSelectedFirstName("asel");
-    setSelectedLastName("jaye");
-    setSelectedEmail("asel@gmail.com");
+    setSelectedFirstName("Mahinda");
+    setSelectedLastName("Rajapaksha");
+    setSelectedEmail("anjanadinethra@hotmail.com");
     setSelectedMobile("0767655432");
-    setSelectedAddress("mawanalla");
+    setSelectedAddress("N0 200 hora mawatha, temple trees");
     setRole("Doctor");
   };
 
@@ -80,19 +80,17 @@ function EmpForm() {
       .create(data)
 
       .then((response) => {
-        alert("success");
-        window.location.reload();
-        console.log("inside create" + response.data);
-        console.log("inside then" + response.data);
-      })
-      .catch((e) => {
-        // alert(e );
         Swal.fire(
           "Submited Successfully",
           "You have successfully submited a employee",
           "success"
         );
-        window.location.reload(10);
+        // window.location.reload();
+        console.log("inside create" + response.data);
+        console.log("inside then" + response.data);
+      })
+      .catch((e) => {
+        alert(e);
         console.log("this is the error:" + e);
       });
   };

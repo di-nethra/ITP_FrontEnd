@@ -30,6 +30,7 @@ const styles = (withTheme) => ({
   text: {
     textAlign: "center",
     paddingLeft: "350px",
+    marginTop: "100px",
   },
   label: {
     textAlign: "left",

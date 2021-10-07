@@ -58,7 +58,7 @@ export class CreditCardPage extends Component {
     e.preventDefault();
     const ranNum = "CPAY" + Math.floor(1000 + Math.random() * 9000);
     const currentDate = new Date().toDateString();
-
+    console.log(this.props.values.CVC);
     const tempPrice = "RS.2500.00";
     const data = {
       paymentid: ranNum,
@@ -89,7 +89,23 @@ export class CreditCardPage extends Component {
       });
       return null;
     }
-
+    const cvc = this.props.values.CVC;
+    if (cvc.length < 3) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Wrong CVC try again! ",
+      });
+      return null;
+    }
+    if (cvc.length > 3) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Wrong CVC try again! ",
+      });
+      return null;
+    }
     // console.log(" data meka" + data.email);
     paymentCreditService
       .create(data)
@@ -160,21 +176,23 @@ export class CreditCardPage extends Component {
                   <TextField
                     id="outlined-basic"
                     label="Year/Month"
+                    fullWidth="true"
                     variant="outlined"
                     onChange={handleChange("yearMonth")}
                     defaultValue={values.yearMonth}
                   />
-
-                  <TextField
-                    id="outlined-basic"
-                    label="CVC"
-                    variant="outlined"
-                    onChange={handleChange("CVC")}
-                    defaultValue={values.CVC}
-                    className={classes.TextField1}
-                  />
                 </Grid>
               </Grid>
+
+              <TextField
+                id="outlined-basic"
+                label="CVC"
+                variant="outlined"
+                onChange={handleChange("CVC")}
+                fullWidth="true"
+                defaultValue={values.CVC}
+                className={classes.TextField1}
+              />
 
               <TextField
                 id="outlined-basic"
