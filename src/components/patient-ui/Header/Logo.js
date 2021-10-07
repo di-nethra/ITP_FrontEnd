@@ -73,11 +73,11 @@ function Logo() {
     );
 
     return <div className={styles.logo_bg}>
-        <Grid container alignItems={"center"} justifyContent={"space-evenly"}>
+        <Grid container alignItems={"center"} justifyContent={"space-between"}>
             <Hidden lgUp>
-                <Grid item sm={2} xs={2}>
+                <Grid item sm={2} xs={1}>
                     <Button onClick={toggleDrawer(true)} style={{padding: "10px 0"}}>
-                        <MenuIcon/>
+                        <MenuIcon style={{padding: "10px 0"}}/>
                     </Button>
                     <Drawer
                         style={{width:"min-content"}}
@@ -92,7 +92,7 @@ function Logo() {
 
 
             <Link to="/">
-                <Grid item sm={8} xs={8} lg={12} md={12} xl={12}>
+                <Grid item sm={8} xs={6} lg={12} md={12} xl={12}>
                     <img className={styles.logoPatient} src={logoDark} alt="Ispirithaalei Logo"/>
                 </Grid>
             </Link>

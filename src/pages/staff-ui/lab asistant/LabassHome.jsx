@@ -17,7 +17,7 @@ function LabassHome() {
           "May",
           "Jun",
           "Jul",
-          "Agu",
+          "Aug",
           "Sep",
           "Oct",
           "Nov",

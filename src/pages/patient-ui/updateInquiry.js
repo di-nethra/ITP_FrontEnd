@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 import inquriyServices from "../../services/inquiry.Service";
 import { useHistory } from "react-router";
 import { Update } from "@material-ui/icons";
+import { ToastContainer, toast } from "react-toastify";
 
 function UpdateInquiry() {
   let history = useHistory();
@@ -51,6 +52,30 @@ function UpdateInquiry() {
   const UpdateInquiry = (event) => {
     event.preventDefault();
 
+    //validation feilds
+
+    var val = inquiries.title;
+    if(val.length === 0){
+      toast.error("Inquiry Title feild is required", {
+        className: "error-toast",
+        draggable: true,
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: false,
+      });
+      return null;
+    }
+
+    var val2 =inquiries.message;
+    if(val2.length === 0){
+      toast.error("Inquiry Message feild is required", {
+        className: "error-toast",
+        draggable: true,
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: false,
+      });
+      return null;
+    }
+
     inquriyServices
       .update(inquiries._id, inquiries)
       .then((response) => {
@@ -65,6 +90,8 @@ function UpdateInquiry() {
       .catch((e) => {
         console.log(e);
       });
+
+
   };
 
   const handleInputChange = (e) => {
@@ -101,9 +128,9 @@ function UpdateInquiry() {
                     <Grid item xs={5}>
                       <TextField
                         name="title"
-                        label="title"
+                        // label="title"
                         variant="outlined"
-                        required
+                        required={true}
                         // fullWidth={true}
                         style={{ width: 300 }}
                         value={inquiries.title}
@@ -117,7 +144,7 @@ function UpdateInquiry() {
                     <Grid item xs={5}>
                       <TextField
                         name="message"
-                        label="message"
+                        // label="message"
                         variant="outlined"
                         required
                         multiline
@@ -138,6 +165,7 @@ function UpdateInquiry() {
                       >
                         Update
                       </Button>
+                      <ToastContainer />
                     </Grid>
                   </Grid>
                 </CardContent>

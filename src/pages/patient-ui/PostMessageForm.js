@@ -21,7 +21,7 @@ import {
   InputLabel,
   OutlinedInput,
 } from "@material-ui/core";
-import {SearchRounded} from "@material-ui/icons";
+import { SearchRounded } from "@material-ui/icons";
 
 const INITIAL_FORM_STATE = {
   title: "",
@@ -38,40 +38,43 @@ function PostMessageForm() {
     getInqruiy();
   }, []);
 
+  //demo for the inquiry
+
   const DemoInquiry = () => {
     setTitle("E-Chanell Cancel");
-    setMessage("I had made an chanelling thorugh the system. I want to cancel my chanelling");   
+    setMessage(
+      "I had made an chanelling thorugh the system. I want to cancel my chanelling"
+    );
   };
 
-
-
-
   const [inquiries, setInquiries] = useState([]);
+
+  //Search bar for search inquiries
+
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(true);
-    const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
-    const handleSearchChange = (event) => {
-        setQuery(event.target.value);
-        if (event.target.value !== '') {
-            console.log(query);
-            setLoading(true);
-            inquiryServices.search(event.target.value)
-                .then(response => {
-                    setInquiries(response.data)
-                })
-                .catch(err => {
-                        console.log(err);
-                    }
-                )
-            setLoading(false);
-        }
-        else{
-            getInqruiy()
-        }
-
+  const handleSearchChange = (event) => {
+    setQuery(event.target.value);
+    if (event.target.value !== "") {
+      console.log(query);
+      setLoading(true);
+      inquiryServices
+        .search(event.target.value)
+        .then((response) => {
+          setInquiries(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      setLoading(false);
+    } else {
+      getInqruiy();
     }
+  };
 
+  //read the inquiries and store them to coloumns
   const columns = [
     // { field: "id", headerName: "id", width: 0,  },
     { field: "title", headerName: "Title", width: 450 },
@@ -83,6 +86,7 @@ function PostMessageForm() {
     },
   ];
 
+  //read the inquires and store them to a table rows
   let rows = [];
   for (const inquiry of inquiries) {
     rows.push({
@@ -92,6 +96,7 @@ function PostMessageForm() {
     });
   }
 
+  //read all the inquiries using getall method
   const getInqruiy = () => {
     inquiryServices
       .getAll()
@@ -114,6 +119,7 @@ function PostMessageForm() {
       message: message,
     };
 
+    //create a new inquiry
     inquiryServices
       .create(data)
 
@@ -187,23 +193,26 @@ function PostMessageForm() {
                 required
               />
               <div className="buttonAlignRight">
-              <Button
-                style={{ backgroundColor: "#005792", borderRadius: "5px" }}
-                variant="contained"
-                color="primary"
-                size="medium"
-                type="submit"
-                className={classes.postBtn}
-                startIcon={<SendIcon />}>
-                Inquiry
-              </Button>
-              <Button size="medium" 
-              variant="contained"
-               color="secondary"
-               onClick={DemoInquiry}>
-               DEMO
-               </Button>
-              <ToastContainer />
+                <Button
+                  style={{ backgroundColor: "#005792", borderRadius: "5px" }}
+                  variant="contained"
+                  color="primary"
+                  size="medium"
+                  type="submit"
+                  className={classes.postBtn}
+                  startIcon={<SendIcon />}
+                >
+                  Inquiry
+                </Button>
+                <Button
+                  size="medium"
+                  variant="contained"
+                  color="secondary"
+                  onClick={DemoInquiry}
+                >
+                  DEMO
+                </Button>
+                <ToastContainer />
               </div>
             </form>
           </Formik>
@@ -216,39 +225,42 @@ function PostMessageForm() {
           <CardContent>
             <h3>Inquiries </h3>
             <br />
-            <div style={{ height: 400, width: "100%" }}>
-
-            <Grid container alignItems={"center"} justifyContent={"space-between"}>
+            <div style={{ height: 500, width: "100%" }}>
+              <Grid
+                container
+                alignItems={"center"}
+                justifyContent={"space-between"}
+              >
                 <Grid item xl={4} lg={4}>
-                    <FormControl variant="outlined"  style={{width:500}}>
-                        <InputLabel htmlFor="search">Search Inquiry</InputLabel>
-                        <OutlinedInput
-                            id="search"
-                            type="text"
-                            value={query}
-                            onChange={ handleSearchChange}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                    >
-                                        <SearchRounded />
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                            labelWidth={180}
-                        />
-                        <FormHelperText id="search-helper-text">Search Inquiry by title</FormHelperText>
-                    </FormControl>
+                  <FormControl variant="outlined" style={{ width: 500 }}>
+                    <InputLabel htmlFor="search">Search Inquiry</InputLabel>
+                    <OutlinedInput
+                      id="search"
+                      type="text"
+                      value={query}
+                      onChange={handleSearchChange}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton aria-label="toggle password visibility">
+                            <SearchRounded />
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      labelWidth={180}
+                    />
+                    <FormHelperText id="search-helper-text">
+                      Search Inquiry by title
+                    </FormHelperText>
+                  </FormControl>
                 </Grid>
-            </Grid>
-
+              </Grid>
 
               <DataGrid
                 rows={rows}
                 columns={columns}
                 pageSize={5}
                 disableSelectionOnClick
+                autoHeight={true}
                 style={{ backgroundColor: "white" }}
               />
             </div>
